@@ -51,6 +51,7 @@ public class SortingExamples {
 	   * TO DO
 	   * Sort words by whether it contains 'e'
 	   * Strings that contain “e” first, everything else second
+	   * Hint: use method StringUtils.eChecker
 	   * 
 	   */
 	  
