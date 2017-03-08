@@ -29,6 +29,9 @@ public class EmployeeManager {
 	 **/
 	public void create(Employee employee) {
 		// TODO create employee and save to database
+		entityManager.getTransaction().begin();
+		entityManager.persist(employee);
+		entityManager.getTransaction().commit();
 	}
 
 	/**
@@ -39,7 +42,8 @@ public class EmployeeManager {
 	 **/
 	public Employee read(long employeeId) {
 		// TODO find employee and return
-		return new Employee();
+		return entityManager.find(Employee.class,
+			Long.valueOf(employeeId));
 	}
 
 	/**
@@ -50,6 +54,9 @@ public class EmployeeManager {
 	 **/
 	public void update(Employee employee) {
 		// TODO update row in table 
+		entityManager.getTransaction().begin();
+		entityManager.merge(employee);
+		entityManager.getTransaction().commit();		
 	}
 
 	/**
@@ -58,6 +65,9 @@ public class EmployeeManager {
 	 **/
 	public void delete(Employee employee) {
 		// TODO delete row in table
+		entityManager.getTransaction().begin();
+		entityManager.remove(employee);
+		entityManager.getTransaction().commit();
 	}
 
 	public void close() {

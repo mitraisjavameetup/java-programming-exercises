@@ -28,26 +28,45 @@ import javax.persistence.Table;
  * 	 all setters method should return object itself, or this.
  **/
 // TODO please add annotation for entity class
+@Entity
+@Table(name = "t_employee")
 public class Employee {
 	// TODO implement this entity class
-
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@Column(name = "name")
 	private String name;
+	@Column(name = "date_of_birth")
 	private Date dateOfBirth;
+	@Column(name = "gender")
 	private String gender;
+	@Column(name = "marital_status")
 	private String maritalStatus;
+	@Column(name = "phone")
 	private String phone;
+	@Column(name = "email")
 	private String email;
+	@Column(name = "hire_date")
 	private Date hireDate;
 
 	public Employee() {
 
 	}
-
+	
 	public Long getId() {
 		return this.id;
 	}
-	
+
+	public Employee setId(Long id) {
+		this.id = id;
+		return this;
+	}
+
+	public String getName() {
+		return this.name;
+	}
+
 	public Employee setName(String name) {
 		this.name = name;
 		return this;
@@ -56,8 +75,12 @@ public class Employee {
 	public String toString() {
 		return String.format(
 			"Employee object: [id: %d, name: '%s'",
-			1, this.name
+			this.id, this.name
 		);
+	}
+
+	public Date getDateOfBirth() {
+		return this.dateOfBirth;
 	}
 
 	public Employee setDateOfBirth(Date dob) {
@@ -65,9 +88,17 @@ public class Employee {
 		return this;
 	}
 
+	public String getGender() {
+		return this.gender;
+	}
+
 	public Employee setGender(String gender) {
 		this.gender = gender;
 		return this;
+	}
+
+	public String getMaritalStatus() {
+		return this.maritalStatus;
 	}
 
 	public Employee setMaritalStatus(String maritalStatus) {
@@ -75,13 +106,30 @@ public class Employee {
 		return this;
 	}
 
+	public String getPhone() {
+		return this.phone;
+	}
+
 	public Employee setPhone(String phone) {
 		this.phone = phone;
 		return this;
 	}
 
+	public String getEmail() {
+		return this.email;
+	}
+
 	public Employee setEmail(String email) {
 		this.email = email;
+		return this;
+	}
+
+	public Date getHireDate() {
+		return this.hireDate;
+	}
+
+	public Employee setHireDate(Date hireDate) {
+		this.hireDate = hireDate;
 		return this;
 	}
 }
