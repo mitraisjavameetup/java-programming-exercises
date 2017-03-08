@@ -6,12 +6,6 @@ package com.mitrais.cdc.java;
  *  instances of this interface, where now in Java 8 you can use lambdas.
  *  Also see TwoStringPredicate for a weaker version of this interface
  *  that works only for Strings.
- *  <p>
- *  From <a href="http://courses.coreservlets.com/Course-Materials/">the
- *  coreservlets.com tutorials on JSF 2, PrimeFaces, Ajax, JavaScript, jQuery, GWT, Android,
- *  Spring, Hibernate, JPA, RESTful Web Services, Hadoop, Spring MVC,
- *  servlets, JSP, Java 8 lambdas and streams (for those that know Java already), 
- *  and Java 8 programming (for those new to Java)</a>.
  */
  
 public interface TwoElementPredicate<T> {
