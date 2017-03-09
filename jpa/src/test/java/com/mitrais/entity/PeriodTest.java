@@ -13,7 +13,7 @@ import static org.junit.Assert.assertThat;
 /**
  * Created by Angela_I3218 on 3/9/2017.
  */
-public class EmploymentPeriodTest {
+public class PeriodTest {
     private static SimpleDateFormat formatter =
             new SimpleDateFormat("yyyy-MM-dd");
     /**
@@ -30,7 +30,7 @@ public class EmploymentPeriodTest {
         } catch( ParseException ex ) {
             System.err.println( ex.toString() );
         }
-        EmploymentPeriod period = new EmploymentPeriod();
+        Period period = new Period();
         period.setStartDate(startDate);
         period.setEndDate(endDate);
 
@@ -75,7 +75,7 @@ public class EmploymentPeriodTest {
                 .setEmail("michael.jacob@mitrais.com")
                 .setHireDate(hireDate);
 
-        EmploymentPeriod period = new EmploymentPeriod();
+        Period period = new Period();
         period.setStartDate(startDate);
         period.setEndDate(endDate);
 

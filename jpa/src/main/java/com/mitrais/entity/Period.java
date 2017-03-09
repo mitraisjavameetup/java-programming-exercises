@@ -5,14 +5,14 @@ import javax.persistence.Embeddable;
 import java.util.Date;
 
 @Embeddable
-public class EmploymentPeriod {
+public class Period {
     @Column(name="start_date")
     private Date startDate;
 
     @Column(name="end_date")
     private Date endDate;
 
-    public EmploymentPeriod() {
+    public Period() {
 
     }
 

@@ -3,6 +3,7 @@ package com.mitrais.manager;
 import javax.persistence.EntityManager;
 
 import com.mitrais.entity.Employee;
+import com.mitrais.entity.EmploymentHistory;
 import com.mitrais.util.EntityManagerUtil;
 
 public class EmployeeManager {
@@ -73,5 +74,16 @@ public class EmployeeManager {
 	public void close() {
 		if (entityManager != null)
 			entityManager.close();
+	}
+
+	/**
+	 *  write Employment History to database/ persistent storage
+	 *  @param project  the row to be inserted
+	 **/
+	public void createEmploymentHistory(EmploymentHistory project) {
+		// TODO create project and save to database
+		entityManager.getTransaction().begin();
+		entityManager.persist(project);
+		entityManager.getTransaction().commit();
 	}
 }

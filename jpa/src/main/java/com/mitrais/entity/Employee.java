@@ -45,7 +45,7 @@ public class Employee {
 	@Column(name = "hire_date")
 	private Date hireDate;
 	@Embedded
-	private EmploymentPeriod period;
+	private Period period;
 
 	public Employee() {
 
@@ -131,11 +131,11 @@ public class Employee {
 	}
 
 
-	public EmploymentPeriod getPeriod() {
+	public Period getPeriod() {
 		return period;
 	}
 
-	public void setPeriod(EmploymentPeriod period) {
+	public void setPeriod(Period period) {
 		this.period = period;
 	}
 }
