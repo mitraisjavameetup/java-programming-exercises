@@ -1,9 +1,11 @@
 package com.mitrais.cdc.java;
 
 public class Rectangle {
+
+	public double width, height;
+
 	/*
-	 * To-do
-	 * make a Square class with various capabilities below: 
+	 * todo: make a Square class with various capabilities below:
 	 * 1. Give the Square class a width and height field of type double
 	 * 2. Give Square a method that computes the area (width * height) 
 	 * 3. Give Square a constructor to which you can pass the width
@@ -11,10 +13,4 @@ public class Rectangle {
 	 * 
 	 */
 	
-	public double getArea(){
-		/*TO DO
-		 * solve number 2 here
-		 */
-		return 0;
-	}
 }

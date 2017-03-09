@@ -7,7 +7,7 @@ public class AppTest{
 
 	public void testCalmString()
     {
-        /*To Do
+        /* todo:
          * Please create jUnit code
          * to test calmString method on App.java
          * at least create 4 test cases using 'assertThat' (modern approach)
@@ -17,7 +17,7 @@ public class AppTest{
 	
 	public void testCalmAttendees()
     {
-        /*To Do
+        /* todo:
          * Please create jUnit code using modern approach
          * to test calmAttendees method on App.java
          * at least create 3 test case using 'assertThat'
