@@ -2,12 +2,7 @@ package com.mitrais.entity;
 
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  *   Employee is entity mapped to table
@@ -49,6 +44,8 @@ public class Employee {
 	private String email;
 	@Column(name = "hire_date")
 	private Date hireDate;
+	@Embedded
+	private EmploymentPeriod period;
 
 	public Employee() {
 
@@ -131,5 +128,14 @@ public class Employee {
 	public Employee setHireDate(Date hireDate) {
 		this.hireDate = hireDate;
 		return this;
+	}
+
+
+	public EmploymentPeriod getPeriod() {
+		return period;
+	}
+
+	public void setPeriod(EmploymentPeriod period) {
+		this.period = period;
 	}
 }
