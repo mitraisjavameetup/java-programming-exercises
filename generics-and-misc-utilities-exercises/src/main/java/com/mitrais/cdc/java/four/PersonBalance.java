@@ -4,18 +4,9 @@ public class PersonBalance {
 	private String name;
 	private double balance;
 	
-	public PersonBalance(String name, double balance){
-		this.name = name;
-		this.balance = balance;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public double getBalance() {
-		return balance;
-	}
+	//todo:
+	//- create constructor
+	//- create setter/getter for the attributes/properties
 
 	public void printThis() {
 		//Assume that the names are 7 characters or fewer
