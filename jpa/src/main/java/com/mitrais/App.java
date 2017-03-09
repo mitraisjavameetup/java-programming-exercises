@@ -4,6 +4,7 @@ import java.util.Date;
 import javax.persistence.EntityManager;
 
 import com.mitrais.entity.Employee;
+import com.mitrais.entity.Period;
 import com.mitrais.manager.EmployeeManager;
 import com.mitrais.util.EntityManagerUtil;
 
@@ -19,6 +20,12 @@ public class App {
 			)
 			.setEmail("michael@mitrais.com")
 			.setPhone("0856123456");
+
+		Period period = new Period();
+		period.setStartDate(new Date(
+				System.currentTimeMillis()));
+
+		employee.setPeriod(period);
 
 		EmployeeManager employeeManager = 
 			EmployeeManager.getInstance();
