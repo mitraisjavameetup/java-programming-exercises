@@ -12,6 +12,6 @@ public class CoinUnitTest {
 		assertNotNull(Coin.HEADS);
 		assertNotNull(Coin.TAILS);
 		
-		//Also need check whether trainee created flip method that returns Coin.HEADS and Coin.TAILS with equal probability
+		//TODO: Also need check whether trainee created flip method that returns Coin.HEADS and Coin.TAILS with equal probability
 	}
 }

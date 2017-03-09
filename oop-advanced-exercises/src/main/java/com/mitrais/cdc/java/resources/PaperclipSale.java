@@ -1,29 +1,31 @@
 package com.mitrais.cdc.java.resources;
 
 public class PaperclipSale implements Sellable {
-  private String color;
-  private double boxPrice;
-  private int numBoxes;
+  //TODO: define attributes/properties based on question
 
+	
+	
+	
   public PaperclipSale(String color, double boxPrice, int numBoxes) {
-    this.color = color;
-    this.boxPrice = boxPrice;
-    this.numBoxes = numBoxes;
+	//TODO: complete this so it will set the properties when called   
+
+  
+  
+  
   }
 
-  public String getColor() {
-    return(color);
-  }
+  //TODO: define getter each attributes/properties
 
-  public double getBoxPrice() {
-    return(boxPrice);
-  }
-
-
-  public int getNumBoxes() {
-    return(numBoxes);
-  }
-
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 
   @Override
   /**
@@ -32,14 +34,23 @@ public class PaperclipSale implements Sellable {
   public double getCost() {
 	double finalCost = 0;
 		
-	//create calculation to calculate finalCost based on price and number of boxes here
-	//finalCost = boxPrice * numBoxes;
-		
+	//TODO: create calculation to calculate finalCost based on price and number of boxes here
+
+	
+	
+	
+	
 	return(finalCost);  	  
   }
 
   @Override
   public String toString() {
-    return("PaperclipSale: " + numBoxes + " boxes of " + color + " clips at $" + boxPrice + "/box.");
+	String toString = new String();
+	
+	//TODO: modify this method to return sentence e.g. "This paperclip name is blablabla, its price is blabla, with number of box blabla"
+	
+	  
+	  
+	return toString;  
   }
 }

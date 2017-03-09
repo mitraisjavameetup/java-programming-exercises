@@ -11,7 +11,7 @@ public interface Sellable {
   public static Sellable cheapest(Sellable[] items) {
     Sellable cheapestItem = null;
     
-    //Create calculation to define which item is the cheapest based on item cost
+    //TODO: Create calculation to define which item is the cheapest based on item cost
     
     
     
@@ -27,7 +27,7 @@ public interface Sellable {
   public static double totalCost(Sellable[] items) {
     double total = 0;
     
-    //Create calculation to count the total price here
+    //TODO: Create calculation to count the total price here
     
     
     

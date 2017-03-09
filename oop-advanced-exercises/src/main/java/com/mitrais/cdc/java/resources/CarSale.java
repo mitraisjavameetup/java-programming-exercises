@@ -1,31 +1,22 @@
 package com.mitrais.cdc.java.resources;
 
 public class CarSale implements Sellable {
-  private final String carName;
-  private final double listPrice;
-  private final double discount;
+  //TODO: define attributes/properties based on question
 
   public CarSale(String carName, double listPrice, double discount) {
-    this.carName = carName;
-    this.listPrice = listPrice;
-    this.discount = discount;
+	//TODO: complete this so it will set the properties when called 
+	  
+	  
+	  
   }
 
-  public String getCarName() {
-    return(carName);
-  }
+  //TODO: define getter each attributes/properties 
 
-  public double getListPrice() {
-    return(listPrice);
-  }
-
-  /** The discount in percent. For example, if discount is 5, then the total cost is
-   *  0.95 times the list price.
-   */
-  public double getDiscount() {
-    return(discount);
-  }
-
+  
+  
+  
+  
+  
   @Override
   /** 
    * Will return finalCost based on price - discount percentage
@@ -33,7 +24,7 @@ public class CarSale implements Sellable {
   public double getCost() {
 	double finalCost = 0;
 	
-	//create calculation to calculate finalCost based on price and discount here
+	//TODO: create calculation to calculate finalCost based on price and discount here
 	
 	
 	
@@ -43,7 +34,12 @@ public class CarSale implements Sellable {
 
   @Override
   public String toString() {
-    return("CarSale: " + carName + " with list price of $" + listPrice 
-           + " and discount of " + discount + "%.");
+	String toString = new String();
+	
+	//TODO: modify this method to return sentence e.g. "This car name is blablabla, its price is blabla, with discount blabla"
+	
+	
+	
+	return toString;
   }
 }

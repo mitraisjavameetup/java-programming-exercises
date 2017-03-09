@@ -29,8 +29,6 @@ public class SellableUnitTest {
 	    
 	    assertEquals(sale3, cheapest);
 	    assertEquals(677770, totalCost, 0);
-	    
-	    
 	}
 	
 }
