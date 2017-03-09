@@ -1,10 +1,10 @@
 package com.mitrais.cdc.java.resources;
 
 public class PaperclipSale implements Sellable {
-  //TODO: define attributes/properties based on question
 
-	
-	
+    private String color;
+    private double boxPrice;
+    private int numBoxes;
 	
   public PaperclipSale(String color, double boxPrice, int numBoxes) {
 	//TODO: complete this so it will set the properties when called   
