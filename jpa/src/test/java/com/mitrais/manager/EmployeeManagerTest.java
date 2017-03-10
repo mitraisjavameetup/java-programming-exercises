@@ -6,7 +6,6 @@ import com.mitrais.entity.GradeHistory;
 import com.mitrais.entity.InternalProject;
 import com.mitrais.entity.JobGrade;
 import com.mitrais.manager.EmployeeManager;
-import com.mysql.jdbc.Driver;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -53,9 +52,6 @@ public class EmployeeManagerTest
 				);
 
 			props.load( in );
-
-			// assert props.getProperty("er") != null :
-			// 	props.getProperty("db_user");
 		} catch( IOException ex ) {
 			System.err.println( ex.toString() );
 		} finally {
@@ -78,9 +74,7 @@ public class EmployeeManagerTest
 
 		try {
 			conn = DriverManager
-				.getConnection( jdbc_url, 
-					props
-				);
+				.getConnection( jdbc_url );
 		} catch( SQLException ex ) {
 			System.err.println( ex.toString() );
 			conn = null;
@@ -328,11 +322,18 @@ public class EmployeeManagerTest
 	@Test
 	public void testDeleteEmployee()
 	{
-		Employee employee = EmployeeManager.getInstance()
-			.read(99L);
-		assertThat("employee should not be null",
-			employee,
+		Employee employee = new Employee();
+		employee.setName("anggie sondakh")
+			.setGender("female")
+			.setMaritalStatus("single")
+			.setPhone("+628123456")
+			.setEmail("anggie.sondakh@mitrais.com");
+		EmployeeManager.getInstance()
+			.create(employee);
+		assertThat("Employee ID should not be null",
+			employee.getId(),
 			is(notNullValue()));
+		Long id = employee.getId();
 		EmployeeManager.getInstance()
 			.delete(employee);
 
@@ -341,9 +342,9 @@ public class EmployeeManagerTest
 		int rowCount = -1;
 		try {
 			stmt = conn.createStatement();
-			String query = " SELECT COUNT(*) AS cnt "
+			String query = String.format(" SELECT COUNT(*) AS cnt "
 						 + " FROM t_employee "
-						 + " WHERE id = 99 ";
+						 + " WHERE id = %d ", id);
 			ResultSet rs = stmt.executeQuery(query);
 			while (rs.next()) {
 				rowCount = rs.getInt("cnt");

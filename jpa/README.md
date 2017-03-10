@@ -4,12 +4,11 @@ This project assignment on Java Persistence API for Mitrais Java Training.
 
 # Prerequisites
 
-- MySQL Database Server on localhost:3306
-    + user access for root with empty password
-    + empty database java_bootcamp, WARNING database might be overwritten
 - Apache Maven
     + pay attention for proxy usage in your network
 - Java SE SDK kit
+- no need database server, all objects are persisted into H2 embededd
+database on ./target/test
 
 # Assignments
 
@@ -57,4 +56,4 @@ entity inside Employee entity.
 - If you want to use another database, please do the following:
     + modify persistence.xml
     + modify connection.config
-    + add jdbc driver and change the Driver
+    + add jdbc driver dependency in pom.xml and change the Driver

@@ -16,19 +16,19 @@
         <properties>
             <property 
                 name="hibernate.connection.url" 
-                value="jdbc:mysql://localhost:3306/java_bootcamp"
+                value="jdbc:h2:./target/test"
             />
             <property 
                 name="hibernate.connection.driver_class" 
-                value="com.mysql.jdbc.Driver"
+                value="org.h2.Driver"
             />
-            <property name="hibernate.connection.username" value="root"/>
+            <property name="hibernate.connection.username" value=""/>
             <property name="hibernate.connection.password" value=""/>
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
             <property 
                 name="hibernate.dialect" 
-                value="org.hibernate.dialect.MySQL5InnoDBDialect" 
+                value="org.hibernate.dialect.H2Dialect" 
             />
             <property 
                 name="hibernate.hbm2ddl.auto" 
