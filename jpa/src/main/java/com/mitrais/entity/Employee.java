@@ -16,6 +16,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -40,6 +42,14 @@ import javax.persistence.Table;
  **/
 // TODO please add annotation for entity class
 @Entity
+
+// TODO please add static query for Employee.filterByLocation and Employee.filterByEmploymentHistory (with JOIN)
+@NamedQueries({
+		@NamedQuery(name="Employee.filterByLocation",
+				query="SELECT a FROM Employee a where a.officeLocation = :location "),
+		@NamedQuery(name="Employee.filterByEmploymentHistory",
+				query="SELECT a FROM Employee a JOIN EmploymentHistory b ON a.id = b.empId WHERE b.id.projectName = :project"),
+})
 @Table(name = "t_employee")
 public class Employee {
 	// TODO implement this entity class
@@ -60,6 +70,8 @@ public class Employee {
 	private String email;
 	@Column(name = "hire_date")
 	private Date hireDate;
+	@Column(name = "office_location")
+	private String officeLocation;
 	@Embedded
 	private Period period;
 	// TODO @OneToOne association/relationship with Address entity
@@ -222,5 +234,13 @@ public class Employee {
 	public Employee setProjects(List<InternalProject> projects) {
 		this.projects = projects;
 		return this;
+	}
+
+	public String getOfficeLocation() {
+		return officeLocation;
+	}
+
+	public void setOfficeLocation(String officeLocation) {
+		this.officeLocation = officeLocation;
 	}
 }

@@ -7,6 +7,8 @@ import com.mitrais.entity.InternalProject;
 import com.mitrais.entity.EmploymentHistory;
 import com.mitrais.util.EntityManagerUtil;
 
+import java.util.List;
+
 public class EmployeeManager {
 
 	private static EmployeeManager instance;
@@ -98,13 +100,36 @@ public class EmployeeManager {
 		entityManager.getTransaction().commit();
 	}
 
-	/**
-	 *  write InternalProject entity to persistent storage
-	 *	@param project InternalProject to be inserted
-	 **/
-	public void createInternalProject(InternalProject project) {
+	// TODO please execute static query Employee.filterByLocation
+	public List getEmployeeByLocation(String officeLocation) {
+		return entityManager.createNamedQuery("Employee.filterByLocation")
+				.setParameter("location", officeLocation)
+				.setMaxResults(20)
+				.getResultList();
+	}
+
+	// TODO please execute static query Employee.filterByProject
+	public List getEmployeeByProject(String projectName) {
+		return entityManager.createNamedQuery("Employee.filterByEmploymentHistory")
+				.setParameter("project", projectName)
+				.setMaxResults(20)
+				.getResultList();
+	}
+
+	// TODO please create dynamic query to delete employee by ID
+	public void removeProjectByEmployeeID(Long empId) {
 		entityManager.getTransaction().begin();
-		entityManager.persist(project);
+		entityManager.createQuery(
+				"DELETE FROM EmploymentHistory e where e.empId=:empId")
+				.setParameter("empId", empId)
+				.executeUpdate();
 		entityManager.getTransaction().commit();
+	}
+
+	public List getAllEmploymentHistory() {
+		return entityManager.createQuery(
+				"SELECT a FROM EmploymentHistory a")
+				.setMaxResults(20)
+				.getResultList();
 	}
 }

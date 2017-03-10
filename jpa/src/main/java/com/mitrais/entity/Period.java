@@ -4,8 +4,10 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import java.util.Date;
 
+// TODO please add annotation for entity class
 @Embeddable
 public class Period {
+    // TODO implement this entity class
     @Column(name="start_date")
     private Date startDate;
 
