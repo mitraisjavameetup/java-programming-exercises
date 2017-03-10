@@ -59,6 +59,7 @@ public class EmployeeManager {
 		// TODO update row in table 
 		entityManager.getTransaction().begin();
 		entityManager.merge(employee);
+		entityManager.flush();
 		entityManager.getTransaction().commit();		
 	}
 

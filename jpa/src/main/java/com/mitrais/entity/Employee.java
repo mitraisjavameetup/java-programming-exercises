@@ -33,6 +33,10 @@ import javax.persistence.*;
 		@NamedQuery(name="Employee.filterByEmploymentHistory",
 				query="SELECT a FROM Employee a JOIN EmploymentHistory b ON a.id = b.empId WHERE b.id.projectName = :project"),
 })
+
+// TODO please add annotation for Entity Listner
+@EntityListeners({ EmployeeEntityListener.class })
+
 @Table(name = "t_employee")
 public class Employee {
 	// TODO implement this entity class
@@ -55,6 +59,8 @@ public class Employee {
 	private Date hireDate;
 	@Column(name = "office_location")
 	private String officeLocation;
+	@Column(name = "last_modified")
+	private Date lastModified;
 	@Embedded
 	private Period period;
 	@OneToOne(
@@ -192,5 +198,14 @@ public class Employee {
 
 	public void setOfficeLocation(String officeLocation) {
 		this.officeLocation = officeLocation;
+	}
+
+
+	public Date getLastModified() {
+		return lastModified;
+	}
+
+	public void setLastModified(Date lastModified) {
+		this.lastModified = lastModified;
 	}
 }
