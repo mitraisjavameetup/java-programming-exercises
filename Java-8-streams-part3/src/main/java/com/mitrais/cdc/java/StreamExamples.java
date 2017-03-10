@@ -18,17 +18,13 @@ public class StreamExamples {
 	
 	int arraySize = 1_000_000;
   
-	public void runStreamExamples(){
-	//get the array and store to variable
-	//print the randomArray
-	//Call method to sum sqrt with sequential approach
-	//print the sum
-	//Call method to sum sqrt with parallel approach
-	//print the sum
-	//Call to get time to sum sequential approach and print the result
-	//Call to get time to sum parallel approach and print the result
-	} 
-  
+	//TODO
+	//Make an “infinite” stream that generates random doubles between 0 and 10. Use it to
+	//	• Print 5 random doubles
+	//  • Make a List of 10 random doubles
+	//  • Make an array of 20 random doubles
+
+
 	public double[] getArray(){
 		double[] numArray = MathUtils.randomArray(arraySize);
 		return numArray;
