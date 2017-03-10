@@ -2,9 +2,11 @@ package com.mitrais.entity;
 
 import javax.persistence.*;
 
+// TODO please add annotation for entity class
 @Entity
 @Table(name = "t_employment_history")
 public class EmploymentHistory {
+    // TODO implement this entity class
     @EmbeddedId
     private ProjectId id;
     @Embedded

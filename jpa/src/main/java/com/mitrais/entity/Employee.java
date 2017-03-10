@@ -3,19 +3,7 @@ package com.mitrais.entity;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  *   Employee is entity mapped to table
@@ -37,6 +25,14 @@ import javax.persistence.Table;
  **/
 // TODO please add annotation for entity class
 @Entity
+
+// TODO please add static query for Employee.filterByLocation and Employee.filterByProject (with JOIN)
+@NamedQueries({
+		@NamedQuery(name="Employee.filterByLocation",
+				query="SELECT a FROM Employee a where a.officeLocation = :location "),
+		@NamedQuery(name="Employee.filterByProject",
+				query="SELECT a FROM Employee a JOIN EmploymentHistory b ON a.id = b.empId WHERE b.id.projectName = :project"),
+})
 @Table(name = "t_employee")
 public class Employee {
 	// TODO implement this entity class
@@ -57,6 +53,8 @@ public class Employee {
 	private String email;
 	@Column(name = "hire_date")
 	private Date hireDate;
+	@Column(name = "office_location")
+	private String officeLocation;
 	@Embedded
 	private Period period;
 	@OneToOne(
@@ -185,5 +183,14 @@ public class Employee {
 	public Employee setGrades(List<GradeHistory> grades) {
 		this.grades = grades;
 		return this;
+	}
+
+
+	public String getOfficeLocation() {
+		return officeLocation;
+	}
+
+	public void setOfficeLocation(String officeLocation) {
+		this.officeLocation = officeLocation;
 	}
 }
