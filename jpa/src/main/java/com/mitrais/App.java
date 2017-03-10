@@ -1,10 +1,13 @@
 package com.mitrais;
 
 import java.util.Date;
-import javax.persistence.EntityManager;
+import java.util.ArrayList;
 
+import com.mitrais.entity.Address;
 import com.mitrais.entity.Employee;
 import com.mitrais.entity.Period;
+import com.mitrais.entity.GradeHistory;
+import com.mitrais.entity.JobGrade;
 import com.mitrais.manager.EmployeeManager;
 import com.mitrais.util.EntityManagerUtil;
 
@@ -25,23 +28,42 @@ public class App {
 		period.setStartDate(new Date(
 				System.currentTimeMillis()));
 
+		Address address = new Address();
+		address.setAddress("Jln. Surya Sumantri")
+			.setCity("Bandung")
+			.setPostalCode("40161");
+
 		employee.setPeriod(period);
 
 		EmployeeManager employeeManager = 
 			EmployeeManager.getInstance();
 
+		employee.setAddress(address);
 		employeeManager.create(employee);
+		assert employee.getId() != null : employee.getId();
 
-		long employeeId = employee.getId();
-		System.out.println("id: " + employeeId);
 		Employee persistEmployee = 
-			employeeManager.read(employeeId);
+			employeeManager.read(employee.getId());
+		assert employee != null : employee;
 
 		persistEmployee.setName("michael langdon")
 			.setMaritalStatus("married");
 		employeeManager.update(
 			persistEmployee
 		);
+
+		GradeHistory grade = new GradeHistory();
+		grade.setStartDate(new Date(System.currentTimeMillis()))
+			.setEndDate(new Date(System.currentTimeMillis()))
+			.setJobGrade(JobGrade.SE_PG);
+		employee.setGrades(new ArrayList<GradeHistory>());
+		employee.getGrades().add(grade);
+		GradeHistory grade2 = new GradeHistory();
+		grade2.setStartDate(new Date(System.currentTimeMillis()))
+			.setEndDate(new Date(System.currentTimeMillis()))
+			.setJobGrade(JobGrade.SQ_ST);
+		employee.getGrades().add(grade2);
+		employeeManager.update(employee);
 
 		employeeManager.delete(persistEmployee);
 

@@ -1,8 +1,21 @@
 package com.mitrais.entity;
 
 import java.util.Date;
+import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 /**
  *   Employee is entity mapped to table
@@ -46,6 +59,23 @@ public class Employee {
 	private Date hireDate;
 	@Embedded
 	private Period period;
+	@OneToOne(
+		fetch = FetchType.LAZY,
+		cascade = CascadeType.ALL
+	)
+	@JoinColumn(name = "address_id")
+	private Address address;
+	@OneToMany(
+		fetch = FetchType.LAZY,
+		cascade = CascadeType.ALL,
+		orphanRemoval = true
+	)
+	@JoinColumn(
+		name = "employee_id",
+		referencedColumnName = "id",
+		nullable = false
+	)
+	private List<GradeHistory> grades;
 
 	public Employee() {
 
@@ -137,5 +167,23 @@ public class Employee {
 
 	public void setPeriod(Period period) {
 		this.period = period;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public Employee setAddress(Address address) {
+		this.address = address;
+		return this;
+	}
+
+	public List<GradeHistory> getGrades() {
+		return this.grades;
+	}
+
+	public Employee setGrades(List<GradeHistory> grades) {
+		this.grades = grades;
+		return this;
 	}
 }

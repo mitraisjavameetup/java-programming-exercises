@@ -1,6 +1,9 @@
 package com.mitrais.manager;
 
+import com.mitrais.entity.Address;
 import com.mitrais.entity.Employee;
+import com.mitrais.entity.GradeHistory;
+import com.mitrais.entity.JobGrade;
 import com.mitrais.manager.EmployeeManager;
 import com.mysql.jdbc.Driver;
 
@@ -13,6 +16,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Properties;
 
 import org.junit.After;
@@ -142,9 +146,17 @@ public class EmployeeManagerTest
 		try {
 			stmt = conn.createStatement();
 
-			String query = " DELETE FROM t_employee ";
+			stmt.addBatch( 
+				" DELETE FROM t_grade_history "
+			);
+			stmt.addBatch(
+				" DELETE FROM t_employee "
+			);
+			stmt.addBatch( 
+				" DELETE FROM t_address " 
+			);
 
-			stmt.executeUpdate( query );
+			stmt.executeBatch();
 		} catch( SQLException ex ) {
 			System.err.println( ex.toString() );
 		} finally {
@@ -294,7 +306,7 @@ public class EmployeeManagerTest
 
 		// assertion by jdbc
 		Statement stmt = null;
-		int rowCount = 0;
+		int rowCount = -1;
 		try {
 			stmt = conn.createStatement();
 			String query = " SELECT COUNT(*) AS cnt "
@@ -318,5 +330,167 @@ public class EmployeeManagerTest
 		assertThat("rowCount should be equal to 0",
 			(rowCount == 0),
 			is(equalTo(true)));
+	}
+
+
+	/**
+	 *  it will create employee with address.
+	 *  check the result rest with jdbc query
+	 *  Employee entity are dependant to Address entity
+	 *  Employee will have address_id as foreign key, which
+	 *  refer to t_address(id)
+	 *  the association address_id is optional, or in other
+	 *  word address_id is nullable
+	 **/
+	@Test
+	public void testOneToOneAddress()
+	{
+		Employee employee = new Employee();
+		employee.setName("anggie sondakh")
+			.setGender("female")
+			.setMaritalStatus("single")
+			.setPhone("+628123456")
+			.setEmail("anggie.sondakh@mitrais.com");
+		try {
+			employee.setDateOfBirth(formatter.parse("1989-10-01"))
+				.setHireDate(formatter.parse("2017-01-02"));
+		} catch( ParseException ex ) {
+			System.err.println( ex.toString() );
+		}
+		Address address = new Address();
+		address.setCity("Bandung")
+			.setAddress("Jln. Surya Sumantri")
+			.setPostalCode("40161");
+		employee.setAddress(address);
+		// persist it to storage	
+		EmployeeManager.getInstance()
+			.create(employee);
+
+		// assertion
+		assertThat("Employee ID should not be null",
+			employee.getId(),
+			is(notNullValue())
+		);
+		assertThat("Address ID should not be null",
+			employee.getAddress().getId(),
+			is(notNullValue())
+		);
+		// jdbc assertion 
+		Statement stmt = null;
+		int rowCount = 0;
+		try {
+			stmt = conn.createStatement();
+			String query = " SELECT COUNT(*) AS cnt "
+						 + " FROM t_employee A "
+						 + " INNER JOIN t_address B "
+						 + " ON A.address_id = B.id "
+						 + " WHERE A.name LIKE 'anggie sondakh' "
+						 + "   AND A.email LIKE 'anggie.sondakh@mitrais.com' "
+						 + "   AND A.phone LIKE '+628123456' ";
+			ResultSet rs = stmt.executeQuery( query );
+			while (rs.next()) {
+				rowCount = rs.getInt( "cnt" );
+			}
+		} catch( SQLException ex ) {
+			System.err.println( ex.toString() );
+		} finally {
+			if (stmt != null) {
+				try {
+					stmt.close();
+				} catch( SQLException ex ) {}
+			}
+		}
+		assertThat("rowCount should not be 0",
+			(rowCount > 0),
+			is(equalTo(true))
+		);
+	}
+
+
+	/**
+	 *  it will create employee with address
+	 *  and grades.
+	 *  the grades entities will be mapped in t_grade_history
+	 *  Grade entity has employeeId which refer to Employee entity
+	 *  the db will be checked with jdbc query
+	 **/
+	@Test
+	public void testOneToManyGrades()
+	{
+		Employee employee = new Employee();
+		employee.setName("anggie sondakh")
+			.setGender("female")
+			.setMaritalStatus("single")
+			.setPhone("+628123456")
+			.setEmail("anggie.sondakh@mitrais.com");
+		try {
+			employee.setDateOfBirth(formatter.parse("1989-10-01"))
+				.setHireDate(formatter.parse("2017-01-02"));
+		} catch( ParseException ex ) {
+			System.err.println( ex.toString() );
+		}
+		Address address = new Address();
+		address.setCity("Bandung")
+			.setAddress("Jln. Surya Sumantri")
+			.setPostalCode("40161");
+		employee.setAddress(address);
+		GradeHistory grades[] = {
+			new GradeHistory(), new GradeHistory(),
+			new GradeHistory(), new GradeHistory()
+		};
+		try {
+			grades[0].setStartDate(formatter.parse("2010-01-02"))
+				.setEndDate(formatter.parse("2010-12-24"))
+				.setJobGrade(JobGrade.SE_JP);
+			grades[1].setStartDate(formatter.parse("2011-01-02"))
+				.setEndDate(formatter.parse("2011-12-24"))
+				.setJobGrade(JobGrade.SE_PG);
+			grades[2].setStartDate(formatter.parse("2012-01-02"))
+				.setEndDate(formatter.parse("2012-12-24"))
+				.setJobGrade(JobGrade.SE_AP);
+			grades[3].setStartDate(formatter.parse("2013-01-02"))
+				.setEndDate(formatter.parse("2013-12-24"))
+				.setJobGrade(JobGrade.SE_AN);
+		} catch( ParseException ex ) {}
+		employee.setGrades(Arrays.asList(grades));
+		// persist it to storage	
+		EmployeeManager.getInstance()
+			.create(employee);
+		// assertion
+		for (GradeHistory grade : employee.getGrades()) {
+			assertThat("grade id should not be null",
+				grade.getId(),
+				is(notNullValue())
+			);
+		}
+		// jdbc query assertion
+		Statement stmt = null;
+		int rowCount = 0;
+		try {
+			stmt = conn.createStatement();
+			String query = " SELECT COUNT(*) AS cnt "
+						 + " FROM t_employee A "
+						 + " INNER JOIN t_grade_history B "
+						 + "  ON B.employee_id = A.id "
+						 + " WHERE A.name LIKE 'anggie sondakh' "
+						 + "   AND A.email LIKE 'anggie.sondakh@mitrais.com' "
+						 + "   AND A.phone LIKE '+628123456' ";
+			ResultSet rs = stmt.executeQuery( query );
+			while (rs.next()) {
+				rowCount = rs.getInt( "cnt" );
+			}
+		} catch( SQLException ex ) {
+			System.err.println( ex.toString() );
+		} finally {
+			if (stmt != null) {
+				try {
+					stmt.close();
+				} catch( SQLException ex ) { }
+			}
+		}
+		assertThat("Row count should larger than 3",
+			(rowCount > 3),
+			is(equalTo(true))
+		);
 	}
 }
