@@ -1,12 +1,13 @@
 package com.mitrais;
 
+import java.util.Arrays;
 import java.util.Date;
-import java.util.ArrayList;
 
 import com.mitrais.entity.Address;
 import com.mitrais.entity.Employee;
 import com.mitrais.entity.Period;
 import com.mitrais.entity.GradeHistory;
+import com.mitrais.entity.InternalProject;
 import com.mitrais.entity.JobGrade;
 import com.mitrais.manager.EmployeeManager;
 import com.mitrais.util.EntityManagerUtil;
@@ -56,7 +57,6 @@ public class App {
 		grade.setStartDate(new Date(System.currentTimeMillis()))
 			.setEndDate(new Date(System.currentTimeMillis()))
 			.setJobGrade(JobGrade.SE_PG);
-		employee.setGrades(new ArrayList<GradeHistory>());
 		employee.getGrades().add(grade);
 		GradeHistory grade2 = new GradeHistory();
 		grade2.setStartDate(new Date(System.currentTimeMillis()))
@@ -64,6 +64,32 @@ public class App {
 			.setJobGrade(JobGrade.SQ_ST);
 		employee.getGrades().add(grade2);
 		employeeManager.update(employee);
+
+		Employee myEmp = new Employee();
+		myEmp.setName("michael jacob")
+			.setGender("male")
+			.setDateOfBirth(new Date(
+				System.currentTimeMillis())
+			)
+			.setEmail("michael@mitrais.com")
+			.setPhone("0856123456");
+
+		InternalProject projects[] = {new InternalProject(),
+			new InternalProject(), new InternalProject()};
+		projects[0].setStartDate(new Date())
+			.setEndDate(new Date())
+			.setProjectName("AsteRx")
+			.setProductName("Medirecords");
+		projects[1].setStartDate(new Date())
+			.setEndDate(new Date())
+			.setProjectName("TechOne")
+			.setProductName("E-Gov");
+		projects[2].setStartDate(new Date())
+			.setEndDate(new Date())
+			.setProjectName("CDC-Bootcamp")
+			.setProductName("JPA-Internal-Training");
+		myEmp.getProjects().addAll(Arrays.asList(projects));
+		employeeManager.create(myEmp);
 
 		employeeManager.delete(persistEmployee);
 
