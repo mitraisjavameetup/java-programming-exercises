@@ -99,7 +99,7 @@ public class EmployeeManager {
 
 	// TODO please execute static query Employee.filterByProject
 	public List getEmployeeByProject(String projectName) {
-		return entityManager.createNamedQuery("Employee.filterByProject")
+		return entityManager.createNamedQuery("Employee.filterByEmploymentHistory")
 				.setParameter("project", projectName)
 				.setMaxResults(20)
 				.getResultList();

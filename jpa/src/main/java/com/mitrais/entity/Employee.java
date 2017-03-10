@@ -26,11 +26,11 @@ import javax.persistence.*;
 // TODO please add annotation for entity class
 @Entity
 
-// TODO please add static query for Employee.filterByLocation and Employee.filterByProject (with JOIN)
+// TODO please add static query for Employee.filterByLocation and Employee.filterByEmploymentHistory (with JOIN)
 @NamedQueries({
 		@NamedQuery(name="Employee.filterByLocation",
 				query="SELECT a FROM Employee a where a.officeLocation = :location "),
-		@NamedQuery(name="Employee.filterByProject",
+		@NamedQuery(name="Employee.filterByEmploymentHistory",
 				query="SELECT a FROM Employee a JOIN EmploymentHistory b ON a.id = b.empId WHERE b.id.projectName = :project"),
 })
 @Table(name = "t_employee")
