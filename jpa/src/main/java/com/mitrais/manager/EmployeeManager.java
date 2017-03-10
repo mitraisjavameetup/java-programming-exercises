@@ -3,6 +3,7 @@ package com.mitrais.manager;
 import javax.persistence.EntityManager;
 
 import com.mitrais.entity.Employee;
+import com.mitrais.entity.InternalProject;
 import com.mitrais.entity.EmploymentHistory;
 import com.mitrais.util.EntityManagerUtil;
 
@@ -31,6 +32,9 @@ public class EmployeeManager {
 	public void create(Employee employee) {
 		// TODO create employee and save to database
 		entityManager.getTransaction().begin();
+		for (InternalProject project : employee.getProjects()) {
+			entityManager.persist(project);
+		}
 		entityManager.persist(employee);
 		entityManager.getTransaction().commit();
 	}
@@ -56,6 +60,13 @@ public class EmployeeManager {
 	public void update(Employee employee) {
 		// TODO update row in table 
 		entityManager.getTransaction().begin();
+		for (InternalProject project : employee.getProjects()) {
+			if (project.getId() != null) {
+				entityManager.merge(project);
+			} else {
+				entityManager.persist(project);
+			}
+		}
 		entityManager.merge(employee);
 		entityManager.getTransaction().commit();		
 	}
@@ -82,6 +93,16 @@ public class EmployeeManager {
 	 **/
 	public void createEmploymentHistory(EmploymentHistory project) {
 		// TODO create project and save to database
+		entityManager.getTransaction().begin();
+		entityManager.persist(project);
+		entityManager.getTransaction().commit();
+	}
+
+	/**
+	 *  write InternalProject entity to persistent storage
+	 *	@param project InternalProject to be inserted
+	 **/
+	public void createInternalProject(InternalProject project) {
 		entityManager.getTransaction().begin();
 		entityManager.persist(project);
 		entityManager.getTransaction().commit();

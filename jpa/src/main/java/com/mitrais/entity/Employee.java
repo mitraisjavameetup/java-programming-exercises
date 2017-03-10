@@ -1,5 +1,6 @@
 package com.mitrais.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -12,6 +13,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -59,12 +62,17 @@ public class Employee {
 	private Date hireDate;
 	@Embedded
 	private Period period;
+	// TODO @OneToOne association/relationship with Address entity
+	//      association is optional, cascading all operations
 	@OneToOne(
 		fetch = FetchType.LAZY,
 		cascade = CascadeType.ALL
 	)
 	@JoinColumn(name = "address_id")
 	private Address address;
+	// TODO @OneToMany association with GradeHistory entity
+	//   	cascading all operations, and remove orphan
+	// 		join column must no be null
 	@OneToMany(
 		fetch = FetchType.LAZY,
 		cascade = CascadeType.ALL,
@@ -76,9 +84,29 @@ public class Employee {
 		nullable = false
 	)
 	private List<GradeHistory> grades;
+	// TODO @ManyToMany association with InternalProject entity
+	@ManyToMany(
+		fetch = FetchType.LAZY
+	)
+	@JoinTable(
+		name = "t_employee_project",
+		joinColumns = @JoinColumn(
+			name = "employee_id",
+			referencedColumnName = "id",
+			nullable = false
+		),
+		inverseJoinColumns = @JoinColumn(
+			name = "internal_project_id",
+			referencedColumnName = "id",
+			nullable = false
+		)
+
+	)
+	private List<InternalProject> projects;
 
 	public Employee() {
-
+		this.grades = new ArrayList<GradeHistory>();
+		this.projects = new ArrayList<InternalProject>();
 	}
 	
 	public Long getId() {
@@ -184,6 +212,15 @@ public class Employee {
 
 	public Employee setGrades(List<GradeHistory> grades) {
 		this.grades = grades;
+		return this;
+	}
+
+	public List<InternalProject> getProjects() {
+		return this.projects;
+	}
+
+	public Employee setProjects(List<InternalProject> projects) {
+		this.projects = projects;
 		return this;
 	}
 }

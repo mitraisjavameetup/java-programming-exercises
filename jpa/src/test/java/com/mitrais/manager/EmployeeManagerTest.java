@@ -3,6 +3,7 @@ package com.mitrais.manager;
 import com.mitrais.entity.Address;
 import com.mitrais.entity.Employee;
 import com.mitrais.entity.GradeHistory;
+import com.mitrais.entity.InternalProject;
 import com.mitrais.entity.JobGrade;
 import com.mitrais.manager.EmployeeManager;
 import com.mysql.jdbc.Driver;
@@ -146,6 +147,12 @@ public class EmployeeManagerTest
 		try {
 			stmt = conn.createStatement();
 
+			stmt.addBatch(
+				" DELETE FROM t_employee_project "
+			);
+			stmt.addBatch(
+				" DELETE FROM t_internal_project "
+			);
 			stmt.addBatch( 
 				" DELETE FROM t_grade_history "
 			);
@@ -490,6 +497,88 @@ public class EmployeeManagerTest
 		}
 		assertThat("Row count should larger than 3",
 			(rowCount > 3),
+			is(equalTo(true))
+		);
+	}
+
+	/**
+	 *  create two employees and assign them to several projects
+	 **/
+	@Test
+	public void testManyToManyProjects()
+	{
+		Employee employees[] = {new Employee(), new Employee()};
+		InternalProject projects[] = {new InternalProject(),
+			new InternalProject(), new InternalProject()};
+
+		try {
+			projects[0].setStartDate(formatter.parse("2017-01-04"))
+				.setEndDate(formatter.parse("2017-12-24"))
+				.setProjectName("AsteRx")
+				.setProductName("Medirecords");
+			projects[1].setStartDate(formatter.parse("2017-01-04"))
+				.setEndDate(formatter.parse("2017-12-24"))
+				.setProjectName("TechOne")
+				.setProductName("E-Gov");
+			projects[2].setStartDate(formatter.parse("2017-01-04"))
+				.setEndDate(formatter.parse("2017-12-24"))
+				.setProjectName("CDC-Bootcamp")
+				.setProductName("JPA-Internal-Training");
+		} catch( ParseException ex ) {
+			System.err.println( ex.toString() );
+		}
+
+		employees[0] = EmployeeManager.getInstance()
+			.read(99L);
+		employees[0].getProjects().add(	projects[0] );
+		employees[0].getProjects().add( projects[1] );
+		try {
+			employees[1].setName("anggie sondakh")
+				.setGender("female")
+				.setMaritalStatus("single")
+				.setPhone("+628123456")
+				.setEmail("anggie.sondakh@mitrais.com")
+				.setDateOfBirth(formatter.parse("1991-10-01"))
+				.setHireDate(formatter.parse("2017-01-04"));
+			employees[1].getProjects().add(	projects[1] );
+			employees[1].getProjects().add( projects[2] );
+		} catch( ParseException ex ) {
+			System.err.println( ex.toString() );
+		}
+		for (Employee employee : employees) {
+			EmployeeManager.getInstance()
+				.update(employee);
+		}
+		// assertion
+		for (InternalProject project : projects) {
+			assertThat("Project ID should not be null",
+				project.getId(),
+				is(notNullValue())
+			);
+		}
+		// jdbc query assertion
+		Statement stmt = null;
+		int rowCount = 0;
+		try {
+			stmt = conn.createStatement();
+			String query = " SELECT COUNT(*) AS cnt "
+						 + " FROM t_employee A "
+						 + " INNER JOIN t_employee_project B "
+						 + "   ON A.id = B.employee_id "
+						 + " INNER JOIN t_internal_project C "
+						 + "   ON B.internal_project_id = C.id "
+						 + " WHERE A.name LIKE 'anggie sondakh' "
+						 + "   AND A.email LIKE 'anggie.sondakh@mitrais.com' "
+						 + "   AND A.phone LIKE '+628123456' ";
+			ResultSet rs = stmt.executeQuery( query );
+			while (rs.next()) {
+				rowCount = rs.getInt( "cnt" );
+			}
+		} catch( SQLException ex ) {
+			System.err.println( ex.toString() );
+		}
+		assertThat("rowCount should be larger than 0",
+			(rowCount > 0),
 			is(equalTo(true))
 		);
 	}
