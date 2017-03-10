@@ -61,19 +61,11 @@ public class EmployeeManagerTestForEntityListener
 		} catch (InterruptedException ex) {
 			throw new RuntimeException(ex);
 		}
-
-		GradeHistory grade = new GradeHistory();
-		grade.setStartDate(new Date(System.currentTimeMillis()))
-				.setEndDate(new Date(System.currentTimeMillis()))
-				.setJobGrade(JobGrade.SE_PG);
-		employee.setGrades(new ArrayList<GradeHistory>());
-		employee.getGrades().add(grade);
-		GradeHistory grade2 = new GradeHistory();
-		grade2.setStartDate(new Date(System.currentTimeMillis()))
-				.setEndDate(new Date(System.currentTimeMillis()))
-				.setJobGrade(JobGrade.SQ_ST);
-		employee.getGrades().add(grade2);
-		employeeManager.update(employee);
+		persistEmployee.setName("michael langdon")
+				.setMaritalStatus("married");
+		employeeManager.update(
+				persistEmployee
+		);
 
 		persistEmployee =
 				employeeManager.read(employee.getId());
@@ -84,8 +76,5 @@ public class EmployeeManagerTestForEntityListener
 		assertNotEquals(lastModified1, lastModified2);
 
 		employeeManager.delete(persistEmployee);
-
-		employeeManager.close();
-		EntityManagerUtil.close();
 	}
 }
