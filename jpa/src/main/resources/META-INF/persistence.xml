@@ -10,7 +10,7 @@
         <class>com.mitrais.entity.Employee</class>
         <class>com.mitrais.entity.Address</class>
         <class>com.mitrais.entity.GradeHistory</class>
-        <class>com.mitrais.entity.OfficeLocation</class>
+        <class>com.mitrais.entity.BranchOffice</class>
         <class>com.mitrais.entity.Project</class>
 
         <properties>

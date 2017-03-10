@@ -113,17 +113,28 @@ public class EmployeeManagerTest
 		try {
 			stmt = conn.createStatement();
 
+			String q2 = " INSERT INTO t_branch_office "
+					  + " 	(id, address, city, phone, postal_code) "
+					  + " VALUES "
+					  + "   (999, 'Jln. Surya Sumantri', "
+					  + "	 'Bandung', '0222013245', "
+					  + "	 '40161') ";
+			int i = stmt.executeUpdate( q2 );
+			assert i == 1 : i;
+
 			String query = " INSERT INTO t_employee "
 						 + "   (id, name, date_of_birth, "
 						 + "    gender, marital_status, "
-						 + "	phone, email, hire_date) "
+						 + "	phone, email, hire_date, "
+						 + "    office_id) "
 						 + " VALUES "
 						 + "   ( 99, 'Donald Trump', '1946-06-14', "
 						 + "	'male', 'married', '+18123456', "
 						 + " 	'donald.trump@mitrais.com', "
-						 + "	'2017-01-02') ";
+						 + "	'2017-01-02', 999) ";
 
 			int result = stmt.executeUpdate( query );
+
 			assert result == 1 : result;
 		} catch( SQLException ex ) {
 			System.err.println( ex.toString() );
@@ -141,6 +152,8 @@ public class EmployeeManagerTest
 	@After
 	public void cleanUpTest()
 	{
+		EmployeeManager.getInstance()
+			.rollbackAll();
 		// clean up table
 		Statement stmt = null;
 
@@ -161,6 +174,9 @@ public class EmployeeManagerTest
 			);
 			stmt.addBatch( 
 				" DELETE FROM t_address " 
+			);
+			stmt.addBatch(
+				" DELETE FROM t_branch_office "
 			);
 
 			stmt.executeBatch();
@@ -239,6 +255,9 @@ public class EmployeeManagerTest
 			.read(99);
 
 		// assertion
+		assertThat("Employee should not be null",
+			employee,
+			is(notNullValue()));
 		assertThat("employee name should be Donald Trump",
 			employee.getName(),
 			is(equalTo("Donald Trump")));
@@ -262,6 +281,9 @@ public class EmployeeManagerTest
 		Employee employee = EmployeeManager
 			.getInstance()
 			.read(99);
+		assertThat("Employee should not be null",
+			employee,
+			is(notNullValue()));
 		employee.setPhone("+628123456");
 		try {
 			employee.setHireDate(
@@ -307,7 +329,10 @@ public class EmployeeManagerTest
 	public void testDeleteEmployee()
 	{
 		Employee employee = EmployeeManager.getInstance()
-			.read(99);
+			.read(99L);
+		assertThat("employee should not be null",
+			employee,
+			is(notNullValue()));
 		EmployeeManager.getInstance()
 			.delete(employee);
 
@@ -580,6 +605,42 @@ public class EmployeeManagerTest
 		assertThat("rowCount should be larger than 0",
 			(rowCount > 0),
 			is(equalTo(true))
+		);
+	}
+
+	/**
+	 *  Unit test to create employee with new branch office
+	 **/
+	@Test
+	public void testManyToOneBranchOffice()
+	{
+		Employee employee = new Employee();
+		employee.setName("anggie sondakh")
+			.setGender("female")
+			.setMaritalStatus("single")
+			.setPhone("+628123456")
+			.setEmail("anggie.sondakh@mitrais.com");
+		try {
+			employee.setDateOfBirth(formatter.parse("1991-10-01"))
+				.setHireDate(formatter.parse("2017-01-04"));
+		} catch( ParseException ex ) {
+			System.err.println( ex.toString() );
+		}
+		employee.getBranchOffice()
+			.setCity("Bandung")
+			.setAddress("Jln. Surya Sumantri")
+			.setPhone("+62222012345")
+			.setPostalCode("40161");
+		EmployeeManager.getInstance()
+			.create(employee);
+		// assertion
+		assertThat("Employee ID should not be null",
+			employee.getId(),
+			is(notNullValue())
+		);
+		assertThat("Branch Office ID should not be null",
+			employee.getBranchOffice().getId(),
+			is(notNullValue())
 		);
 	}
 }

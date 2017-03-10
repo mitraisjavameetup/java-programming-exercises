@@ -40,6 +40,11 @@ public class App {
 			EmployeeManager.getInstance();
 
 		employee.setAddress(address);
+		employee.getBranchOffice()
+			.setCity("Denpasar")
+			.setAddress("Jln. Suwung")
+			.setPhone("+62222012345")
+			.setPostalCode("40161");
 		employeeManager.create(employee);
 		assert employee.getId() != null : employee.getId();
 
@@ -89,7 +94,13 @@ public class App {
 			.setProjectName("CDC-Bootcamp")
 			.setProductName("JPA-Internal-Training");
 		myEmp.getProjects().addAll(Arrays.asList(projects));
+		myEmp.getBranchOffice().setCity("Bandung")
+			.setAddress("Jln. Surya Sumantri")
+			.setPhone("+62222012345")
+			.setPostalCode("40161");
 		employeeManager.create(myEmp);
+		assert myEmp.getBranchOffice().getId() != null :
+			myEmp.getBranchOffice();
 
 		employeeManager.delete(persistEmployee);
 

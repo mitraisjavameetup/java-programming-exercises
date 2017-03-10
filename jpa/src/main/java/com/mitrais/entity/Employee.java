@@ -96,6 +96,16 @@ public class Employee {
 		nullable = false
 	)
 	private List<GradeHistory> grades;
+	// TODO @ManyToOne association with BranchOffice entity
+	@ManyToOne(
+		fetch = FetchType.LAZY,
+		optional = true
+	)
+	@JoinColumn(
+		name = "office_id",
+		nullable = true
+	)
+	private BranchOffice branchOffice;
 	// TODO @ManyToMany association with InternalProject entity
 	@ManyToMany(
 		fetch = FetchType.LAZY
@@ -119,6 +129,7 @@ public class Employee {
 	public Employee() {
 		this.grades = new ArrayList<GradeHistory>();
 		this.projects = new ArrayList<InternalProject>();
+		this.branchOffice = new BranchOffice();
 	}
 	
 	public Long getId() {
@@ -242,5 +253,14 @@ public class Employee {
 
 	public void setOfficeLocation(String officeLocation) {
 		this.officeLocation = officeLocation;
+	}
+
+	public BranchOffice getBranchOffice() {
+		return branchOffice;
+	}
+
+	public Employee setBranchOffice(BranchOffice branchOffice) {
+		this.branchOffice = branchOffice;
+		return this;
 	}
 }

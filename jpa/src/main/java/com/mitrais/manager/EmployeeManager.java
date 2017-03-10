@@ -37,6 +37,10 @@ public class EmployeeManager {
 		for (InternalProject project : employee.getProjects()) {
 			entityManager.persist(project);
 		}
+		if (employee.getBranchOffice() != null &&
+			employee.getBranchOffice().getId() == null) {
+			entityManager.persist(employee.getBranchOffice());
+		}
 		entityManager.persist(employee);
 		entityManager.getTransaction().commit();
 	}
@@ -68,6 +72,10 @@ public class EmployeeManager {
 			} else {
 				entityManager.persist(project);
 			}
+		}
+		if (employee.getBranchOffice() != null &&
+			employee.getBranchOffice().getId() == null) {
+			entityManager.persist(employee.getBranchOffice());
 		}
 		entityManager.merge(employee);
 		entityManager.getTransaction().commit();		
@@ -131,5 +139,15 @@ public class EmployeeManager {
 				"SELECT a FROM EmploymentHistory a")
 				.setMaxResults(20)
 				.getResultList();
+	}
+
+	/**
+	 *  if EntityManager's transaction is active,
+	 *  all transaction are rolled back
+	 **/
+	public void rollbackAll() {
+		if (entityManager.getTransaction().isActive()) {
+			entityManager.getTransaction().rollback();
+		}
 	}
 }
