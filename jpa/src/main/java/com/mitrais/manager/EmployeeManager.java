@@ -33,16 +33,7 @@ public class EmployeeManager {
 	 **/
 	public void create(Employee employee) {
 		// TODO create employee and save to database
-		entityManager.getTransaction().begin();
-		for (InternalProject project : employee.getProjects()) {
-			entityManager.persist(project);
-		}
-		if (employee.getBranchOffice() != null &&
-			employee.getBranchOffice().getId() == null) {
-			entityManager.persist(employee.getBranchOffice());
-		}
-		entityManager.persist(employee);
-		entityManager.getTransaction().commit();
+
 	}
 
 	/**
@@ -53,8 +44,7 @@ public class EmployeeManager {
 	 **/
 	public Employee read(long employeeId) {
 		// TODO find employee and return
-		return entityManager.find(Employee.class,
-			Long.valueOf(employeeId));
+		return new Employee();
 	}
 
 	/**
@@ -65,21 +55,7 @@ public class EmployeeManager {
 	 **/
 	public void update(Employee employee) {
 		// TODO update row in table 
-		entityManager.getTransaction().begin();
-		for (InternalProject project : employee.getProjects()) {
-			if (project.getId() != null) {
-				entityManager.merge(project);
-			} else {
-				entityManager.persist(project);
-			}
-		}
-		if (employee.getBranchOffice() != null &&
-			employee.getBranchOffice().getId() == null) {
-			entityManager.persist(employee.getBranchOffice());
-		}
-		entityManager.merge(employee);
-		entityManager.flush();
-		entityManager.getTransaction().commit();		
+
 	}
 
 	/**
@@ -88,9 +64,7 @@ public class EmployeeManager {
 	 **/
 	public void delete(Employee employee) {
 		// TODO delete row in table
-		entityManager.getTransaction().begin();
-		entityManager.remove(employee);
-		entityManager.getTransaction().commit();
+
 	}
 
 	public void close() {
@@ -104,35 +78,21 @@ public class EmployeeManager {
 	 **/
 	public void createEmploymentHistory(EmploymentHistory project) {
 		// TODO create project and save to database
-		entityManager.getTransaction().begin();
-		entityManager.persist(project);
-		entityManager.getTransaction().commit();
+
 	}
 
-	// TODO please execute static query Employee.filterByLocation
 	public List getEmployeeByLocation(String officeLocation) {
-		return entityManager.createNamedQuery("Employee.filterByLocation")
-				.setParameter("location", officeLocation)
-				.setMaxResults(20)
-				.getResultList();
+		// TODO please execute static query Employee.filterByLocation
+		return null;
 	}
 
-	// TODO please execute static query Employee.filterByProject
 	public List getEmployeeByProject(String projectName) {
-		return entityManager.createNamedQuery("Employee.filterByEmploymentHistory")
-				.setParameter("project", projectName)
-				.setMaxResults(20)
-				.getResultList();
+		// TODO please execute static query Employee.filterByProject
+		return null;
 	}
 
-	// TODO please create dynamic query to delete employee by ID
 	public void removeProjectByEmployeeID(Long empId) {
-		entityManager.getTransaction().begin();
-		entityManager.createQuery(
-				"DELETE FROM EmploymentHistory e where e.empId=:empId")
-				.setParameter("empId", empId)
-				.executeUpdate();
-		entityManager.getTransaction().commit();
+		// TODO please create dynamic query to delete employee by ID
 	}
 
 	public List getAllEmploymentHistory() {

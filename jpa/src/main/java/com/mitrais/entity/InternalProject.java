@@ -31,7 +31,6 @@ public class InternalProject {
 	@Column(name = "product_name")
 	private String productName;
 	// TODO @ManyToMany association with Employee entity
-	@ManyToMany(mappedBy = "projects")
 	private List<Employee> employees;
 
 	public InternalProject() {}

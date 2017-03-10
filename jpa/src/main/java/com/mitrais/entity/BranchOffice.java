@@ -26,9 +26,7 @@ public class BranchOffice {
 	private String phone;
 	@Column(name = "postal_code")
 	private String postalCode;
-	@OneToMany(
-		mappedBy = "branchOffice"
-	)
+	// TODO add annotation when necessary
 	private List<Employee> employees;
 
 	public BranchOffice() {}

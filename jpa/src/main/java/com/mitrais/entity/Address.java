@@ -20,10 +20,7 @@ public class Address {
 	private String city;
 	@Column(name = "postal_code")
 	private String postalCode;
-	// @OneToOne(
-		// fetch = FetchType.LAZY,
-		// mappedBy = "address"
-	// )
+	// TODO add Employee entity when needed
 	// private Employee employee;
 
 	public Address() {}
@@ -63,14 +60,4 @@ public class Address {
 		this.postalCode = postalCode;
 		return this;
 	}
-
-	// public Employee getEmployee() {
-		// return employee;
-	// }
-
-	// public Address setEmployee(Employee employee) {
-		// this.employee = employee;
-		// this.id = employee.getId();
-		// return this;
-	// }
 }
