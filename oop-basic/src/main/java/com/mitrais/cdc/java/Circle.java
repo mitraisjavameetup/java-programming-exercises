@@ -10,7 +10,7 @@ public class Circle  {
 	 * 2. Give Circle a method that computes the area ((Math.PI)*radius*radius) 
 	 * 3. Give Circle a constructor to which you can pass the radius
 	 * 4. Have the constructor use the “this” variable
-	 * 
+	 * 5. Add a toString method
 	 */
 	
 }
