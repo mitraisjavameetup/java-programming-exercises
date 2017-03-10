@@ -1,6 +1,5 @@
 package com.mitrais.manager;
 
-import com.mitrais.entity.Employee;
 import com.mitrais.entity.EmploymentHistory;
 import com.mitrais.entity.Period;
 import com.mitrais.entity.ProjectId;
@@ -9,10 +8,9 @@ import org.junit.*;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.*;
-import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.Properties;
 
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.assertThat;

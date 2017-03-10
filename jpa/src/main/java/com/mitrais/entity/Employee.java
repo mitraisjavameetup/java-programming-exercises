@@ -8,6 +8,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -50,6 +51,10 @@ import javax.persistence.Table;
 		@NamedQuery(name="Employee.filterByEmploymentHistory",
 				query="SELECT a FROM Employee a JOIN EmploymentHistory b ON a.id = b.empId WHERE b.id.projectName = :project"),
 })
+
+// TODO please add annotation to set Entity Listener
+@EntityListeners({ EmployeeEntityListener.class })
+
 @Table(name = "t_employee")
 public class Employee {
 	// TODO implement this entity class
@@ -72,6 +77,8 @@ public class Employee {
 	private Date hireDate;
 	@Column(name = "office_location")
 	private String officeLocation;
+	@Column(name = "last_modified")
+	private Date lastModified;
 	@Embedded
 	private Period period;
 	// TODO @OneToOne association/relationship with Address entity
@@ -262,5 +269,13 @@ public class Employee {
 	public Employee setBranchOffice(BranchOffice branchOffice) {
 		this.branchOffice = branchOffice;
 		return this;
+	}
+
+	public Date getLastModified() {
+		return lastModified;
+	}
+
+	public void setLastModified(Date lastModified) {
+		this.lastModified = lastModified;
 	}
 }

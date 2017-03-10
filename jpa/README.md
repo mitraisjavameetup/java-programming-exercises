@@ -16,17 +16,24 @@ This project assignment on Java Persistence API for Mitrais Java Training.
 1. Implement Employee entity which mapped to table t_employee.
 2. Implement EmployeeManager, which is entity manager for 
 Employee entity. EmployeeManager has CRUD method.
-3. Implement Address entity, which has 1-1 relationship and 
-employeeId as foreign key to Employee entity.
-4. Implement GradeHistory entity, which has n-1 relationship 
-and employeeId as foreign key to Employee entity.
-5. Implement OfficeLocation entity, which has 1-n relationship
-and employeeId as foreign key to Employee entity.
-6. Implement Project entity, which has n-n relationship and
-employeeId as foreign key to Employee entity.
-7. __TODO__ embedded object
-8. __TODO__ entity listener
-9. __TODO__ JPQL or Criteria Builder
+3. Modify Employee entity, in order to associate it with
+Address entity which is 1-1 association. Employee entity storing
+address_id is dependant entity to the Addres entity and assocation 
+is optional.
+4. Modify Employee entity, to associate it with GradeHistory entity.
+Employee and GradeHistory entities have 1-n association. This
+association is optional. Foreign key column is employee_id.
+5. Modify Employee entity, to associate it n-1 with BranchOffice 
+entity. Employee entity is dependant to BranchOffice entity.
+The foreign key column is office_id.
+6. Modify Employee entity, and associate it n-n with InternalProject
+entity. The assocation is optional. The mapping table's name is
+t_employee_project, which has two columns employee_id and 
+internal_project_id.
+7. Implement EmploymentHistory and Period which are embeddable 
+entity inside Employee entity.
+8. Implement EmployeeEntityListener as EntityListener for Employee entity.
+9. Implement static and dynamic query on defined entities.
 
 # Configuration
 
@@ -45,3 +52,9 @@ employeeId as foreign key to Employee entity.
     - MAVEN_OPTS=-ea : to enable assertions
 - mvn clean
 
+# Others
+
+- If you want to use another database, please do the following:
+    + modify persistence.xml
+    + modify connection.config
+    + add jdbc driver and change the Driver

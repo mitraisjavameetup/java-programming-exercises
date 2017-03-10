@@ -78,6 +78,7 @@ public class EmployeeManager {
 			entityManager.persist(employee.getBranchOffice());
 		}
 		entityManager.merge(employee);
+		entityManager.flush();
 		entityManager.getTransaction().commit();		
 	}
 
