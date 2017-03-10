@@ -1,0 +1,24 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <groupId>com.mitrais.cdc.java</groupId>
+  <artifactId>static-default-methods</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  
+  <name>static-default-methods</name>
+  <description>Static and default methods in Java 8 exercise files</description>
+  
+  <properties>
+	  <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	  <project.report.outputEncoding>UTF-8</project.report.outputEncoding>
+	  <java.version>1.8</java.version>
+  </properties>
+  
+  <dependencies>
+  	<dependency>
+  		<groupId>junit</groupId>
+  		<artifactId>junit</artifactId>
+  		<version>4.12</version>
+  	</dependency>
+  </dependencies>
+</project>
