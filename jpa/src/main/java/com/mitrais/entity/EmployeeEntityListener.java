@@ -5,7 +5,7 @@ import javax.persistence.PreUpdate;
 import java.util.Date;
 
 public class EmployeeEntityListener  {
-    // TODO implement this entity listener class
+    // TODO implement this entity listener class to auto update employee last modified after create/update employee
     @PrePersist
     @PreUpdate
     public void setLastModified(final Employee employee) {
