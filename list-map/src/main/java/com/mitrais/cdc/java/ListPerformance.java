@@ -14,9 +14,9 @@ public class ListPerformance {
 	 * • Run several tests, each with larger and larger lists.
 	 */
 
-	  public static double timeAccess(String label,
-	                                List<String> list) {
-	    return 0.0;
-	
+	  public static double timeAccess(String label, List<String> list) {
+		long time = System.nanoTime();
+		list.get((list.size()-1) / 2);
+	    return System.nanoTime() - time;
 	  }
 }
