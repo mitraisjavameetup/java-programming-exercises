@@ -18,5 +18,6 @@ public class ListPerformance {
 		long time = System.nanoTime();
 		list.get((list.size()-1) / 2);
 	    return System.nanoTime() - time;
+	    
 	  }
 }
