@@ -15,5 +15,21 @@ package com.mitrais.cdc.java;
  */
 
 public class Square{
-  
+	private double width;
+
+	public double getWidth() {
+		return width;
+	}
+
+	public void setWidth(double width) {
+		this.width = width;
+	}
+	
+	public Double getArea(){
+		return width * width;
+	}
+	
+	public String toString(){
+		return "Width = "+getWidth()+";Area ="+getArea();
+	}
 }

@@ -10,5 +10,12 @@ package com.mitrais.cdc.java;
  */
 
 public class SquareTest {
-
+	public static void main(String[] args) {
+	    /*TO DO
+	     * create looping to stored random using Math.random
+	     */
+		Square s = new Square();
+		s.setWidth(0.7);
+		s.toString();
+	}
 }

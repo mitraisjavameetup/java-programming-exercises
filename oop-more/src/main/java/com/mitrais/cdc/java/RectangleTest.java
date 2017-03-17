@@ -10,5 +10,13 @@ package com.mitrais.cdc.java;
  */
 
 public class RectangleTest {
-
+	public static void main(String[] args) {
+	    /*TO DO
+	     * create looping to stored random using Math.random
+	     */
+		Rectangle r = new Rectangle();
+		r.setHeight(0.5);
+		r.setWidth(0.8);
+		r.toString();
+	}
 }
