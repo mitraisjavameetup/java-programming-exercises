@@ -1,10 +1,21 @@
 package com.mitrais.cdc.java;
 
+/*
+ * This is java doc for this class
+ * test
+ * test
+ * test
+ * test
+ */
+
 public class CircleOperation {
 	public int intRandom = 100;
 	public double smallest, largest, sum = 0;
 	Circle[] circles;
 	
+	/*
+	 * this is java doc for this function
+	 */
 	public void setRandomCircle(){
 		circles = new Circle[intRandom];
 	    /*TO DO
