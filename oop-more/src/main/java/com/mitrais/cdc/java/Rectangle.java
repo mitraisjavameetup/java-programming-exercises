@@ -11,5 +11,26 @@ package com.mitrais.cdc.java;
  */
 
 public class Rectangle {
+	private double width, height;
+	private double area;
 
+	public double getArea() {
+		this.area = this.width* this.height;
+		return this.area;
+	}
+	
+	public String toString() {
+		return "Rectangle (width=" + width + ", height=" + height + ", area=" + area + ")";
+	}
+
+
+	public Rectangle( double wid, double hig) {
+		this.width = wid;
+		this.height = hig;
+	}
+	
+	public Rectangle() {
+		
+	}
+	
 }
