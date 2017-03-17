@@ -24,7 +24,8 @@ public class Circle {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return super.toString();
+		return "Radius: " + radius + "; Area: " + getArea();
 	}
+	
 	
 }

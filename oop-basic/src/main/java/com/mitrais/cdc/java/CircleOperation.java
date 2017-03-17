@@ -9,6 +9,8 @@ public class CircleOperation {
 	
 	public CircleOperation() {
 		super();
+		this.smallest = Integer.MAX_VALUE;
+		this.largest = Integer.MIN_VALUE;
 		setRandomCircle();
 		setSmallest(circles);
 		setLargest(circles);
@@ -33,10 +35,9 @@ public class CircleOperation {
 		/*TO DO
 		 * Create codes to get the smallest area from circles array
 		 */
-		double smallest = Integer.MAX_VALUE;
 		for (Circle c : circles) {
-			if (c.getArea() < smallest) {
-				this.smallest = smallest = c.getArea();
+			if (c.getArea() < this.smallest) {
+				this.smallest = c.getArea();
 			}
 		} 
 	}
@@ -50,10 +51,9 @@ public class CircleOperation {
 		/*TO DO
 		 * Create codes to get the largest area from circles array
 		 */
-		double largest = Integer.MIN_VALUE;
 		for (Circle c : circles) {
-			if (c.getArea() > largest) {
-				this.largest = largest = c.getArea();
+			if (c.getArea() > this.largest) {
+				this.largest = c.getArea();
 			}
 		} 
 	}
