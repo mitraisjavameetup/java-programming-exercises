@@ -25,7 +25,7 @@ public class CircleOperation {
 	}
 	
 	public Circle[] getRandomCircle(){
-		
+		setRandomCircle();
 	
 		return circles;
 	}
