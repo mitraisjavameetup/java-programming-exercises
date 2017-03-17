@@ -3,7 +3,25 @@ package com.mitrais.cdc.java;
 public class Circle  {
 
 	public double radius;
+	public double area;
+	
+	
+	
+	public double getArea() {
+		this.area	= Math.PI*(this.radius*this.radius);
+		return this.area;
+	}
+	
+	public String toString() {
+		return "Radius = " + radius;
+	}
 
+
+	public void setRadius(double rad) {
+		this.radius = rad;
+	}
+	
+	
 	/*
 	 * todo: make a Circle class with various capabilities below:
 	 * 1. Give the Circle class a radius field of type double
