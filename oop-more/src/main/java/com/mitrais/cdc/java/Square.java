@@ -14,22 +14,28 @@ package com.mitrais.cdc.java;
  * 
  */
 
+/**Square Class Declaration**/
 public class Square extends Rectangle{
+	/**Variable Declaration**/
 	public double width;
 	
+	/**Width Getter**/
 	public double getWidth() {
 		return width;
 	}
 
+	/**Width Setter**/
 	public void setWidth(double width) {
 		this.width = width;
 	}
 
+	/**Calculate the size of area**/
 	public double getArea() {
 		
 		return width*width;
 	}
 
+	/**Print The Result**/
 	public String toString()
 	{
 		return "Square (width/height=" + getWidth() +", area="+getArea();
