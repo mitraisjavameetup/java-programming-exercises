@@ -13,28 +13,34 @@ package com.mitrais.cdc.java;
 public class Circle {
 	private double radius;
 
+	/** Function to get the radius of the circle */
 	public double getRadius() {
 		return radius;
 	}
 
+	/** Funtion to set the radius of the circle*/
 	public void setRadius(double radius) {
 		this.radius = radius;
 	}
 
+	/** Constructor of circle*/
 	public Circle(double radius) {
 		this.radius = radius;
 	}
 
+	/** Constructor of circle*/
 	public Circle() {
 		// TODO Auto-generated constructor stub
 		radius = 0.9;
 	}
 
+	/** Function to get the area of the circle*/
 	public double getArea() {
 		// TODO Auto-generated method stub
 		return ((Math.PI)*radius*radius);
 	}
 
+	/** Function to get the detail result of the circle */
 	public String toString(){
 		return "Circle (radius="+ radius +", area=" + getArea() + ")";
 	}
