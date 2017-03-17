@@ -68,7 +68,7 @@ public class Rectangle {
 	}
 	/**
 	 * overriding toString method
-	 * @reutrn Rectangle (width=1.6965338407715858, height=4.389922209793273, area=7.4476515872690685)
+	 * @return Rectangle (width=1.6965338407715858, height=4.389922209793273, area=7.4476515872690685)
 	 */
 	@Override
 	public String toString() {
