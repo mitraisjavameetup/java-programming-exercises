@@ -17,23 +17,27 @@ package com.mitrais.cdc.java;
 public class Square extends Rectangle{
 	
 	private double side;
-	
+
+	/**Fixed side constructor*/
 	public Square (double side)
 	{
 		super(side, side);
 		this.side = side;
 	}
 	
+	/**Default constructor*/
 	public Square ()
 	{
 		super(true);
 		this.side = getHeight();
 	}
 
+	/**Gets the side*/
 	public double getSide() {
 		return side;
 	}
 
+	/**Sets the side*/
 	public void setSide(double side) {
 		this.side = side;
 	}

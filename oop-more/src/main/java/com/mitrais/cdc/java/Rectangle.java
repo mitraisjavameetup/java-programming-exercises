@@ -13,18 +13,21 @@ package com.mitrais.cdc.java;
 public class Rectangle {
 	private double width, height;
 
+	/**Fixed-width/height Constructor*/
 	public Rectangle(double width, double height)
 	{
 		this.width = width;
 		this.height = height;
 	}
 	
+	/**Default constructor*/
 	public Rectangle()
 	{
 		this.width = Math.random();
 		this.height = Math.random();
 	}
 	
+	/**Specifically used to generate squares*/
 	public Rectangle(boolean square)
 	{
 		if (square)
@@ -39,22 +42,27 @@ public class Rectangle {
 		}
 	}
 	
+	/**Returns the width*/
 	public double getWidth() {
 		return width;
 	}
-
+	
+	/**Sets the width*/
 	public void setWidth(double width) {
 		this.width = width;
 	}
 
+	/**Gets the height*/
 	public double getHeight() {
 		return height;
 	}
 
+	/**Sets the height*/
 	public void setHeight(double height) {
 		this.height = height;
 	}
-	
+
+	/**Gets the area*/
 	public double getArea()
 	{
 		return width * height;

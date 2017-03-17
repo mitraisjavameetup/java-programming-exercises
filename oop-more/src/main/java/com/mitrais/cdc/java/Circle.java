@@ -13,37 +13,44 @@ package com.mitrais.cdc.java;
 public class Circle {
 	private double radius;
 	private double area;
-	
+
+	/**Fixed circle radius*/
 	public Circle(double radius)
 	{
 		this.radius = radius;
 	}
-	
+
+	/**Default constructor*/
 	public Circle()
 	{
 		this.radius = Math.random();
 	}
-	
+
+	/**Gets the radius*/
 	public double getRadius() {
 		return radius;
 	}
 
+	/**Sets the radius*/
 	public void setRadius(double radius) {
 		this.radius = radius;
 	}
 
+	/**Computes the area*/
 	public void computeArea()
 	{
 		area = Math.PI * radius * radius;
 	}
-	
+
+	/**Gets the area*/
 	public double getArea()
 	{
+		computeArea();
 		return area;
 	}
 	
 	@Override
 	public String toString() {
-		return "Circle (radius=" + radius + ", area=" + area + ")";
+		return "Circle (radius=" + radius + ", area=" + getArea() + ")";
 	}
 }
