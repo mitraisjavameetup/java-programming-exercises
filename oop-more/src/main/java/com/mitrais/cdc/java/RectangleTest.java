@@ -11,4 +11,11 @@ package com.mitrais.cdc.java;
 
 public class RectangleTest {
 
+	public static void main(String[] args) {
+		Rectangle rectangles= new Rectangle();
+		rectangles.setHeight(2);
+		rectangles.setWidth(2);
+		System.out.println(rectangles);
+	}
+	
 }
