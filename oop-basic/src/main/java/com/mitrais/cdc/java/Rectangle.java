@@ -3,6 +3,16 @@ package com.mitrais.cdc.java;
 public class Rectangle {
 
 	public double width, height;
+	
+	public double getArea(){
+		return width*height;
+	}
+	
+	public Rectangle (double width, double height){
+		super();
+		this.width = width;
+		this.height = height;
+	}
 
 	/*
 	 * todo: make a Square class with various capabilities below:
@@ -13,5 +23,9 @@ public class Rectangle {
 	 * 5. Add a toString method
 	 * 
 	 */
-	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "Widht = "+width+", Height = "+height;
+	}
 }
