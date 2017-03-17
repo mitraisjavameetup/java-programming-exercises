@@ -10,6 +10,52 @@ package com.mitrais.cdc.java;
  *  e.g : the return will be String as "Circle (radius=0.26359375131266183, area=0.21828309061994705)"
  */
 
-public class Circle {
+public class Circle  {
+	private double radius;
+	
+	/**
+	 * Constructor for Circle
+	 */
+	
+	public Circle(double radius) {
+		this.radius = radius;
+		
+	}
+	
+	/**
+	 * Method for get the radius Circle
+	 * @return radius
+	 */
+	
+	public double getArea() {
+		return Math.PI * radius * radius;
+	}
 
+	/**
+	 * Method for get the radius Circle
+	 * @return radius
+	 */
+	
+	public double getRadius() {
+		return radius;
+	}
+
+	/**
+	 * Method for get the radius Circle
+	 * @param radius for cirlce
+	 */
+	public void setRadius(double radius) {
+		this.radius = radius;
+	}
+
+	/**
+	 * Method for get the radius Circle
+	 * @return string for circle
+	 */
+	
+	@Override
+	public String toString() {
+		return "Circle (radius=" + radius +" area = " + getArea()+")";
+	}
+	
 }
