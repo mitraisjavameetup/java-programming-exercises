@@ -10,7 +10,10 @@ package com.mitrais.cdc.java;
  */
 
 public class CircleTest {
+	
+	
   public static void main(String[] args) {
-	  
+	  Circle circle = new Circle(2);
+	  System.out.println(circle);
   }
 }

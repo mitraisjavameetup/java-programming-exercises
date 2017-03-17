@@ -15,5 +15,26 @@ package com.mitrais.cdc.java;
  */
 
 public class Square{
+	private double width;
+
+	public Square(){}
+	public double getArea(){
+		return width*width;
+	}
+	public Square(double width){
+		this.width = width;
+	}
+	
+	@Override
+	public String toString(){
+		return "Square (width/height="+width+", area="+getArea()+")";
+	}
+	public double getWidth() {
+		return width;
+	}
+	public void setWidth(double width) {
+		this.width = width;
+	}
+	
   
 }
