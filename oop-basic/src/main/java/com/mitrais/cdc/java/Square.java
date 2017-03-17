@@ -13,12 +13,12 @@ public class Square {
 	 * 5. Add a toString method
 	 * 
 	 */
-	
+
 	public Square (double width)
 	{
 		this.width = width;
 	}
-	
+
 	public double getArea()
 	{
 		return width * width;

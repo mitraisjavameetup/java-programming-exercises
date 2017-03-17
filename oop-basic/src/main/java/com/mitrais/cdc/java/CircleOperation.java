@@ -70,7 +70,7 @@ public class CircleOperation {
 	}
 	
 	public double getSum(){
-		
+		setSum(circles);
 		return sum;
 	}
 }

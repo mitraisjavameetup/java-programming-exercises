@@ -17,6 +17,7 @@ public class Circle  {
 	
 	public double getArea()
 	{
+		computeArea();
 		return area;
 	}
 	
