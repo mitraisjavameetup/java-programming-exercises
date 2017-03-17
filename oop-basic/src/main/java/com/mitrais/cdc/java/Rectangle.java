@@ -22,6 +22,7 @@ public class Rectangle {
 		this.height=h;
 	}
 	
+	
 	public String toString() {
 		return "Width = " + width + " Height= "+ height;
 	}
