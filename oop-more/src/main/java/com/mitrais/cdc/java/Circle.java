@@ -52,13 +52,14 @@ public class Circle {
 	public double getArea() {
 		return (Math.PI)*Math.pow(radius, 2);
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return "Circle [radius=" + radius + ", area=" + getArea() + "]";
+		return "Circle [getRadius()=" + getRadius() + ", getArea()=" + getArea() + "]";
 	}
+	
 	
 }

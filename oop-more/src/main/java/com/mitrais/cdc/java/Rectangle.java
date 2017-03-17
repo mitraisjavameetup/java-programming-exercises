@@ -73,8 +73,8 @@ public class Rectangle {
 	 */
 	@Override
 	public String toString() {
-		return "Rectangle [width=" + width + ", height=" + height + ", area=" + getArea() + "]";
+		return "Rectangle [getWidth()=" + getWidth() + ", getHeight()=" + getHeight() + ", getArea()=" + getArea()
+				+ "]";
 	}
-	
 
 }
