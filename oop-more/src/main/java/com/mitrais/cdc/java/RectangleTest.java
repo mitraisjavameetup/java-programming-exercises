@@ -10,5 +10,8 @@ package com.mitrais.cdc.java;
  */
 
 public class RectangleTest {
-
+	  public static void main(String[] args) {
+		  Rectangle persegipanjang = new Rectangle();
+		  System.out.println(persegipanjang);
+	  }
 }
