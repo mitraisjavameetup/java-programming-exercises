@@ -10,7 +10,7 @@ public class CircleTest {
 	public void test() {
 		CircleOperation circleOp = new CircleOperation();
 	    Circle[] circles = circleOp.getRandomCircle();
-
+	    
 	    double minArea = Double.MAX_VALUE;
 	    double maxArea = 0;
 	    double sum = 0;

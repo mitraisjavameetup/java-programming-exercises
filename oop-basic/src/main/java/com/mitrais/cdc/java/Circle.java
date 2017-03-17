@@ -3,7 +3,7 @@ package com.mitrais.cdc.java;
 public class Circle  {
 
 	public double radius;
-
+	
 	/*
 	 * todo: make a Circle class with various capabilities below:
 	 * 1. Give the Circle class a radius field of type double
@@ -13,4 +13,16 @@ public class Circle  {
 	 * 5. Add a toString method
 	 */
 	
+	public double getArea(){
+		return Math.PI*radius*radius;
+	}
+	Circle(double radius){
+	this.radius=radius;	
+	}
+	public void setRadius(double radius){
+		this.radius=radius;
+	}
+	public String toString(){
+		return "Radius"+this.radius;
+	}
 }

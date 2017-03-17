@@ -2,7 +2,7 @@ package com.mitrais.cdc.java;
 
 public class Rectangle {
 
-	public double width, height;
+	private double width, height;
 
 	/*
 	 * todo: make a Square class with various capabilities below:
@@ -13,5 +13,14 @@ public class Rectangle {
 	 * 5. Add a toString method
 	 * 
 	 */
+	public double getArea(){
+		return width*height;
+	}
 	
+	Rectangle(double width){
+		this.width=width;
+	}
+	public String toString(){
+		return "Width: "+width+" Height"+height;
+	}
 }
