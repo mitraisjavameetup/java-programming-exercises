@@ -4,6 +4,18 @@ public class Square {
 
 	public double width;
 
+	public Square(double width) {
+		super();
+		this.width = width;
+	}
+
+	public double getArea() {
+		// TODO Auto-generated method stub
+		return Math.pow(width, 2);
+	}
+	public String toString(){
+		return "Width = " + width;
+	}
 	/*
 	 * todo: make a Square class with various capabilities below:
 	 * 1. Give the Square class a width field of type double
