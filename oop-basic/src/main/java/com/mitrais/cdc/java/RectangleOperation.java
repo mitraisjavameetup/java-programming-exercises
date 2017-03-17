@@ -2,17 +2,28 @@ package com.mitrais.cdc.java;
 
 public class RectangleOperation {
 	public int intRandom = 100;
-	public double smallest, largest, sum = 0;
+	public double sum = 0;
+	public double largest = Double.MIN_VALUE;
+	public double smallest = Double.MAX_VALUE;
 	Rectangle[] rectangles;
 	
+	public RectangleOperation(){
+		setRandomRectangle();
+	}
 	public void setRandomRectangle(){
 		rectangles = new Rectangle[intRandom];
 	    /*TO DO
 	     * create looping to stored random using Math.random
 	     */
+		for(int i=0; i<intRandom; i++){
+			rectangles[i] = new Rectangle(Math.random(), Math.random());
+		}
+		
+		
 	}
 	
 	public Rectangle[] getRandomRectangle(){
+		
 		return rectangles;
 	}
 	

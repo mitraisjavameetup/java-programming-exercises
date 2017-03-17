@@ -12,5 +12,17 @@ public class Circle  {
 	 * 4. Have the constructor use the “this” variable
 	 * 5. Add a toString method
 	 */
+	public Circle(double r){
+		this.radius = r;
+	}
+	
+	public double getArea(){
+		return (Math.PI)*this.radius*this.radius;
+	}
+	
+	public String toString() {
+		return "Radius = "+radius;
+	}
+	
 	
 }
