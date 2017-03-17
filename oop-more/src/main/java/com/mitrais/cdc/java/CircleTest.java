@@ -11,7 +11,11 @@ package com.mitrais.cdc.java;
 
 public class CircleTest {
 	
-	
+	/**
+	 * Simple test for checking Circle running well
+	 * Using Constructor with value
+	 * @param args
+	 */
   public static void main(String[] args) {
 	  Circle circle = new Circle(2);
 	  System.out.println(circle);

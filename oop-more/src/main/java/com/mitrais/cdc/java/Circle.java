@@ -12,25 +12,43 @@ package com.mitrais.cdc.java;
 
 public class Circle {
 	private double radius;
-
+	
+	/**
+	 * Get area Circle with radius
+	 * Radius must be set before call this method
+	 */
 	public double getArea(){
 		return Math.PI*radius*radius;
 	}
-	
+	/**
+	 * Empty constructor
+	 */
 	public Circle() {	}
-
+	/**
+	 * Overloading Contructor for set default radius
+	 * @param radius Double
+	 */
 	public Circle(double radius){
 		this.radius = radius;
 	}
-
+	/**
+	 * Check value from radius using override method 
+	 */
 	@Override
 	public String toString(){
 		return "Circle (radius="+ radius +", area="+getArea()+")";
 	}
-	
+	/**
+	 * Getter Radius Double
+	 * @return Radius : Double
+	 */
 	public double getRadius() {
 		return radius;
 	}
+	/**
+	 * Setter Radius Double
+	 * @param radius : Double
+	 */
 	public void setRadius(double radius) {
 		this.radius = radius;
 	}

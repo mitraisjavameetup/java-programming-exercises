@@ -11,37 +11,63 @@ package com.mitrais.cdc.java;
  */
 
 public class Rectangle {
+	/**
+	 * Atribut Double
+	 */
 	private double width, height;
-
-	public Rectangle() {
-		// TODO Auto-generated constructor stub
-	}
+	/**
+	 * Default Constructor 
+	 */
+	public Rectangle() {	}
+	/**
+	 * Overloading Constructor with value
+	 * @param width Double
+	 * @param heigth Double
+	 */
 	public Rectangle(double width, double heigth){
 		this.width = width;
 		this.height = heigth;
 	}
-	
+	/**
+	 * Method with return area Rectangle
+	 * (Double)
+	 * @return Area Double
+	 */
 	public double getArea(){
 		return width * height;
 	}
-	
+	/**
+	 * Override Method return String 
+	 */
 	@Override
 	public String toString(){
 		return "Rectangle (width="+width + ", height="+height+", area="+getArea()+")";
 	}
-
+	/**
+	 * Getter Width
+	 * @return Widht Double
+	 */
 	public double getWidth() {
 		return width;
 	}
-
+	/**
+	 * Setter Width
+	 * @param width Double
+	 */
 	public void setWidth(double width) {
 		this.width = width;
 	}
-
+	/**
+	 * Getter Height
+	 * @return Double
+	 */
 	public double getHeight() {
 		return height;
 	}
-
+	/**
+	 * Setter Height
+	 * @param height Double
+	 */
 	public void setHeight(double height) {
 		this.height = height;
 	}

@@ -14,24 +14,53 @@ package com.mitrais.cdc.java;
  * 
  */
 
-public class Square{
+public class Square extends Rectangle{
+	/**
+	 * Double
+	 */
 	private double width;
-
-	public Square(){}
+	/**
+	 * Constructor
+	 * Calling Parents Constructor using SUPER
+	 */
+	public Square(){
+		super(10,10);
+		width = 10;
+	}
+	/**
+	 * Getter Area
+	 * Double
+	 */
+	@Override
 	public double getArea(){
 		return width*width;
 	}
+	/**
+	 * Constructor
+	 * Double
+	 * @param width Double
+	 */
 	public Square(double width){
 		this.width = width;
 	}
-	
+	/**
+	 * Override Method return String 
+	 */
 	@Override
 	public String toString(){
 		return "Square (width/height="+width+", area="+getArea()+")";
 	}
+	/**
+	 * Getter Width
+	 * Double
+	 */
 	public double getWidth() {
 		return width;
 	}
+	/**
+	 * Setter Width
+	 * Double
+	 */
 	public void setWidth(double width) {
 		this.width = width;
 	}

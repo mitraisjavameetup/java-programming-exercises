@@ -10,8 +10,13 @@ package com.mitrais.cdc.java;
  */
 
 public class RectangleTest {
+	/**
+	 * Simple test for checking Rectangle running well
+	 * Using Constructor with value
+	 * @param args
+	 */
 	public static void main(String[] args) {
-		Rectangle rectangle = new Rectangle();
+		Rectangle rectangle = new Rectangle(10,10);
 		System.out.println(rectangle);
 	}
 }
