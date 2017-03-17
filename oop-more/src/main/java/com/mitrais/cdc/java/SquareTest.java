@@ -10,5 +10,12 @@ package com.mitrais.cdc.java;
  */
 
 public class SquareTest {
-
+	public static void main(String[] args) {
+		Square s1 = new Square();//Calling square constructor without parameter
+		s1.setWidth(5);//set width
+		System.out.println(s1);
+		
+		Square s2 = new Square(5);//Calling square constructor with parameter
+		System.out.println(s2);
+	}
 }
