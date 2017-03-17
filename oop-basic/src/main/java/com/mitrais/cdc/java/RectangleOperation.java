@@ -1,7 +1,5 @@
 package com.mitrais.cdc.java;
 
-import java.util.concurrent.ThreadLocalRandom;
-
 public class RectangleOperation {
 	public int intRandom = 100;
 	public double smallest, largest, sum = 0;
