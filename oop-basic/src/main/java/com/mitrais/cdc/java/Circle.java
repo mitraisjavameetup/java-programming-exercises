@@ -1,8 +1,16 @@
 package com.mitrais.cdc.java;
 
 public class Circle  {
+	private double r;
+	public Circle(double jari) {
+		this.r = jari;
+		// TODO Auto-generated constructor stub
+	}
 
-	public double radius;
+	public double getArea() {
+		// TODO Auto-generated method stub
+		return Math.PI * r * r;
+	}
 
 	/*
 	 * todo: make a Circle class with various capabilities below:
@@ -12,5 +20,12 @@ public class Circle  {
 	 * 4. Have the constructor use the “this” variable
 	 * 5. Add a toString method
 	 */
+@Override
+public String toString() {
+	// TODO Auto-generated method stub
+	return super.toString();
+}
+		
+	
 	
 }
