@@ -13,5 +13,20 @@ public class Square {
 	 * 5. Add a toString method
 	 * 
 	 */
-	
+	public Square(double width) {
+		if (width == 0) {
+			this.width = 1;
+		} else {
+			this.width = width * 100;
+		}
+	}
+
+	public double getArea() {
+		return (width * width);
+
+	}
+	@Override
+	public String toString(){
+		return "So the Question is"+this.width;
+	}
 }
