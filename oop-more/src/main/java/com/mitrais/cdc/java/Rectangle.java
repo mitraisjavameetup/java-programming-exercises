@@ -23,6 +23,7 @@ public class Rectangle {
 	}
 
 	/**
+	 * 
 	 * @param width
 	 * @param height
 	 */
