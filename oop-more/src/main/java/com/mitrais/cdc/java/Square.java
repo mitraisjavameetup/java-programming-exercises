@@ -14,6 +14,61 @@ package com.mitrais.cdc.java;
  * 
  */
 
-public class Square{
-  
+public class Square extends Rectangle {
+	
+	// side of square
+	private double side;
+
+	/**
+	 * Constructor of class
+	 */
+	public Square() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * Constructor of class
+	 * @param side the side of square
+	 */
+	public Square(double side) {
+		super(side, side);
+		this.side = side;
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @return the side
+	 */
+	public double getSide() {
+		return side;
+	}
+
+	/**
+	 * @param side the side to set
+	 */
+	public void setSide(double side) {
+		this.side = side;
+	}
+	
+	/**
+	 * Calculate area of square
+	 * @return the area
+	 */
+	@Override
+	public double getArea() {
+		// TODO Auto-generated method stub
+		return Math.pow(this.side, 2);
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Square [side=" + side + ", area=" + getArea() + "]";
+	}
+	
+	
+	
 }

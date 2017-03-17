@@ -10,5 +10,9 @@ package com.mitrais.cdc.java;
  */
 
 public class RectangleTest {
-
+	
+	public static void main(String[] args) {
+		System.out.println(new Rectangle(15.5,20.0));
+	}
+	
 }
