@@ -13,25 +13,32 @@ package com.mitrais.cdc.java;
  *  e.g : the return will be String as "Square (width/height=10.0, area=100.0)"
  * 
  */
-
+/**Square class */
 public class Square extends Rectangle{
 	private double width;
-
+	/**get the width of square */
 	public double getWidth() {
 		return width;
 	}
+	/**set the width of square */
 	public void setWidth(double width) {
 		this.width = width;
 	}
+	/**method to calculate the square, override method of rectangle*/
+	@Override
 	public double getArea(){
 		return width*width;
 	}
+	/**consturtor of square with parameter */
 	Square(double width){
 		this.width=width;
 	}
+	/**constructor of square without parameter */
 	Square(){
 		this.width=10;
 	}
+	/**method to print out all variable in square */
+	@Override
 	public String toString(){
 		return "Square (width/height="+width+", area="+getArea()+")";
 	}
