@@ -9,6 +9,10 @@ public class CircleOperation {
 	
 	public CircleOperation(){
 		setRandomCircle();
+		setSmallest(circles);
+		setLargest(circles);
+		setSum(circles);
+		
 	}
 	
 	public void setRandomCircle(){
@@ -38,7 +42,7 @@ public class CircleOperation {
 	}
 	
 	public double getSmallest(){
-		setSmallest(circles);
+
 		return smallest;
 	}
 	
@@ -55,7 +59,7 @@ public class CircleOperation {
 	}
 	
 	public double getLargest(){
-		setLargest(circles);
+
 		return largest;
 	}
 	
@@ -70,7 +74,7 @@ public class CircleOperation {
 	}
 	
 	public double getSum(){
-		setSum(circles);
+		
 		return sum;
 	}
 }

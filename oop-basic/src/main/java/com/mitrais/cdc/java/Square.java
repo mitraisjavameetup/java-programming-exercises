@@ -13,5 +13,15 @@ public class Square {
 	 * 5. Add a toString method
 	 * 
 	 */
+	public Square(double w){
+		this.width = w;
+	}
 	
+	public double getArea(){
+		return this.width * this.width;
+	}
+	
+	public String toString() {
+		return "widht = "+width;
+	}
 }

@@ -9,6 +9,9 @@ public class RectangleOperation {
 	
 	public RectangleOperation(){
 		setRandomRectangle();
+		setSmallest(rectangles);
+		setLargest(rectangles);
+		setSum(rectangles);
 	}
 	public void setRandomRectangle(){
 		rectangles = new Rectangle[intRandom];
@@ -31,6 +34,12 @@ public class RectangleOperation {
 		/*TO DO
 		 * Create codes to get the smallest area from squares array
 		 */
+		for(int i=0; i<intRandom; i++){
+			double tempArea = rectangles[i].getArea(); 
+			if(tempArea<this.smallest){
+				this.smallest = tempArea;
+			}
+		}
 	}
 	
 	public double getSmallest(){
@@ -42,6 +51,12 @@ public class RectangleOperation {
 		/*TO DO
 		 * Create codes to get the largest area from squares array
 		 */
+		for(int i=0; i<intRandom; i++){
+			double tempArea = rectangles[i].getArea(); 
+			if(tempArea>this.largest){
+				this.largest = tempArea;
+			}
+		}
 	}
 	
 	public double getLargest(){
@@ -53,6 +68,10 @@ public class RectangleOperation {
 		/*TO DO
 		 * Create codes to get the sum area from squares array
 		 */
+		for(int i=0; i<intRandom; i++){
+			double tempArea = rectangles[i].getArea(); 
+			this.sum= this.sum+tempArea;
+		}
 	}
 	
 	public double getSum(){
