@@ -14,4 +14,19 @@ public class Square {
 	 * 
 	 */
 	
+	public Square (double width)
+	{
+		this.width = width;
+	}
+	
+	public double getArea()
+	{
+		return width * width;
+	}
+	
+	public String toString()
+	{
+		return "Width = " + width;
+	}
+	
 }
