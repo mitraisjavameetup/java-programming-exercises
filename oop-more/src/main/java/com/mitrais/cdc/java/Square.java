@@ -14,7 +14,7 @@ package com.mitrais.cdc.java;
  * 
  */
 
-/** Class Square */
+/** Square Class */
 public class Square extends Rectangle{
 	private double width;
 	private double area;
@@ -27,6 +27,7 @@ public class Square extends Rectangle{
 		calculateArea();
 	}
 	
+	/** Default Constructor */
 	public Square()
 	{
 		
@@ -54,6 +55,7 @@ public class Square extends Rectangle{
 		return area;
 	}
 	
+	/** Print Square width and Area */
 	@Override
 	public String toString() {
 		return "Square (width/height="+ getWidth() +", area="+ getArea() +")";

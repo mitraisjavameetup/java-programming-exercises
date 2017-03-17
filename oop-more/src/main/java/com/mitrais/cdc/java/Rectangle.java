@@ -23,6 +23,7 @@ public class Rectangle {
 		calculateArea();
 	}
 	
+	/** Default Constructor */
 	public Rectangle()
 	{
 		
@@ -61,7 +62,8 @@ public class Rectangle {
 		return area;
 	}
 	
-	@Override /** Print Rectangle width, height, and Area */
+	/** Print Rectangle width, height, and Area */
+	@Override 
 	public String toString() {
 		return "Rectangle (width="+ getWidth() +", height="+ getHeight() +", area="+ getArea() +")";
 	}
