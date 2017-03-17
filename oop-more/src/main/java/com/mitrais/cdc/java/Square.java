@@ -14,6 +14,32 @@ package com.mitrais.cdc.java;
  * 
  */
 
-public class Square{
+/*
+ * Square class
+ */
+public class Square extends Rectangle {
+	
+	/*  
+	 * 1. Make your Square inherit from Rectangle. 
+	 */
+	public Square() {
+		super();
+	}
+	
+	/*
+	 * 1. Enforce the restriction that the width and the height are the same.
+	 */
+	@Override
+	public double getArea() {
+		return this.getWidth() * this.getWidth(); 
+	}
+	
+	/*
+	 * 4. Add new method toString that return String of information of Square itself
+	 */
+	@Override
+	public String toString() {
+		return "Square (width/height = " + this.getWidth() +  ", area = " + this.getArea();
+	}
   
 }

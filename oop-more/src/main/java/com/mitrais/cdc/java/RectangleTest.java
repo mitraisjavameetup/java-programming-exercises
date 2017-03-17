@@ -9,6 +9,17 @@ package com.mitrais.cdc.java;
  * HINT: use override when you declare toString method on Rectangle.java
  */
 
+/*
+ * RectangleTest class
+ */
 public class RectangleTest {
+	
+	/*
+	 * Main method
+	 */
+	  public static void main(String[] args) {
+		  Rectangle r = new Rectangle();
+		  System.out.println(r);
+	  }
 
 }
