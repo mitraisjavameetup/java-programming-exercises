@@ -3,7 +3,7 @@ package com.mitrais.cdc.java;
 public class Square {
 
 	public double width;
-
+	private double area;
 	/*
 	 * todo: make a Square class with various capabilities below:
 	 * 1. Give the Square class a width field of type double
@@ -14,4 +14,25 @@ public class Square {
 	 * 
 	 */
 	
+	public Square(double width)
+	{
+		this.width = width;
+		calculateArea();
+	}
+	
+	private void calculateArea()
+	{
+		area = width * width;
+	}
+	
+	public double getArea()
+	{
+		return area;
+	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "Width = " + width + " Area = " + getArea();
+	}
 }
