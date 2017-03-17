@@ -11,5 +11,31 @@ package com.mitrais.cdc.java;
  */
 
 public class Circle {
+	private double radius;
 
+	public double getRadius() {
+		return radius;
+	}
+
+	public void setRadius(double radius) {
+		this.radius = radius;
+	}
+
+	public Circle(double radius) {
+		this.radius = radius;
+	}
+
+	public Circle() {
+		// TODO Auto-generated constructor stub
+		radius = 0.9;
+	}
+
+	public double getArea() {
+		// TODO Auto-generated method stub
+		return ((Math.PI)*radius*radius);
+	}
+
+	public String toString(){
+		return "Circle (radius="+ radius +", area=" + getArea() + ")";
+	}
 }

@@ -11,5 +11,42 @@ package com.mitrais.cdc.java;
  */
 
 public class Rectangle {
+	private double width, height;
 
+	public double getWidth() {
+		return width;
+	}
+
+	public void setWidth(double width) {
+		this.width = width;
+	}
+
+	public double getHeight() {
+		return height;
+	}
+
+	public void setHeight(double height) {
+		this.height = height;
+	}
+
+	public Rectangle(double width, double height) {
+		super();
+		this.width = width;
+		this.height = height;
+	}
+
+	public Rectangle() {
+		// TODO Auto-generated constructor stub
+		width = 0.123;
+		height = 0.432;
+	}
+
+	public double getArea() {
+		// TODO Auto-generated method stub
+		return width*height;
+	}
+
+	public String toString(){
+		return "Rectangle (width="+ width +", height="+ height +", area="+ getArea() +")";
+	}
 }
