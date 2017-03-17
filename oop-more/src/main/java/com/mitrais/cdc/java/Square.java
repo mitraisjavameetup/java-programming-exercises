@@ -17,24 +17,23 @@ package com.mitrais.cdc.java;
 public class Square extends Rectangle {
 
 	/**
-	 * 
+	 * Constructor of Square
 	 */
 	public Square() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	/**
+	/** Method to get the width of the square
 	 * @param wid
-	 * @param hig
 	 */
 	public Square(double wid) {
 		super(wid, wid);
 		// TODO Auto-generated constructor stub
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
+	/** Method to get overall value of the square
+	 * @return String of square value
 	 */
 	@Override
 	public String toString() {

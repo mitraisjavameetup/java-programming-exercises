@@ -17,16 +17,23 @@ public class Circle  {
 	private double area;
 	
 	
-
+	/** Method to calculate the Area of the circle
+	 * @return double area calculated
+	 */
 	public double getArea() {
 		this.area	= Math.PI*(this.radius*this.radius);
 		return this.area;
 	}
 	
+	/** Method to get overall value of the circle
+	 * @return String of circle value
+	 */
 	public String toString() {
 		return "Circle (radius=" + this.radius + ", area=" + this.area + ")";
 	}
-	
+	/** Method to get the radius of the circle
+	 * @param rad
+	 */
 	public void setRadius (double rad) {
 		this.radius = rad;
 	}
