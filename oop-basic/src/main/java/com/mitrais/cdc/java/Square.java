@@ -14,4 +14,15 @@ public class Square {
 	 * 
 	 */
 	
+	public double getArea(){
+		return width*width;
+	}
+	public Square(double width){
+		this.width = width;
+	}
+	
+	public String toString(){
+		return "width="+width;
+	}
+	
 }
