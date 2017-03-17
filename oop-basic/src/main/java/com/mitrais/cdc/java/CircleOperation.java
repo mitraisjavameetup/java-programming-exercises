@@ -10,9 +10,13 @@ public class CircleOperation {
 	    /*TO DO
 	     * create looping to stored random using Math.random
 	     */
+		for (int i = 0; i < intRandom; i++){
+			circles[i] = new Circle(Math.random());
+		}
 	}
 	
 	public Circle[] getRandomCircle(){
+		setRandomCircle();
 		return circles;
 	}
 	
@@ -20,10 +24,18 @@ public class CircleOperation {
 		/*TO DO
 		 * Create codes to get the smallest area from circles array
 		 */
+		smallest = circles[0].getArea();
+		
+		for (Circle c: circles) {
+			double currentArea = c.getArea();
+			if (currentArea < smallest)
+				smallest = currentArea;
+		}
+		
 	}
 	
 	public double getSmallest(){
-		
+		setSmallest(circles);
 		return smallest;
 	}
 	
@@ -31,10 +43,18 @@ public class CircleOperation {
 		/*TO DO
 		 * Create codes to get the largest area from circles array
 		 */
+		largest = circles[0].getArea();
+		
+		for (Circle c: circles) {
+			double currentArea = c.getArea();
+			if (currentArea > largest)
+				largest = currentArea;
+		}
+		
 	}
 	
 	public double getLargest(){
-		
+		setLargest(circles);
 		return largest;
 	}
 	
@@ -42,10 +62,14 @@ public class CircleOperation {
 		/*TO DO
 		 * Create codes to get the sum area from circles array
 		 */
+		for (Circle c: circles) {
+			sum += c.getArea();
+		}
+			
 	}
 	
 	public double getSum(){
-		
+		setSum(circles);
 		return sum;
 	}
 }
