@@ -50,16 +50,6 @@ public class Square extends Rectangle {
 	public void setSide(double side) {
 		this.side = side;
 	}
-	
-	/**
-	 * Calculate area of square
-	 * @return the area
-	 */
-	@Override
-	public double getArea() {
-		// TODO Auto-generated method stub
-		return Math.pow(this.side, 2);
-	}
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
