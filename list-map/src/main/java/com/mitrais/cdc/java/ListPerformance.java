@@ -16,7 +16,12 @@ public class ListPerformance {
 
 	  public static double timeAccess(String label,
 	                                List<String> list) {
-	    return 0.0;
+		  long start = System.nanoTime();
+		  list.get(list.size()-1);
+		  long finish = System.nanoTime();
+		  double hasil = start - finish;
+		  
+	    return hasil;
 	
 	  }
 }

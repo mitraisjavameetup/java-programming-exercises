@@ -1,9 +1,22 @@
 package com.mitrais.cdc.java;
 
+import java.util.LinkedList;
+import java.util.Random;
+import com.mitrais.cdc.java.shape.*;
 
 public class CircleList {
-
-	public double runCircleList() {
+		public double runCircleList(){
+			Random r = new Random();
+			double res = 0;
+			LinkedList<Circle> c = new LinkedList<Circle>();
+			int index = 0;
+			while (Math.random()>0.01) {
+				c.add(index,new Circle(r.nextDouble()));
+				index++;
+			}
+			res = c.get(1).getArea();
+		return res;
+		
 		/*
 		 * To-do
 		 * Make a List of Circle objects. 
@@ -12,7 +25,8 @@ public class CircleList {
 		 * Then, loop down the list and print out each area. 
 		 * If you do not have a good Circle class to use, steal mine from the shapes package of the oop-advanced project.
 		 */
-	    return 0;
+	   
 	}
+
 	
 }
