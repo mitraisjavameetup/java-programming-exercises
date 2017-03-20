@@ -1,6 +1,15 @@
 package com.mitrais.cdc.java.three;
 
+/**
+ * Main class for Two Items
+ * @author Egi
+ * @version 1.0
+ */
 public class TwoItemsMain {
+	/**
+	 * Main method for TwoItemsMain
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		//TODO: fix class TwoItems so the errors here is solved
 		
