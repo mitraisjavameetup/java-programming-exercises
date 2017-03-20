@@ -43,7 +43,7 @@ public class PersonBalance {
 		//Juanita's bank account balance is $2,345,678.99.
 		//   Juan's bank account balance is $   15,455.26.
 		
-		System.out.printf("%s's bank account balance is $%,7.2f.%n",name,balance);
+		System.out.printf("%7s's bank account balance is $%,12.2f.%n",name,balance);
 		
 		
 	}

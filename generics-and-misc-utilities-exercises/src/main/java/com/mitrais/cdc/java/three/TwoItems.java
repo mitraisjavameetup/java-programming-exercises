@@ -24,7 +24,6 @@ public class TwoItems<T> {
 	}
 
 
-
 	public T getItem2() {
 		return item2;
 	}
@@ -36,8 +35,9 @@ public class TwoItems<T> {
 	public String toString(){
 		String returnString = new String();
 		
-		
-		
+		StringBuilder result = new StringBuilder();
+		result.append(getItem1()).append(" and ").append(getItem2());
+		returnString = result.toString();
 		return returnString;
 	}
 
