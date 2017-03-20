@@ -15,7 +15,9 @@ public class NumberMap {
 	  public NumberMap() {
 	    this(defaultWords);
 	  }
-
+	  /** Constructor of numberTable map by words arrays
+		 * @param words
+		 */
 	  public NumberMap(String[] words) {
 		 
 		 numberTable = new HashMap<Integer, String>();
@@ -24,7 +26,9 @@ public class NumberMap {
 		} 
 		  // To-Do set numberTable map by words arrays 
 	  }
-
+	  /** Method to return words assigned in numberTable
+		 * @return num or "[unknown]"
+		 */
 	  public String wordForNumber(int num) {
 		  if (numberTable.containsKey(num)) {
 			  return numberTable.get(num);

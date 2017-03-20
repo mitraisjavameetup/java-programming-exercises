@@ -3,11 +3,11 @@ import java.util.LinkedList;
 
 import com.mitrais.cdc.java.shape.Circle;
 
-
-
-
 public class CircleList {
 
+	 /** method of Circle LinkedList
+	 * @return size of cl LinkedList
+	 */
 	public double runCircleList() {
 
 		LinkedList<Circle> cl = new LinkedList<Circle>();
