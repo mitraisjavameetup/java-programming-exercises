@@ -13,10 +13,14 @@ public class ListPerformance {
 	 * • To ensure meaningful results, use very long lists and access the middle element many times.
 	 * • Run several tests, each with larger and larger lists.
 	 */
-
+	/** Calculate the time to access the middle of list*/
 	  public static double timeAccess(String label,
 	                                List<String> list) {
-	    return 0.0;
-	
+		double time = 0.0;
+		int panjang = list.size();
+		int middle = panjang / 2;
+		list.get(middle);
+		time = System.currentTimeMillis();
+	    return time;
 	  }
 }
