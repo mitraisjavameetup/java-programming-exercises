@@ -1,12 +1,20 @@
 package com.mitrais.cdc.java.enums;
 
+import java.util.Random;
+
 public enum Coin {
     HEADS, TAILS;
 	
 	public static Coin flip() {
-
+		Random r = new Random();
 	  //TODO: Create calculation to return head or tail with equal probability
 	  //TODO: later, create main class to call this method (e.g. looped 10 times) 
-	  return Coin.HEADS; //replace this
+		if(r.nextInt(2)<0.5){
+			return Coin.HEADS;
+		}
+		else{
+			return Coin.TAILS;
+		}
+	  
   }
 }
