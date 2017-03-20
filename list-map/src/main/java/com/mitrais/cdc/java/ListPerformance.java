@@ -14,9 +14,15 @@ public class ListPerformance {
 	 * • Run several tests, each with larger and larger lists.
 	 */
 
+	/** funtion to get time access **/
 	  public static double timeAccess(String label,
 	                                List<String> list) {
-	    return 0.0;
+		double time = System.currentTimeMillis();
+		list.get(list.size()/2);
+		double time2 = System.currentTimeMillis();
+		double deltaTime = time2 - time;
+		
+	    return deltaTime;
 	
 	  }
 }
