@@ -19,14 +19,14 @@ public class EmployeeMap {
 	 * The point here is to associate keys with values, then retrieve values later based on keys.
 	 */
 	
-	public String runEmployeeMap() {
+	public String runEmployeeMap(String k) {
 		Map<String, String> eMap = new HashMap<>();
 		eMap.put("a1234", "Steve Jobs");
 		eMap.put("a1235", "Scott McNealy");
 		eMap.put("a1236", "Jeff Bezos");
 		eMap.put("a1237", "Larry Ellison");
 		eMap.put("a1238", "Bill Gates");
-	    return eMap.get("A1234".toLowerCase());
+	    return eMap.get(k.toLowerCase());
 	}
 		
 }
