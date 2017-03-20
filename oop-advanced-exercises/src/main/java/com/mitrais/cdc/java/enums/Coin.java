@@ -7,6 +7,11 @@ public enum Coin {
 
 	  //TODO: Create calculation to return head or tail with equal probability
 	  //TODO: later, create main class to call this method (e.g. looped 10 times) 
-	  return Coin.HEADS; //replace this
+	  double random = Math.random();
+	  if(random>0.5){
+		return Coin.HEADS; 
+	  }else{
+		  return Coin.TAILS;
+	  }
   }
 }
