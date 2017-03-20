@@ -31,10 +31,13 @@ public class App {
 	  public static void calmAttendees(List<String> attendingParties) {
 			//todo: apply logic as described above
 		  String response;
-		  if (attendingParties.contains("Republican") && attendingParties.contains("Democrat")) {
-			response = ((Math.random() % 2) == 1) ? "Republican" : "Democrat";
-			attendingParties.remove(response);
-		}
+		  if(attendingParties != null){
+			  if (attendingParties.contains("Republican") && attendingParties.contains("Democrat")) {
+					response = ((Math.random() % 2) == 1) ? "Republican" : "Democrat";
+					attendingParties.remove(response);
+				}  
+		  }
+		  
 	  }
 	  
 	  private App() {} // Class cannot be instantiated: only static methods
