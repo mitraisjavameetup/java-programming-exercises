@@ -22,19 +22,7 @@ public class App {
 	   */
 	  public static void calmAttendees(List<String> attendingParties) {
 		  //todo: apply logic as described above
-		  boolean rep = false, dem = false; 
-		  for(String x:attendingParties){
-			  if(x == "Republican"){
-				  rep = true;
-			  }
-			  else{
-				  if(x == "Democrat"){
-					  dem = true;
-				  }
-			  }
-		  }
-		  
-		  if(rep && dem){
+		  if(attendingParties.contains("Democrat") && attendingParties.contains("Republican")){
 			  if(Math.random()<0.5){
 				  attendingParties.remove("Republican");
 			  }
