@@ -14,14 +14,16 @@ public class CarSale implements Sellable {
   }
 
   //TODO: make sure each attributes/properties has getter/setter
+  /** Function to return car name **/
   public String getCarName() {
 	  return carName;
   }
 
+  /** Function to return list price of the car **/
   public double getListPrice() {
 	  return listPrice;
   }
-
+  /** Function to return the discount of the car **/
   public double getDiscount() {
 	  return discount;
   }
@@ -47,12 +49,13 @@ public class CarSale implements Sellable {
 
 
 
+  /** Function to print all information about car **/
 @Override
   public String toString() {
 	String toString = new String();
 	
 	//TODO: modify this method to return sentence e.g. "This car name is blablabla, its price is blabla, with discount blabla"
-	toString = "This car name is "+ carName +", its price is "+ getCost() +", with discount " + discount +"%";
+	toString = "This car name is "+ carName +", its price is "+ listPrice +", with discount " + discount +"% final cost is " + getCost();
 	
 	
 	return toString;
