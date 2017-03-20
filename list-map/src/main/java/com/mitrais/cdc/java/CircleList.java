@@ -1,5 +1,9 @@
 package com.mitrais.cdc.java;
 
+import java.awt.List;
+import java.util.ArrayList;
+
+import com.mitrais.cdc.java.shape.Circle;
 
 public class CircleList {
 
@@ -12,7 +16,25 @@ public class CircleList {
 		 * Then, loop down the list and print out each area. 
 		 * If you do not have a good Circle class to use, steal mine from the shapes package of the oop-advanced project.
 		 */
-	    return 0;
+		double temp=0;
+		ArrayList<Circle> listCircle= new ArrayList<>();
+		
+		Circle circles;
+		do
+		{
+		temp=Math.random();
+		//circles=new Circle(temp);
+		listCircle.add(new Circle(temp));
+		}
+		while (temp>0.01);
+		
+		for (int i=0;i<listCircle.size();i++)
+		{
+		System.out.println("Area : "+ listCircle.get(i).getArea());
+		}
+		
+		
+	    return listCircle.size();
 	}
 	
 }
