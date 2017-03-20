@@ -20,7 +20,7 @@ public class ListPerformance {
 		list.get(list.size()/2);
 		double end = System.currentTimeMillis();
 		double time = start-end/1e9;
-		
+		System.out.println(label +" : "+ time);
 	    return time;
 	
 	  }

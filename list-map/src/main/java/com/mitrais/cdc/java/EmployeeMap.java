@@ -18,7 +18,7 @@ public class EmployeeMap {
 	 * ID = a1238, Name = Bill Gates
 	 * The point here is to associate keys with values, then retrieve values later based on keys.
 	 */
-	
+
 	public String runEmployeeMap() {
 		 Map<String,String> map = new HashMap<>();
 		 map.put("a1234", "Steve Jobs");
@@ -26,8 +26,9 @@ public class EmployeeMap {
 		 map.put("a1236", "Jeff Bezos");
 		 map.put("a1237", "Larry Ellison");
 		 map.put("a1238", "Bill Gates");
-		 
-	    return map.get("a1234");
+		 String a ="A";
+		 System.out.println( map.get(a.toLowerCase()+1234));
+		 return map.get(a.toLowerCase()+1234);
 	}
 		
 }

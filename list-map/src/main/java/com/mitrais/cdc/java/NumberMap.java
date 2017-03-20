@@ -21,11 +21,12 @@ public class NumberMap {
 		  numberTable = new TreeMap<>();
 		  for(int i = 0;i < words.length; i++)
 			  numberTable.put(i, words[i]);
+		  System.out.println(numberTable);
 	  }
 
 	  public String wordForNumber(int num) {
 		// To-Do return words by numbers assigned, set default as [unknown]
-		  
+		  System.out.println(numberTable.get(num));
 	    return numberTable.get(num);
 	  }
 
