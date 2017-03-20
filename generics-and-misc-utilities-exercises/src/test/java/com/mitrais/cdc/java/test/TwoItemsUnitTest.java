@@ -23,6 +23,6 @@ public class TwoItemsUnitTest {
 		Integer num2 = twoNums.getItem2();
 		assertEquals(5, num1, 0);
 		assertEquals(7, num2, 0);
-		assertEquals(twoNums.toString(), twoNums.toString());
+		assertEquals(twoNums.toString(), twoNums2.toString());
 	}
 }

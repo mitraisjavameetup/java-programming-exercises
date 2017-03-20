@@ -1,7 +1,12 @@
 package com.mitrais.cdc.java.onetwo;
 
 import java.util.*;
-
+/**
+ * 
+ * @author Agus Mistiawan
+ * This class for test case Element Utils
+ *
+ */
 public class ElementUtilsMain {
   public static void main(String[] args) {
     String[] names1 = {"John", "Juan", "Jane"};
