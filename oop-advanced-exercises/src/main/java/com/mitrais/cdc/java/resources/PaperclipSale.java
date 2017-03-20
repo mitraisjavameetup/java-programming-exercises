@@ -8,17 +8,15 @@ public class PaperclipSale implements Sellable {
 	
   public PaperclipSale(String color, double boxPrice, int numBoxes) {
 	//TODO: complete this so it will set the properties when called   
-
-  
-  
-  
+this.color=color;
+this.boxPrice=boxPrice;
+this.numBoxes=numBoxes;
+    
   }
 
   //TODO: define getter each attributes/properties
 
-  
-  
-  
+   
   
   
   
@@ -33,19 +31,29 @@ public class PaperclipSale implements Sellable {
    */
   public double getCost() {
 	double finalCost = 0;
-		
+	finalCost=boxPrice*numBoxes;	
 	//TODO: create calculation to calculate finalCost based on price and number of boxes here
 
-	
-	
 	
 	
 	return(finalCost);  	  
   }
 
-  @Override
+  public String getColor() {
+	return color;
+}
+
+public double getBoxPrice() {
+	return boxPrice;
+}
+
+public int getNumBoxes() {
+	return numBoxes;
+}
+
+@Override
   public String toString() {
-	String toString = new String();
+	String toString = new String("This paperclip name is "+color+", its price is "+boxPrice+", with number of box "+numBoxes+"");
 	
 	//TODO: modify this method to return sentence e.g. "This paperclip name is blablabla, its price is blabla, with number of box blabla"
 	
