@@ -12,4 +12,10 @@ public enum Coin {
 		if (flipChance <= 0.5) return Coin.HEADS;
 		else return Coin.TAILS;
 	}
+	
+	public static void main(String[] args) {
+		for(int i = 0; i < 10; i++){
+			System.out.println(Coin.flip());
+		}
+	}
 }
