@@ -16,11 +16,13 @@ public class ListPerformance {
 	/** Calculate the time to access the middle of list*/
 	  public static double timeAccess(String label,
 	                                List<String> list) {
-		double time = 0.0;
+		
+		double time1 = System.currentTimeMillis();
 		int panjang = list.size();
 		int middle = panjang / 2;
 		list.get(middle);
-		time = System.currentTimeMillis();
-	    return time;
+		double time2 = System.currentTimeMillis();
+		time2 = time2 - time1;
+	    return time2;
 	  }
 }
