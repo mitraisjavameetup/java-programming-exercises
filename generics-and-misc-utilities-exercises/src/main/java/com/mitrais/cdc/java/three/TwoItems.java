@@ -8,12 +8,27 @@ public class TwoItems<T> {
 	//TODO: define getter for those two items defined above
 	
 	//TODO: override toString method here
-	@Override
-	public String toString(){
-		String returnString = new String();
-		
-		
-		
-		return returnString;
+	
+	private T Item1;
+	private T Item2;
+	
+	public TwoItems(T item1, T item2) {
+		Item1 = item1;
+		Item2 = item2;
 	}
+	
+	public T getItem1() {
+		return Item1;
+	}
+
+	public T getItem2() {
+		return Item2;
+	}
+
+	@Override
+	public String toString() {
+		return getItem1() + ", " + getItem2() ;
+	}
+
+	
 }

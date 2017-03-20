@@ -16,7 +16,7 @@ public class ListPerformance {
 
 	  public static double timeAccess(String label,List<String> list) {
 		long awal = System.nanoTime();
-		list.get(list.size()-1);
+		list.get(list.size()/2);
 		long akhir = System.nanoTime();
 		System.out.println(label+" "+(akhir-awal));
 	    return akhir-awal;
