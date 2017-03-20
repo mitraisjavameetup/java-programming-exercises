@@ -43,6 +43,7 @@ public class AppTest{
          * at least create 3 test case using 'assertThat'
          */
 		List<String> guest = new ArrayList<String>();
+		App.calmAttendees(guest);
 		guest.add("Republican");
 		guest.add("FirstTest");
 		App.calmAttendees(guest);

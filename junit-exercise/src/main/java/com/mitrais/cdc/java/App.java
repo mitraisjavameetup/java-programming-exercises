@@ -2,14 +2,14 @@ package com.mitrais.cdc.java;
 
 import java.util.List;
 
-/**
+/*
  * There are 2 method below
  * Please create the test case using junit on src/test/java/AppTest.java
  * to unit testing each method
  */
 public class App {
 
-	/** Method calmString:
+	/* Method calmString:
 	 *  Takes a String and returns a new String with all the exclamation points
 	 *  removed. For example, Utils.calmString("!foo!!") should return "foo".
 	 */
@@ -20,7 +20,7 @@ public class App {
 		return speech;
 	}
 
-	/** Method calmAttendees: 
+	/* Method calmAttendees: 
 	 *  Takes a List of political parties (List of String) and potentially modifies it so
 	 *  that it never contains both "Republican" and "Democrat". If it contains
 	 *  both, it flips a coin to decide which to remove (half time it remove "Republican"
@@ -30,13 +30,16 @@ public class App {
 	/** function to remove one of the republican or democrat **/
 	public static void calmAttendees(List<String> attendingParties) {
 		//todo: apply logic as described above
-		boolean flagRep = false, flagDem = false;
 		if(attendingParties.contains("Republican") && attendingParties.contains("Democrat")){
 			if(Math.random()>=0.5){
-				attendingParties.remove("Republican");
+				while(attendingParties.contains("Republican")){
+					attendingParties.remove("Republican");
+				}
 			}
 			else{
-				attendingParties.remove("Democrat");
+				while(attendingParties.contains("Democrat")){
+					attendingParties.remove("Democrat");
+				}
 			}
 		}
 
