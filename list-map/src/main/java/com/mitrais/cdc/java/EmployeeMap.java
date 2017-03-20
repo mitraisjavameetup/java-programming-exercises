@@ -1,5 +1,8 @@
 package com.mitrais.cdc.java;
 
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 public class EmployeeMap {
 	
@@ -18,6 +21,18 @@ public class EmployeeMap {
 	 */
 	
 	public String runEmployeeMap() {
+		Map<String,String> mapEmployee = new HashMap<>();
+		mapEmployee.put("a1234", "Steve Jobs");
+		mapEmployee.put("a1235", "Scott McNealy");
+		mapEmployee.put("a1236", "Jeff Bezos");
+		mapEmployee.put("a1237", "Larry Ellison");
+		mapEmployee.put("a1238", "Bill Gates");
+		String input = "A1234";
+	    for (Map.Entry<String, String> pair : mapEmployee.entrySet()) {
+	        if(pair.getKey().equalsIgnoreCase(input)){
+	        	return pair.getValue();
+	        }
+	    }
 	    return null;
 	}
 		
