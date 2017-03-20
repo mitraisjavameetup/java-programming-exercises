@@ -15,8 +15,8 @@ public class App {
 	   */
 	  public static String calmString(String speech) {
 		//todo: apply logic as described above
-
-	    return(speech);
+		String result = speech.replaceAll("!", "");
+	    return(result);
 	  }
 	  
 	  /** Method calmAttendees: 
@@ -28,6 +28,18 @@ public class App {
 	   */
 	  public static void calmAttendees(List<String> attendingParties) {
 			//todo: apply logic as described above
+		  for (String coba : attendingParties) {
+			  if(coba.contains("Democrat") || coba.contains("Republican")){
+				  int r = (int) Math.round(Math.random());
+				  if(r == 0){
+					  attendingParties.remove("Democrat");
+					  break;
+				  }else{
+					  attendingParties.remove("Republican");
+					  break;
+				  }
+			  }
+		  }
 	  }
 	  
 	  private App() {} // Class cannot be instantiated: only static methods

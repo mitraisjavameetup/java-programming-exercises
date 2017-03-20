@@ -17,7 +17,6 @@ public class TwoItems<T>{
 		return t;
 	}
 
-
 	public void setT(T t) {
 		this.t = t;
 	}
