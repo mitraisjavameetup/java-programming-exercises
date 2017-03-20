@@ -2,6 +2,8 @@ package com.mitrais.cdc.java.resources;
 
 /**
  * CarSale class to represent the sale of a car
+ * @author Egi
+ * @version 1.0
  **/
 public class CarSale implements Sellable {
 

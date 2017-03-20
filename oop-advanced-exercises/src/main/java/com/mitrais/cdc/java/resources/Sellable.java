@@ -2,6 +2,8 @@ package com.mitrais.cdc.java.resources;
 
 /**
  * Sellable interface for CarSale and PaperclipSale class
+ * @author Egi
+ * @version 1.0
  **/
 public interface Sellable {
   double getCost();

@@ -3,6 +3,8 @@ package com.mitrais.cdc.java.enums;
 
 /**
  * Coin enum with instances named HEADS and TAILS
+ * @author Egi
+ * @version 1.0
  **/
 public enum Coin {
     HEADS, TAILS;

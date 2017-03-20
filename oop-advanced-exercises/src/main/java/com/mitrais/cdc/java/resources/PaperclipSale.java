@@ -2,6 +2,8 @@ package com.mitrais.cdc.java.resources;
 
 /**
  * PaperclipSale class to represent the sale of a set of boxes of certain types of paper clips
+ * @author Egi
+ * @version 1.0
  **/
 public class PaperclipSale implements Sellable {
 
