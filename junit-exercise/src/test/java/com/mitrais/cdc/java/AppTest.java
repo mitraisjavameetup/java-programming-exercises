@@ -49,7 +49,7 @@ public class AppTest{
 		assertThat(2,is(equalTo(guest.size())));
 		guest.add("SecondTest");
 		App.calmAttendees(guest);
-		assertThat(3,is(equalTo(guest.size())));
+		assertThat(true,is(equalTo(guest.contains("Republican"))));
 		guest.add("Democrat");
 		App.calmAttendees(guest);
 		assertThat(3,is(equalTo(guest.size())));
