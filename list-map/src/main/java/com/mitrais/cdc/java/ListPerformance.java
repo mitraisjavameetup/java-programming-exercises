@@ -2,6 +2,11 @@ package com.mitrais.cdc.java;
 
 import java.util.List;
 
+/**
+ * 
+ * @author trainee
+ *
+ */
 public class ListPerformance {
 
 	/*
@@ -16,7 +21,15 @@ public class ListPerformance {
 
 	  public static double timeAccess(String label,
 	                                List<String> list) {
-	    return 0.0;
+	    double t1 = System.currentTimeMillis();
+	    
+	    int size = list.size();
+	    int median = size / 2;
+	    list.get(median);
+	    
+	    double t2 = System.currentTimeMillis();
+	    return t2 - t1;
+	    
 	
 	  }
 }

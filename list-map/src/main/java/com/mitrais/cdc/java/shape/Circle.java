@@ -1,5 +1,10 @@
 package com.mitrais.cdc.java.shape;
 
+/**
+ * Class to make Circle with Shape interface
+ * @author Egi
+ * @version 1.0
+ */
 public class Circle implements Shape {
 	private double radius;
 
