@@ -1,7 +1,7 @@
 package com.mitrais.cdc.java;
 
-import java.awt.List;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.mitrais.cdc.java.shape.Circle;
 
@@ -17,8 +17,7 @@ public class CircleList {
 		 * If you do not have a good Circle class to use, steal mine from the shapes package of the oop-advanced project.
 		 */
 		double temp=0;
-		ArrayList<Circle> listCircle= new ArrayList<>();
-		
+		List<Circle> listCircle= new ArrayList<>();
 		Circle circles;
 		do
 		{
