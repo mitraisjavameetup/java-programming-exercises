@@ -1,5 +1,11 @@
 package com.mitrais.cdc.java.resources;
 
+/**
+ * Sellable class for Mitrais Java Training
+ * @author Relung Satria
+ * @version 1.0
+ */
+
 public interface Sellable {
   double getCost();
   

@@ -1,5 +1,11 @@
 package com.mitrais.cdc.java.enums;
 
+/**
+ * Coin class for Mitrais Java Training
+ * @author Relung Satria
+ * @version 1.0
+ */
+
 public enum Coin {
     HEADS, TAILS;
 	

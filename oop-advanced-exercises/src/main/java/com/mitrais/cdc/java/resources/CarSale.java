@@ -1,4 +1,10 @@
 package com.mitrais.cdc.java.resources;
+/**
+ * Coin class for Mitrais Java Training
+ * @author Relung Satria
+ * @version 1.0
+ */
+
 
 public class CarSale implements Sellable {
 

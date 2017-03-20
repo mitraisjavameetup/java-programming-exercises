@@ -1,5 +1,9 @@
 package com.mitrais.cdc.java.resources;
-
+/**
+ * PaperclipSale Class for Mitrais Java Training
+ * @author Relung Satria
+ * @version 1.0
+ */
 public class PaperclipSale implements Sellable {
 
     private String color;
