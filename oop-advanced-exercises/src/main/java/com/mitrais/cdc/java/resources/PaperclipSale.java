@@ -6,6 +6,7 @@ public class PaperclipSale implements Sellable {
     private double boxPrice;
     private int numBoxes;
 	
+    /** Set the properties when called*/
   public PaperclipSale(String color, double boxPrice, int numBoxes) {
 	//TODO: complete this so it will set the properties when called   
 	  this.color = color;
@@ -13,16 +14,19 @@ public class PaperclipSale implements Sellable {
 	  this.numBoxes = numBoxes;
   
   }
-
+  
+  /** Get the color*/
   //TODO: define getter each attributes/properties
   public String getColor() {
 	return color;
   }
   
+  /** Get the box Price*/
   public double getBoxPrice() {
 	return boxPrice;
   }
 
+  /** Get the Number of Boxes*/
   public int getNumBoxes() {
 	return numBoxes;
   }  
@@ -41,7 +45,7 @@ public class PaperclipSale implements Sellable {
   }
 
   
-
+  /** Print all the variable*/
 @Override
   public String toString() {
 	String toString = new String();

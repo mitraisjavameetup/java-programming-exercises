@@ -5,7 +5,8 @@ public class CarSale implements Sellable {
     private final String carName;
     private final double listPrice;
     private final double discount;
-
+    
+    /** Set the properties when called*/
   public CarSale(String carName, double listPrice, double discount) {
 	//TODO: complete this so it will set the properties when called 
 	  this.carName = carName;
@@ -13,16 +14,18 @@ public class CarSale implements Sellable {
 	  this.discount = discount;
 	  
   }
-
+  /** Get the car name*/
   //TODO: make sure each attributes/properties has getter/setter
   public String getCarName() {
 		return carName;
   }
 
+  /** Get the price*/
   public double getListPrice() {
 	return listPrice;
   }
 
+  /** Get the discount percentage*/
   public double getDiscount() {
 	return discount;
   }
@@ -46,7 +49,7 @@ public class CarSale implements Sellable {
   }
 
  
-
+  /** Print all the variable*/
 @Override
   public String toString() {
 	String toString = new String();
