@@ -15,10 +15,12 @@ public class App {
 	   */
 	  public static String calmString(String speech) {
 		//todo: apply logic as described above
-
-	    return(speech);
+	    return speech.replaceAll("!", "");
 	  }
-	  
+	  public static void main(String[] args) {
+		
+		
+	}
 	  /** Method calmAttendees: 
 	   *  Takes a List of political parties (List of String) and potentially modifies it so
 	   *  that it never contains both "Republican" and "Democrat". If it contains
@@ -28,6 +30,11 @@ public class App {
 	   */
 	  public static void calmAttendees(List<String> attendingParties) {
 			//todo: apply logic as described above
+		  String response;
+		  if (attendingParties.contains("Republican") && attendingParties.contains("Democrat")) {
+			response = ((Math.random() % 2) == 1) ? "Republican" : "Democrat";
+			attendingParties.remove(response);
+		}
 	  }
 	  
 	  private App() {} // Class cannot be instantiated: only static methods
