@@ -6,34 +6,39 @@ public class CarSale implements Sellable {
     private final double listPrice;
     private final double discount;
 
+    /** constructor of CarSale
+	 * @return carName, listPrice, discount
+	 */
   public CarSale(String carName, double listPrice, double discount) {
 	//TODO: complete this so it will set the properties when called 
 	  this.carName = carName;
 	  this.listPrice = listPrice;
 	  this.discount = discount;
 	 
-	  
-	  
   }
 
   //TODO: make sure each attributes/properties has getter/setter
-
+  /** method to get carName
+	 * @return carName
+	 */
   public String getName() {
 	  return carName;
   }
-  
+  /** method to get listPrice
+	 * @return listPrice
+	 */
   public double getPrice() {
 	  return listPrice;
   }
   
+  /** method to get discount
+	 * @return discount
+	 */
   public double getDisc() {
 	  return discount;
   }
   
-  
-  
-  
-  
+ 
   
   @Override
   /** 
@@ -50,7 +55,9 @@ public class CarSale implements Sellable {
 	
 	return(finalCost);
   }
-
+  /** Method to get overall value the carName, getCost, discount
+	 * @return String of carName, getCost, discount
+	 */
   @Override
   public String toString() {
 	String toString = new String();
