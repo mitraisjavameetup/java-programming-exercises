@@ -18,7 +18,7 @@ public class ListPerformance {
 	  public static double timeAccess(String label,  List<String> list) {
 	   
 		  double startTime=System.nanoTime();
-		  list.get(1000);
+		  list.get(list.size()/2);
 		  double NeededTime=System.nanoTime()-startTime;
 		  return NeededTime;
 	
