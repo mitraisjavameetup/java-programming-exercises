@@ -28,29 +28,15 @@ public class App {
 	 */
 	public static void calmAttendees(List<String> attendingParties) {
 		// todo: apply logic as described above
-		List<String> result = new ArrayList<>();
-		for (String temp : attendingParties) {
-			if (attendingParties.contains("Republican") & (attendingParties.contains("Democrat"))) {
-				if (Math.random() <= 0.5) {
-					attendingParties.remove("Republican");
-					result.addAll(attendingParties);
-				} else {
-					attendingParties.remove("Democrat");
-					result.addAll(attendingParties);
-				}
+		if (attendingParties.contains("Republican") & (attendingParties.contains("Democrat"))) {
+			if (Math.random() <= 0.5) {
+				attendingParties.remove("Republican");
+			} else {
+				attendingParties.remove("Democrat");
 			}
-			else{
-				result = attendingParties;
-			}
-
 		}
-		System.out.println(result);
 	}
 
 	private App() {
 	} // Class cannot be instantiated: only static methods
-
-	public static void main(String[] args) {
-		System.out.println(calmString("foo!!"));
-	}
 }
