@@ -25,7 +25,7 @@ public class ListPerformanceTest {
 	        arrayList.add(value);
 	      }
 	      double linkedResult = performance.timeAccess("Linked list", linkedList);
-	      double arrayResult = performance.timeAccess("Array  list", arrayList);
+	     	      double arrayResult = performance.timeAccess("Array  list", arrayList);
 	      assertTrue(linkedResult > 0.0);
 	      assertTrue(linkedResult > 0.0);
 	      listSize = listSize * 2;
