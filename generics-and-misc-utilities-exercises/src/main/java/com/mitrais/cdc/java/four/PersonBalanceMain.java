@@ -1,5 +1,9 @@
 package com.mitrais.cdc.java.four;
-
+/**
+ * 
+ * @author mitrais
+ * Personal Balance main class
+ */
 public class PersonBalanceMain {
 	public static void main(String[] args) {
 		
