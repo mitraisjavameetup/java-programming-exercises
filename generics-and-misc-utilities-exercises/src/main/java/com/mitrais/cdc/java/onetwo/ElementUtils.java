@@ -16,12 +16,14 @@ public class ElementUtils {
   
   public static <T> T lastElement(List<T> elements) {
 	//TODO: Trainee should modify this method to return last element of List
-    return(null);
+	  
+    return(elements.get(elements.size()-1));
   }
   
   public static <T> T lastElement(T[] elements) {
 	//TODO: Trainee should modify this method to return last element of Array
-    return(null);
+    
+	  return(elements[elements.length-1]);
   }
   
   private ElementUtils() {} // Uninstantiatable class
