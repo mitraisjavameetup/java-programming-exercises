@@ -10,11 +10,15 @@ public interface Sellable {
    */
   public static Sellable cheapest(Sellable[] items) {
     Sellable cheapestItem = null;
-    
+    double cheapestPrice = Double.MAX_VALUE;
+    for(int i=0;i<items.length;i++){
+    	double cost = items[i].getCost();
+    	if(cost<cheapestPrice){
+    		cheapestPrice = cost;
+    		cheapestItem = items[i];
+    	}
+    }
     //TODO: Create calculation to define which item is the cheapest based on item cost
-    
-    
-    
     return(cheapestItem);
   }
   
@@ -26,11 +30,10 @@ public interface Sellable {
    */
   public static double totalCost(Sellable[] items) {
     double total = 0;
-    
+    for(int i=0;i<items.length;i++){
+    	total += items[i].getCost();
+    }
     //TODO: Create calculation to count the total price here
-    
-    
-    
     return(total);
   }
 }
