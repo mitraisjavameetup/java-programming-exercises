@@ -52,12 +52,15 @@ public class AppTest{
 		List<String> attendingParties = new ArrayList<String>(Arrays.asList("Republican", "Democrat", "Nasdem"));
 		List<String> partaiIndo = new ArrayList<String>(Arrays.asList("Republican", "Demokrat", "Golkar"));
 		List<String> partaiIndo2 = new ArrayList<String>(Arrays.asList("PDIP", "Democrat", "Nasdem"));
+		List<String> partaiIndo3 = null;
 		App.calmAttendees(attendingParties);
 		App.calmAttendees(partaiIndo);
 		App.calmAttendees(partaiIndo2);
+		App.calmAttendees(partaiIndo3);
 		assertThat(2, is(attendingParties.size()));
 		assertThat(3, is(partaiIndo.size()));
 		assertThat(3, is(partaiIndo2.size()));
+		assertThat(null, is(equalTo(partaiIndo3)));
 		
     }
 }
