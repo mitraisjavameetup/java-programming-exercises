@@ -1,12 +1,20 @@
 package com.mitrais.cdc.java.enums;
 
-public enum Coin {
-    HEADS, TAILS;
-	
-	public static Coin flip() {
+import java.util.concurrent.ThreadLocalRandom;
 
-	  //TODO: Create calculation to return head or tail with equal probability
-	  //TODO: later, create main class to call this method (e.g. looped 10 times) 
-	  return Coin.HEADS; //replace this
-  }
+public enum Coin {
+	HEADS, TAILS;
+
+	public static Coin flip() {
+		int flipper = ThreadLocalRandom.current().nextInt(2);
+		// TODO: Create calculation to return head or tail with equal
+		// probability
+		// TODO: later, create main class to call this method (e.g. looped 10
+		// times)
+		if (flipper == 0) {
+			return Coin.HEADS;
+		} else {
+			return Coin.TAILS;
+		}
+	}
 }
