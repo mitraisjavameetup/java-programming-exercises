@@ -1,4 +1,4 @@
-package com.mitrais.cdc.java.resources;
+	package com.mitrais.cdc.java.resources;
 
 
 public class SalesTest {
