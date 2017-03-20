@@ -1,5 +1,8 @@
 package com.mitrais.cdc.java;
 
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 public class EmployeeMap {
 	
@@ -18,7 +21,15 @@ public class EmployeeMap {
 	 */
 	
 	public String runEmployeeMap() {
-	    return null;
+	    Map<String,String>employee = new HashMap<>();
+	    employee.put("a1234", "Steve Jobs");
+	    employee.put("a1235", "Scoot McNealy");
+	    employee.put("a1236", "Jeff Bezos");
+	    employee.put("a1237", "Larry Ellison");
+	    employee.put("a1238", "Bill Gates");
+	    
+
+	    return employee.get("A1234".toLowerCase());
 	}
 		
 }
