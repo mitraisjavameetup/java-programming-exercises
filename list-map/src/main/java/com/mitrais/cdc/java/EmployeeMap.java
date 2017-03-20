@@ -6,6 +6,7 @@ public class EmployeeMap {
 	
 	private Map<String, String> employeeMap;
 	
+	/**Default Constructor**/
 	public EmployeeMap()
 	{
 		employeeMap = new HashMap<>();
@@ -31,11 +32,13 @@ public class EmployeeMap {
 	 * The point here is to associate keys with values, then retrieve values later based on keys.
 	 */
 	
+	/**A special method to return the first employee.**/
 	public String runEmployeeMap() 
 	{
 		return employeeMap.get("a1234");
 	}
 	
+	/**A special method to return the employee based on the given key.**/
 	public String runEmployeeMap(String key)
 	{
 		return employeeMap.getOrDefault(key.toLowerCase(), "Invalid Key");
