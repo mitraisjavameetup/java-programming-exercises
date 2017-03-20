@@ -1,5 +1,6 @@
 package com.mitrais.cdc.java;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ListPerformance {
@@ -13,10 +14,12 @@ public class ListPerformance {
 	 * • To ensure meaningful results, use very long lists and access the middle element many times.
 	 * • Run several tests, each with larger and larger lists.
 	 */
-
-	  public static double timeAccess(String label,
-	                                List<String> list) {
-	    return 0.0;
-	
+	  public static double timeAccess(String label, List<String> list) {
+		long start = System.nanoTime();
+		list.get(95_000);
+		long end = System.nanoTime();
+		double totalTime = (end - start);
+	    
+		return totalTime;
 	  }
 }
