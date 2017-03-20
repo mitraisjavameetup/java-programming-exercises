@@ -1,5 +1,15 @@
 package com.mitrais.cdc.java;
 
+import java.util.TreeMap;
+import java.util.Map;
+
+/**
+ * Mitrais Java Training List
+ * EmployeeMap class
+ * @author Relung Satria
+ * @version 1.0
+ *
+ */
 
 public class EmployeeMap {
 	
@@ -18,7 +28,13 @@ public class EmployeeMap {
 	 */
 	
 	public String runEmployeeMap() {
-	    return null;
+		Map<String, String> employeeMap = new TreeMap<String, String>(String.CASE_INSENSITIVE_ORDER);
+		employeeMap.put("a1234", "Steve Jobs");
+		employeeMap.put("a1235", "Scott McNealy");
+		employeeMap.put("a1236", "Jeff Bezos");
+		employeeMap.put("a1237", "Larry Ellison");
+		employeeMap.put("a1238", "Bill Gates");
+	    return employeeMap.get("a1238");
 	}
 		
 }

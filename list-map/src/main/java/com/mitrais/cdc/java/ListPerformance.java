@@ -2,6 +2,14 @@ package com.mitrais.cdc.java;
 
 import java.util.List;
 
+/**
+ * Mitrais Java Training List
+ * ListPerformance class
+ * @author Relung Satria
+ * @version 1.0
+ *
+ */
+
 public class ListPerformance {
 
 	/*
@@ -16,7 +24,14 @@ public class ListPerformance {
 
 	  public static double timeAccess(String label,
 	                                List<String> list) {
-	    return 0.0;
+		  int rand = (int)(Math.random() * (list.size() * 3/4) + (list.size() * 1/4));
+		  double time1, time2;
+		  time1 = System.nanoTime();
+		  String s = list.get(rand);
+		  time2 = System.nanoTime();
+		  
+		  System.out.println(time2-time1);
+  	    return time2-time1;
 	
 	  }
 }

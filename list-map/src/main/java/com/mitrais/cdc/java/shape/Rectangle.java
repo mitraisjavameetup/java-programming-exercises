@@ -1,6 +1,14 @@
 package com.mitrais.cdc.java.shape;
 
-public class Rectangle implements Shape {
+/**
+ * Mitrais Java Training List
+ * Rectangle class
+ * @author mitrais
+ * @version 1.1
+ *
+ */
+
+public class Rectangle extends Shape {
   private double width, height;
 
   public Rectangle(double width, double height) {
