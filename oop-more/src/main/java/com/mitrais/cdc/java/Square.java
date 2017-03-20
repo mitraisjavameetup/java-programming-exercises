@@ -17,7 +17,7 @@ package com.mitrais.cdc.java;
 /**Square Class Declaration**/
 public class Square extends Rectangle{
 	/**Variable Declaration**/
-	public double width;
+	private double width;
 	
 	/**Width Getter**/
 	public double getWidth() {
