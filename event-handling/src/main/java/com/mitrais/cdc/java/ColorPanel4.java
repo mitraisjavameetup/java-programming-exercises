@@ -9,6 +9,7 @@ import javax.swing.*;
  */
 
 public class ColorPanel4 extends JPanel {
+	int flag = 0;
   public ColorPanel4() {
 	//TO DO
 	//setBackground color as Red
@@ -19,5 +20,48 @@ public class ColorPanel4 extends JPanel {
 	*      if the background is Red now change to blue, and vice versa
 	*    });
 	*/
+	  setBackground(Color.RED);
+	  flag =0;
+	  addMouseListener(new MouseListener() {
+		
+		@Override
+		public void mouseReleased(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		public void mousePressed(MouseEvent e) {
+			// TODO Auto-generated method stub
+			if (flag == 0)
+		  	  {
+		  		  setBackground(Color.BLUE);
+		  		  flag = 1;
+		  	  }else
+		  	  {
+		  		  setBackground(Color.RED);
+		  		  flag = 0;
+		  	  }
+	    	
+		}
+		
+		@Override
+		public void mouseExited(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+	});
   }
 }
