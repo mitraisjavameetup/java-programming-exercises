@@ -12,12 +12,31 @@ public class ColorPanel4 extends JPanel {
   public ColorPanel4() {
 	//TO DO
 	//setBackground color as Red
-	  
+	
     /**call anonymous inner class as mouseListener :
 	*    addMouseListener({
 	*      give logic to change the background color
 	*      if the background is Red now change to blue, and vice versa
 	*    });
 	*/
+	  
+	  setBackground(Color.RED);
+	  addMouseListener(new MouseAdapter() 
+	  {
+		    public void mousePressed(MouseEvent e) 
+		    {
+		    	//TO DO
+		    	//Method to give logic to change the background color
+		    	//if the background is Red now change to blue, and vice versa
+		    		  Color color;
+		    		  
+		    		  if (getBackground() == Color.RED)
+		    			  color = Color.BLUE;
+		    		  else
+		    			  color = Color.RED;
+		    		  
+		    		  setBackground(color);
+		    }
+	  });
   }
 }

@@ -18,42 +18,23 @@ import javax.swing.*;
  * -requestFocusInWindow();
  */
 
-public class ColorPanel5 extends JPanel {
-  public ColorPanel5() {
+public class ColorPanel6 extends JPanel {
+  public ColorPanel6() {
 	//Set background color to Red
-    //call KeyListener
+    //call MouseListener
 	  setBackground(Color.RED);
-	  
-	  //Allows listening to keyboard events.
-	  setFocusable(true);
-	  requestFocusInWindow();
-	  addKeyListener(new ColorChanger());
+	  addMouseMotionListener(new ColorChanger());
   }
   
-  private class ColorChanger extends KeyAdapter {
-    public void keyPressed(KeyEvent e) {
+  private class ColorChanger extends MouseMotionAdapter {
+    public void mouseMoved(MouseEvent e) {
       /*TO DO
        * give logic to set background color when user press "r", "y", "g", and "b" from keyboard
        */
-    	String key = KeyEvent.getKeyText(e.getKeyCode()).toLowerCase();
-    	System.out.println(KeyEvent.getKeyText(e.getKeyCode()));
-    	switch(key)
-    	{
-    	case "r":
-    		setBackground(Color.RED);
-    		break;
-    	case "y":
-    		setBackground(Color.YELLOW);
-    		break;
-    	case "g":
-    		setBackground(Color.GREEN);
-    		break;
-    	case "b":
+    	if (e.getX() > getWidth()/2)
     		setBackground(Color.BLUE);
-    		break;
-    	default:
-    			break;
-    	}
+    	else
+    		setBackground(Color.RED);
     }
   }
 }
