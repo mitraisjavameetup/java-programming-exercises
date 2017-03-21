@@ -6,7 +6,10 @@ import javax.swing.*;
 /*
  * Class main to run the ColorPanel3
  */
+
+/**ColorFrame3 Class**/
 public class ColorFrame3 extends JFrame {
+	/**ColorFrame3 Constructor**/
   public ColorFrame3() {
     super("Named Inner Class");
     setContentPane(new ColorPanel3());
@@ -15,6 +18,7 @@ public class ColorFrame3 extends JFrame {
     setVisible(true);
   }
   
+  /**ColorFrame3 Main**/
   public static void main(String[] args) {
     new ColorFrame3();
   }
