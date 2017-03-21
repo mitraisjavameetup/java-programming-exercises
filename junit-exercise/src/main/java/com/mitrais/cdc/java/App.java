@@ -26,10 +26,12 @@ public class App {
 	   *  and half time it remove "Democrat"
 	   *  If it contains neither,or is null, it does nothing.
 	   */
-	  public static void calmAttendees(List<String> attendingParties) {
+	  public static int calmAttendees(List<String> attendingParties) {
 			//todo: apply logic as described above
+		  int i = 0;
 		 for (String party : attendingParties) {
 			if (party.contains("Republican")||party.contains("Democrat")) {
+				i++;
 				if (party.contains("Republican")&&party.contains("Democrat")) {
 					double temp = Math.random();
 					if (temp<0.5) {
@@ -43,9 +45,7 @@ public class App {
 				continue;
 			}
 		}
-		
-		  
-		  
+		return i; 
 		  
 	  }
 	  

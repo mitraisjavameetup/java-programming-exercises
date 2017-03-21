@@ -55,11 +55,12 @@ public class AppTest{
 		parties.add("test");
 		parties.add("Democrat");
 		parties.add("DemocratRepublican");
-		parties.add("DemocratDemocratRepublican");
+		parties.add("DemocratRepublican");
 		parties.add("PDIP");
 		parties.add("Demokrat");
 		parties.add("Democrat");
-		App.calmAttendees(parties);
-		assertThat(parties.size(), is(equalTo(9)));	
+		int count;
+		count = App.calmAttendees(parties);
+		assertThat(count, is(equalTo(6)));	
     }
 }
