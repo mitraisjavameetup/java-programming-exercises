@@ -24,23 +24,22 @@ public class LabelingCoinFlipper implements Runnable {
 		//do not forget to add "pause(5);" after change the label text
 		//so you could see the entire process
 		int headCounter = 0;
-		synchronized (this.label) {
-			for (int i = 0; i < 1000; i++) {
-				String threadName = Thread.currentThread().getName();
-				String [] coin = {"HEADS", "TAILS"};
-				Random random = new Random();
-				int select = random.nextInt(coin.length);
-				switch (select) {
-				case 0:
-					headCounter++;
-					this.label.setText(String.format("%s: %s%n",coin[select], headCounter));
-					break;
-				default:
-					break;
-				}
-				pause(5);
+		for (int i = 0; i < 1000; i++) {
+			String threadName = Thread.currentThread().getName();
+			String [] coin = {"HEADS", "TAILS"};
+			Random random = new Random();
+			int select = random.nextInt(coin.length);
+			switch (select) {
+			case 0:
+				headCounter++;
+				this.label.setText(String.format("%s: %s%n",coin[select], headCounter));
+				break;
+			default:
+				break;
 			}
+			pause(5);
 		}
+
 	}
 
 	private static void pause(int millis) {
