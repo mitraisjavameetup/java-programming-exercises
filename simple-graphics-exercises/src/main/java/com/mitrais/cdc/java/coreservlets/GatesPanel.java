@@ -17,7 +17,7 @@ public class GatesPanel extends JPanel {
   protected void paintComponent(Graphics g) {
     super.paintComponent(g);
     g.drawImage(image, 0, 0, this);
-    
+    g.setColor(Color.WHITE);
     //add mustache under here. PS: use simple line as his mustache
     g.drawLine(470, 215, 500, 215);
   
