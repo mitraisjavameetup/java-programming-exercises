@@ -1,12 +1,20 @@
 package com.mitrais.cdc.java.coreservlets;
 
 import javax.swing.*;
-
+/**
+ * 
+ * @author Relung Satria
+ * TicTacToeFrame2 class
+ *
+ */
 public class TicTacToeFrame2 extends JFrame {
   public TicTacToeFrame2() {
     super("Tic-Tac-Toe");
     //complete this method to show tic tac toe board
-
+    setContentPane(new TicTacToePanel2());
+    setSize(300,320);
+    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    setVisible(true);
   
   
   
@@ -15,7 +23,7 @@ public class TicTacToeFrame2 extends JFrame {
   
   public static void main(String[] args) {
 	//call method to show tic tac toe frame
-
+	  new TicTacToeFrame2();
   
   }
 }
