@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+
 /*TO DO
  * Make a popup window that turns:
  * red when you press “r”, 
@@ -19,13 +20,16 @@ import javax.swing.*;
  */
 
 public class ColorPanel5 extends JPanel{
-  public ColorPanel5() {
+  public ColorPanel5(){
+	 
+	  
 	//Set background color to Red
     //call KeyListener
-	  setBackground(Color.RED);
-	  addKeyListener(new ColorChanger() );
-	  setFocusable(true);
-	  requestFocusInWindow();
+	setBackground(Color.RED);
+	 addKeyListener(new ColorChanger() );
+	setFocusable(true);
+	 requestFocusInWindow();
+	  
   }
   
   private class ColorChanger extends KeyAdapter {
@@ -33,6 +37,8 @@ public class ColorPanel5 extends JPanel{
       /*TO DO
        * give logic to set background color when user press "r", "y", "g", and "b" from keyboard
        */
+    	
+    	
     	if (e.getKeyChar() == 'r' ){
     		setBackground(Color.RED);
     	}
@@ -50,3 +56,4 @@ public class ColorPanel5 extends JPanel{
     }
   }
 }
+

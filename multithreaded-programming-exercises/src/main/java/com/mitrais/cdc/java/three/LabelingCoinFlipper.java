@@ -11,6 +11,16 @@ public class LabelingCoinFlipper implements Runnable {
 
   @Override
   public void run() {
+	  int counterhead = 0;
+	  for (int i = 0; i < 1000; i++) {
+		  if (Math.random()< 0.5){
+			  counterhead++;
+			  label.setText(String.format("Head: %3d", counterhead));
+			  pause(5);
+		  }else{
+			  pause(5);
+		  }
+	  }
     pause(200);
     
     //TODO: create 'for' loop 1000 times
@@ -21,13 +31,6 @@ public class LabelingCoinFlipper implements Runnable {
   	//"Heads: 3"  
     //do not forget to add "pause(5);" after change the label text
     //so you could see the entire process
-    
-    
-    
-    
-    
-    
-    
     
   }
 
