@@ -14,6 +14,6 @@ public class ColorListener extends MouseAdapter {
 
   @Override
   public void mousePressed(MouseEvent event) {
-    window.swapColors();
+	  window.swapColors();
   }
 }

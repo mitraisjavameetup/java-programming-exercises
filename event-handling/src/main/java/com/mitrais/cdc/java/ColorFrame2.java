@@ -3,8 +3,11 @@ package com.mitrais.cdc.java;
 import javax.swing.*;
 import java.awt.Color;
 
-/*
- * Class main to run the ColorPanel2
+/**
+ * 
+ * @author Relung Satria
+ * Color Frame class
+ *
  */
 public class ColorFrame2 extends JFrame {
   public ColorFrame2() {
