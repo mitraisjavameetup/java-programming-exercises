@@ -1,16 +1,16 @@
-package com.mitrais.cdc.java.coreservlets;
+package com.mitrais.cdc.java;
 
 import java.awt.*;
 import javax.swing.*;
 
 public class CircleFrame extends JFrame {
 	
-	JPanel panel = new CirclePanel(Color.red);
+	JPanel panel = new CirclePanel(Color.white);
 	
 	public CircleFrame() {
 		super("Drawing Shapes");
 		// complete the method to show frame
-		setSize(500, 500);
+		setSize(200, 200);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		add(panel);
