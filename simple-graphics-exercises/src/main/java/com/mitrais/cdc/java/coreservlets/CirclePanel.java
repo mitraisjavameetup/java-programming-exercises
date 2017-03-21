@@ -28,7 +28,7 @@ public class CirclePanel extends JPanel {
 	  	g.fillOval(i, 210, diameter, diameter);
 	  	g.fillOval(i, 240, diameter, diameter);
 	  	g.fillOval(i, 270, diameter, diameter);
-	  	//g.fillOval(x, y, width, height);
+	  	
 	  	
 	  	  } 
    }//complete this method to display yellow rounds on screen
