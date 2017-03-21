@@ -10,8 +10,21 @@ import javax.swing.*;
 
 public class ColorPanel4 extends JPanel {
   public ColorPanel4() {
+	  
 	//TO DO
 	//setBackground color as Red
+	  setBackground(Color.RED);
+	  addMouseListener(new MouseAdapter(){
+		  @Override
+	  public void mousePressed(MouseEvent e) {
+			  if (getBackground().equals(Color.RED)){
+				  setBackground(Color.BLUE);
+			  }else{
+				  setBackground(Color.RED);
+			  }			  
+		  }
+		 
+	  });
 	  
     /**call anonymous inner class as mouseListener :
 	*    addMouseListener({
