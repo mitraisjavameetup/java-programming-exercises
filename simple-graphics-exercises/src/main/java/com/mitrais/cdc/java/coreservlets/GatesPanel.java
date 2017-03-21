@@ -25,17 +25,11 @@ public class GatesPanel extends JPanel {
     Graphics2D g2d = (Graphics2D) g.create();
     
     QuadCurve2D.Double mustache = new QuadCurve2D.Double(470, 215, 485, 218, 500, 215);
+    
     g2d.setColor(Color.BLACK);
     g2d.draw(mustache);
-
     
-    //g.drawLine(480, 215, 490, 215);
-    //g.drawLine(480, 216, 490, 216);
-    //g.drawLine(480, 217, 490, 217);
-    //g.drawLine(480, 218, 490, 218);
-    //g.drawLine(480, 219, 490, 219);
-   
-   
+  
     
     
     //add mustache under here. PS: use simple line as his mustache
