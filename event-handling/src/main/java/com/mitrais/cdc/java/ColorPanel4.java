@@ -12,6 +12,7 @@ public class ColorPanel4 extends JPanel {
   public ColorPanel4() {
 	//TO DO
 	//setBackground color as Red
+	  setBackground(Color.RED);
 	  
     /**call anonymous inner class as mouseListener :
 	*    addMouseListener({
@@ -19,5 +20,32 @@ public class ColorPanel4 extends JPanel {
 	*      if the background is Red now change to blue, and vice versa
 	*    });
 	*/
+	addMouseListener(new MouseListener() {
+		
+		public void mouseReleased(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		public void mousePressed(MouseEvent e) {
+			// TODO Auto-generated method stub
+			if(ColorPanel4.this.getBackground() == Color.RED) setBackground(Color.BLUE); else setBackground(Color.RED);
+		}
+		
+		public void mouseExited(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		public void mouseEntered(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		public void mouseClicked(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+	});
   }
 }
