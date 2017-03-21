@@ -21,9 +21,9 @@ import javax.swing.*;
 public class ColorPanel5 extends JPanel {
   public ColorPanel5() {
 	//Set background color to Red
-	  setFocusable(true);
-		requestFocusInWindow();
-	  setBackground(Color.RED);
+	setFocusable(true);
+	requestFocusInWindow();
+	setBackground(Color.RED);
     //call KeyListener
 	
 	addKeyListener(new ColorChanger());
