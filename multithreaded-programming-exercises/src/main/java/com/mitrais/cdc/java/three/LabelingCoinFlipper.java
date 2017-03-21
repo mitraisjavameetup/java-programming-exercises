@@ -25,7 +25,6 @@ public class LabelingCoinFlipper implements Runnable {
 		//so you could see the entire process
 		int headCounter = 0;
 		for (int i = 0; i < 1000; i++) {
-			String threadName = Thread.currentThread().getName();
 			String [] coin = {"HEADS", "TAILS"};
 			Random random = new Random();
 			int select = random.nextInt(coin.length);
