@@ -1,6 +1,7 @@
 package com.mitrais.cdc.java.two;
 import java.util.concurrent.*;
 
+
 /** Second variation: main class implements Runnable.
  */
 
@@ -17,7 +18,11 @@ public class FlipCoins2 implements Runnable {
     // in main, the outer class has not yet been built.
 	  
     int poolSize = 10;
-    
+    ExecutorService tasks = Executors.newFixedThreadPool(poolSize);
+    for (int i = 0; i < 5; i++) {
+ 		tasks.execute(this);
+ 	}
+    tasks.shutdown();
     //TODO: Instantiate ExcecutorService class with poolsize as stated above
 
     
@@ -43,6 +48,26 @@ public class FlipCoins2 implements Runnable {
  
   @Override
   public void run() {
+	  boolean coin;
+	  int heads = 0;
+	  int tails = 0;
+	  for (int i = 0; i < 1000; i++) {
+		if(Math.random() > 0.5){
+			coin = true;
+			heads++;
+			tails = 0;
+		}
+		else {
+			coin = false;
+			heads = 0;
+			tails++;
+		}
+		if (heads >= 3) {
+			System.out.println(Thread.currentThread().getName() + " got " + heads + "heads in a row!");
+		}else if (tails >= 3) {
+			System.out.println(Thread.currentThread().getName() + " got " + tails + "heads in a row!");
+		}
+		
 	//TODO: Just copy run() method from question number 1 :)
 
   
@@ -55,5 +80,6 @@ public class FlipCoins2 implements Runnable {
   
   
   
+  }
   }
 }

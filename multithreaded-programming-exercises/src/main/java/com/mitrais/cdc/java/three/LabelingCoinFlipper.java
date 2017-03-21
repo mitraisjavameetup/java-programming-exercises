@@ -11,8 +11,23 @@ public class LabelingCoinFlipper implements Runnable {
 
   @Override
   public void run() {
-    pause(200);
-    
+	  boolean coin;
+	  int counter = 0;
+	  for (int i = 0; i < 1000; i++) {
+		if(Math.random() > 0.5){
+			coin = true;
+			counter++;
+			
+		}
+		else 
+			coin = false;
+			
+		label.setText(String.format("Heads: %3d", counter));
+		pause(5);
+		
+	 
+	  }
+   
     //TODO: create 'for' loop 1000 times
   	//and also place counter in it.
   	//Print something like this:
