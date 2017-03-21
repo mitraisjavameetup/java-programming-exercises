@@ -11,7 +11,7 @@ import javax.swing.*;
 import javax.swing.JPanel;
 
 public class ColorPanel7 extends JPanel implements MouseListener{
-	private int diameter = 10;
+	private int diameter = 20;
 	private List<Circle> circles = new ArrayList<Circle>();
 	public ColorPanel7() {
 		setBackground(Color.RED);
@@ -25,7 +25,6 @@ public class ColorPanel7 extends JPanel implements MouseListener{
 	    //complete this method to display yellow rounds on screen
 	    int x;
 	    int y;
-	    Random r = new Random();
 	    for(int i=0; i<circles.size(); i++){
 	    	x = circles.get(i).getX() - circles.get(i).getR();
 	    	y = circles.get(i).getY() - circles.get(i).getR();
@@ -50,9 +49,10 @@ public class ColorPanel7 extends JPanel implements MouseListener{
 			for(int i=0; i<circles.size(); i++){
 				if(circles.get(i).inCircle(e.getX(), e.getY())){
 					circles.remove(i);
-					paintComponent(getGraphics());
+					
 				}
 			}
+			paintComponent(getGraphics());
 		}
 		
 	}
