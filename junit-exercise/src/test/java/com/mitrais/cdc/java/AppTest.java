@@ -59,8 +59,9 @@ public class AppTest{
 		result.add("Presiden");
 		result.add("Wakil");
 		
-	assertThat(result,is(App.calmAttendees(attendingParties))));	
-    
+	assertThat(result,is(App.calmAttendees(attendingParties)));	
+		
    
 	}
 }
+
