@@ -21,14 +21,23 @@ public class LabelingCoinFlipper implements Runnable {
   	//"Heads: 3"  
     //do not forget to add "pause(5);" after change the label text
     //so you could see the entire process
-    
-    
-    
-    
-    
-    
-    
-    
+    int counter = 0;
+	
+	for (int i = 0; i < 1000; i++) {
+		double random;
+		random = Math.random();
+		if(random < 0.5){
+			counter ++;
+		}else{
+			if(counter >= 3){
+				String str = String
+						.format(Thread.currentThread().getName() + " : " + counter + " !!!");
+				this.label.setText(str);
+				counter = 0;
+			}
+		}
+	}  
+    pause(5);
   }
 
   private static void pause(int millis) {
