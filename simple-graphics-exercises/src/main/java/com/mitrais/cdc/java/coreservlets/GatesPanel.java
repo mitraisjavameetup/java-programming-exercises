@@ -1,6 +1,8 @@
 package com.mitrais.cdc.java.coreservlets;
 
 import java.awt.*;
+import java.awt.geom.QuadCurve2D;
+
 import javax.swing.*;
 
 public class GatesPanel extends JPanel {
@@ -20,11 +22,18 @@ public class GatesPanel extends JPanel {
   protected void paintComponent(Graphics g) {
     super.paintComponent(g);
     g.drawImage(image, 0, 0, this);
-    g.drawLine(480, 215, 490, 215);
-    g.drawLine(480, 216, 490, 216);
-    g.drawLine(480, 217, 490, 217);
-    g.drawLine(480, 218, 490, 218);
-    g.drawLine(480, 219, 490, 219);
+    Graphics2D g2d = (Graphics2D) g.create();
+    
+    QuadCurve2D.Double mustache = new QuadCurve2D.Double(470, 215, 485, 218, 500, 215);
+    g2d.setColor(Color.BLACK);
+    g2d.draw(mustache);
+
+    
+    //g.drawLine(480, 215, 490, 215);
+    //g.drawLine(480, 216, 490, 216);
+    //g.drawLine(480, 217, 490, 217);
+    //g.drawLine(480, 218, 490, 218);
+    //g.drawLine(480, 219, 490, 219);
    
    
     
