@@ -10,6 +10,7 @@ public class CircleFrame extends JFrame {
     super("Drawing Shapes");
     setContentPane(new CirclePanel(Color.red));
     setSize(320,340);
+    setLocationRelativeTo(null);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setVisible(true);
 

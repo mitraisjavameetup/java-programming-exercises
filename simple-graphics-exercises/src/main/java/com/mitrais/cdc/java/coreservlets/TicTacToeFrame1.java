@@ -10,6 +10,7 @@ public class TicTacToeFrame1 extends JFrame {
     //complete this method to show tic tac toe board
     setContentPane(new TicTacToePanel1());
     setSize(320,340);
+    setLocationRelativeTo(null);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setVisible(true);
 

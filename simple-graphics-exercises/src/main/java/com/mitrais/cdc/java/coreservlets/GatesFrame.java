@@ -10,6 +10,7 @@ public class GatesFrame extends JFrame {
     setContentPane(gp);
     //setSize(615,490);
     setSize(gp.getWidth()+15, gp.getHeight()+35);
+    setLocationRelativeTo(null);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setVisible(true);
   }
