@@ -21,7 +21,19 @@ public class LabelingCoinFlipper implements Runnable {
   	//"Heads: 3"  
     //do not forget to add "pause(5);" after change the label text
     //so you could see the entire process
-    
+	  double rand;
+	  int counter = 0;
+	  String threadName = Thread.currentThread().getName();
+	  for (int i= 0;i<1000;i++)
+	  {
+		  rand = Math.random();
+		  if (rand<0.5)
+		  {
+			  counter +=1;
+		  }
+		  label.setText(String.format("Heads: %3d", counter));
+		  pause(5);
+	  }
     
     
     
