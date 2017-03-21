@@ -1,6 +1,7 @@
 package com.mitrais.cdc.java.three;
 import javax.swing.*;
 
+/** Create loop 1000 times flip coins and print the heads*/
 public class LabelingCoinFlipper implements Runnable {
   private JLabel label;
 
@@ -21,13 +22,15 @@ public class LabelingCoinFlipper implements Runnable {
   	//"Heads: 3"  
     //do not forget to add "pause(5);" after change the label text
     //so you could see the entire process
-    
-    
-    
-    
-    
-    
-    
+    int counterh = 0;
+	for(int i=0; i<1000; i++){
+		if(Math.random()<0.5){
+			counterh++;
+			label.setText(String.format("Heads: %d", counterh));
+			pause(5);
+		}
+		
+	}
     
   }
 
