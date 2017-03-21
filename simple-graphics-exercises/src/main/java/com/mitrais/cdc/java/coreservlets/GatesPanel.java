@@ -10,7 +10,6 @@ public class GatesPanel extends JPanel {
 	//get image from relativePath, and store it into variable
 	  image = Toolkit.getDefaultToolkit().getImage(relativePath);
 	  i = new ImageIcon(image);
-	  i.getIconWidth();
   }
 
   @Override
@@ -18,6 +17,7 @@ public class GatesPanel extends JPanel {
     super.paintComponent(g);
     g.drawImage(image, 0, 0, this);
     g.drawLine(470, 217, 500, 217);
+    g.drawLine(470, 218, 500, 218);
     
     //add mustache under here. PS: use simple line as his mustache
 

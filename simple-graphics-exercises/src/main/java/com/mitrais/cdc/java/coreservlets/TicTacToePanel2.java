@@ -14,8 +14,7 @@ public class TicTacToePanel2 extends JPanel {
     g.drawLine(0, getHeight()/3, getWidth(), getHeight()/3);
     g.drawLine(0, getHeight()*2/3, getWidth(), getHeight()*2/3);
     
-    
-    
+      
     
     
     
