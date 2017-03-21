@@ -6,14 +6,14 @@ import java.awt.event.*;
  */
 
 public class ColorListener extends MouseAdapter {
-  private ColorPanel1 window;
-  
-  public ColorListener(ColorPanel1 window) {
-    this.window = window;
-  }
+	private ColorPanel1 window;
 
-  @Override
-  public void mousePressed(MouseEvent event) {
-    window.swapColors();
-  }
+	public ColorListener(ColorPanel1 window) {
+		this.window = window;
+	}
+
+	@Override
+	public void mousePressed(MouseEvent event) {
+		window.swapColors();
+	}
 }
