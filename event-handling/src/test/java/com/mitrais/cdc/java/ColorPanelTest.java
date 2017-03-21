@@ -1,6 +1,7 @@
 package com.mitrais.cdc.java;
 
 import static org.junit.Assert.*;
+import static org.junit.Test.*;
 
 import java.awt.Color;
 

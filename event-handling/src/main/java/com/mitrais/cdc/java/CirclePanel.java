@@ -50,10 +50,10 @@ public class CirclePanel extends JPanel {
 		  case 3:
 			  for (int z = 0; z < circleList.size(); z++)
 			  {
-				  int upperXLimit = circleList.get(z).getX() + 10;
-				  int lowerXLimit = circleList.get(z).getX() - 10;
-				  int upperYLimit = circleList.get(z).getY() + 10;
-				  int lowerYLimit = circleList.get(z).getY() - 10;
+				  int upperXLimit = circleList.get(z).getX() + circleList.get(z).getRadius();
+				  int lowerXLimit = circleList.get(z).getX() - circleList.get(z).getRadius();
+				  int upperYLimit = circleList.get(z).getY() + circleList.get(z).getRadius();
+				  int lowerYLimit = circleList.get(z).getY() - circleList.get(z).getRadius();
 				  
 				  if (x <= upperXLimit && x >= lowerXLimit && y <= upperYLimit && y >= lowerYLimit)
 					  circleList.remove(z);
