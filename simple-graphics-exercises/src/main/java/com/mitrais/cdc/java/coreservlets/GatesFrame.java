@@ -18,7 +18,7 @@ public class GatesFrame extends JFrame {
   public static void main(String[] args) {
 	//call method to show image on frame
 	//image location is on images/gates-blue-screen.jpg
-	  new GatesFrame("images/gates-blue-screen.jpg");
-	  
+	  GatesFrame gf = new GatesFrame("images/gates-blue-screen.jpg");
+	  gf.setOpacity(0.5f);
   }
 }
