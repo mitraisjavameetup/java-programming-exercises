@@ -2,6 +2,11 @@ package com.mitrais.cdc.java;
 
 import javax.swing.*;
 
+/**
+ * Class main to run the ColorPanel5
+ * @author Egi
+ * @version 1.0
+ */
 public class ColorFrame5 extends JFrame {
   public ColorFrame5() {
     super("KeyListener");
