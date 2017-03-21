@@ -28,11 +28,13 @@ public class App {
 	  public static void calmAttendees(List<String> attendingParties) {
 			//todo: apply logic as described above
 		  	if(attendingParties.contains("Republican") && attendingParties.contains("Democrat")){
-		  		if(Math.random() % 2 == 1){
-		  			attendingParties.remove("Democrat");
-		  		}else{
-		  			attendingParties.remove("Republican");
-		  		}
+		  		double random;
+				random = Math.random();
+				if(random < 0.5){
+					attendingParties.remove("Democrat");
+				}else{
+					attendingParties.remove("Republican");
+				}
 		  	}
 	  }
 	  

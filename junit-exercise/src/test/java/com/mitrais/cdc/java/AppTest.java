@@ -26,7 +26,6 @@ public class AppTest{
 			assertThat(words[i].replace("!",""),is((App.calmString(words[i]))));
 			assertEquals(App.calmString(words[i]),words[i].replace("!",""));
 		}
-		
     }
 	
 	@Test
