@@ -19,6 +19,7 @@ public class App {
 	    return(result);
 	  }
 	  
+	  
 	  /** Method calmAttendees: 
 	   *  Takes a List of political parties (List of String) and potentially modifies it so
 	   *  that it never contains both "Republican" and "Democrat". If it contains
