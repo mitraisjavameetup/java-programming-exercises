@@ -3,6 +3,7 @@ package com.mitrais.cdc.java;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 
 import javax.swing.*;
 
@@ -11,50 +12,37 @@ import javax.swing.*;
  * (which implements the MouseListener interface) as the mouse listener
  */
 
-public class ColorPanel2 extends JPanel implements MouseListener {
+public class ColorPanel6 extends JPanel implements MouseMotionListener {
 
-	private boolean flag;
-	private Color color;
-
-	public ColorPanel2() {
+	public ColorPanel6() {
 		// TO DO
 		// setBackground color as Red
 		// call mouseListener
 		this.setBackground(Color.RED);
-		this.flag = true;
-		this.addMouseListener(this);
+		this.addMouseMotionListener(this);
 	}
 
 	@Override
-	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub	
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent e) {
+	public void mouseDragged(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void mouseExited(MouseEvent e) {
+	public void mouseMoved(MouseEvent e) {
 		// TODO Auto-generated method stub
+		int x = e.getX();
 		
+		if(x > this.getX() + this.getWidth()/2) {
+			setBackground(Color.BLUE);
+		} else if (x < this.getX() + this.getWidth()/2) {
+			setBackground(Color.RED);
+		} else {
+			setBackground(Color.WHITE);
+		}
 	}
 
-	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		color = flag ? Color.RED : Color.BLUE;		
-		setBackground(color);
-		flag = !flag;
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 	// TO DO
 	// don't forget to override all methods of MouseListener Interface

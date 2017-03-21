@@ -12,6 +12,7 @@ public class ColorFrame3 extends JFrame {
     setContentPane(new ColorPanel3());
     setSize(600, 400);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    setLocationRelativeTo(null);
     setVisible(true);
   }
   
