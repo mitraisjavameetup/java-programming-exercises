@@ -9,13 +9,15 @@ public class TicTacToePanel2 extends JPanel {
     super.paintComponent(g);
     
     //add code to show lines, so it look like tic tac toe board
+    this.setSize(this.getHeight(), this.getWidth());
+    g.setColor(Color.BLACK);
     
+    //vertical
+    g.drawLine(0,this.getHeight()/3,this.getHeight(),this.getHeight()/3);
+    g.drawLine(0,this.getHeight()/3*2,this.getHeight(),this.getHeight()/3*2);
     
-    
-    
-    
-    
-    
-    
+    //horizontal
+    g.drawLine(this.getWidth()/3,0,this.getWidth()/3,this.getWidth());
+    g.drawLine(this.getWidth()/3*2,0,this.getWidth()/3*2,this.getWidth());
   }
 }
