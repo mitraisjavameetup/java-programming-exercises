@@ -1,4 +1,6 @@
 package com.mitrais.cdc.java.three;
+import java.util.concurrent.ThreadLocalRandom;
+
 import javax.swing.*;
 
 public class LabelingCoinFlipper implements Runnable {
@@ -22,7 +24,18 @@ public class LabelingCoinFlipper implements Runnable {
     //do not forget to add "pause(5);" after change the label text
     //so you could see the entire process
     
-    
+    int counter=0;
+	  for (int i = 0; i < 1000; i++) {
+	  	if (ThreadLocalRandom.current().nextInt(2)==0) {
+	  		counter++;
+	  	} else {
+	  counter=0;
+	  	}
+	  if (counter>=1) {
+	  	label.setText("Heads "+counter);
+	  }
+	  pause(5);
+	  }
     
     
     
