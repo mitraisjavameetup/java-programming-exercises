@@ -31,18 +31,18 @@ public class ColorPanel5 extends JPanel {
 
 	private class ColorChanger extends KeyAdapter {
 		@Override
-		public void keyPressed(KeyEvent e) {
+		public void keyTyped(KeyEvent e) {
 			/*
 			 * TO DO give logic to set background color when user press "r",
 			 * "y", "g", and "b" from keyboard
 			 */
-			if (e.getKeyCode() == KeyEvent.VK_R) {
+			if (e.getKeyChar() == 'r') {
 				setBackground(Color.red);
-			} else if (e.getKeyCode() == KeyEvent.VK_Y) {
+			} else if (e.getKeyChar() == 'y') {
 				setBackground(Color.yellow);
-			} else if (e.getKeyCode() == KeyEvent.VK_G) {
+			} else if (e.getKeyChar() == 'g') {
 				setBackground(Color.green);
-			} else if (e.getKeyCode() == KeyEvent.VK_B) {
+			} else if (e.getKeyChar() == 'b') {
 				setBackground(Color.blue);
 			}
 		}
