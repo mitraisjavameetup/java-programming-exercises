@@ -60,7 +60,7 @@ public class MathUtils {
 				prime.add(i);
 			}
 		}
-		System.out.println(prime);
+//		System.out.println(prime);
 		return prime;
 	}
 
@@ -75,15 +75,7 @@ public class MathUtils {
 	public static List<Integer> findPrimesSerial(final boolean[] primeFlags) {
 		// To Do : collect and return list of marked prime numbers given the empty boolean array
 		
-		TimingUtils.timeOp(new Op(){
-
-			@Override
-			public String runOp() {
-				markPrimesSerial(primeFlags);
-				return "Serial";
-			}
-			
-		});
+		markPrimesSerial(primeFlags);
 		return collectPrimes(primeFlags);
 	}
 
@@ -92,7 +84,16 @@ public class MathUtils {
 
 	public static List<Integer> findPrimesSerial(int size) {
 		// To Do : collect and return list of marked prime numbers from given only the size
-		boolean[] a = new boolean[size];
+		final boolean[] a = new boolean[size];
+		TimingUtils.timeOp(new Op(){
+
+			@Override
+			public String runOp() {
+				findPrimesSerial(a);
+				return "Serial";
+			}
+			
+		});
 		return findPrimesSerial(a);
 	}
 
@@ -106,16 +107,8 @@ public class MathUtils {
 
 	public static List<Integer> findPrimesParallel(final boolean[] primeFlags) {
 		// To Do : collect and return list of marked prime numbers given the empty boolean array
-		TimingUtils.timeOp(new Op(){
-
-			@Override
-			public String runOp() {
-				markPrimesParallel(primeFlags);
-				return "Parallel:";
-			}
-			
-		});
 		
+		markPrimesParallel(primeFlags);
 		return collectPrimes(primeFlags);
 	}
 
@@ -124,7 +117,17 @@ public class MathUtils {
 
 	public static List<Integer> findPrimesParallel(int size) {
 		// To Do : collect and return list of marked prime numbers from given only the size
-		boolean[] a = new boolean[size];
+		final boolean[] a = new boolean[size];	
+		TimingUtils.timeOp(new Op(){
+
+			@Override
+			public String runOp() {
+				findPrimesParallel(a);
+				return "Parallel";
+			}
+			
+		});
+		
 		return findPrimesParallel(a);
 	}
 
