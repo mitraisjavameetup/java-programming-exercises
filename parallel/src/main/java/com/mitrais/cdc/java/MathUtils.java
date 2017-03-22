@@ -24,7 +24,7 @@ public class MathUtils {
   public static void markPrimesSerial(boolean[] primeFlags, 
                                       int lowerIndex, int upperIndex) {
 	  // To Do : One simple line of code that uses Primes.isPrime
-	  for (int i = lowerIndex; i < upperIndex; i++) {
+	  for (int i = lowerIndex; i <= upperIndex; i++) {
 		if(Primes.isPrime(i)) {
 			primeFlags[i] = true;
 		} else {
@@ -38,7 +38,15 @@ public class MathUtils {
    *  marks all entries in the array.
    */
   public static void markPrimesSerial(boolean[] primeFlags) {
-    markPrimesSerial(primeFlags, 0, primeFlags.length-1);
+	  TimingUtils.timeOp(new Op() {
+
+			@Override
+			public String runOp() {
+			    markPrimesSerial(primeFlags, 0, primeFlags.length-1);
+				return "Serial";
+			}
+			  
+		  });
   }
   
   /** Marks each entry i with true or false depending on
@@ -47,7 +55,15 @@ public class MathUtils {
    */
   public static void markPrimesParallel(boolean[] primeFlags) {
 	  // To Do : create parallel version of mark primes
-	  FORK_JOIN_POOL.invoke(new ParallelPrimeMarker(primeFlags, 0, primeFlags.length-1));
+	  TimingUtils.timeOp(new Op() {
+
+		@Override
+		public String runOp() {
+			  FORK_JOIN_POOL.invoke(new ParallelPrimeMarker(primeFlags, 0, primeFlags.length-1));
+			  return "Parallel";
+		}
+		  
+	  });
   }
   
   /** Given an already-marked boolean[] of flags that says
@@ -86,7 +102,7 @@ public class MathUtils {
 	// To Do : collect and return list of marked prime numbers from given only the size
 	  boolean[] primeFlags = new boolean[size];
 	  
-	  markPrimesSerial(primeFlags, 0, size);
+	  markPrimesSerial(primeFlags);
 	  return collectPrimes(primeFlags);
   }
   
