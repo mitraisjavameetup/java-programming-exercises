@@ -29,11 +29,11 @@ public class FlipCoins2 implements Runnable {
 		ExecutorService exeserv = Executors.newFixedThreadPool(poolSize);
 		
 		// TODO execute this 5 times (or several times) concurrently
-		exeserv.execute(new CoinFlipper());
-		exeserv.execute(new CoinFlipper());
-		exeserv.execute(new CoinFlipper());
-		exeserv.execute(new CoinFlipper());
-		exeserv.execute(new CoinFlipper());
+		exeserv.execute(this);
+		exeserv.execute(this);
+		exeserv.execute(this);
+		exeserv.execute(this);
+		exeserv.execute(this);
 		
 		// TODO: do not forget to shutdown the executor
 		exeserv.shutdown();
