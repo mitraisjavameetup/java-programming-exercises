@@ -14,6 +14,22 @@ package com.mitrais.cdc.java;
  * 
  */
 
-public class Square{
-  
+public class Square extends Rectangle{
+	
+	public Square() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Square(double w) {
+		super(w, w);
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "Square [width=" + super.getWidth() + "]";
+	}
+	
+	
 }

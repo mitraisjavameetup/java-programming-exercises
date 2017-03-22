@@ -1,5 +1,6 @@
 package com.mitrais.cdc.java;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -15,7 +16,7 @@ public class App {
 	   */
 	  public static String calmString(String speech) {
 		//todo: apply logic as described above
-
+		speech = speech.replaceAll("!","");
 	    return(speech);
 	  }
 	  
@@ -28,6 +29,15 @@ public class App {
 	   */
 	  public static void calmAttendees(List<String> attendingParties) {
 			//todo: apply logic as described above
+		  if(attendingParties.contains("Republican") && attendingParties.contains("Democrat")){
+			  double temp = Math.random();
+			  if(temp<0.5) attendingParties.removeAll(Collections.singleton("Republican"));
+			  else attendingParties.removeAll(Collections.singleton("Democrat"));
+		  }
+		  for(int i=0;i<attendingParties.size(); i++){
+			  System.out.print(attendingParties.get(i)+" ");
+		  }
+		  System.out.println();
 	  }
 	  
 	  private App() {} // Class cannot be instantiated: only static methods

@@ -13,11 +13,15 @@ public class ColorPanel1 extends JPanel {
     //TO DO
 	//setBackground color as Red
 	//call separate class that available (ColorListener.java) as the mouseListener
+	  setBackground(Color.red);
+	  addMouseListener(new ColorListener(this));
   }
   
   public void swapColors() {
 	//TO DO
 	//Method to give logic to change the background color
 	//if the background is Red now change to blue, and vice versa
+	  if(this.getBackground() == Color.RED) setBackground(Color.BLUE);
+	  else setBackground(Color.RED);
   }
 }
