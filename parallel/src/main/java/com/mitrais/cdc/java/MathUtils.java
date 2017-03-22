@@ -11,14 +11,17 @@ public class MathUtils {
    * should be false (0 and 1 are not prime), array[2] and array[3] should be true (2 and 3 are prime),
    * array[4] should be false (4 is not prime), array[5] should be true (5 is prime), and so forth.
    * Notes:
-   * • Use Primes.isPrime(number) to test whether a number is prime. This method is already built in to
+   * ï¿½ Use Primes.isPrime(number) to test whether a number is prime. This method is already built in to
    * the Primes class that you copied from the fork-join-exercises project.
-   * • To simplify the later parallel version, break your code into two methods, one that takes the whole
+   * ï¿½ To simplify the later parallel version, break your code into two methods, one that takes the whole
    * array and one that takes the array and two indices.
    */
   public static void markPrimesSerial(boolean[] primeFlags, 
                                       int lowerIndex, int upperIndex) {
 	  // To Do : One simple line of code that uses Primes.isPrime
+	  for (int i = lowerIndex; i < upperIndex; i++) {
+		 primeFlags[i] = Primes.isPrime(i);
+	  }
   }
   
   /** Marks each entry i with true or false depending on
@@ -35,6 +38,7 @@ public class MathUtils {
    */
   public static void markPrimesParallel(boolean[] primeFlags) {
 	  // To Do : create parallel version of mark primes
+	  FORK_JOIN_POOL.invoke(new ParallelPrimeMarker(primeFlags, 0, primeFlags.length-1));
   }
   
   /** Given an already-marked boolean[] of flags that says
@@ -42,8 +46,12 @@ public class MathUtils {
    *  of the primes. Used by both the serial and parallel versions.
    */
   public static List<Integer> collectPrimes(boolean[] primeFlags) {
-	  // To Do : collect and return list of marked prime numbers from array
-	  return null;
+	  // To Do : collect and return list of marked prime numbers from array3
+	  List<Integer> newList = new ArrayList<>();
+	  for (int i = 0; i < primeFlags.length; i++) {
+		if(Primes.isPrime(i)) newList.add(i);
+	  }
+	  return newList;
   }
   
   /** Given an unmarked boolean[] of flags, serially marks each one saying
@@ -56,15 +64,23 @@ public class MathUtils {
   
   public static List<Integer> findPrimesSerial(boolean[] primeFlags) {
 	// To Do : collect and return list of marked prime numbers given the empty boolean array
-   return null;
+	  return collectPrimes(primeFlags);
   }
   
   /** Uses findPrimesSerial(booleanArray) to produce a List of primes
    *  less than the given size. */
-  
-  public static List<Integer> findPrimesSerial(int size) {
+  static List<Integer> newList2 = new ArrayList<>();
+  public static List<Integer> findPrimesSerial(final int size) {
 	// To Do : collect and return list of marked prime numbers from given only the size
-    return null;
+	  TimingUtils.timeOp(new Op() {
+		
+		@Override
+		public String runOp() {
+			newList2 = collectPrimes(new boolean[size]);
+			 return "End Serial";
+		}
+	});
+	  return newList2;
   }
   
   /** Given an unmarked boolean[] of flags, marks each one in parallel, saying
@@ -74,10 +90,20 @@ public class MathUtils {
    *  for timing purposes, you can separate the time of making the array
    *  from the time of marking it.
    */
-  
-  public static List<Integer> findPrimesParallel(boolean[] primeFlags) {
+  static List<Integer> newList = new ArrayList<>();
+  public static List<Integer> findPrimesParallel(final boolean[] primeFlags) {
 	// To Do : collect and return list of marked prime numbers given the empty boolean array
-    return null;
+	  
+	  TimingUtils.timeOp(new Op() {
+		
+		@Override
+		public String runOp() {
+			 FORK_JOIN_POOL.invoke(new ParallelPrimeMarker(primeFlags, 0, primeFlags.length-1));
+			 //newList = collectPrimes(primeFlags);
+			 return "End Paralel";
+		}
+	});
+	  return collectPrimes(primeFlags);//newList;
   }
   
   /** Uses findPrimesParallel(booleanArray) to produce a List of primes
@@ -85,7 +111,8 @@ public class MathUtils {
   
   public static List<Integer> findPrimesParallel(int size) {
     // To Do : collect and return list of marked prime numbers from given only the size
-    return null;
+	  FORK_JOIN_POOL.invoke(new ParallelPrimeMarker(new boolean[size], 0, size-1));
+	  return collectPrimes(new boolean[size]);
   }
   
 }
