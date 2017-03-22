@@ -30,6 +30,6 @@ public class Square{
 	}
 	
 	public String toString(){
-		return "Width = "+getWidth()+";Area ="+getArea();
+		return "Square width/height="+getWidth()+", area="+getArea()+")";
 	}
 }
