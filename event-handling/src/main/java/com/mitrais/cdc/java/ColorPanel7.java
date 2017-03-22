@@ -49,10 +49,10 @@ public class ColorPanel7 extends JPanel implements MouseListener{
 			for(int i=0; i<circles.size(); i++){
 				if(circles.get(i).inCircle(e.getX(), e.getY())){
 					circles.remove(i);
-					
+					paintComponent(getGraphics());
 				}
 			}
-			paintComponent(getGraphics());
+			
 		}
 		
 	}
