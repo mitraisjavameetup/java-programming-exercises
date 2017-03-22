@@ -40,7 +40,9 @@ public class MathUtilsTest {
 	public void test_markPrimesParallel_singleParam() {
 		int upperIndex = 10;
 		boolean[] primeFlags = new boolean[upperIndex+1];
+		
 		MathUtils.markPrimesParallel(primeFlags);
+		
 		assertFalse(primeFlags[0]);
 		assertFalse(primeFlags[1]);
 		assertTrue(primeFlags[2]);
@@ -83,6 +85,7 @@ public class MathUtilsTest {
 		List<Integer> primeList = MathUtils.findPrimesParallel(primeFlags);
 		assertTrue(primeList.size() == 168);
 		assertTrue(primeList.get(primeList.size() - 1) == 997);
+		
 	}
 	
 	@Test
