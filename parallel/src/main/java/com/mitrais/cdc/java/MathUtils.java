@@ -1,10 +1,6 @@
 package com.mitrais.cdc.java;
-
-import java.security.cert.TrustAnchor;
 import java.util.*;
 import java.util.concurrent.*;
-
-import javax.print.attribute.standard.PrinterMessageFromOperator;
 
 public class MathUtils {
   private static final ForkJoinPool FORK_JOIN_POOL = new ForkJoinPool();
