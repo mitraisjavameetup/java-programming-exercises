@@ -15,5 +15,8 @@ public class IsBetterExamples {
 		return ElementUtils.betterElement(test1, test2, tester);
 
 	}
+	public static void main(String[] args) {
+		
+	}
 
 }
