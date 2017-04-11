@@ -36,7 +36,7 @@ public class SortingExamples {
   }
   
   public static String[] sortedByFirstLetter(){
-	  String[] sortedByFirstLetter = {"bye", "goodbye", "adios", "hi"};
+	  String[] sortedByFirstLetter = {"bi","goodbye","bye", "adios", "hi","good"};
 	  
 	  /*
 	   * TO DO
@@ -49,7 +49,7 @@ public class SortingExamples {
   }
   
   public static String[] sortedByContains(){
-	  String[] sortedByContains = {"hello", "adios", "hola", "hi"};
+	  String[] sortedByContains = {"adios", "ea", "hello", "hola", "hi"};
 	  
 	  /*
 	   * TO DO
