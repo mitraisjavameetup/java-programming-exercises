@@ -8,6 +8,7 @@ import java.util.function.*;
  */
 
 public class StringUtils {
+	/** function to return all match condition with predicate function */
   public static List<String> allMatches(List<String> candidates, Predicate<String> matchFunction) {
 	
     List<String> results = new ArrayList<>();
@@ -28,6 +29,7 @@ public class StringUtils {
   }
   
   
+  /** function to transform list using function that attached to transformedList function */
   public static List<String> transformedList(List<String> originals, Function<String, String> transformer) {
     
 	List<String> results = new ArrayList<>();

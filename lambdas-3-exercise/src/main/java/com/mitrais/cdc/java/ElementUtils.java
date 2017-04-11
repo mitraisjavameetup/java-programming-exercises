@@ -8,6 +8,7 @@ import java.util.function.*;
  */
 
 public class ElementUtils {
+	/** template function to return all match condition with predicate function */
   public static <T> List<T> allMatches(List<T> candidates, Predicate<T> matchFunction) {
     
 	List<T> results = new ArrayList<>();
@@ -25,6 +26,7 @@ public class ElementUtils {
     return(results); 
   }
 
+  /** Element function to transform list using function that attached to transformedList function */
   public static <T, R> List<R> transformedList(List<T> originals, Function<T, R> transformer) {
     List<R> results = new ArrayList<>();
     
