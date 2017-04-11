@@ -1,5 +1,7 @@
 package com.mitrais.cdc.java.two;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
@@ -20,7 +22,10 @@ public class FunctionUtils {
      *  true.
      */
 
-    
+    for (Predicate<T> entry:tests)
+    {
+    	result = result.and(entry);
+    }
     
     
     
@@ -35,9 +40,10 @@ public class FunctionUtils {
     
     T result = null; 
     
-    //TODO: filter based first element that matches ALL of the tests, null otherwise    
-
-    
+    //TODO: filter based first element that matches ALL of the tests, null otherwise
+    result = elements.filter(combinedTest)
+                     .findFirst()
+                     .orElse(null);
     
     
     return result;
