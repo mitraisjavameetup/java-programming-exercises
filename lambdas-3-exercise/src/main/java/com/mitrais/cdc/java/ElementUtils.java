@@ -14,6 +14,12 @@ public class ElementUtils {
     
 	//TODO: Question number two: return a new List of all the values that passed the test
     
+	for (int i = 0; i < candidates.size(); i++) {
+    	if (matchFunction.test(candidates.get(i)) == true) {
+    		results.add(candidates.get(i));
+    	}
+		
+	}
 
 	
 	
