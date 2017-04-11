@@ -6,8 +6,18 @@ import java.util.function.*;
 /** Some generically-typed versions of methods that transform Lists. See
  *  StringUtils for the less flexible String-specific versions.
  */
-
+/**
+ * 
+ * @author trainee
+ * class ElementUtils
+ */
 public class ElementUtils {
+  /**
+   * refactor method
+   * @param candidates
+   * @param matchFunction
+   * @return List<T>
+   */
   public static <T> List<T> allMatches(List<T> candidates, Predicate<T> matchFunction) {
     
 	List<T> results = new ArrayList<>();
@@ -21,7 +31,12 @@ public class ElementUtils {
 	
     return(results); 
   }
-
+  /**
+   * refactor method with predict
+   * @param originals
+   * @param transformer
+   * @return List<R>
+   */
   public static <T, R> List<R> transformedList(List<T> originals, Function<T, R> transformer) {
     List<R> results = new ArrayList<>();
     
