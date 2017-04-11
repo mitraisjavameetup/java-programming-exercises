@@ -40,7 +40,7 @@ public class StringUtils {
     return(results); 
   }
   
-  private static boolean transformer(String string) {
+  public static boolean transformer(String string) {
 	// TODO Auto-generated method stub
 	return false;
 }

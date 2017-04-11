@@ -20,7 +20,6 @@ public class ElementUtils {
     }
 	
 	
-	
     return(results); 
   }
 
