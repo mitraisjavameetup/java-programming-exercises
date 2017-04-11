@@ -4,7 +4,7 @@ import java.util.Arrays;
 public class StringSorter4jav8 {
 	public static void doTests(){
 		
-		String[] testString = {"Owo","One","Three","Four"};
+		String[] testString = {"hai", "hello", "hola", "bye", "goodbye", "adios"};
 		System.out.print("Original: ");
 		//Shortest to Longest//
 		ArrayUtils.printArray(testString);

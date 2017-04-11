@@ -11,15 +11,13 @@ public class StringUtils {
   public static List<String> allMatches(List<String> candidates, Predicate<String> matchFunction) {
 	
     List<String> results = new ArrayList<>();
-    
-    //TODO: Question number one: return a new List of all the values that passed the test
-
-    
-    
-    
-    
-    
-    
+   for(int i = 0; i < candidates.size() ; i++){
+	   if(matchFunction.test(candidates.get(i)) ==true);
+	   	results.add(candidates.get(i));
+	   
+   }
+    //TODO: Question number one: return a new List of all the values that passed the test  
+   
     return(results); 
   }
   
@@ -30,6 +28,10 @@ public class StringUtils {
     
     //TODO: Question number three: return a new List that contains the results of applying the Function to each element of the original
 
+	for(int i = 0; i < originals.size(); i++){
+		 results.add(transformer.apply(originals.get(i)));
+		 
+	}
 	
 	
 	
@@ -38,5 +40,11 @@ public class StringUtils {
     return(results); 
   }
   
-  private StringUtils() {} // Uninstantiatable class
+  private static boolean transformer(String string) {
+	// TODO Auto-generated method stub
+	return false;
+}
+
+
+private StringUtils() {} // Uninstantiatable class
 }
