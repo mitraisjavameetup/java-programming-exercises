@@ -13,14 +13,10 @@ public class EquilateralTriangle implements RegularPolygon {
 		this.length = length;
 	}
 
-
 	public int getNumSides(){
 		return 3;
 	}
 	
-	public void setLength(double length) {
-		this.length = length;
-	}
 
 	public double getSideLength(){
 		return this.length;

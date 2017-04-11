@@ -17,10 +17,6 @@ public class Square implements RegularPolygon {
 		return 4;
 	}
 
-	public void setLength(double length) {
-		this.length = length;
-	}
-
 	public double getSideLength(){
 		return this.length;
 	}
