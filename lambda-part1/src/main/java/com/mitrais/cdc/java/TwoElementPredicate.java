@@ -13,7 +13,6 @@ public interface TwoElementPredicate<T> {
    *  returns false otherwise. Concrete classes (or lambdas) that implement
    *  this interface give meaning to their definition of "better".
    */
-  
-  boolean isBetter(T element1, T element2);
+    boolean isBetter(T element1, T element2);
   
 }
