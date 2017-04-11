@@ -14,7 +14,8 @@ public class ElementUtils {
     
 	//TODO: Question number two: return a new List of all the values that passed the test
     
-
+	for(T candidate:candidates)
+		if(matchFunction.test(candidate)) results.add(candidate);
 	
 	
 	
@@ -26,8 +27,8 @@ public class ElementUtils {
     
     //TODO: Question number four: return a new List that contains the results of applying the Function to each element of the original
 
-    
-    
+    for(T original:originals)
+    	results.add(transformer.apply(original));
     
     
     return(results); 
