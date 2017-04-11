@@ -3,7 +3,9 @@ package com.mitrais.cdc.java;
 import com.mitrais.cdc.java.timing.Op;
 
 public class UtilsExamples { 
-  
+
+
+	// testing
   public static double showAverages1(int size, double cutoff) {
 	  
 	  /* 
