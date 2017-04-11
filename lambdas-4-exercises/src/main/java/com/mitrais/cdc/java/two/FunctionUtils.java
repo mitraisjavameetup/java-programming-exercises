@@ -2,7 +2,11 @@ package com.mitrais.cdc.java.two;
 
 import java.util.function.Predicate;
 import java.util.stream.Stream;
-
+/**
+ * 
+ * @author trainee
+ * class FunctionUtils
+ */
 public class FunctionUtils {
   
   // @SafeVarargs is difficult to understand. The issue is that it is not always safe to use varargs for generic types: 
@@ -11,6 +15,11 @@ public class FunctionUtils {
   // For details, see http://docs.oracle.com/javase/7/docs/technotes/guides/language/non-reifiable-varargs.html
 	
   @SafeVarargs
+  /**
+   * 
+   * @param tests
+   * @return Predicate<T>
+   */
   public static <T> Predicate<T> allPassPredicate(Predicate<T>... tests) {
     Predicate<T> result = e -> true;
     
@@ -19,24 +28,30 @@ public class FunctionUtils {
      *  If no Predicates are supplied, it returns a Predicate that always returns
      *  true.
      */
-
-    
-    
-    
-    
+    for(Predicate<T> test: tests) {
+        result = result.and(test);
+    }
     return(result);
+    
+
   }
 
   
   
   @SafeVarargs
+  /**
+   * 
+   * @param elements
+   * @param tests
+   * @return T
+   */
   public static <T> T firstAllMatch(Stream<T> elements, Predicate<T>... tests) {
     Predicate<T> combinedTest = allPassPredicate(tests);
     
     T result = null; 
     
     //TODO: filter based first element that matches ALL of the tests, null otherwise    
-
+    result=elements.filter(combinedTest).findFirst().orElse(null);
     
     
     
