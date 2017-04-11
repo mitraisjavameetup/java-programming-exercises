@@ -1,5 +1,7 @@
 package com.mitrais.cdc.java;
 
+import java.util.Arrays;
+
 public class StringUtils {
 
 	public static String betterString(String s1, String s2, TwoStringPredicate tester) {
@@ -11,9 +13,47 @@ public class StringUtils {
 		 * It returns string1 if the method in interface returns true, string2 otherwise. 
 		 * This method is normal Java 7 code.
 		 */	
-		
-		return null;
+		if(tester.isBetter(s1, s2)){
+			return s1;
+		}else
+		{
+			return s2;
+		}
 	}
+	
+	public static int sortedByLengthAscending(String s1, String s2) {
+		int compareFlag = 0;
+	    if (s1.length() < s2.length()) {
+	      compareFlag = -1;
+	    } else if (s1.length() > s2.length()) {
+	      compareFlag = 1;
+	    }
+		  
+		  return compareFlag;
+	  }
+	
+	public static int sortedByLengthDescending(String s1, String s2) {
+		int compareFlag = 0;
+	    if (s1.length() < s2.length()) {
+	      compareFlag = 1;
+	    } else if (s1.length() > s2.length()) {
+	      compareFlag = -1;
+	    }
+		  
+		  return compareFlag;
+	  }
+	
+	public static int sortedByFirstLetter(String s1, String s2) {
+		int compareFlag = 0;
+	    if (s1.charAt(0) < s2.charAt(0)) {
+	      compareFlag = -1;
+	    } else if (s1.charAt(0) > s2.charAt(0)) {
+	      compareFlag = 1;
+	    }
+		  
+		  return compareFlag;
+	  }
+	
 	
 	public static int eChecker(String s1, String s2) {
 	    int compareFlag = 0;
