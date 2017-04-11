@@ -9,5 +9,28 @@ public interface RegularPolygon {
    *    • getPerimeter (n * length, where n is the number of sides)
    *    • getInteriorAngle ( (n-2)π/n in radians)
    */
+	
+	public abstract int getNumSides();
+	public abstract double getSideLength();
+	
+	public static int totalSides(RegularPolygon[] elements)
+	{
+		int sum = 0;
+		
+		for (RegularPolygon e:elements)
+			sum += e.getNumSides();
+		
+		return sum;
+	}
+	
+	public default double getPerimeter()
+	{
+		return getNumSides() * getSideLength();
+	}
+	
+	public default double getInteriorAngle()
+	{
+		return Math.toRadians(getNumSides() - 2) * Math.toDegrees(Math.PI) / getNumSides();
+	}
  
 }
