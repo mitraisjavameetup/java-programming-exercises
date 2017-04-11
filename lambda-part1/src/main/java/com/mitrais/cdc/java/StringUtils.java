@@ -12,7 +12,10 @@ public class StringUtils {
 		 * This method is normal Java 7 code.
 		 */	
 		
-		return null;
+		if (tester.isBetter(s1, s2))
+			return s1;
+		else
+			return s2;
 	}
 	
 	public static int eChecker(String s1, String s2) {
@@ -24,6 +27,21 @@ public class StringUtils {
 	    }
 	    return(compareFlag);
 	  }
+	
+	public static int sortLengthAscending(String s1, String s2)
+	{
+		return (s1.length() - s2.length());
+	}
+	
+	public static int sortLengthDescending(String s1, String s2)
+	{
+		return (s2.length() - s1.length());
+	}
+	
+	public static int sortByFirstLetter(String s1, String s2)
+	{
+		return s1.charAt(0) - s2.charAt(0);
+	}
 
 	private StringUtils() {}
 
