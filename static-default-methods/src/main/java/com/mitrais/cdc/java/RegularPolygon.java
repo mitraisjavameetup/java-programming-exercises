@@ -12,7 +12,7 @@ public interface RegularPolygon {
 	int getNumSides();
 	double getSideLength();
 	
-	public static int totalSides(RegularPolygon[] polygon){
+	static int totalSides(RegularPolygon[] polygon){
 		int total = 0;
 		for (RegularPolygon regularPolygon : polygon) {
 			total += regularPolygon.getNumSides();
@@ -20,12 +20,12 @@ public interface RegularPolygon {
 		return total;
 	}
 	
-	public default double getPerimeter(){
+	default double getPerimeter(){
 		return (getNumSides() * getSideLength());
 	}
 	
 	
-	public default double getInteriorAngle(){
+	default double getInteriorAngle(){
 		return (getNumSides()-2)*Math.PI/getNumSides();
 	}
  
