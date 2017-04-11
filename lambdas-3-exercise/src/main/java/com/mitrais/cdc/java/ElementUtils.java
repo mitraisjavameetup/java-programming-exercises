@@ -13,10 +13,13 @@ public class ElementUtils {
 	List<T> results = new ArrayList<>();
     
 	//TODO: Question number two: return a new List of all the values that passed the test
+	
+	candidates.forEach((candidate)->{
+		if(matchFunction.test(candidate)){
+			results.add(candidate);
+		}
+	});
     
-
-	
-	
 	
     return(results); 
   }
@@ -26,9 +29,7 @@ public class ElementUtils {
     
     //TODO: Question number four: return a new List that contains the results of applying the Function to each element of the original
 
-    
-    
-    
+    originals.forEach((original)->results.add(transformer.apply(original)));
     
     return(results); 
   }
