@@ -9,28 +9,28 @@ public class SortingExamplesTest {
 	@Test
 	public void sortedByLengthAscending() {
 		
-		String[] answer = {"bye","hello", "adios", "goodbye"};
+		String[] answer = {"hi", "bye", "hola", "hello", "adios", "goodbye"};
 		assertArrayEquals(SortingExamples.sortedByLengthAscending(), answer);
 	}
 	
 	@Test
 	public void sortedByLengthDescending() {
 		
-		String[] answer = {"goodbye", "hello", "adios", "bye"};
+		String[] answer = {"goodbye", "hello", "adios", "hola", "bye", "hi"};
 		assertArrayEquals(SortingExamples.sortedByLengthDescending(), answer);
 	}
 	
 	@Test
 	public void sortedByFirstLetter() {
 		
-		String[] answer = {"adios", "bye", "goodbye", "hello"};
+		String[] answer = {"adios", "bye", "goodbye", "hello", "hola", "hi"};
 		assertArrayEquals(SortingExamples.sortedByFirstLetter(), answer);
 	}
 	
 	@Test
 	public void sortedByContains() {
 		
-		String[] answer = {"bye", "goodbye", "hello", "adios"};
+		String[] answer = {"bye", "goodbye", "hello", "adios", "hola", "hi"};
 		assertArrayEquals(SortingExamples.sortedByContains(), answer);
 	}
 
