@@ -7,7 +7,8 @@ package com.mitrais.cdc.java;
 
 public class ElementUtils {
   public static <T> T betterElement(T element1, T element2, TwoElementPredicate<T> tester) {
-    
+    if(tester.isBetter(element1, element2))return element1;
+    else
 	/*
 	 * TO DO
 	 * Define the static method betterElement. 
@@ -16,7 +17,7 @@ public class ElementUtils {
 	 * This method is normal Java 7 code.
 	 */	
 	
-	return null;
+	return element2;
   }
   
   private ElementUtils() {}
