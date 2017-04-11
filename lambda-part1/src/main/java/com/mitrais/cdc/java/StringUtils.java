@@ -11,8 +11,15 @@ public class StringUtils {
 		 * It returns string1 if the method in interface returns true, string2 otherwise. 
 		 * This method is normal Java 7 code.
 		 */	
+		boolean res = tester.isBetter(s1, s2);
 		
-		return null;
+		if(res==true){
+			return s1;
+		}
+		else{
+			return s2;
+		}
+		
 	}
 	
 	public static int eChecker(String s1, String s2) {
