@@ -5,5 +5,24 @@ public class EquilateralTriangle implements RegularPolygon {
 	 * Create a class EquilateralTriangle that implements the interface, 
 	 *     has getNumSides return 3 and getSideLength return an instance variable that is set by the constructor.
 	 */
+	private double length;
+	
+	public EquilateralTriangle(double n){
+		this.length = n;
+	}
+	@Override
+	public int getNumSides() {
+		return 3;
+	}
+	@Override
+	public double getSideLength() {
+		return this.length;
+	}
+	
+	
+
+	
+	
+	
 	
 }
