@@ -23,14 +23,14 @@ public class SortingExamplesTest {
 	@Test
 	public void sortedByFirstLetter() {
 		
-		String[] answer = {"adios", "bye", "goodbye", "hello", "hola", "hi"};
+		String[] answer = {"adios", "bye", "ci", "goodbye", "kello", "yola"};
 		assertArrayEquals(SortingExamples.sortedByFirstLetter(), answer);
 	}
 	
 	@Test
 	public void sortedByContains() {
 		
-		String[] answer = {"bye", "goodbye", "hello", "adios", "hola", "hi"};
+		String[] answer = {"hello", "bye", "goodbye", "hi", "hola", "adios"};
 		assertArrayEquals(SortingExamples.sortedByContains(), answer);
 	}
 
