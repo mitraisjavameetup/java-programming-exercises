@@ -13,7 +13,11 @@ public class StringUtils {
     List<String> results = new ArrayList<>();
     
     //TODO: Question number one: return a new List of all the values that passed the test
-
+    for(String c:candidates){
+    	if(matchFunction.test(c)){
+    		results.add(c);
+    	}
+    }
     
     
     
@@ -29,7 +33,9 @@ public class StringUtils {
 	List<String> results = new ArrayList<>();
     
     //TODO: Question number three: return a new List that contains the results of applying the Function to each element of the original
-
+	for(String o:originals){
+		results.add(transformer.apply(o));
+	}
 	
 	
 	
