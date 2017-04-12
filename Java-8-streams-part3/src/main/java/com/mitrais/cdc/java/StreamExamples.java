@@ -23,6 +23,12 @@ public class StreamExamples {
 	//	• Print 5 random doubles
 	//  • Make a List of 10 random doubles
 	//  • Make an array of 20 random doubles
+	
+	public void infiniteStream(){
+		MathUtils.randomNums(10).limit(5).forEach(System.out::println);
+		List<Double> randomList = MathUtils.randomNums(10).limit(10).collect(Collectors.toList());
+		Double[] randomArray = MathUtils.randomNums(10).limit(20).toArray(Double[]::new);
+	}
 
 
 	public double[] getArray(){
