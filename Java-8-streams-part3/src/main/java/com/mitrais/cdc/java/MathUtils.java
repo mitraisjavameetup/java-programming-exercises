@@ -2,6 +2,7 @@ package com.mitrais.cdc.java;
 
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.function.Supplier;
 import java.util.stream.*;
 
 /** NOTE
@@ -44,7 +45,7 @@ public class MathUtils {
   // instead of Stream<Double>
   public static Stream<Double> randomNums(double maxValue) {
     //todo
-	  
+	   
 	  return ThreadLocalRandom.current().doubles(0.0, maxValue).boxed();
   }
 }
