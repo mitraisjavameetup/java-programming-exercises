@@ -2,7 +2,6 @@ package com.mitrais.cdc.java;
 
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class StreamExamples {
 	
