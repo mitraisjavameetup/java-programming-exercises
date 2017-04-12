@@ -17,12 +17,23 @@ import java.util.stream.*;
 public class StreamExamples {
 	
 	int arraySize = 1_000_000;
-  
+	
+	
 	//TODO
 	//Make an “infinite” stream that generates random doubles between 0 and 10. Use it to
 	//	• Print 5 random doubles
 	//  • Make a List of 10 random doubles
 	//  • Make an array of 20 random doubles
+	
+	public StreamExamples(){
+		MathUtils.randomNums(5).forEach(System.out::println);
+		List<Double> lists = MathUtils.randomNums(10).collect(Collectors.toList());
+		System.out.println("List of 10 Random doubles");
+		System.out.println(lists);
+		Double[] arr = MathUtils.randomNums(20).toArray(Double[]::new);
+		System.out.println("Array of 20 Random doubles");
+		System.out.println(Arrays.asList(arr));
+	}
 
 
 	public double[] getArray(){
@@ -38,6 +49,8 @@ public class StreamExamples {
 	   * with operation is sqrtSum
 	   * then stored to variable time
 	   */
+		Op serialSum = () -> MathUtils.sqrtSum(numStream);
+		time = Op.timeOp(serialSum);
 		return time;
 	}
   
@@ -49,6 +62,8 @@ public class StreamExamples {
 	   * with operation is sqrtSumParallel
 	   * then stored to variable time
 	   */
+		Op serialSumPar = () -> MathUtils.sqrtSumParallel(numStream);
+		time = Op.timeOp(serialSumPar);
 		return time;
 	}
   
