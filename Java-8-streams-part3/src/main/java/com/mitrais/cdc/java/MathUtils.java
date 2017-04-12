@@ -48,6 +48,6 @@ public class MathUtils {
 	public static Stream<Double> randomNums(double maxValue) {
 		// todo
 		
-		return DoubleStream.generate(() -> Math.random()*maxValue).boxed();
+		return Stream.generate(() -> Math.random()*maxValue);
 	}
 }
