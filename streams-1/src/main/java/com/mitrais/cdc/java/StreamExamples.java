@@ -141,4 +141,8 @@ public class StreamExamples {
 	  return output;
   }
   
+  public static void main(String[] args){
+	  printWordsNoSpace();
+	  printWordsWithSpace();
+  }
 }
