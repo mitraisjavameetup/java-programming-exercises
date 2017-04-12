@@ -12,9 +12,11 @@ public class StreamExamplesTest {
 	
 	@Test
 	public void excitingWordsStreams() throws Exception {
-		
+		StreamExamples.printWordsWithSpace();
 		List<String> excitingWordsStreams = Arrays.asList("hi!", "hello!", "hola!", "bye!", "goodbye!", "adios!");
 		assertEquals(StreamExamples.excitingWordsStreams(), excitingWordsStreams);
+		StreamExamples.printWordsNoSpace();
+		
 	}
 	
 	@Test
