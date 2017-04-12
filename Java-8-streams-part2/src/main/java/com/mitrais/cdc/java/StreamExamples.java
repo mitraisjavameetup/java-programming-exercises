@@ -67,7 +67,6 @@ public class StreamExamples {
 		 *complete this method to answer number 4
 		 *using lambda expression
 		 */
-		//numOfChar = words.stream().reduce("",String::concat).
 		numOfChar = getStringList().stream().mapToInt(w -> w.length()).sum();
 		return numOfChar;
 	}
@@ -79,7 +78,6 @@ public class StreamExamples {
 		 *using lambda expression
 		 */
 		numOfH = (int) getStringList().stream().filter(w -> w.contains("h")).count();
-		//numOfH = words.stream().mapToInt(w -> w.contains("h")).sum();
 		return numOfH;
 	}
 }
