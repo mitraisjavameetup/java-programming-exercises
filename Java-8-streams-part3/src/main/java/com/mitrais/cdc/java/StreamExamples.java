@@ -27,6 +27,7 @@ public class StreamExamples {
 		System.out.print(MathUtils.randomNums(10).limit(5).collect(Collectors.toSet()));
 		List<Double> list = MathUtils.randomNums(10).limit(10).collect(Collectors.toList());
 		Double[] doubleArray = MathUtils.randomNums(10).limit(20).toArray(Double[]::new);
+		System.out.println(doubleArray[2]);
 	}
 
 

@@ -43,6 +43,7 @@ public class MathUtils {
   // instead of Stream<Double>
   public static Stream<Double> randomNums(double maxValue) {
     //todo
-    return DoubleStream.generate(Math::random).map(n -> n * maxValue).boxed();
+	  DoubleSupplier ds = () -> Math.random() * maxValue;
+    return DoubleStream.generate(ds).boxed();
   }
 }
