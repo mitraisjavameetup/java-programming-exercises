@@ -16,7 +16,7 @@ public class StreamExamples {
 	   * 
 	   */ 
 	  
-	  words.forEach(s -> System.out.printf("  %s", s));
+	  words.forEach(s -> System.out.printf("  %s\n", s));
   }
   
   public static void printWordsNoSpace(){
