@@ -1,10 +1,10 @@
 package com.mitrais.cdc.java;
 
-import static org.junit.Assert.assertTrue;
-
 import java.util.stream.DoubleStream;
 
 import org.junit.Test;
+
+import static junit.framework.Assert.assertTrue;
 
 public class StreamExampleTest {
 	

@@ -31,25 +31,30 @@ public class StreamExamples {
 	}
 	
 	public double timeSumSequential(DoubleStream numStream) {
-		double time = 0;
+		double time;
 	  /* TO DO
 	   * using lambda expression
 	   * call method/function to count the elapsed time on Op.java
 	   * with operation is sqrtSum
 	   * then stored to variable time
 	   */
+
+		Op operation = () -> MathUtils.sqrtSum(numStream);
+		time = Op.timeOp(operation);
 		return time;
 	}
   
 	public double timeSumParallel(DoubleStream numStream) {
-		double time = 0;
+		double time;
 	  /* TO DO
 	   * using lambda expression
 	   * call method/function to count the elapsed time on Op.java
 	   * with operation is sqrtSumParallel
 	   * then stored to variable time
 	   */
-		return time;
+	  Op operation = () -> MathUtils.sqrtSumParallel(numStream);
+	  time = Op.timeOp(operation);
+	  return time;
 	}
   
 }
