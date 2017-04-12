@@ -15,7 +15,7 @@ public class StreamExamples {
 	   * Don’t use map.
 	   * 
 	   */ 
-	  words.stream().forEach(word -> System.out.printf("  %s/n", word));
+	  words.stream().forEach(word -> System.out.printf("  %s\n", word));
   }
   
   public static void printWordsNoSpace(){
@@ -28,7 +28,7 @@ public class StreamExamples {
 	   * as opposed to an explicit lambda in problem 1.
 	   * 
 	   */	
-	  words.stream().forEach(word -> System.out.printf("%s/n", word));
+	  words.stream().forEach(word -> System.out.printf("%s\n", word));
   }
   
   public static List<String> excitingWordsStreams(){
