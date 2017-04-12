@@ -16,7 +16,7 @@ public class StreamExamples {
 	   * 
 	   */
 	  for(String w:words)
-		  System.out.print("  "+w);
+		  System.out.println("  "+w);
   }
   
   public static void printWordsNoSpace(){
@@ -29,7 +29,7 @@ public class StreamExamples {
 	   * as opposed to an explicit lambda in problem 1.
 	   * 
 	   */
-	  words.stream().forEach(w -> System.out.print(w));
+	  words.stream().forEach(w -> System.out.println(w));
   }
   
   public static List<String> excitingWordsStreams(){
