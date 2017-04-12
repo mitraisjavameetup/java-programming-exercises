@@ -1,6 +1,7 @@
 package com.mitrais.cdc.java;
 
 import java.util.*;
+import java.util.function.Supplier;
 import java.util.stream.*;
 
 /** TO DO 
@@ -38,6 +39,8 @@ public class StreamExamples {
 	   * with operation is sqrtSum
 	   * then stored to variable time
 	   */
+		Op serialSum=()->MathUtils.sqrtSum(numStream);
+		time=Op.timeOp(serialSum);
 		return time;
 	}
   
@@ -49,7 +52,10 @@ public class StreamExamples {
 	   * with operation is sqrtSumParallel
 	   * then stored to variable time
 	   */
+		Op parallelSum=()->MathUtils.sqrtSumParallel(numStream);
+		time=Op.timeOp(parallelSum);
 		return time;
 	}
+
   
 }
