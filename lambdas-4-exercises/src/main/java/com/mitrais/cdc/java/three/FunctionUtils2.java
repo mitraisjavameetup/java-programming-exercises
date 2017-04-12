@@ -9,7 +9,10 @@ public class FunctionUtils2 {
   public static <T> Predicate<T> anyPassPredicate(Predicate<T>... tests) {
     Predicate<T> result = e -> false;
 
-    
+    for (Predicate<T> predicate : tests) {
+   	 result = result.or(predicate);
+	}
+   
     /** TODO: create a 'for' loop. 
      * 	Returns a Predicate that is the result of ORing all the argument Predicates.
      *  If no Predicates are supplied, it returns a Predicate that always returns
@@ -34,7 +37,10 @@ public class FunctionUtils2 {
     
     //TODO: filter based first element that matches ANY of the tests, null otherwise
     
-    
+    result = elements
+            .filter(combinedTest)
+            .findFirst()
+            .orElse(null);
     
     
     
