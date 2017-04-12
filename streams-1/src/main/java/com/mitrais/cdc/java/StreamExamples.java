@@ -16,7 +16,7 @@ public class StreamExamples {
 	   * Don’t use map.
 	   * 
 	   */
-	  words.stream().forEach(e -> System.out.printf("%s ", e));
+	  words.stream().forEach(e -> System.out.printf("  %s", e));
   }
   
   public static void printWordsNoSpace(){
