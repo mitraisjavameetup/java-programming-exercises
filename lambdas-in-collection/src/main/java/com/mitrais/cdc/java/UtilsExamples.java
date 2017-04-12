@@ -1,5 +1,7 @@
 package com.mitrais.cdc.java;
 
+import java.util.List;
+
 import com.mitrais.cdc.java.timing.Op;
 
 public class UtilsExamples { 
@@ -14,7 +16,11 @@ public class UtilsExamples {
 	   * Compute the average again and verify that it is near to 0.75.
 	   *
 	   */
-	  return 0;
+	  List<Double> list=Utils.randomNumberList(size);
+	  double average=Utils.average(list);
+	  list.removeIf(a->a<0.5);
+	  double averageAfterRemove=Utils.average(list);
+	  return averageAfterRemove;
   }
   
   public static double showAverages2(int size) {
@@ -27,8 +33,11 @@ public class UtilsExamples {
 	   * Compute the average again and verify that it is near to 1.0.
 	   * 
 	   */
-
-	  return 0;
+	  List<Double> list=Utils.randomNumberList(size);
+	  double average=Utils.average(list);
+	  Utils.doubleAllValues(list);
+	  double averageAfterDouble=Utils.average(list);
+	  return averageAfterDouble;
     
   }
   
