@@ -82,8 +82,7 @@ public class StreamExamples {
 
 		numOfChar = words.stream()
 				.map(s -> s.length())
-				.reduce((w, x) -> w + x)
-				.orElse(0);
+				.reduce(0, (w, x) -> w + x);
 		
 		return numOfChar;
 	}
