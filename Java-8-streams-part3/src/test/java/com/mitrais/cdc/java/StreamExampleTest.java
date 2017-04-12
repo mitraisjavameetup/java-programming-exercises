@@ -7,7 +7,7 @@ import java.util.stream.DoubleStream;
 import org.junit.Test;
 
 public class StreamExampleTest {
-	
+	 
 	@Test
 	public void StreamTest(){
 		StreamExamples SE = new StreamExamples();
