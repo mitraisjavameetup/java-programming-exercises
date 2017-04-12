@@ -15,12 +15,9 @@ public class FunctionUtils2 {
      *  If no Predicates are supplied, it returns a Predicate that always returns
      *  false.
      */
-    
-
-    
-    
-    
-    
+    for(Predicate<T> test: tests) {
+        result = result.or(test);
+    }
     return(result);
   }
   
@@ -33,11 +30,8 @@ public class FunctionUtils2 {
     T result = null;
     
     //TODO: filter based first element that matches ANY of the tests, null otherwise
-    
-    
-    
-    
-    
+        
+    result = elements.filter(combinedTest).findFirst().orElse(null);
     return result;
   }
   
