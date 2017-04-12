@@ -23,6 +23,11 @@ public class StreamExamples {
 	//	• Print 5 random doubles
 	//  • Make a List of 10 random doubles
 	//  • Make an array of 20 random doubles
+	public static void main(String[] args) {
+		System.out.print(MathUtils.randomNums(10).limit(5).collect(Collectors.toSet()));
+		List<Double> list = MathUtils.randomNums(10).limit(10).collect(Collectors.toList());
+		Double[] doubleArray = MathUtils.randomNums(10).limit(20).toArray(Double[]::new);
+	}
 
 
 	public double[] getArray(){
@@ -38,6 +43,7 @@ public class StreamExamples {
 	   * with operation is sqrtSum
 	   * then stored to variable time
 	   */
+		time = Op.timeOp(() -> MathUtils.sqrtSum(numStream));
 		return time;
 	}
   
@@ -49,6 +55,7 @@ public class StreamExamples {
 	   * with operation is sqrtSumParallel
 	   * then stored to variable time
 	   */
+		time = Op.timeOp(() -> MathUtils.sqrtSumParallel(numStream));
 		return time;
 	}
   
