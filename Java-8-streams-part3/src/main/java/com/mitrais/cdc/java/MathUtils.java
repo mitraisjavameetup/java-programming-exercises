@@ -26,6 +26,7 @@ public class MathUtils {
     //Compute the sum of the square roots of the numbers in the array. Find a shorter and simpler way
     //than making a loop to tally the sum
 	double total = numStream.map(Math::sqrt).sum();
+	System.out.println("serial " + total);
     return total;
   }
   
@@ -36,6 +37,7 @@ public class MathUtils {
     // TODO:
     //Repeat the process at sqrtSum method in parallel
 	double total = numStream.map(Math::sqrt).parallel().sum();
+	System.out.println("parallel " +total);
     return total;
   }
   
