@@ -2,10 +2,15 @@ package com.mitrais.cdc.java;
 
 import java.util.*;
 
+
 public class Utils {
-  
+	
+  private static Map<Integer, Integer> primes = new HashMap<>();
   public static List<Double> randomNumberList(int size) {
-	  
+	  List<Double> list = new ArrayList<Double>(size);
+	  for (int i = 0; i < size; i++) {
+		list.add(Math.random());
+	}
 	  /*
 	   * TO DO 
 	   * Make a static method that, given a size, will produce a List<Double> of that size, 
@@ -13,12 +18,12 @@ public class Utils {
 	   * Use Math.random() and normal List methods.
 	   *
 	   */
-	  return null;
+	  return list;
   }
   
   public static double average(List<Double> nums) {
 	
-	  
+	  double averageList = nums.stream().mapToDouble(x -> x).average().getAsDouble();
 	  /*
 	   * TO DO
 	   * Make a static method that, given a List<Double>, will output the average.
@@ -27,11 +32,12 @@ public class Utils {
 	   * how to turn a List<Double> into a DoubleStream.)
 	   * 
 	   */
-	  return 0;
+	  return averageList;
   }
   
   public static void removeBelow(List<Double> nums, double cutoff) {
 	  
+	  nums.removeIf(x -> x < cutoff);
 	  /*
 	   * TO DO
 	   * Make a static method that, given a List<Double> and a cutoff, 
@@ -43,6 +49,7 @@ public class Utils {
   }
   
   public static void doubleAllValues(List<Double> nums) {
+	  
 	  
 	  /*
 	   * TO DO
@@ -68,13 +75,22 @@ public class Utils {
   }
   
   public static int countPrimes(int upperBound) {
-	  
+	 return primes.computeIfAbsent(upperBound, x -> {
+		  if (upperBound <= 2) {
+		      return(1);
+		    }
+		    if (Primes.isPrime(upperBound)) {
+		      return(1 + countPrimes(upperBound - 1));
+		    } else {
+		      return(countPrimes(upperBound - 1));
+		    }
+	  });
 	  /*
 	   * TO DO
 	   * Use computeIfAbsent to make a memoized version of countPrimes1 method.
 	   * Profile it and compare performance
 	   *
 	   */
-	  return 0;
+	  
   }
 }
