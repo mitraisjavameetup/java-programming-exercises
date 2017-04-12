@@ -115,7 +115,9 @@ public class StreamExamples {
 	   * keep only the ones that contain containedTest arg,
 	   * and return string "No Match" when no result.
 	   */
-	  return words.stream().map(String::toUpperCase).filter(s -> s.length() < 4 && s.contains(containedTest)).findFirst().orElse("No match");
+	  return words.stream().map(String::toUpperCase).filter(s -> s.length() < 4 
+			  && s.contains(containedTest)).
+			  findFirst().orElse("No match");
   }
   
   
