@@ -29,7 +29,7 @@ public class MathUtils {
 		// a shorter and simpler way
 		// than making a loop to tally the sum
 
-		return numStream.map(n -> n * n).sum();
+		return numStream.map(n -> Math.sqrt(n)).sum();
 	}
 
 	/**
@@ -40,7 +40,7 @@ public class MathUtils {
 		// TODO:
 		// Repeat the process at sqrtSum method in parallel
 
-		return numStream.parallel().map(n -> n * n).sum();
+		return numStream.parallel().map(n -> Math.sqrt(n)).sum();
 	}
 
 	// Or, use DoubleStream.generate, which produces DoubleStream
