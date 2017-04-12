@@ -17,7 +17,11 @@ import java.util.stream.*;
 public class StreamExamples {
 	
 	int arraySize = 1_000_000;
-	
+	//TODO
+	//Make an “infinite” stream that generates random doubles between 0 and 10. Use it to
+	//	• Print 5 random doubles
+	//  • Make a List of 10 random doubles
+	//  • Make an array of 20 random doubles
 	public StreamExamples(){
 		MathUtils.randomNums(5).forEach(System.out::println);
 		List<Double> list = MathUtils.randomNums(10).collect(Collectors.toList());
@@ -27,11 +31,6 @@ public class StreamExamples {
 		System.out.println("Array of 20 Random doubles");
 		System.out.println(Arrays.asList(num));
 	}
-	//TODO
-	//Make an “infinite” stream that generates random doubles between 0 and 10. Use it to
-	//	• Print 5 random doubles
-	//  • Make a List of 10 random doubles
-	//  • Make an array of 20 random doubles
 	
 	public double[] getArray(){
 		double[] numArray = MathUtils.randomArray(arraySize);
