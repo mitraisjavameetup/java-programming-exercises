@@ -16,13 +16,16 @@ import java.util.stream.*;
 
 public class StreamExamples {
 	
-	int arraySize = 1_000_000;
+	int arraySize = 10_000_000;
   
 	//TODO
 	//Make an “infinite” stream that generates random doubles between 0 and 10. Use it to
 	//	• Print 5 random doubles
 	//  • Make a List of 10 random doubles
 	//  • Make an array of 20 random doubles
+	Stream<Double> infinite = MathUtils.randomNums(10);
+	List<Double> list = infinite.limit(10).collect(Collectors.toList());
+	Double[] array = MathUtils.randomNums(20).toArray(s -> new Double[s]);
 
 
 	public double[] getArray(){
@@ -32,12 +35,19 @@ public class StreamExamples {
 	
 	public double timeSumSequential(DoubleStream numStream) {
 		double time = 0;
+		
 	  /* TO DO
 	   * using lambda expression
 	   * call method/function to count the elapsed time on Op.java
 	   * with operation is sqrtSum
 	   * then stored to variable time
 	   */
+
+		time = Op.timeOp(() -> {
+			double sum = MathUtils.sqrtSum(numStream);
+			System.out.printf("	Sum is %,.8f.%n", sum);
+		});
+		
 		return time;
 	}
   
@@ -49,7 +59,11 @@ public class StreamExamples {
 	   * with operation is sqrtSumParallel
 	   * then stored to variable time
 	   */
+		time = Op.timeOp(() -> {
+			double sum = MathUtils.sqrtSumParallel(numStream);
+			System.out.printf("	Sum is %,.8f.%n", sum);
+		});
+		
 		return time;
 	}
-  
 }
