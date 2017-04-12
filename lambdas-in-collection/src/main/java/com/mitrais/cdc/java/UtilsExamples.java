@@ -1,5 +1,9 @@
 package com.mitrais.cdc.java;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import com.mitrais.cdc.java.timing.Op;
 
 public class UtilsExamples { 
@@ -14,7 +18,12 @@ public class UtilsExamples {
 	   * Compute the average again and verify that it is near to 0.75.
 	   *
 	   */
-	  return 0;
+	  List<Double> result = new ArrayList<>();
+	  for (int i = 0; i < size; i++) {
+		  result.add(Math.random());
+	  }
+	  List<Double> resultFilter = result.stream().filter(s-> s > cutoff).collect(Collectors.toList());
+	  return resultFilter.stream().mapToDouble(Double::new).average().orElse(0);
   }
   
   public static double showAverages2(int size) {
@@ -28,7 +37,12 @@ public class UtilsExamples {
 	   * 
 	   */
 
-	  return 0;
+	  List<Double> result = new ArrayList<>();
+	  for (int i = 0; i < size; i++) {
+		  result.add(Math.random());
+	  }
+	  List<Double> resultFilter = result.stream().map(s->s*2).collect(Collectors.toList());
+	  return resultFilter.stream().mapToDouble(Double::new).average().orElse(0);
     
   }
   
