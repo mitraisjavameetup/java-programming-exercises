@@ -15,7 +15,7 @@ public class StreamExamples {
 	   * Don’t use map.
 	   * 
 	   */ 
-	  words.stream().forEach(s -> System.out.printf("  %s\n", s));
+	  words.forEach(s -> System.out.printf("  %s\n", s));
   
   }
   
@@ -29,7 +29,7 @@ public class StreamExamples {
 	   * as opposed to an explicit lambda in problem 1.
 	   * 
 	   */	
-	  words.stream().forEach(s -> System.out.printf("%s\n", s));
+	  words.forEach(System.out::println);
   }
   
   public static List<String> excitingWordsStreams(){
@@ -115,7 +115,7 @@ public class StreamExamples {
 	   * and return string "No Match" when no result.
 	   */
 	 
-	  return words.stream().map(s -> s.toUpperCase())
+	  return words.stream().map(String::toUpperCase)
 			  .filter(s -> s.length() < 4)
 			  .filter(s -> s.contains(containedTest))
 			  .findFirst().orElse("No match");

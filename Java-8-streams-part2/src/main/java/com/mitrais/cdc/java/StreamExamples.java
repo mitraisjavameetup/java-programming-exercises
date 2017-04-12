@@ -37,8 +37,8 @@ public class StreamExamples {
 		 * complete this method to answer number 1
 		 * using lambda expression
 		 */
-		
-		return uppercaseString;
+		uppercaseString = getStringList().stream().reduce("", String::concat);
+		return uppercaseString.toUpperCase();
 	}
 	
 	public String uppercaseWithMap(){
@@ -47,7 +47,7 @@ public class StreamExamples {
 		 * complete this method to answer number 2
 		 * using lambda expression
 		 */
-		
+		uppercaseString = getStringList().stream().map(String::toUpperCase).reduce("", String::concat);
 		return uppercaseString;
 	}
 	
@@ -58,6 +58,7 @@ public class StreamExamples {
 		 * using lambda expression
 		 */
 		
+		convertWords = getStringList().stream().reduce((x,y) -> x + "," + y).get();
 		return convertWords;
 	}
 	
@@ -67,6 +68,7 @@ public class StreamExamples {
 		 *complete this method to answer number 4
 		 *using lambda expression
 		 */
+		numOfChar = getStringList().stream().mapToInt(s -> s.length()).sum();
 		return numOfChar;
 	}
 	
@@ -76,6 +78,7 @@ public class StreamExamples {
 		 *complete this method to answer number 5
 		 *using lambda expression
 		 */
+		numOfH = (int) getStringList().stream().filter(s -> s.contains("h")).count();
 		return numOfH;
 	}
 }
