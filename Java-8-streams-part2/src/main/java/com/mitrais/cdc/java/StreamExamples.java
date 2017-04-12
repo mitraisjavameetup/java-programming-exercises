@@ -1,6 +1,7 @@
 package com.mitrais.cdc.java;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /** TO DO
  *  please complete the methods for below capabilities (you should using lambda expression).
@@ -38,6 +39,9 @@ public class StreamExamples {
 		 * using lambda expression
 		 */
 		
+		uppercaseString=words.stream().reduce((a,b)->{
+			return a.toUpperCase()+b.toUpperCase();
+		}).get();
 		return uppercaseString;
 	}
 	
@@ -47,7 +51,7 @@ public class StreamExamples {
 		 * complete this method to answer number 2
 		 * using lambda expression
 		 */
-		
+		uppercaseString=words.stream().map(String::toUpperCase).reduce("", String::concat);
 		return uppercaseString;
 	}
 	
@@ -57,6 +61,9 @@ public class StreamExamples {
 		 * complete this method to answer number 3
 		 * using lambda expression
 		 */
+		convertWords=words.stream().reduce((a,b)->{
+			return a+","+b;
+		}).get();
 		
 		return convertWords;
 	}
@@ -67,6 +74,7 @@ public class StreamExamples {
 		 *complete this method to answer number 4
 		 *using lambda expression
 		 */
+		numOfChar=words.stream().mapToInt(e->e.length()).sum();
 		return numOfChar;
 	}
 	
@@ -76,6 +84,10 @@ public class StreamExamples {
 		 *complete this method to answer number 5
 		 *using lambda expression
 		 */
+		numOfH=(int)words.stream().filter(e->e.contains("h")).count();
+		//numOfH=words.stream().map(e->e.contains("h")).sum();
 		return numOfH;
 	}
+	
+	
 }
