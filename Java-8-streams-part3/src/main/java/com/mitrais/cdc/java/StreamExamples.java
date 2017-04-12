@@ -23,7 +23,7 @@ public class StreamExamples {
 	//	• Print 5 random doubles
 	//  • Make a List of 10 random doubles
 	//  • Make an array of 20 random doubles
-
+	
 
 	public double[] getArray(){
 		double[] numArray = MathUtils.randomArray(arraySize);
@@ -38,6 +38,11 @@ public class StreamExamples {
 	   * with operation is sqrtSum
 	   * then stored to variable time
 	   */
+		time = Op.timeOp(() -> {
+			double sum = MathUtils.sqrtSum(numStream);
+			System.out.printf("	Sum result in sequential %,.8f.%n", sum);
+		});
+
 		return time;
 	}
   
@@ -49,7 +54,30 @@ public class StreamExamples {
 	   * with operation is sqrtSumParallel
 	   * then stored to variable time
 	   */
+		
+		time = Op.timeOp(() -> {
+			double sum = MathUtils.sqrtSumParallel(numStream);
+			System.out.printf("	Sum result in parallel %,.8f.%n", sum);
+		});
+		
 		return time;
+	}
+	
+	public static void main(String[] args) {
+
+		System.out.println("Print 5 random doubles");
+		MathUtils.randomNums(5).forEach(System.out::println);
+		System.out.println("###############################\n");
+		
+		System.out.println("Make a List of 10 random doubles");
+		List<Double> listresult = MathUtils.randomNums(10).collect(Collectors.toList());
+		listresult.stream().forEach(System.out::println);
+		System.out.println("###############################\n");
+		
+		System.out.println("Make an Array of 20 random doubles");
+		Double[] arrayResult = MathUtils.randomNums(20).toArray(s->new Double[s]);
+		Arrays.stream(arrayResult).forEach(System.out::println);
+		System.out.println("###############################\n");
 	}
   
 }
