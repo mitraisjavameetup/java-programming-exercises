@@ -75,7 +75,7 @@ public class StreamExamples {
 		System.out.println("###############################\n");
 		
 		System.out.println("Make an Array of 20 random doubles");
-		Double[] arrayResult = MathUtils.randomNums(20).toArray(s->new Double[s]);
+		Double[] arrayResult = MathUtils.randomNums(20).toArray(Double[]::new);
 		Arrays.stream(arrayResult).forEach(System.out::println);
 		System.out.println("###############################\n");
 	}
