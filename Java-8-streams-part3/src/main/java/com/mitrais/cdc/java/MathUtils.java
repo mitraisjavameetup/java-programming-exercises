@@ -22,7 +22,7 @@ public class MathUtils {
    *  Serial version.
    */
   public static double sqrtSum(DoubleStream numStream) {
-	  double sqrt = numStream.map(Math::sqrt).sum();
+	  double sqrt = numStream.map(a -> Math.sqrt(a)).sum();
 	  
 	// TODO:
     //Compute the sum of the square roots of the numbers in the array. Find a shorter and simpler way
@@ -35,7 +35,7 @@ public class MathUtils {
    *  Parallel version.
    */
   public static double sqrtSumParallel(DoubleStream numStream) {
-	  double sqrt = numStream.map(Math::sqrt).parallel().sum();
+	  double sqrt = numStream.map(a -> Math.sqrt(a)).parallel().sum();
     // TODO:
     //Repeat the process at sqrtSum method in parallel
 

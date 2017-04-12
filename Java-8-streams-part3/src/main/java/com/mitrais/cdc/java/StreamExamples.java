@@ -21,13 +21,14 @@ public class StreamExamples {
 	int arraySize = 1_000_000;
 	
 	public StreamExamples() {
-		MathUtils.randomNums(5).forEach(System.out::println);
+		System.out.println("5 random numbers: ");
+		MathUtils.randomNums(5).forEach(a -> System.out.println(a));
 		Random r = new Random();
 		DoubleStream doubleStream = r.doubles(0, 10);
 		List<Double> ten = doubleStream.limit(10).boxed().collect(Collectors.toList());
-		System.out.println(ten);
-		Double[] twenty = MathUtils.randomNums(20).toArray(Double[]::new);
-		System.out.println(Arrays.asList(twenty));
+		System.out.println("\n 10 random numbers (list): " + ten);
+		Double[] twenty = MathUtils.randomNums(20).toArray(a -> new Double[a]);
+		System.out.println("\n 20 random numbers (array): " + Arrays.asList(twenty));
 	}
 	
 	//TODO
@@ -45,7 +46,7 @@ public class StreamExamples {
 	public double timeSumSequential(DoubleStream numStream) {
 		double time = Op.timeOp(() -> {
 			double sum = MathUtils.sqrtSum(numStream);
-			System.out.printf("	Sum is %,.8f.%n", sum);
+			System.out.printf("\n Sum is %,.8f.%n", sum);
 			});
 
 	  /* TO DO
@@ -60,7 +61,7 @@ public class StreamExamples {
 	public double timeSumParallel(DoubleStream numStream) {
 		double time = Op.timeOp(() -> {
 			double sum = MathUtils.sqrtSumParallel(numStream);
-			System.out.printf("	Sum is %,.8f.%n", sum);
+			System.out.printf("\n Sum is %,.8f.%n", sum);
 			});
 
 	  /* TO DO
