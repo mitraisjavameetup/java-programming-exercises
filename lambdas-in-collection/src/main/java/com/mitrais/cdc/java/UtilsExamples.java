@@ -20,7 +20,7 @@ public class UtilsExamples {
 	   */
 	  List<Double> a = Utils.randomNumberList(size);
 	  System.out.println(Utils.average(a));
-	  Utils.removeBelow(a, 0.5);
+	  Utils.removeBelow(a, cutoff);
 	  System.out.println(Utils.average(a));
 	  return Utils.average(a);
   }
