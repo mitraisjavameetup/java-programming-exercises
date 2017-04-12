@@ -38,6 +38,9 @@ public class StreamExamples {
 	   * with operation is sqrtSum
 	   * then stored to variable time
 	   */
+		time = Op.timeOp(() -> MathUtils.sqrtSum(numStream));
+
+		
 		return time;
 	}
   
@@ -49,6 +52,7 @@ public class StreamExamples {
 	   * with operation is sqrtSumParallel
 	   * then stored to variable time
 	   */
+		time = Op.timeOp(() -> MathUtils.sqrtSumParallel(numStream));
 		return time;
 	}
   
