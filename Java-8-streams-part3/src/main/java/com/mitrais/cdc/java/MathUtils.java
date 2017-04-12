@@ -66,15 +66,21 @@ public class MathUtils {
    * @param maxValue
    * @return Stream<Double>
    */
+  /**
+   * 
+   * @param maxValue
+   * @return Stream<Double>
+   */
   public static Stream<Double> randomNums(double maxValue) {
 		//TODO
 		//Make an “infinite” stream that generates random doubles between 0 and 10. Use it to
 		//	• Print 5 random doubles
 		//  • Make a List of 10 random doubles
 		//  • Make an array of 20 random doubles
-	 List<Double> list=Stream.generate(Math::random).limit(10).collect(Collectors.toList());
-	 //double[] arr=Stream.generate(Math::random).limit(20).toArray(size->new double[size]);
-	 Stream.generate(Math::random).limit(5).forEach(System.out::println);
-    return Stream.generate(Math::random);
+	  Stream<Double> stream=Stream.generate(()->Math.random()*maxValue);
+	 List<Double> list=stream.limit(10).collect(Collectors.toList());
+	 Double[] arr=Stream.generate(Math::random).limit(20).toArray(size->new Double[size]);
+	 stream.limit(5).forEach(System.out::println);
+    return stream;
   }
 }

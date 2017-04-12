@@ -15,4 +15,9 @@ public class StreamExampleTest {
 		assertTrue(SE.timeSumParallel(DoubleStream.of(arrNum))>0);
 		assertTrue(SE.timeSumSequential(DoubleStream.of(arrNum))> 0);
 	}
+	
+	@Test
+	public void InfiniteStream(){
+		MathUtils.randomNums(10);
+	}
 }

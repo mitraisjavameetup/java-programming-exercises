@@ -71,5 +71,5 @@ public class StreamExamples {
 		time=Op.timeOp(serialSum);
 		return time;
 	}
-  
+	
 }
