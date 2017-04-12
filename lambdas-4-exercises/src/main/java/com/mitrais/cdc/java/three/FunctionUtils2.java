@@ -9,7 +9,7 @@ public class FunctionUtils2 {
   public static <T> Predicate<T> anyPassPredicate(Predicate<T>... tests) {
     Predicate<T> result = e -> false;
 
-    
+
     /** TODO: create a 'for' loop. 
      * 	Returns a Predicate that is the result of ORing all the argument Predicates.
      *  If no Predicates are supplied, it returns a Predicate that always returns
