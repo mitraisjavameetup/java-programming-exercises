@@ -15,7 +15,7 @@ public class StreamExamples {
 	   * Don’t use map.
 	   * 
 	   */ 
-	  words.stream().collect(Collectors.toList()).forEach(s -> System.out.println("  "+s));
+	  words.forEach(s -> System.out.println("  "+s));
   }
   
   public static void printWordsNoSpace(){
@@ -28,7 +28,7 @@ public class StreamExamples {
 	   * as opposed to an explicit lambda in problem 1.
 	   * 
 	   */	
-	  words.stream().collect(Collectors.toList()).forEach(System.out::println);
+	  words.forEach(System.out::println);
   }
   
   public static List<String> excitingWordsStreams(){
