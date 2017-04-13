@@ -56,12 +56,7 @@ public class FileIOExamples {
 		 * length into both the stream-processing and file-processing methods
 		 */
 		String result=null;
-		try (Stream<String> words = Files.lines(Paths.get(filename))) {
-			result = StreamProcessor.processFile(filename, (a) -> printNLetterWord(a, wordLength) );
-		} catch (IOException ioe) {
-			System.err.println("Error reading file: " + ioe);
-		}
-		
+		result = StreamProcessor.processFile(filename, (a) -> printNLetterWord(a, wordLength) );
 		return result;
 	}
 
@@ -84,13 +79,8 @@ public class FileIOExamples {
 		 * 
 		 */
 		long result=0;
-		try (Stream<String> words = Files.lines(Paths.get(filename))) {
-			result = StreamAnalyzer.analyzeFile(filename, (a) -> numWordsContaining(a, subString));
-		} catch (IOException ioe) {
-			System.err.println("Error reading file: " + ioe);
-		}
+		result = StreamAnalyzer.analyzeFile(filename, (a) -> numWordsContaining(a, subString));
 		return result;
-		//StreamAnalyzer.analyzeFile(filename, numWordsContaining(words, subString));
 	}
 
 }
