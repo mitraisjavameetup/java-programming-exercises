@@ -16,6 +16,15 @@ import java.util.stream.*;
 
 public class StreamExamples {
 	
+	public StreamExamples() {
+		// TODO Auto-generated constructor stub
+		MathUtils.randomNums(5).forEach(System.out::println);
+		List<Double> list = MathUtils.randomNums(10).collect(Collectors.toList());
+		System.out.println(list);
+		Double[] arrays = MathUtils.randomNums(20).toArray(a->new Double[a]);
+		System.out.println(Arrays.asList(arrays));
+	}
+	
 	int arraySize = 1_000_000;
   
 	//TODO
@@ -23,7 +32,7 @@ public class StreamExamples {
 	//	• Print 5 random doubles
 	//  • Make a List of 10 random doubles
 	//  • Make an array of 20 random doubles
-
+	
 
 	public double[] getArray(){
 		double[] numArray = MathUtils.randomArray(arraySize);
@@ -38,6 +47,12 @@ public class StreamExamples {
 	   * with operation is sqrtSum
 	   * then stored to variable time
 	   */
+		
+		time = Op.timeOp(() -> {
+			double sum = MathUtils.sqrtSum(numStream);
+			System.out.printf("	Sum is %,.8f.%n", sum);
+			});
+
 		return time;
 	}
   
@@ -49,6 +64,10 @@ public class StreamExamples {
 	   * with operation is sqrtSumParallel
 	   * then stored to variable time
 	   */
+		time = Op.timeOp(() -> {
+			double sum = MathUtils.sqrtSumParallel(numStream);
+			System.out.printf("	Sum is %,.8f.%n", sum);
+			});
 		return time;
 	}
   

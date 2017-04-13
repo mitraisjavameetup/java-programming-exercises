@@ -3,7 +3,7 @@ package com.mitrais.cdc.java;
 import java.util.*;
 
 public class Utils {
-  
+  private static Map<Integer,Integer> primes = new HashMap<>();
   public static List<Double> randomNumberList(int size) {
 	  
 	  /*
@@ -13,7 +13,11 @@ public class Utils {
 	   * Use Math.random() and normal List methods.
 	   *
 	   */
-	  return null;
+	  List<Double> list = new ArrayList();
+	  for (int i = 0; i < size; i++) {
+		list.add(Math.random());
+	}
+	  return list;
   }
   
   public static double average(List<Double> nums) {
@@ -27,7 +31,8 @@ public class Utils {
 	   * how to turn a List<Double> into a DoubleStream.)
 	   * 
 	   */
-	  return 0;
+	  
+	  return nums.stream().mapToDouble(x->x).average().getAsDouble();
   }
   
   public static void removeBelow(List<Double> nums, double cutoff) {
@@ -40,6 +45,7 @@ public class Utils {
 	   * Use one of the methods from this lecture.
 	   * 
 	   */
+	  nums.removeIf(x-> x<cutoff);
   }
   
   public static void doubleAllValues(List<Double> nums) {
@@ -75,6 +81,17 @@ public class Utils {
 	   * Profile it and compare performance
 	   *
 	   */
-	  return 0;
+	  
+	  
+	  return primes.computeIfAbsent(upperBound,n->{
+		  if (upperBound <= 2) {
+		      return(1);
+		    }
+		    if (Primes.isPrime(upperBound)) {
+		      return(1 + countPrimes(upperBound - 1));
+		    } else {
+		      return(countPrimes(upperBound - 1));
+		    }
+	  });
   }
 }
