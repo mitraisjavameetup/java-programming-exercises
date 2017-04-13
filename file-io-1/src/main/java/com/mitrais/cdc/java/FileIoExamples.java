@@ -4,9 +4,11 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class FileIoExamples {
 
@@ -118,9 +120,16 @@ public class FileIoExamples {
 		 * count as files.
 		 * 
 		 */
-		long total = Files.list(Paths.get("")).count();
-		
-		System.out.printf("Number of files (folders count as files) : %s %n", total);
+		long total = 0;
+		try (Stream<Path> paths = Files.list(Paths.get(""))){
+			
+			total = paths.count();
+			System.out.printf("Number of files (folders count as files) : %s %n", total);
+			
+		} catch (IOException ioe) {
+			// TODO: handle exception
+			System.err.println("IOException: " + ioe);
+		}
 		
 		return total;
 	}
@@ -146,7 +155,7 @@ public class FileIoExamples {
 			
 			for (int i = 0; i < n; i++) {
 				
-				out.printf("Number is %5.3f%n", 100 * Math.random());
+				out.printf("Number is %.3f%n", 100 * Math.random());
 			}
 			
 		} catch (IOException ioe) {
