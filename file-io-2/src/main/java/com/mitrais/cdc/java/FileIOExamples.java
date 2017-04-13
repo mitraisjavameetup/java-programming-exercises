@@ -1,5 +1,8 @@
 package com.mitrais.cdc.java;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
@@ -16,7 +19,10 @@ public class FileIOExamples {
 		 * Print the first 10-letter word found.
 		 *
 		 */
-		return null;
+		return words
+				.filter(w -> w.length() == 10)
+				.findFirst()
+				.get();
 	}
 
 	public static String print10LetterWord(String filename) {
@@ -27,7 +33,8 @@ public class FileIOExamples {
 		 * Use the StreamProcessor interface to avoid repetitive code in the file-processing method.
 		 *
 		 */
-		return null;
+		
+		return StreamProcessor.processFile(filename, f -> print10LetterWord(f));
 	}
 	
 	public static String printNLetterWord(Stream<String> words, int wordLength) {
@@ -37,7 +44,10 @@ public class FileIOExamples {
 		 * Print the first n-letter word found
 		 * 
 		 */
-		return null;
+		return words
+				.filter(w -> w.length() == wordLength)
+				.findFirst()
+				.orElse(String.format("No %d-letter word found", wordLength));
 	}
 
 	public static String printNLetterWord(String filename, int wordLength) {
@@ -49,7 +59,7 @@ public class FileIOExamples {
 		 * Instead, pass the word length into 
 		 * both the stream-processing and file-processing methods
 		 */
-		return null;
+		return StreamProcessor.processFile(filename, f -> printNLetterWord(f, wordLength));
 	}
 			
 			
@@ -60,7 +70,9 @@ public class FileIOExamples {
 		 * Make methods that will print out the number of words containing a letter or substring
 		 * 
 		 */
-		return 0;
+		return words
+				.filter(w -> w.contains(subString))
+				.count();
 	}
 
 	public static long numWordsContaining(String filename, String subString) {
@@ -71,7 +83,7 @@ public class FileIOExamples {
 		 * use StreamAnalyzer interface to avoid repetitive code in the file-processing method.
 		 * 
 		 */
-		return 0;
+		return StreamAnalyzer.analyzeFile(filename, f -> numWordsContaining(f, subString));
 	}	
 	
 }
