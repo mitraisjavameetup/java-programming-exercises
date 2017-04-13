@@ -19,7 +19,10 @@ public class FileIoExamples {
 	   * 
 	   */
 	  Stream<String> content = Files.lines(Paths.get(inputFile));
-    return content.filter(e -> e.length() == wordLength).findFirst().get();
+    return content
+            .filter(e -> e.length() == wordLength)
+            .findFirst()
+            .get();
   }
   
   public static String abcWord(String inputFile) throws Exception {
@@ -30,7 +33,10 @@ public class FileIoExamples {
 	   * 
 	   */
 	  Stream<String> content = Files.lines(Paths.get(inputFile));
-    return content.filter(e->e.length() == 8).filter(e->e.contains("a") && e.contains("b") && e.contains("c")).findFirst().get();
+    return content
+            .filter(e->e.contains("a") && e.contains("b") && e.contains("c") && e.length() == 8)
+            .findFirst()
+            .get();
   }
   
   public static String abcWordMixedCase(String inputFile) throws Exception {
@@ -42,7 +48,11 @@ public class FileIoExamples {
 	   * 
 	   */
 	  Stream<String> content = Files.lines(Paths.get(inputFile));
-	  return content.map(String::toLowerCase).filter(e->e.contains("a") && e.contains("b") && e.contains("c") && e.length() == 8).findFirst().get();
+	  return content
+              .map(String::toLowerCase)
+              .filter(e->e.contains("a") && e.contains("b") && e.contains("c") && e.length() == 8)
+              .findFirst()
+              .get();
   }
   
   public static String longestWordWithout(String inputFile, String letter1, String letter2) throws Exception {
@@ -53,7 +63,10 @@ public class FileIoExamples {
 	   * 
 	   */
 	  Stream<String> content = Files.lines(Paths.get(inputFile));
-	  return content.filter(e->!e.contains(letter1) && !e.contains(letter2)).max(Comparator.comparingInt(String::length)).get();
+	  return content
+              .filter(e->!e.contains(letter1) && !e.contains(letter2))
+              .max(Comparator.comparingInt(String::length))
+              .get();
   }
   
   public static String shortestWordWith(String inputFile, String letter) throws Exception {
@@ -64,7 +77,10 @@ public class FileIoExamples {
 	   * 
 	   */
 	  Stream<String> content = Files.lines(Paths.get(inputFile));
-	  return content.filter(e->e.contains(letter)).min(Comparator.comparingInt(String::length)).get();
+	  return content
+              .filter(e->e.contains(letter))
+              .min(Comparator.comparingInt(String::length))
+              .get();
   }
   
   public static void storeTwitterList(String inputFile, String outputFile) throws Exception {
@@ -78,7 +94,12 @@ public class FileIoExamples {
 	  * at the end. (E.g., “COOLER!”).
 	  * 
 	  */
-	 Stream<String> content = Files.lines(Paths.get(inputFile)).filter(e->e.contains("wow")|e.contains("cool")).map(String::toUpperCase);
+	 Stream<String> content = Files.lines
+             (
+                 Paths.get(inputFile))
+                 .filter(e->e.contains("wow")|e.contains("cool"))
+                 .map(String::toUpperCase
+             );
 	 try (PrintWriter out = new PrintWriter(Files.newBufferedWriter(Paths.get(outputFile), Charset.defaultCharset())))
      {
        content.forEach(e-> out.printf("%s!%n", e));
