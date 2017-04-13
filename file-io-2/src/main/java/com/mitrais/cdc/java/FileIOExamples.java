@@ -1,5 +1,6 @@
 package com.mitrais.cdc.java;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
@@ -16,7 +17,9 @@ public class FileIOExamples {
 		 * Print the first 10-letter word found.
 		 *
 		 */
-		return null;
+		String result = words.filter(s -> s.length() == 10)
+		       .findFirst().get();
+		  return result;
 	}
 
 	public static String print10LetterWord(String filename) {
@@ -27,7 +30,8 @@ public class FileIOExamples {
 		 * Use the StreamProcessor interface to avoid repetitive code in the file-processing method.
 		 *
 		 */
-		return null;
+		String result = StreamProcessor.processFile(filename, lines -> print10LetterWord(lines));
+		return result;
 	}
 	
 	public static String printNLetterWord(Stream<String> words, int wordLength) {
@@ -37,7 +41,9 @@ public class FileIOExamples {
 		 * Print the first n-letter word found
 		 * 
 		 */
-		return null;
+		String result = words.filter(s -> s.length() == wordLength)
+			       .findFirst().orElse("No "+wordLength+"-letter word found");
+		return result;
 	}
 
 	public static String printNLetterWord(String filename, int wordLength) {
@@ -49,7 +55,8 @@ public class FileIOExamples {
 		 * Instead, pass the word length into 
 		 * both the stream-processing and file-processing methods
 		 */
-		return null;
+		String result = StreamAnalyzer.analyzeFile(filename, lines -> printNLetterWord(lines, wordLength));
+		return result;
 	}
 			
 			
@@ -60,7 +67,8 @@ public class FileIOExamples {
 		 * Make methods that will print out the number of words containing a letter or substring
 		 * 
 		 */
-		return 0;
+		long result = words.filter(s -> s.contains(subString)).count();
+		return result;
 	}
 
 	public static long numWordsContaining(String filename, String subString) {
@@ -71,7 +79,8 @@ public class FileIOExamples {
 		 * use StreamAnalyzer interface to avoid repetitive code in the file-processing method.
 		 * 
 		 */
-		return 0;
+		long result = StreamAnalyzer.analyzeFile(filename, lines -> numWordsContaining(lines, subString));
+		return result;
 	}	
 	
 }
