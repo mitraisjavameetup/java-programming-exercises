@@ -11,37 +11,33 @@ public class FileIOExamples {
 	public static List<String> testWords2 = Arrays.asList("quit", "squid", "book", "bookkeeper", "keep", "steep");
 	
 	public static String print10LetterWord(Stream<String> words) {
-		
 		/* TO DO
 		 * Print the first 10-letter word found.
 		 *
 		 */
-		return null;
+		return words.filter(e->e.length() == 10).findFirst().orElse(null);
 	}
 
 	public static String print10LetterWord(String filename) {
-		
 		/*
 		 * TO DO
 		 * Print the first 10-letter word found in the file.
 		 * Use the StreamProcessor interface to avoid repetitive code in the file-processing method.
 		 *
 		 */
-		return null;
+		return StreamProcessor.processFile(filename, FileIOExamples::print10LetterWord);
 	}
 	
 	public static String printNLetterWord(Stream<String> words, int wordLength) {
-		
 		/*
 		 * TO DO
 		 * Print the first n-letter word found
 		 * 
 		 */
-		return null;
+		return words.filter(e->e.length() == wordLength).findFirst().orElse("No " + wordLength + "-letter word found");
 	}
 
 	public static String printNLetterWord(String filename, int wordLength) {
-		
 		/*
 		 * TO DO
 		 * Do not hardcode the word length (i.e., 10 in the previous problem) 
@@ -49,29 +45,26 @@ public class FileIOExamples {
 		 * Instead, pass the word length into 
 		 * both the stream-processing and file-processing methods
 		 */
-		return null;
+		return StreamProcessor.processFile(filename, a -> printNLetterWord(a, wordLength));
 	}
 			
 			
 	public static long numWordsContaining(Stream<String> words, String subString) {
-		
 		/*
 		 * TO DO 
 		 * Make methods that will print out the number of words containing a letter or substring
 		 * 
 		 */
-		return 0;
+		return words.filter(e->e.contains(subString)).count();
 	}
 
 	public static long numWordsContaining(String filename, String subString) {
-		
 		/*
 		 * TO DO 
 		 * Make methods that will print out the number of words containing a letter or substring
 		 * use StreamAnalyzer interface to avoid repetitive code in the file-processing method.
 		 * 
 		 */
-		return 0;
-	}	
-	
+		return StreamAnalyzer.analyzeFile(filename, a -> numWordsContaining(a, subString));
+	}
 }
