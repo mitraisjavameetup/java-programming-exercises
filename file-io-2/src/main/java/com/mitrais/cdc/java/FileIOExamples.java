@@ -31,11 +31,7 @@ public class FileIOExamples {
 		 *
 		 */
 		String result=null;
-		try (Stream<String> words = Files.lines(Paths.get(filename))) {
-			result = StreamProcessor.processFile(filename, FileIOExamples::print10LetterWord);
-		} catch (IOException ioe) {
-			System.err.println("Error reading file: " + ioe);
-		}
+		result = StreamProcessor.processFile(filename, FileIOExamples::print10LetterWord);
 		return result;
 	}
 
