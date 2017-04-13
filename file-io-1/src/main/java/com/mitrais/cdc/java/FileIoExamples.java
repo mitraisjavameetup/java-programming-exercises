@@ -40,7 +40,7 @@ public class FileIoExamples {
 	   * Hint: do something shorter than merely modifying your filter tests to include “A”, “B”, and “C”. 
 	   * 
 	   */
-	  return Files.lines(Paths.get(inputFile)).filter(e->e.contains("a") && e.contains("b") &&e.contains("c")).filter(e->e.length()==8).findFirst().orElse(null);
+	  return Files.lines(Paths.get(inputFile)).map(String::toLowerCase).filter(e->e.contains("a") && e.contains("b") &&e.contains("c")).filter(e->e.length()==8).findFirst().orElse(null);
   }
   
   public static String longestWordWithout(String inputFile, String letter1, String letter2) throws Exception {
