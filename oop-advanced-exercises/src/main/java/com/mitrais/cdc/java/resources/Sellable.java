@@ -1,5 +1,6 @@
 package com.mitrais.cdc.java.resources;
 
+
 public interface Sellable {
   double getCost();
   
@@ -10,7 +11,15 @@ public interface Sellable {
    */
   public static Sellable cheapest(Sellable[] items) {
     Sellable cheapestItem = null;
+    double cheapest = Double.MAX_VALUE;
     
+	for (int i = 0; i < items.length; i++) {
+		double temp = items[i].getCost();
+		if (temp < cheapest) {
+			cheapestItem = items[i];
+			cheapest = temp;
+		}
+    } 
     //TODO: Create calculation to define which item is the cheapest based on item cost
     
     
@@ -24,13 +33,17 @@ public interface Sellable {
    * @param items
    * @return totalCost
    */
+	  
   public static double totalCost(Sellable[] items) {
     double total = 0;
-    
+    for (int i = 0; i < items.length; i++) {
+    	total += items[i].getCost();
+    }
     //TODO: Create calculation to count the total price here
     
     
     
     return(total);
   }
+  
 }

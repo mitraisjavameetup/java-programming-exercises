@@ -1,6 +1,8 @@
 package com.mitrais.cdc.java;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 import java.util.stream.*;
 
 /** TO DO 
@@ -17,7 +19,18 @@ import java.util.stream.*;
 public class StreamExamples {
 	
 	int arraySize = 1_000_000;
-  
+	
+	public StreamExamples() {
+		System.out.println("5 random numbers: ");
+		MathUtils.randomNums(5).forEach(a -> System.out.println(a));
+		Random r = new Random();
+		DoubleStream doubleStream = r.doubles(0, 10);
+		List<Double> ten = doubleStream.limit(10).boxed().collect(Collectors.toList());
+		System.out.println("\n 10 random numbers (list): " + ten);
+		Double[] twenty = MathUtils.randomNums(20).toArray(a -> new Double[a]);
+		System.out.println("\n 20 random numbers (array): " + Arrays.asList(twenty));
+	}
+	
 	//TODO
 	//Make an “infinite” stream that generates random doubles between 0 and 10. Use it to
 	//	• Print 5 random doubles
@@ -31,7 +44,11 @@ public class StreamExamples {
 	}
 	
 	public double timeSumSequential(DoubleStream numStream) {
-		double time = 0;
+		double time = Op.timeOp(() -> {
+			double sum = MathUtils.sqrtSum(numStream);
+			System.out.printf("\n Sum is %,.8f.%n", sum);
+			});
+
 	  /* TO DO
 	   * using lambda expression
 	   * call method/function to count the elapsed time on Op.java
@@ -42,7 +59,11 @@ public class StreamExamples {
 	}
   
 	public double timeSumParallel(DoubleStream numStream) {
-		double time = 0;
+		double time = Op.timeOp(() -> {
+			double sum = MathUtils.sqrtSumParallel(numStream);
+			System.out.printf("\n Sum is %,.8f.%n", sum);
+			});
+
 	  /* TO DO
 	   * using lambda expression
 	   * call method/function to count the elapsed time on Op.java

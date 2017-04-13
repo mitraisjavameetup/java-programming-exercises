@@ -20,12 +20,31 @@ import javax.swing.*;
 
 public class ColorPanel5 extends JPanel {
   public ColorPanel5() {
+
+	  setBackground(Color.WHITE);
+	  addKeyListener(new ColorChanger());
+	  setFocusable(true);
+	  requestFocusInWindow();
 	//Set background color to Red
     //call KeyListener
   }
   
   private class ColorChanger extends KeyAdapter {
-    public void keyTyped() {
+    public void keyTyped(KeyEvent e) {
+    	if(e.getKeyChar() == 'r') {
+  		  setBackground(Color.RED);
+  	  }
+  	  else if (e.getKeyChar() == 'b') {
+  		  setBackground(Color.BLUE);
+  	  }
+
+  	  else if (e.getKeyChar() == 'g') {
+  		  setBackground(Color.GREEN);
+  	  }
+
+  	  else if (e.getKeyChar() == 'y') {
+  		  setBackground(Color.YELLOW);
+  	  }
       /*TO DO
        * give logic to set background color when user press "r", "y", "g", and "b" from keyboard
        */

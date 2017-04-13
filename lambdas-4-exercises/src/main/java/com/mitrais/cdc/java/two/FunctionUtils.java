@@ -20,7 +20,9 @@ public class FunctionUtils {
      *  true.
      */
 
-    
+    for (Predicate<T> predicate : tests) {
+    	 result = result.and(predicate);
+	}
     
     
     
@@ -36,8 +38,10 @@ public class FunctionUtils {
     T result = null; 
     
     //TODO: filter based first element that matches ALL of the tests, null otherwise    
-
-    
+    result = elements
+            .filter(combinedTest)
+            .findFirst()
+            .orElse(null);
     
     
     return result;

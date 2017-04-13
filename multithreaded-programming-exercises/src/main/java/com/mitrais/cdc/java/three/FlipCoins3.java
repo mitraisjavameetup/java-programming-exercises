@@ -9,14 +9,14 @@ public class FlipCoins3 extends JFrame {
     getContentPane().setLayout(new GridLayout(5, 1));
     
     int poolSize = 10;
-    
+    ExecutorService tasks = Executors.newFixedThreadPool(poolSize);
     //TODO: Instantiate ExcecutorService class with poolsize as stated above
 
     
     for(int i=0; i<5; i++) {
       JLabel label = new JLabel();
       label.setFont(new Font("SansSerif", Font.PLAIN, 60));
-      
+      tasks.execute(new LabelingCoinFlipper(label));
       //TODO: add line to instantiate labelling coin flipper and execute it.
 
       

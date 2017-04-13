@@ -10,5 +10,9 @@ package com.mitrais.cdc.java;
  */
 
 public class SquareTest {
-
+	 public static void main(String[] args) {
+		  Square squares = new Square();
+		  System.out.println(squares.toString());
+		  
+	  }
 }

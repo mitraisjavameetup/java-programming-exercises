@@ -4,6 +4,11 @@ import java.util.concurrent.*;
 public class FlipCoins1 {
   public static void main(String[] args) {
     int poolSize = 10;
+    ExecutorService tasks = Executors.newFixedThreadPool(poolSize);
+    for (int i = 0; i < 5; i++) {
+		tasks.execute(new CoinFlipper());
+	}
+    tasks.shutdown();
     
     
     //TODO: Instantiate ExcecutorService class with poolsize as stated above
