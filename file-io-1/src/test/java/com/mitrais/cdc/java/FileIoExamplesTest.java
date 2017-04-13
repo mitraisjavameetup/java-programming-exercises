@@ -17,7 +17,7 @@ public class FileIoExamplesTest {
 	String inputFile = "enable1-word-list.txt";
 	
 	@Test
-	public void nLetterWord() throws Exception {	
+	public void nLetterWord() throws Exception {
 		assertEquals(FileIoExamples.nLetterWord(inputFile, 10), "aardwolves");
 	}
 	
@@ -27,7 +27,7 @@ public class FileIoExamplesTest {
 	}
 	
 	@Test
-	public void abcWordMixedCase() throws Exception{	
+	public void abcWordMixedCase() throws Exception{
 		assertEquals(FileIoExamples.abcWordMixedCase(inputFile), "abacuses");
 	}
 	

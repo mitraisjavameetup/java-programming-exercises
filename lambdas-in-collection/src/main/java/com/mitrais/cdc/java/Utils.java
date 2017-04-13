@@ -1,6 +1,10 @@
 package com.mitrais.cdc.java;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Utils {
   
@@ -13,7 +17,8 @@ public class Utils {
 	   * Use Math.random() and normal List methods.
 	   *
 	   */
-	  return null;
+	  
+	  return Stream.generate(() -> ThreadLocalRandom.current().nextDouble()).limit(size).collect(Collectors.toList());
   }
   
   public static double average(List<Double> nums) {
@@ -27,7 +32,7 @@ public class Utils {
 	   * how to turn a List<Double> into a DoubleStream.)
 	   * 
 	   */
-	  return 0;
+	  return nums.stream().mapToDouble(Double::doubleValue).average().getAsDouble();
   }
   
   public static void removeBelow(List<Double> nums, double cutoff) {
@@ -40,6 +45,7 @@ public class Utils {
 	   * Use one of the methods from this lecture.
 	   * 
 	   */
+	  nums.removeIf(a -> a < cutoff);
   }
   
   public static void doubleAllValues(List<Double> nums) {
@@ -51,7 +57,7 @@ public class Utils {
 	   * Use one of the methods from this lecture
 	   * 
 	   */	  
-	  nums.replaceAll(n -> n*2);
+	  nums.replaceAll(n -> n * 2);
   }
   
   /** Returns the number of primes from 0 to this number, inclusive. */
@@ -75,6 +81,18 @@ public class Utils {
 	   * Profile it and compare performance
 	   *
 	   */
-	  return 0;
+	  Map<Integer, Integer> coba = new ConcurrentHashMap<>();
+	  
+	  
+	  return coba.computeIfAbsent(upperBound, e -> {
+		  if (e <= 2) {
+		      return(1);
+		    }
+		    if (Primes.isPrime(e)) {
+		      return(1 + countPrimes1(e - 1));
+		    } else {
+		      return(countPrimes1(e - 1));
+		    }
+	  });
   }
 }
