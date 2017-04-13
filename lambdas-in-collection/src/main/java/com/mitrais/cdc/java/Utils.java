@@ -4,6 +4,7 @@ import java.util.*;
 import java.util.stream.Stream;
 
 public class Utils {
+	
 	private static Map<Integer, Integer> primes = new HashMap<>();
 
 	public static List<Double> randomNumberList(int size) {
