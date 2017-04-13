@@ -8,12 +8,17 @@ import java.util.function.*;
  */
 
 public class ElementUtils {
+	/** template function to return all match condition with predicate function */
   public static <T> List<T> allMatches(List<T> candidates, Predicate<T> matchFunction) {
     
 	List<T> results = new ArrayList<>();
     
 	//TODO: Question number two: return a new List of all the values that passed the test
-    
+    for(T c:candidates){
+    	if(matchFunction.test(c)){
+    		results.add(c);
+    	}
+    }
 
 	
 	
@@ -21,11 +26,14 @@ public class ElementUtils {
     return(results); 
   }
 
+  /** Element function to transform list using function that attached to transformedList function */
   public static <T, R> List<R> transformedList(List<T> originals, Function<T, R> transformer) {
     List<R> results = new ArrayList<>();
     
     //TODO: Question number four: return a new List that contains the results of applying the Function to each element of the original
-
+    for(T o:originals){
+		results.add(transformer.apply(o));
+	}
     
     
     

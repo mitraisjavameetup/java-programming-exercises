@@ -6,5 +6,22 @@ public class Square implements RegularPolygon {
 	 * Create a class EquilateralTriangle that implements the interface, 
 	 *     has getNumSides return 4 and getSideLength return an instance variable that is set by the constructor.
 	 */
+	double sideLength;
+	
+	public Square(double sideLength){
+		this.sideLength = sideLength;
+	}
+	/** Override function to get square sides */
+	@Override
+	public int getNumSides() {
+		// TODO Auto-generated method stub
+		return 4;
+	}
+	/** Override function to get square sides length */
+	@Override
+	public double getSideLength() {
+		// TODO Auto-generated method stub
+		return this.sideLength;
+	}
 	
 }

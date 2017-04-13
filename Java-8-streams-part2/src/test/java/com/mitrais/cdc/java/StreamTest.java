@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 
 public class StreamTest{
+
 	@Test
 	public void AllStreamTest(){
 		StreamExamples SE = new StreamExamples();

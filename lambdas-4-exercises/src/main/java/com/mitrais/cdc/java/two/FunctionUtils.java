@@ -19,7 +19,9 @@ public class FunctionUtils {
      *  If no Predicates are supplied, it returns a Predicate that always returns
      *  true.
      */
-
+    for(Predicate<T> test : tests){
+    	result = result.and(test);
+    }
     
     
     
@@ -34,7 +36,7 @@ public class FunctionUtils {
     Predicate<T> combinedTest = allPassPredicate(tests);
     
     T result = null; 
-    
+    result = elements.filter(combinedTest).findFirst().orElse(null);
     //TODO: filter based first element that matches ALL of the tests, null otherwise    
 
     
