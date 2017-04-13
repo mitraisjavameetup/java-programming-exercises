@@ -1,11 +1,18 @@
 package com.mitrais.cdc.java;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.OptionalDouble;
+
 import com.mitrais.cdc.java.timing.Op;
 
 public class UtilsExamples { 
   
   public static double showAverages1(int size, double cutoff) {
-	  
+	  Double result = 0.0;
+	  List<Double> nums = new ArrayList<>();
 	  /* 
 	   * TO DO
 	   * Make a large list containing random numbers between 0 and 1.
@@ -14,11 +21,19 @@ public class UtilsExamples {
 	   * Compute the average again and verify that it is near to 0.75.
 	   *
 	   */
-	  return 0;
+	  
+	  nums = Utils.randomNumberList(size);
+	  result = Utils.average(nums);
+	  System.out.println(result);
+	  Utils.removeBelow(nums, cutoff);
+	  result = Utils.average(nums);
+	  System.out.println(result);
+	  return result;
   }
   
   public static double showAverages2(int size) {
-	  
+	  Double result = 0.0;
+	  List<Double> nums = new ArrayList<>();
 	  /*
 	   * TO DO
 	   * Make a large list containing random numbers between 0 and 1. 
@@ -27,8 +42,13 @@ public class UtilsExamples {
 	   * Compute the average again and verify that it is near to 1.0.
 	   * 
 	   */
-
-	  return 0;
+	  nums = Utils.randomNumberList(size);
+	  result = Utils.average(nums);
+	  System.out.println(result);
+	  Utils.doubleAllValues(nums);
+	  result = Utils.average(nums);
+	  System.out.println(result);
+	  return result;
     
   }
   
