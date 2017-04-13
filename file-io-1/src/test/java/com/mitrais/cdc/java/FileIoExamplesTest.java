@@ -25,12 +25,12 @@ public class FileIoExamplesTest {
 	public void abcWord() throws Exception{	
 		assertEquals(FileIoExamples.abcWord(inputFile), "abacuses");
 	}
-	
+//	
 	@Test
 	public void abcWordMixedCase() throws Exception{	
 		assertEquals(FileIoExamples.abcWordMixedCase(inputFile), "abacuses");
 	}
-	
+//	
 	@Test
 	public void longestWordWithout() throws Exception{	
 		assertEquals(FileIoExamples.longestWordWithout(inputFile, "a", "e"), "psychophysiologists");
@@ -59,15 +59,15 @@ public class FileIoExamplesTest {
 	public void numPathsInProject() throws Exception{
 		assertTrue( FileIoExamples.numPathsInProject() > 0);
 	}
-	
-	@Test
-	public void storeNums() throws Exception{
-		String outputFile = "random-nums.txt";
-		int n = 17;
-		FileIoExamples.storeNums(n, 100, outputFile);
-		
-		assertNotNull(Paths.get(outputFile));
-		List<String> result = Files.lines(Paths.get(outputFile)).collect(Collectors.toList());
-		assertEquals(result.size(), n);
-	}	
+//	
+//	@Test
+//	public void storeNums() throws Exception{
+//		String outputFile = "random-nums.txt";
+//		int n = 17;
+//		FileIoExamples.storeNums(n, 100, outputFile);
+//		
+//		assertNotNull(Paths.get(outputFile));
+//		List<String> result = Files.lines(Paths.get(outputFile)).collect(Collectors.toList());
+//		assertEquals(result.size(), n);
+//	}	
 }
