@@ -63,3 +63,4 @@ local.properties
 .scala_dependencies
 .worksheet
 jpa/.idea/
+/Test/nbproject/private/
