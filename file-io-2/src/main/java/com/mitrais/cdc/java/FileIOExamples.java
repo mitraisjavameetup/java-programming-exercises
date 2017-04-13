@@ -27,6 +27,7 @@ public class FileIOExamples {
 		 * Use the StreamProcessor interface to avoid repetitive code in the file-processing method.
 		 *
 		 */
+		//return StreamProcessor.processFile(filename, FileIOExamples::print10LetterWord); equivalent with
 		return StreamProcessor.processFile(filename, x -> x.filter(s -> s.length() == 10).findFirst().get());
 	}
 	
