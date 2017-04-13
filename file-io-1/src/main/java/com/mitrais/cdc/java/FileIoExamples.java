@@ -52,7 +52,7 @@ public class FileIoExamples {
 		 * 
 		 */
 		return Files.lines(Paths.get(inputFile))
-				.filter(e -> !e.toLowerCase().contains("a") && !e.toLowerCase().contains("e"))
+				.filter(e -> !e.toLowerCase().contains(letter1) && !e.toLowerCase().contains(letter2))
 				.max((a, b) -> a.length() - b.length()).get();
 	}
 
@@ -62,7 +62,7 @@ public class FileIoExamples {
 		 * TO DO Print the shortest English word that contains a “q”
 		 * 
 		 */
-		return Files.lines(Paths.get(inputFile)).filter(e -> e.toLowerCase().contains("q"))
+		return Files.lines(Paths.get(inputFile)).filter(e -> e.toLowerCase().contains(letter))
 				.min((a, b) -> a.length() - b.length()).get();
 	}
 
