@@ -1,7 +1,22 @@
 package com.mitrais.cdc.java;
 
+import java.util.*;
 
 public class EmployeeMap {
+	
+	private Map<String, String> employeeMap;
+	
+	/**Default Constructor**/
+	public EmployeeMap()
+	{
+		employeeMap = new HashMap<>();
+		
+		employeeMap.put("a1234", "Steve Jobs");
+		employeeMap.put("a1235", "Scott McNealy");
+		employeeMap.put("a1236", "Jeff Bezos");
+		employeeMap.put("a1237", "Larry Ellison");
+		employeeMap.put("a1238", "Bill Gates");
+	}
 	
 	/*
 	 * Make a Map that associates the following employee IDs with names. 
@@ -17,8 +32,16 @@ public class EmployeeMap {
 	 * The point here is to associate keys with values, then retrieve values later based on keys.
 	 */
 	
-	public String runEmployeeMap() {
-	    return null;
+	/**A special method to return the first employee.**/
+	public String runEmployeeMap() 
+	{
+		return employeeMap.get("a1234");
+	}
+	
+	/**A special method to return the employee based on the given key.**/
+	public String runEmployeeMap(String key)
+	{
+		return employeeMap.getOrDefault(key.toLowerCase(), "Invalid Key");
 	}
 		
 }

@@ -8,6 +8,7 @@ package com.mitrais.cdc.java;
  *  that works only for Strings.
  */
 
+@FunctionalInterface
 public interface TwoStringPredicate {
   /** Returns true if the first String is "better" than the second one,
    *  returns false otherwise. Concrete classes (or lambdas) that implement

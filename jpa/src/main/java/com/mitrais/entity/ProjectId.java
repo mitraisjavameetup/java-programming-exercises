@@ -10,10 +10,26 @@ public class ProjectId implements Serializable {
     private String projectName;
     private String role;
 
-    public ProjectId() {
-
-    }
-
     public ProjectId(String projectName, String role) {
+        this.projectName = projectName;
+        this.role = role;
     }
+
+    public String getProjectName() {
+        return projectName;
+    }
+
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public ProjectId() {}
 }

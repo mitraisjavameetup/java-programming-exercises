@@ -13,6 +13,7 @@ public class Address {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "t_address_id")
 	private Long id;
 	@Column(name = "address")
 	private String address;

@@ -22,13 +22,38 @@ public class ColorPanel5 extends JPanel {
   public ColorPanel5() {
 	//Set background color to Red
     //call KeyListener
+	  setBackground(Color.RED);
+	  
+	  //Allows listening to keyboard events.
+	  setFocusable(true);
+	  requestFocusInWindow();
+	  addKeyListener(new ColorChanger());
   }
   
   private class ColorChanger extends KeyAdapter {
-    public void keyTyped() {
+    public void keyPressed(KeyEvent e) {
       /*TO DO
        * give logic to set background color when user press "r", "y", "g", and "b" from keyboard
        */
+    	String key = KeyEvent.getKeyText(e.getKeyCode()).toLowerCase();
+    	System.out.println(KeyEvent.getKeyText(e.getKeyCode()));
+    	switch(key)
+    	{
+    	case "r":
+    		setBackground(Color.RED);
+    		break;
+    	case "y":
+    		setBackground(Color.YELLOW);
+    		break;
+    	case "g":
+    		setBackground(Color.GREEN);
+    		break;
+    	case "b":
+    		setBackground(Color.BLUE);
+    		break;
+    	default:
+    			break;
+    	}
     }
   }
 }

@@ -1,8 +1,12 @@
 package com.mitrais.cdc.java;
 
+import java.math.BigInteger;
 import java.util.*;
+import java.util.stream.DoubleStream;
 
 public class Utils {
+
+  static HashMap<Integer, Integer> primes = new HashMap<>();
   
   public static List<Double> randomNumberList(int size) {
 	  
@@ -13,7 +17,12 @@ public class Utils {
 	   * Use Math.random() and normal List methods.
 	   *
 	   */
-	  return null;
+	  List<Double> result = new ArrayList<>();
+
+	  for (int i = 0; i < size; i++)
+	      result.add(Math.random());
+
+	  return result;
   }
   
   public static double average(List<Double> nums) {
@@ -27,7 +36,7 @@ public class Utils {
 	   * how to turn a List<Double> into a DoubleStream.)
 	   * 
 	   */
-	  return 0;
+	  return nums.stream().mapToDouble(e->e).average().getAsDouble();
   }
   
   public static void removeBelow(List<Double> nums, double cutoff) {
@@ -40,6 +49,7 @@ public class Utils {
 	   * Use one of the methods from this lecture.
 	   * 
 	   */
+	  nums.removeIf(e -> e < cutoff);
   }
   
   public static void doubleAllValues(List<Double> nums) {
@@ -75,6 +85,15 @@ public class Utils {
 	   * Profile it and compare performance
 	   *
 	   */
-	  return 0;
+      return primes.computeIfAbsent(upperBound, n -> {
+          if (n <= 2) {
+              return(1);
+          }
+          if (Primes.isPrime(n)) {
+              return(1 + countPrimes(n - 1));
+          } else {
+              return(countPrimes(n - 1));
+          }
+      });
   }
 }

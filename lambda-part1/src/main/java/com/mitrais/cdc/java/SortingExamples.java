@@ -1,5 +1,7 @@
 package com.mitrais.cdc.java;
 
+import java.util.*;
+
 public class SortingExamples {
 
   // array containing a few Strings
@@ -10,9 +12,10 @@ public class SortingExamples {
 	  
 	  /*
 	   * TO DO
-	   * Sort words by length (i.e., shortest to longest)
+	   * Sort words by reverse length (i.e., shortest to longest)
 	   * 
 	   */
+	  Arrays.sort(sortedByLengthAscending, (s1, s2) -> StringUtils.sortLengthAscending(s1, s2));
 	  
 	  return sortedByLengthAscending;
   }
@@ -26,6 +29,7 @@ public class SortingExamples {
 	   * Sort words by reverse length (i.e., longest to shortest)
 	   * 
 	   */
+	  Arrays.sort(sortedByLengthDescending, (String s1, String s2) -> StringUtils.sortLengthDescending(s1, s2));
 	  
 	  return sortedByLengthDescending;
 			  
@@ -39,6 +43,7 @@ public class SortingExamples {
 	   * Sort words alphabetically by the first character only
 	   * 
 	   */
+	  Arrays.sort(sortedByFirstLetter, (String s1, String s2) -> StringUtils.sortByFirstLetter(s1, s2));
 	  
 	  return sortedByFirstLetter;
 			  
@@ -54,6 +59,7 @@ public class SortingExamples {
 	   * Hint: use method StringUtils.eChecker
 	   * 
 	   */
+	  Arrays.sort(sortedByContains, (String s1, String s2) -> StringUtils.eChecker(s1, s2));
 	  
 	  return sortedByContains;
 			  

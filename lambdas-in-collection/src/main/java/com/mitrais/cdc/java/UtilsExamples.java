@@ -2,6 +2,8 @@ package com.mitrais.cdc.java;
 
 import com.mitrais.cdc.java.timing.Op;
 
+import java.util.List;
+
 public class UtilsExamples { 
   
   public static double showAverages1(int size, double cutoff) {
@@ -14,7 +16,15 @@ public class UtilsExamples {
 	   * Compute the average again and verify that it is near to 0.75.
 	   *
 	   */
-	  return 0;
+	  List<Double> initial = Utils.randomNumberList(size);
+
+	  System.out.print(Utils.average(initial));
+
+	  Utils.removeBelow(initial, cutoff);
+
+	  System.out.print(Utils.average(initial));
+
+	  return Utils.average(initial);
   }
   
   public static double showAverages2(int size) {
@@ -27,8 +37,15 @@ public class UtilsExamples {
 	   * Compute the average again and verify that it is near to 1.0.
 	   * 
 	   */
+	  List<Double> initial = Utils.randomNumberList(size);
 
-	  return 0;
+	  System.out.print(Utils.average(initial));
+
+	  Utils.doubleAllValues(initial);
+
+	  System.out.print(Utils.average(initial));
+
+	  return Utils.average(initial);
     
   }
   

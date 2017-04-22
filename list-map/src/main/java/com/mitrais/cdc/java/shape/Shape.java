@@ -1,7 +1,7 @@
 package com.mitrais.cdc.java.shape;
 
 public interface Shape {
-	double getArea();
+	public double getArea();
 	
 	public static double sumAreas(Shape[] shapes) {
 		double sum = 0;

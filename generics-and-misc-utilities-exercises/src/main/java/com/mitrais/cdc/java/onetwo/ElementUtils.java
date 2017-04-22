@@ -14,14 +14,16 @@ public class ElementUtils {
   // returning null, it would make more sense to return an 
   // Optional<T>, but we haven't covered Optional yet either.
   
+  /**Gets the last element of the given list.**/	
   public static <T> T lastElement(List<T> elements) {
 	//TODO: Trainee should modify this method to return last element of List
-    return(null);
+    return(elements.get(elements.size() - 1));
   }
   
+  /**Gets the last element of the given array.**/
   public static <T> T lastElement(T[] elements) {
 	//TODO: Trainee should modify this method to return last element of Array
-    return(null);
+    return(elements[elements.length - 1]);
   }
   
   private ElementUtils() {} // Uninstantiatable class

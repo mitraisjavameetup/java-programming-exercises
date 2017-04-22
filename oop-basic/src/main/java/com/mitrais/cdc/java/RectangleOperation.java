@@ -10,9 +10,12 @@ public class RectangleOperation {
 	    /*TO DO
 	     * create looping to stored random using Math.random
 	     */
+		for (int x = 0; x < rectangles.length; x++)
+			rectangles[x] = new Rectangle (Math.random(), Math.random());
 	}
 	
 	public Rectangle[] getRandomRectangle(){
+		setRandomRectangle();
 		return rectangles;
 	}
 	
@@ -20,10 +23,17 @@ public class RectangleOperation {
 		/*TO DO
 		 * Create codes to get the smallest area from squares array
 		 */
+		smallest = rectangles[0].getArea();
+		for (Rectangle r:rectangles)
+		{
+			double area = r.getArea();
+			if (area < smallest)
+				smallest = area;
+		}
 	}
 	
 	public double getSmallest(){
-		
+		setSmallest(rectangles);
 		return smallest;
 	}
 	
@@ -31,10 +41,17 @@ public class RectangleOperation {
 		/*TO DO
 		 * Create codes to get the largest area from squares array
 		 */
+		largest = 0;
+		for (Rectangle r:rectangles)
+		{
+			double area = r.getArea();
+			if (area > largest)
+				largest = area;
+		}
 	}
 	
 	public double getLargest(){
-		
+		setLargest(rectangles);
 		return largest;
 	}
 	
@@ -42,10 +59,14 @@ public class RectangleOperation {
 		/*TO DO
 		 * Create codes to get the sum area from squares array
 		 */
+		for (Rectangle r:rectangles)
+		{
+			sum = sum + r.getArea();
+		}
 	}
 	
 	public double getSum(){
-		
+		setSum(rectangles);
 		return sum;
 	}
 

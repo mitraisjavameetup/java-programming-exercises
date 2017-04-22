@@ -4,24 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  *   Employee is entity mapped to table
@@ -42,34 +25,52 @@ import javax.persistence.Table;
  * 	 all setters method should return object itself, or this.
  **/
 // TODO please add annotation for entity class
-
+@Entity
+@Table (name = "t_employee")
 // TODO please add static query for Employee.filterByLocation and Employee.filterByEmploymentHistory (with JOIN)
-
+@NamedQueries({
+		@NamedQuery(name="filterByLocation",
+				query= "SELECT e FROM Employee e JOIN e.branchOffice o WHERE o.city = :location"),
+		@NamedQuery(name="filterByEmploymentHistory",
+				query= "SELECT e FROM Employee e JOIN e.projects p WHERE p.id = :projectId")
+})
 // TODO please add annotation to set Entity Listener
-
+@EntityListeners(EmployeeEntityListener.class)
 public class Employee {
 	// TODO implement this entity class
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
 	private String name;
+	@Column(name = "DATE_OF_BIRTH")
 	private Date dateOfBirth;
 	private String gender;
+	@Column(name = "MARITAL_STATUS")
 	private String maritalStatus;
 	private String phone;
 	private String email;
+	@Column(name = "HIRE_DATE")
 	private Date hireDate;
+	@Column(name = "OFFICE_ID")
 	private String officeLocation;
 	private Date lastModified;
 	private Period period;
 	// TODO @OneToOne association/relationship with Address entity
 	//      association is optional, cascading all operations
+	@OneToOne(cascade = CascadeType.ALL)
 	private Address address;
 	// TODO @OneToMany association with GradeHistory entity
 	//   	cascading all operations, and remove orphan
 	// 		join column must no be null
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, targetEntity = GradeHistory.class, mappedBy = "employeeId")
 	private List<GradeHistory> grades;
 	// TODO @ManyToOne association with BranchOffice entity
+	@ManyToOne(cascade = CascadeType.ALL)
 	private BranchOffice branchOffice;
 	// TODO @ManyToMany association with InternalProject entity
+	@ManyToMany(targetEntity = InternalProject.class)
+	@JoinTable(name = "t_employee_project", joinColumns = @JoinColumn(name = "employee_id", referencedColumnName = "id")
+			, inverseJoinColumns = @JoinColumn(name = "internal_project_id", referencedColumnName = "id"))
 	private List<InternalProject> projects;
 
 	public Employee() {

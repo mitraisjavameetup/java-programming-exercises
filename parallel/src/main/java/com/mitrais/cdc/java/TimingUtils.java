@@ -11,5 +11,6 @@ public class TimingUtils {
     System.out.println(resultMessage);
     double elapsedSeconds = (endTime - startTime)/ONE_BILLION;
     System.out.printf("  Elapsed time: %.3f seconds.%n", elapsedSeconds);
+    System.out.println("=======================================");
   }
 }

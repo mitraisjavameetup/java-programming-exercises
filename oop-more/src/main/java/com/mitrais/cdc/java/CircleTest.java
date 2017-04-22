@@ -11,6 +11,7 @@ package com.mitrais.cdc.java;
 
 public class CircleTest {
   public static void main(String[] args) {
-	  
+	  Circle circle = new Circle(Math.random());
+	  System.out.println(circle);
   }
 }
