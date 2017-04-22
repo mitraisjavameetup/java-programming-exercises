@@ -1,5 +1,9 @@
 package com.mitrais.cdc.java.onetwo;
-
+/**
+ * 
+ * @author mitrais
+ * ElementUtils main class
+ */
 import java.util.*;
 
 public class ElementUtilsMain {

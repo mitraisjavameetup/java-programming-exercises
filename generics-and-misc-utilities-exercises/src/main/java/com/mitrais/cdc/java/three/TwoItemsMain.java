@@ -1,4 +1,9 @@
 package com.mitrais.cdc.java.three;
+/**
+ * 
+ * @author mitrais
+ * TwoItems main class
+ */
 
 public class TwoItemsMain {
 	public static void main(String[] args) {

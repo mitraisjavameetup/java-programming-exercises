@@ -1,6 +1,14 @@
 package com.mitrais.cdc.java.shape;
 
-public class Circle implements Shape {
+/**
+ * Mitrais Java Training List
+ * Circle class
+ * @author mitrais
+ * @version 1.1
+ *
+ */
+
+public class Circle extends Shape {
 	private double radius;
 
 	/** Builds a Circle with the given radius. */
@@ -33,5 +41,10 @@ public class Circle implements Shape {
 	 */
 	public void setArea(double area) {
 	  radius = Math.sqrt(area / Math.PI);
+	}
+	
+	@Override
+	public String toString(){
+		return Double.toString(getArea());
 	}
 }

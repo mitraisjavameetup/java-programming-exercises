@@ -3,7 +3,12 @@ import java.util.concurrent.*;
 
 /** Second variation: main class implements Runnable.
  */
-
+/**
+ * 
+ * @author Relung Satria
+ * Coin Flipper class
+ *
+ */
 public class FlipCoins2 implements Runnable {
   
   public FlipCoins2() {
@@ -16,10 +21,9 @@ public class FlipCoins2 implements Runnable {
 	// an instance of an inner class directly from main. Again, this is because
     // in main, the outer class has not yet been built.
 	  
-    int poolSize = 10;
+
     
     //TODO: Instantiate ExcecutorService class with poolsize as stated above
-
     
     
     //TODO execute this 5 times (or several times) concurrently
@@ -36,24 +40,32 @@ public class FlipCoins2 implements Runnable {
   
   
  public static void main(String[] args) {
-   new FlipCoins2();
+	 int poolSize = 10;
+	 ExecutorService tasks = Executors.newFixedThreadPool(poolSize);
+	 for(int i = 0; i < 10; i++){
+		 tasks.execute(new FlipCoins2());
+	 }
+     tasks.shutdown();
  }
  
  
  
-  @Override
-  public void run() {
 	//TODO: Just copy run() method from question number 1 :)
 
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  @Override
+  public void run() {
+	int counter = 0;
+	  for(int i = 0; i < 1000; i++){
+		  double rand = Math.random();
+		  if(rand <= 0.5){
+			  counter++;
+		  } else {
+			  counter = 0;
+		  }
+		  
+		  if(counter >= 3){
+			  System.out.printf("%s got %d heads in a row!!%n", Thread.currentThread().getName(), counter);
+		  }
+	  }  
   }
 }

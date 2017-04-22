@@ -13,7 +13,19 @@ package com.mitrais.cdc.java;
  *  e.g : the return will be String as "Square (width/height=10.0, area=100.0)"
  * 
  */
-
-public class Square{
-  
+/*
+ * Square class is extending from Rectangle class
+ */
+public class Square extends Rectangle {
+	/*
+	 * Constructor
+	 */
+	public Square(double width) {
+		super(width, width);
+	}
+	
+	@Override
+	public String toString() {
+		return "Square (Width = " + getWidth() + ", area = " + getArea() + ")";
+	}
 }

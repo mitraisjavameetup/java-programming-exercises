@@ -1,6 +1,11 @@
 package com.mitrais.cdc.java.three;
 import javax.swing.*;
-
+/**
+ * 
+ * @author Relung Satria
+ * Coin Flipper class
+ *
+ */
 public class LabelingCoinFlipper implements Runnable {
   private JLabel label;
 
@@ -11,7 +16,7 @@ public class LabelingCoinFlipper implements Runnable {
 
   @Override
   public void run() {
-    pause(200);
+    
     
     //TODO: create 'for' loop 1000 times
   	//and also place counter in it.
@@ -21,7 +26,15 @@ public class LabelingCoinFlipper implements Runnable {
   	//"Heads: 3"  
     //do not forget to add "pause(5);" after change the label text
     //so you could see the entire process
-    
+	int counter = 0;
+	  for(int i = 0; i < 1000; i++){
+		  double rand = Math.random();
+		  if(rand <= 0.5){
+			  counter++;
+		  }
+		  label.setText(String.format("Heads: %d", counter));
+		  pause(5);
+	  }  
     
     
     

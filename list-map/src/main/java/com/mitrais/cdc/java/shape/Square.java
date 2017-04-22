@@ -1,5 +1,13 @@
 package com.mitrais.cdc.java.shape;
 
+/**
+ * Mitrais Java Training List
+ * Square class
+ * @author mitrais
+ * @version 1.1
+ *
+ */
+
 public class Square extends Rectangle {
   public Square(double width) {
     super(width, width);
