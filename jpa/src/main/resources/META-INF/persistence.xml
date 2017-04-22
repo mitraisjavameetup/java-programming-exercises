@@ -11,8 +11,8 @@
         <class>com.mitrais.entity.Address</class>
         <class>com.mitrais.entity.GradeHistory</class>
         <class>com.mitrais.entity.BranchOffice</class>
-        <class>com.mitrais.entity.Project</class>
-
+        <class>com.mitrais.entity.InternalProject</class> 
+        
         <properties>
             <property 
                 name="hibernate.connection.url" 
@@ -22,7 +22,7 @@
                 name="hibernate.connection.driver_class" 
                 value="org.h2.Driver"
             />
-            <property name="hibernate.connection.username" value=""/>
+            <property name="hibernate.connection.username" value="root"/>
             <property name="hibernate.connection.password" value=""/>
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
