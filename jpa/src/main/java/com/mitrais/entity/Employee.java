@@ -42,34 +42,71 @@ import javax.persistence.Table;
  * 	 all setters method should return object itself, or this.
  **/
 // TODO please add annotation for entity class
-
+@Entity
+@Table(name="t_employee")
 // TODO please add static query for Employee.filterByLocation and Employee.filterByEmploymentHistory (with JOIN)
-
+@NamedQueries({
+	@NamedQuery(
+			name="Employee.filterByLocation",
+			query= "SELECT e FROM Employee e WHERE e.officeLocation = :officeLocation "
+	), 
+	@NamedQuery(
+			name="Employee.filterByEmploymentHistory",
+			query="SELECT e FROM Employee e, EmploymentHistory h WHERE e.id=h.empId AND e.id = :id"
+	)
+})
 // TODO please add annotation to set Entity Listener
-
+@EntityListeners(EmployeeEntityListener.class)
 public class Employee {
 	// TODO implement this entity class
+	@Id
+	@GeneratedValue
+	@Column (name = "id")
 	private Long id;
+	@Column (name = "name")
 	private String name;
+	@Column (name = "date_of_birth")
 	private Date dateOfBirth;
+	@Column (name = "gender")
 	private String gender;
+	@Column (name = "marital_status")
 	private String maritalStatus;
+	@Column (name = "phone")
 	private String phone;
+	@Column (name = "email")
 	private String email;
+	@Column (name = "hire_date")
 	private Date hireDate;
 	private String officeLocation;
 	private Date lastModified;
+	@Embedded
 	private Period period;
+	
 	// TODO @OneToOne association/relationship with Address entity
 	//      association is optional, cascading all operations
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id")
 	private Address address;
+	
 	// TODO @OneToMany association with GradeHistory entity
 	//   	cascading all operations, and remove orphan
 	// 		join column must no be null
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval=true)
+    @JoinColumn(name = "grade_id", nullable=false)
 	private List<GradeHistory> grades;
+	
 	// TODO @ManyToOne association with BranchOffice entity
+	@ManyToOne
+    @JoinColumn(name = "branch_id")
 	private BranchOffice branchOffice;
+	
 	// TODO @ManyToMany association with InternalProject entity
+	@ManyToMany
+	@JoinTable(
+	      name="t_project_id",
+	      joinColumns=@JoinColumn(name="EMP_ID", referencedColumnName="id"),
+	      inverseJoinColumns=@JoinColumn(name="PROJ_ID", referencedColumnName="id")
+	)
 	private List<InternalProject> projects;
 
 	public Employee() {

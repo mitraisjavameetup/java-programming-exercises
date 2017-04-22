@@ -6,7 +6,7 @@ public class StreamPreview {
   public static void main(String[] args) {
     List<String> words = Arrays.asList("hi", "hello", "bye", "goodbye");
     String s1 = words.stream()
-                     .filter(word -> word.contains("o"))
+                     .filter(word -> word.contains("e"))
                      .findFirst()
                      .orElse(null);
     System.out.println(s1);

@@ -27,6 +27,8 @@ public class BranchOffice {
 	@Column(name = "postal_code")
 	private String postalCode;
 	// TODO add annotation when necessary
+	@OneToMany
+	@JoinColumn(name="employee_id")
 	private List<Employee> employees;
 
 	public BranchOffice() {}
