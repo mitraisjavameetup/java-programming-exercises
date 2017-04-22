@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+
 @Entity
 @Table(name = "t_address")
 public class Address {
@@ -21,7 +22,7 @@ public class Address {
 	@Column(name = "postal_code")
 	private String postalCode;
 	// TODO add Employee entity when needed
-	// private Employee employee;
+	//private Employee employee;
 
 	public Address() {}
 

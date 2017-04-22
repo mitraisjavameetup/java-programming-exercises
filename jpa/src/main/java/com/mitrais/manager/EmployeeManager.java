@@ -1,6 +1,7 @@
 package com.mitrais.manager;
 
 import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 
 import com.mitrais.entity.Employee;
 import com.mitrais.entity.InternalProject;
@@ -31,8 +32,9 @@ public class EmployeeManager {
 	 *  write Employee to database/ persistent storage
 	 *  @param employee  the row to be inserted
 	 **/
+	@Transactional
 	public void create(Employee employee) {
-		// TODO create employee and save to database
+		entityManager.persist(employee);
 
 	}
 
@@ -44,7 +46,8 @@ public class EmployeeManager {
 	 **/
 	public Employee read(long employeeId) {
 		// TODO find employee and return
-		return new Employee();
+		Employee emp = entityManager.find(Employee.class, employeeId);
+		return emp;
 	}
 
 	/**
@@ -55,7 +58,9 @@ public class EmployeeManager {
 	 **/
 	public void update(Employee employee) {
 		// TODO update row in table 
-
+		if(read(employee.getId())!=null){
+			entityManager.merge(employee);
+		}
 	}
 
 	/**
@@ -64,6 +69,9 @@ public class EmployeeManager {
 	 **/
 	public void delete(Employee employee) {
 		// TODO delete row in table
+		if(read(employee.getId()) != null){
+			entityManager.remove(employee.getId());
+		}
 
 	}
 
@@ -76,14 +84,19 @@ public class EmployeeManager {
 	 *  write Employment History to database/ persistent storage
 	 *  @param project  the row to be inserted
 	 **/
+	@Transactional
 	public void createEmploymentHistory(EmploymentHistory project) {
 		// TODO create project and save to database
+		entityManager.persist(project);
 
 	}
 
 	public List getEmployeeByLocation(String officeLocation) {
 		// TODO please execute static query Employee.filterByLocation
-		return null;
+		
+		return entityManager.createNamedQuery("Employee.filterByLocation")
+				.setParameter("officeLocation", officeLocation)
+				.getResultList();
 	}
 
 	public List getEmployeeByProject(String projectName) {
@@ -93,6 +106,8 @@ public class EmployeeManager {
 
 	public void removeProjectByEmployeeID(Long empId) {
 		// TODO please create dynamic query to delete employee by ID
+		entityManager.createQuery("DELETE E FROM Employee E WHERE E.empId = :empId ")
+		.setParameter("empId", empId);
 	}
 
 	public List getAllEmploymentHistory() {

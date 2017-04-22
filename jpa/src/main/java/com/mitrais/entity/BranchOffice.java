@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -27,6 +28,7 @@ public class BranchOffice {
 	@Column(name = "postal_code")
 	private String postalCode;
 	// TODO add annotation when necessary
+	@OneToMany
 	private List<Employee> employees;
 
 	public BranchOffice() {}
