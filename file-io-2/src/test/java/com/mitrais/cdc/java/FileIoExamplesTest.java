@@ -1,17 +1,26 @@
 package com.mitrais.cdc.java;
 
 import static org.junit.Assert.*;
+
+import java.util.Scanner;
+
 import org.junit.Test;
 import com.mitrais.cdc.java.FileIOExamples;
 
 public class FileIoExamplesTest {
 	
+	public FileIoExamplesTest(){
+		
+	}
 	@Test
-	public void print10LetterWord() throws Exception {
+	public static void print10LetterWord() throws Exception {
 		
 		assertEquals(FileIOExamples.print10LetterWord(FileIOExamples.testWords.stream()), "boo1234567");
 		assertEquals(FileIOExamples.print10LetterWord(FileIOExamples.filename), "aardwolves");
+		System.out.println(FileIOExamples.print10LetterWord(FileIOExamples.testWords.stream()));
+		System.out.println(FileIOExamples.print10LetterWord(FileIOExamples.filename));
 	}
+	
 	
 	@Test
 	public void printNLetterWord() throws Exception {

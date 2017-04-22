@@ -1,8 +1,16 @@
 package com.mitrais.cdc.java;
 
 public class Square {
-
+	
 	public double width;
+		public Square (double width) {
+			this.width = width;
+			
+		}
+		public double getArea(){
+			return width*width;
+	
+		}
 
 	/*
 	 * todo: make a Square class with various capabilities below:
@@ -13,5 +21,9 @@ public class Square {
 	 * 5. Add a toString method
 	 * 
 	 */
-	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return super.toString();
+	}
 }

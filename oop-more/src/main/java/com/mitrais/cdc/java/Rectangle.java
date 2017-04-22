@@ -11,5 +11,57 @@ package com.mitrais.cdc.java;
  */
 
 public class Rectangle {
+	public double width, height;
+	/**
+	 * constractor for Rectangle
+	 * @param width , height
+	 */
+	public Rectangle (double width, double height){
+		this.width = width;
+		this.height= height;
 
+	}
+	
+	/**
+	 * Method for get the width and height for Rectangle
+	 * @return area
+	 */
+	
+	public double getArea(){
+		return width * height ;
+		
+	}
+	
+	/**
+	 * Method for get the width for Rectangle
+	 * @return width
+	 */
+	
+	public double getWidth() {
+		return width;
+	}
+	/**
+	 * Method for get the Width for Rectangle
+	 * @param width
+	 */
+	
+	public void setWidth(double width) {
+		this.width = width;
+	}
+	/**
+	 * Method for get the height for Rectangle
+	 * @return radius
+	 */
+	public double getHeight() {
+		return height;
+	}
+	/**
+	 * Method for get the Height for Rectangle
+	 * @param height
+	 */
+	
+	public void setHeight(double height) {
+		this.height = height;
+	}
+	
 }

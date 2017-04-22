@@ -10,5 +10,6 @@ package com.mitrais.cdc.java;
  */
 
 public class SquareTest {
+	
 
 }

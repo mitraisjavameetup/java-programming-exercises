@@ -42,34 +42,77 @@ import javax.persistence.Table;
  * 	 all setters method should return object itself, or this.
  **/
 // TODO please add annotation for entity class
-
+@Entity
+@Table(name = "t_employee")
 // TODO please add static query for Employee.filterByLocation and Employee.filterByEmploymentHistory (with JOIN)
 
 // TODO please add annotation to set Entity Listener
-
+@EntityListeners (EmployeeEntityListener.class)
 public class Employee {
 	// TODO implement this entity class
+	
+	@Id@GeneratedValue
+	@Column (name = "id")
 	private Long id;
+	
+	@Column (name = "name")
 	private String name;
+	
+	@Column (name = "dateOfBirth")
 	private Date dateOfBirth;
+	
+	@Column (name = "gender")
 	private String gender;
+	
+	@Column (name = "maritalStatus")
 	private String maritalStatus;
+	
+	@Column (name = "phone")
 	private String phone;
+	
+	@Column (name = "email")
 	private String email;
+	
+	@Column (name = "hireDate")
 	private Date hireDate;
+	
+	@Column (name = "officeLocation")
 	private String officeLocation;
+	
+	@Column (name = "lastModified")
 	private Date lastModified;
+	
+	@Column (name = "period")
 	private Period period;
 	// TODO @OneToOne association/relationship with Address entity
 	//      association is optional, cascading all operations
+	@OneToOne (fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@JoinColumn (name = "address_id" )
+	
+	@Column (name = "address")
 	private Address address;
 	// TODO @OneToMany association with GradeHistory entity
 	//   	cascading all operations, and remove orphan
 	// 		join column must no be null
+	@OneToMany (fetch=FetchType.LAZY, cascade=CascadeType.ALL, orphanRemoval= true)
+	@JoinColumn (name = "employee_id", referencedColumnName = "id", nullable = false)
+	
+	@Column (name = "grades")
 	private List<GradeHistory> grades;
 	// TODO @ManyToOne association with BranchOffice entity
+	@ManyToOne (fetch = FetchType.LAZY, optional = true)
+	@JoinColumn (name = "office_id", nullable = true)
+	
+	@Column (name = "branchoffice")
 	private BranchOffice branchOffice;
 	// TODO @ManyToMany association with InternalProject entity
+	@ManyToMany (fetch = FetchType.LAZY)
+	@JoinTable (name = "t_employee_project", joinColumns = @JoinColumn(
+			name = "employee_id", referencedColumnName = "id", nullable = false),
+	inverseJoinColumns = @JoinColumn(
+			name = "internal_project_id", referencedColumnName = "id", nullable = false))
+	
+	@Column (name = "projects")
 	private List<InternalProject> projects;
 
 	public Employee() {

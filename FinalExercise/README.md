@@ -1,0 +1,1 @@
+ it's same as file-io-2 exercise , but i add something new there like menu to shown an Output form FileIoExamplesTest
