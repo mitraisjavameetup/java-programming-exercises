@@ -16,7 +16,7 @@ import java.util.stream.*;
 
 public class StreamExamples {
 	
-	int arraySize = 10_000_000;
+	int arraySize = 1_000_000;
   
 	//TODO
 	//Make an “infinite” stream that generates random doubles between 0 and 10. Use it to

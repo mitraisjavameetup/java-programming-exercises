@@ -16,9 +16,7 @@ public class StreamExamples {
 	   * Don’t use map.
 	   * 
 	   */ 
-	  for (String string : words) {
-		System.out.printf("  %s/n", string);
-	}
+	  	words.forEach(e -> System.out.printf("  %s\n", e));
   }
   
   public static void printWordsNoSpace(){

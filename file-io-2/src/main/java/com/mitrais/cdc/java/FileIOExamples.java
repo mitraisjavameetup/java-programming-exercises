@@ -72,7 +72,8 @@ public class FileIOExamples {
 		 * use StreamAnalyzer interface to avoid repetitive code in the file-processing method.
 		 * 
 		 */
-		return StreamAnalyzer.analyzeFile(filename, x -> x.filter(s -> s.contains(subString)).count());
+		return StreamAnalyzer.analyzeFile(filename, line -> numWordsContaining(line, subString));
+		//return StreamAnalyzer.analyzeFile(filename, x -> x.filter(s -> s.contains(subString)).count()); equivalent with above
 	}	
 	
 }

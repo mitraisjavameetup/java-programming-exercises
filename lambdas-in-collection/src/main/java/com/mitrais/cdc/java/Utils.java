@@ -1,6 +1,10 @@
 package com.mitrais.cdc.java;
 
 import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.Collectors;
+import java.util.stream.DoubleStream;
+import java.util.stream.Stream;
 
 public class Utils {
   
@@ -13,7 +17,8 @@ public class Utils {
 	   * Use Math.random() and normal List methods.
 	   *
 	   */
-	  return null;
+
+	  return Stream.generate(() -> ThreadLocalRandom.current().nextDouble()).limit(size).collect(Collectors.toList());
   }
   
   public static double average(List<Double> nums) {
@@ -27,7 +32,7 @@ public class Utils {
 	   * how to turn a List<Double> into a DoubleStream.)
 	   * 
 	   */
-	  return 0;
+	  return nums.stream().mapToDouble(Double::doubleValue).average().getAsDouble();
   }
   
   public static void removeBelow(List<Double> nums, double cutoff) {
@@ -40,6 +45,7 @@ public class Utils {
 	   * Use one of the methods from this lecture.
 	   * 
 	   */
+	  nums.removeIf(e -> e < cutoff);
   }
   
   public static void doubleAllValues(List<Double> nums) {
@@ -66,6 +72,8 @@ public class Utils {
       return(countPrimes1(upperBound - 1));
     }
   }
+  
+
   
   public static int countPrimes(int upperBound) {
 	  
