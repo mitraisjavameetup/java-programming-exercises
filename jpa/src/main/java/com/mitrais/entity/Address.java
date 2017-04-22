@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -22,6 +23,8 @@ public class Address {
 	private String postalCode;
 	// TODO add Employee entity when needed
 	// private Employee employee;
+	@OneToOne(mappedBy="address")
+	private Employee employee;
 
 	public Address() {}
 
@@ -60,4 +63,14 @@ public class Address {
 		this.postalCode = postalCode;
 		return this;
 	}
+
+	public Employee getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
+	
+	
 }
