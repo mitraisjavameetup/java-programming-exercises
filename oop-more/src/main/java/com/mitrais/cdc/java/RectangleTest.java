@@ -10,5 +10,13 @@ package com.mitrais.cdc.java;
  */
 
 public class RectangleTest {
-
+	public static void main(String[] args) {
+		Rectangle r1 = new Rectangle();//Calling Rectangle Constructor without parameter
+		r1.setWidth(5);//set widht
+		r1.setHeight(12);//set height
+		System.out.println(r1);
+		
+		Rectangle r2 = new Rectangle(5, 12);//Calling rectangle constructor with parameter
+		System.out.println(r2);
+	}
 }

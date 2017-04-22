@@ -9,15 +9,23 @@ import javax.swing.*;
  */
 
 public class ColorPanel1 extends JPanel {
-  public ColorPanel1() {
-    //TO DO
-	//setBackground color as Red
-	//call separate class that available (ColorListener.java) as the mouseListener
-  }
-  
-  public void swapColors() {
-	//TO DO
-	//Method to give logic to change the background color
-	//if the background is Red now change to blue, and vice versa
-  }
+	private Color color;
+	private boolean status;
+	public ColorPanel1() {
+		//TO DO
+		//setBackground color as Red
+		//call separate class that available (ColorListener.java) as the mouseListener
+		setBackground(Color.RED);
+		status = true;
+		addMouseListener(new ColorListener(this));
+	}
+
+	public void swapColors() {
+		//TO DO
+		//Method to give logic to change the background color
+		//if the background is Red now change to blue, and vice versa
+		color = (status) ? Color.RED : Color.BLUE;
+		setBackground(color);
+		status = !status;
+	}
 }

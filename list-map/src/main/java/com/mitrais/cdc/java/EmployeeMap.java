@@ -1,5 +1,8 @@
 package com.mitrais.cdc.java;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class EmployeeMap {
 	
@@ -18,7 +21,13 @@ public class EmployeeMap {
 	 */
 	
 	public String runEmployeeMap() {
-	    return null;
+		Map<String, String> map = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+		map.put("a1234", "Steve Jobs");
+		map.put("a1235", "Scott McNealy");
+		map.put("a1236", "Jeff Bezos");
+		map.put("a1237", "Larry Ellison");
+		map.put("a1238", "Bill Gates");
+	    return map.get("A1237");
 	}
 		
 }

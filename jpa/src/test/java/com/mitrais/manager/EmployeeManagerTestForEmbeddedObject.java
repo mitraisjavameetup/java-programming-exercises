@@ -62,8 +62,7 @@ public class EmployeeManagerTestForEmbeddedObject
 
 		try {
 			conn = DriverManager
-				.getConnection( jdbc_url, 
-					props
+				.getConnection( jdbc_url
 				);
 		} catch( SQLException ex ) {
 			System.err.println( ex.toString() );

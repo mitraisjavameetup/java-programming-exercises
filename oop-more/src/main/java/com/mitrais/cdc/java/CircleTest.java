@@ -11,6 +11,11 @@ package com.mitrais.cdc.java;
 
 public class CircleTest {
   public static void main(String[] args) {
+	  Circle c1 = new Circle(20.5);//Calling circle class with radius parameter
+	  System.out.println(c1);
 	  
+	  Circle c2 = new Circle();//Calling circle class without radius parameter
+	  c2.setRadius(20.5);//set radius variable
+	  System.out.println(c2);
   }
 }

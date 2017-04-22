@@ -9,7 +9,6 @@ import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,6 +21,10 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
+
 
 /**
  *   Employee is entity mapped to table
@@ -46,30 +49,72 @@ import javax.persistence.Table;
 // TODO please add static query for Employee.filterByLocation and Employee.filterByEmploymentHistory (with JOIN)
 
 // TODO please add annotation to set Entity Listener
+@NamedQueries({
+		@NamedQuery(name="Employee.filterByLocation", query="SELECT E FROM Employee E WHERE E.officeLocation = :officeLocation"),
+		@NamedQuery(name="Employee.filterByEmploymentHistory", query="SELECT E FROM Employee E")
+			
+})
 
+@Entity
+@EntityListeners(EmployeeEntityListener.class)
+@Table(name="t_employee")
 public class Employee {
 	// TODO implement this entity class
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
+	
+	@Column(name="name")
 	private String name;
+	
+	@Column(name="date_of_birth")
+	@Temporal(TemporalType.DATE)
 	private Date dateOfBirth;
+	
+	@Column(name="gender")
 	private String gender;
+	
+	@Column(name="marital_status")
 	private String maritalStatus;
+	
+	@Column(name="phone")
 	private String phone;
+	
+	@Column(name="email", unique = true)
 	private String email;
+	
+	@Column(name="hire_date")
+	@Temporal(TemporalType.DATE)
 	private Date hireDate;
+	
+	@Column(name="office_location")
 	private String officeLocation;
+	
+	@Column(name="last_modified")
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date lastModified;
+	
+	@Embedded
 	private Period period;
 	// TODO @OneToOne association/relationship with Address entity
 	//      association is optional, cascading all operations
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	@Column(name="address_id")
 	private Address address;
 	// TODO @OneToMany association with GradeHistory entity
 	//   	cascading all operations, and remove orphan
 	// 		join column must no be null
+	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true)
 	private List<GradeHistory> grades;
 	// TODO @ManyToOne association with BranchOffice entity
+	@Transient
+	@ManyToOne
+	@JoinColumn(name="office_id")
 	private BranchOffice branchOffice;
 	// TODO @ManyToMany association with InternalProject entity
+	@ManyToMany
+	@JoinTable(name="t_employee_project")
 	private List<InternalProject> projects;
 
 	public Employee() {

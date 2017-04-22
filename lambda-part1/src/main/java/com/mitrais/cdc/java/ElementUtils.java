@@ -16,7 +16,7 @@ public class ElementUtils {
 	 * This method is normal Java 7 code.
 	 */	
 	
-	return null;
+	return tester.isBetter(element1, element2) ? element1:element2;
   }
   
   private ElementUtils() {}

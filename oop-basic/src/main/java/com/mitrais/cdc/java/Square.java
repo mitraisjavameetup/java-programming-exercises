@@ -3,6 +3,21 @@ package com.mitrais.cdc.java;
 public class Square {
 
 	public double width;
+	
+	public double getArea(){
+		return width*width;
+	}
+
+	public Square(double width) {
+		super();
+		this.width = width;
+	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "Width = "+width;
+	}
 
 	/*
 	 * todo: make a Square class with various capabilities below:

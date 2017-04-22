@@ -11,5 +11,68 @@ package com.mitrais.cdc.java;
  */
 
 public class Rectangle {
-
+	//Declaring @width and @height variable
+	private double width, height;
+	/**
+	 * calculate area of rectangle	
+	 * @return width*height
+	 */
+	
+	public double getArea(){
+		return width*height;
+	}
+	/**
+	 * Constructor with parameter	
+	 * @param width
+	 * @param height
+	 */
+	public Rectangle (double width, double height){
+		super();
+		this.width = width;
+		this.height = height;
+	}
+	/**
+	 * implementing overloading
+	 * Constructor without parameter
+	 */
+	public Rectangle(){
+		super();
+	}
+	/**
+	 * getter for width
+	 * @return width
+	 */
+	public double getWidth() {
+		return width;
+	}
+	/**
+	 * setter for width
+	 * @param width
+	 */
+	public void setWidth(double width) {
+		this.width = width;
+	}
+	/**
+	 * getter for height
+	 * @return height
+	 */
+	public double getHeight() {
+		return height;
+	}
+	/**
+	 * setter for height
+	 * @param height
+	 */
+	public void setHeight(double height) {
+		this.height = height;
+	}
+	/**
+	 * overriding toString method
+	 * @return Rectangle (width=1.6965338407715858, height=4.389922209793273, area=7.4476515872690685)
+	 */
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "Rectangle (width="+width+", height="+height+", area="+getArea()+")";
+	}
 }

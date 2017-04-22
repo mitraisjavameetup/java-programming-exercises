@@ -5,8 +5,19 @@ public class CircleOperation {
 	public double smallest, largest, sum = 0;
 	Circle[] circles;
 	
+	public CircleOperation() {
+		super();
+		setRandomCircle();
+		setSmallest(circles);
+		setLargest(circles);
+		setSum(circles);
+	}
+
 	public void setRandomCircle(){
 		circles = new Circle[intRandom];
+		for (int i=0;i<circles.length;i++){
+			circles[i] = new Circle(Math.random());
+		}
 	    /*TO DO
 	     * create looping to stored random using Math.random
 	     */
@@ -17,6 +28,14 @@ public class CircleOperation {
 	}
 	
 	public void setSmallest(Circle[] circles){
+		
+		double smallest = Integer.MAX_VALUE;
+		
+		for (int i = 0; i < circles.length; i++) {
+			if(circles[i].getArea() < smallest){
+				this.smallest = smallest = circles[i].getArea();
+			}
+		}
 		/*TO DO
 		 * Create codes to get the smallest area from circles array
 		 */
@@ -28,9 +47,13 @@ public class CircleOperation {
 	}
 	
 	public void setLargest(Circle[] circles){
-		/*TO DO
-		 * Create codes to get the largest area from circles array
-		 */
+		double largest = Integer.MIN_VALUE;
+		
+		for (int i = 0; i < circles.length; i++) {
+			if(circles[i].getArea() > largest){
+				this.largest = largest = circles[i].getArea();
+			}
+		}
 	}
 	
 	public double getLargest(){
@@ -39,6 +62,12 @@ public class CircleOperation {
 	}
 	
 	public void setSum(Circle[] circles){
+		double sum = 0;
+		for (int i = 0; i < circles.length; i++) {
+			sum = sum + circles[i].getArea();
+			this.sum = sum;
+		}
+		
 		/*TO DO
 		 * Create codes to get the sum area from circles array
 		 */
