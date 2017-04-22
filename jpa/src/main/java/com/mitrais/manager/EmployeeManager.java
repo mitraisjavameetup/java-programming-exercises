@@ -33,6 +33,11 @@ public class EmployeeManager {
 	 **/
 	public void create(Employee employee) {
 		// TODO create employee and save to database
+		entityManager.getTransaction().begin();
+		entityManager.persist(employee);
+		entityManager.getTransaction().commit();
+		entityManager.close();
+
 
 	}
 
@@ -43,8 +48,9 @@ public class EmployeeManager {
 	 *	@return Employee entity mapped from table, otherwise null
 	 **/
 	public Employee read(long employeeId) {
+		Employee employ = entityManager.find(Employee.class, employeeId);
 		// TODO find employee and return
-		return new Employee();
+		return employ;
 	}
 
 	/**
@@ -55,7 +61,10 @@ public class EmployeeManager {
 	 **/
 	public void update(Employee employee) {
 		// TODO update row in table 
-
+		entityManager.getTransaction().begin();
+		entityManager.merge(employee);
+		entityManager.getTransaction().commit();
+		entityManager.close();
 	}
 
 	/**
@@ -64,7 +73,10 @@ public class EmployeeManager {
 	 **/
 	public void delete(Employee employee) {
 		// TODO delete row in table
-
+		entityManager.getTransaction().begin();
+		entityManager.remove(employee);
+		entityManager.getTransaction().commit();
+		entityManager.close();
 	}
 
 	public void close() {
@@ -78,16 +90,21 @@ public class EmployeeManager {
 	 **/
 	public void createEmploymentHistory(EmploymentHistory project) {
 		// TODO create project and save to database
+		entityManager.getTransaction().begin();
+		entityManager.persist(project);
+		entityManager.getTransaction().commit();
+		entityManager.close();
 
 	}
 
 	public List getEmployeeByLocation(String officeLocation) {
 		// TODO please execute static query Employee.filterByLocation
-		return null;
+		List list = (List) entityManager.createNamedQuery("Employee.filterByLocation", Employee.class).setParameter("officeLocation", officeLocation);
+
+		return list;
 	}
 
 	public List getEmployeeByProject(String projectName) {
-		// TODO please execute static query Employee.filterByProject
 		return null;
 	}
 

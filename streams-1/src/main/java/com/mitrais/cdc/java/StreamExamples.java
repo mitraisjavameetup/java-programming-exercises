@@ -1,8 +1,16 @@
 package com.mitrais.cdc.java;
 
 import java.util.*;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class StreamExamples {
+	public static void main(String[] args) {
+		printWordsWithSpace();
+		printWordsNoSpace();
+		firstFunnyString("E");
+		firstFunnyString("Q");
+	}
 	
   public static List<String> words = Arrays.asList("hi", "hello", "hola", "bye", "goodbye", "adios");  
   
@@ -14,8 +22,9 @@ public class StreamExamples {
 	   * Don’t use map.
 	   * 
 	   */ 
+	words.stream().forEach(s->System.out.println("  "+s));
   }
-  
+  	
   public static void printWordsNoSpace(){
 		
 	  /*
@@ -25,7 +34,9 @@ public class StreamExamples {
 	   * approach as in #1, so the point is to use a method reference here, 
 	   * as opposed to an explicit lambda in problem 1.
 	   * 
-	   */	
+	   */
+	  words.stream().forEach(System.out::println);
+	  
   }
   
   public static List<String> excitingWordsStreams(){
@@ -36,8 +47,9 @@ public class StreamExamples {
 	   * List<String> excitingWords = StringUtils.transformedList(words, s -> s + "!");
 	   * but this time use streams and the builtin “map” method.
 	   * 
-	   */  
-	  return null; 
+	   */
+	  List<String> newWords = words.stream().map(w->w+"!").collect(Collectors.toList());
+	  return newWords; 
   }
   
   public static List<String> eyeWordsStreams(){
@@ -48,8 +60,9 @@ public class StreamExamples {
 	   * List<String> eyeWords = StringUtils.transformedList(words, s -> s.replace("i", "eye"));
 	   * but this time use streams and the builtin “map” method.
 	   * 
-	   */  
-	  return null;	    
+	   */
+	  List<String> newWords = words.stream().map(w->w.replace("i", "eye")).collect(Collectors.toList());
+	  return newWords;	    
   }
   
   public static List<String> upperCaseWordsStreams(){
@@ -60,8 +73,9 @@ public class StreamExamples {
 	   * List<String> upperCaseWords = StringUtils.transformedList(words, String::toUpperCase);
 	   * but this time use streams and the builtin “map” method.
 	   * 
-	   */  
-	    return null;    
+	   */
+	  List<String> newWords = words.stream().map(w->w.toUpperCase()).collect(Collectors.toList());
+	  return newWords;
   }
   
   public static List<String> shortWordsStreams(){
@@ -73,7 +87,8 @@ public class StreamExamples {
 	   * but this time use “filter”
 	   * 
 	   */  
-	    return null; 
+	  List<String> newWords = words.stream().filter(w->w.length()<4).collect(Collectors.toList());
+	  return newWords;
 	  
   }
   
@@ -86,7 +101,8 @@ public class StreamExamples {
 	   * but this time use “filter”
 	   * 
 	   */  
-	  return null;
+	  List<String> newWords = words.stream().filter(w->w.contains("b")).collect(Collectors.toList());
+	  return newWords;
   }
   
   public static List<String> evenLengthWords(){
@@ -98,7 +114,8 @@ public class StreamExamples {
 	   * but this time use “filter”
 	   * 
 	   */  
-	  return null;
+	  List<String> newWords = words.stream().filter(w->w.length()%2==0).collect(Collectors.toList());
+	  return newWords;
   }
   
   public static String firstFunnyString(String containedTest) {
@@ -110,7 +127,10 @@ public class StreamExamples {
 	   * keep only the ones that contain containedTest arg,
 	   * and return string "No Match" when no result.
 	   */
-	  return null;
+	  
+	  String newWords = words.stream().map(w->w.toUpperCase()).filter(w->w.length()<4&&w.contains(containedTest)).findFirst().orElse("No match");
+	  System.out.println(newWords);
+	  return newWords;
   }
   
   
@@ -121,7 +141,8 @@ public class StreamExamples {
 	  * Create output the final result of words as an array instead of a List
 	  * 
 	  */
-	  return null;
+	  String[] arr = words.stream().toArray(size->new String[size]);
+	  return arr;
   }
   
 }

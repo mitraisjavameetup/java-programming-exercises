@@ -16,7 +16,14 @@ public class ListPerformance {
 
 	  public static double timeAccess(String label,
 	                                List<String> list) {
-	    return 0.0;
+		  long i = System.nanoTime();
+		  list.get(list.size()-1);
+		  long j = System.nanoTime();
+		  
+		  double delta = j-i;
+		  System.out.println(label+" "+delta);
+		  
+	    return delta;
 	
 	  }
 }

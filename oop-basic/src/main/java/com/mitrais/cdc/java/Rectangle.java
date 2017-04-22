@@ -13,5 +13,17 @@ public class Rectangle {
 	 * 5. Add a toString method
 	 * 
 	 */
+	public double getArea(){
+		return (this.width*this.height);
+	}
 	
+	public Rectangle(double w,double h){
+		this.width=w;
+		this.height=h;
+	}
+	
+	
+	public String toString() {
+		return "Width = " + width + " Height= "+ height;
+	}
 }

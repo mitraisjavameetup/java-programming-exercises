@@ -45,31 +45,62 @@ import javax.persistence.Table;
 
 // TODO please add static query for Employee.filterByLocation and Employee.filterByEmploymentHistory (with JOIN)
 
+
 // TODO please add annotation to set Entity Listener
 
+
+@Entity
+@NamedQueries({
+	@NamedQuery(name="Employee.filterByLocation",
+			query="SELECT e FROM Employee e WHERE e.officeLocation = :officeLocation"
+			),
+	@NamedQuery(name="Employee.filterByEmploymentHistory",
+	query="SELECT e FROM Employee e, EmploymentHistory h WHERE e.id = h.empId AND h.empId = :empId"
+	)
+})
+@EntityListeners(EmployeeEntityListener.class)
+@Table(name = "t_employee")
 public class Employee {
 	// TODO implement this entity class
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@Column(name = "name")
 	private String name;
+	@Column(name = "dateOfBirth")
 	private Date dateOfBirth;
+	@Column(name = "gender")
 	private String gender;
+	@Column(name = "maritalStatus")
 	private String maritalStatus;
+	@Column(name = "phone")
 	private String phone;
+	@Column(name = "email")
 	private String email;
+	@Column(name = "hireDate")
 	private Date hireDate;
+	@Column(name = "officeLocation")
 	private String officeLocation;
+	@Column(name = "lastModified")
 	private Date lastModified;
+	@Column(name = "period")
 	private Period period;
 	// TODO @OneToOne association/relationship with Address entity
 	//      association is optional, cascading all operations
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Address address;
 	// TODO @OneToMany association with GradeHistory entity
 	//   	cascading all operations, and remove orphan
 	// 		join column must no be null
+	@OneToMany(cascade=CascadeType.ALL , orphanRemoval = true)
+	@JoinColumn(name="grades",nullable=false)
 	private List<GradeHistory> grades;
 	// TODO @ManyToOne association with BranchOffice entity
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name="branchOffice")
 	private BranchOffice branchOffice;
 	// TODO @ManyToMany association with InternalProject entity
+	@ManyToMany()
 	private List<InternalProject> projects;
 
 	public Employee() {

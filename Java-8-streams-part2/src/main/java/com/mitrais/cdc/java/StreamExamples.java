@@ -1,6 +1,7 @@
 package com.mitrais.cdc.java;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /** TO DO
  *  please complete the methods for below capabilities (you should using lambda expression).
@@ -22,6 +23,7 @@ import java.util.*;
 
 public class StreamExamples {
 	
+	
 	List<String> words;
 	StreamExamples(){
 		words = Arrays.asList("hi", "hello", "hola", "bye", "goodbye", "adios");
@@ -37,16 +39,21 @@ public class StreamExamples {
 		 * complete this method to answer number 1
 		 * using lambda expression
 		 */
+	
+		
+		uppercaseString = words.stream().reduce("", String::concat).toUpperCase();
 		
 		return uppercaseString;
 	}
 	
+
 	public String uppercaseWithMap(){
 		String uppercaseString = null;
 		/* TO DO
 		 * complete this method to answer number 2
 		 * using lambda expression
 		 */
+		uppercaseString = words.stream().map(w->w.toUpperCase()).reduce("", String::concat);
 		
 		return uppercaseString;
 	}
@@ -58,6 +65,7 @@ public class StreamExamples {
 		 * using lambda expression
 		 */
 		
+		convertWords = words.stream().reduce((a,b) -> a+","+b).orElse(null);
 		return convertWords;
 	}
 	
@@ -67,6 +75,9 @@ public class StreamExamples {
 		 *complete this method to answer number 4
 		 *using lambda expression
 		 */
+		
+		numOfChar = words.stream().map( x->x.length()).reduce(0, (a,b)->a+b);
+		
 		return numOfChar;
 	}
 	
@@ -76,6 +87,8 @@ public class StreamExamples {
 		 *complete this method to answer number 5
 		 *using lambda expression
 		 */
+		
+		numOfH = words.stream().filter(x->x.contains("h")).collect(Collectors.toList()).size();
 		return numOfH;
 	}
 }

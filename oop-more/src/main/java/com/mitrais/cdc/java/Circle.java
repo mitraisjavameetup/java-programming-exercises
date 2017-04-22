@@ -11,5 +11,24 @@ package com.mitrais.cdc.java;
  */
 
 public class Circle {
+	private double radius;
+	private double area;
+
+	public double getArea() {
+		area = Math.PI*this.radius*this.radius;
+		return area; 	
+	}
+
+	public Circle(double r) {
+		this.radius = r;
+	}
+	
+	public Circle(){
+		
+	}
+
+	public String toString() {
+		return "Circle (Radius = " + radius +", area=" + area+")";
+	}
 
 }

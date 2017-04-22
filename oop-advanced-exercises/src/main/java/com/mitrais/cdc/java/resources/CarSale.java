@@ -2,22 +2,16 @@ package com.mitrais.cdc.java.resources;
 
 public class CarSale implements Sellable {
 
-    private final String carName;
-    private final double listPrice;
-    private final double discount;
+    private String carName;
+    private double listPrice;
+    private double discount;
 
   public CarSale(String carName, double listPrice, double discount) {
-	//TODO: complete this so it will set the properties when called 
-	  
-	  
-	  
-  }
+	  this.carName = carName;
+	  this.listPrice = listPrice;
+	  this.discount = discount;  
+	 }
 
-  //TODO: make sure each attributes/properties has getter/setter
-
-  
-  
-  
   @Override
   /** 
    * Will return finalCost based on price - discount percentage
@@ -29,20 +23,62 @@ public class CarSale implements Sellable {
       /** The discount in percent. For example, if discount is 5, then the total cost is
        *  0.95 times the list price.
        */
-	
+	finalCost = (100-discount)*listPrice/100;
 	
 	
 	return(finalCost);
   }
 
-  @Override
-  public String toString() {
-	String toString = new String();
-	
-	//TODO: modify this method to return sentence e.g. "This car name is blablabla, its price is blabla, with discount blabla"
-	
-	
-	
-	return toString;
-  }
+  /**
+ * @return the carName
+ */
+public String getCarName() {
+	return carName;
+}
+
+/**
+ * @param carName the carName to set
+ */
+public void setCarName(String carName) {
+	this.carName = carName;
+}
+
+/**
+ * @return the listPrice
+ */
+public double getListPrice() {
+	return listPrice;
+}
+
+/**
+ * @param listPrice the listPrice to set
+ */
+public void setListPrice(double listPrice) {
+	this.listPrice = listPrice;
+}
+
+/**
+ * @return the discount
+ */
+public double getDiscount() {
+	return discount;
+}
+
+/**
+ * @param discount the discount to set
+ */
+public void setDiscount(double discount) {
+	this.discount = discount;
+}
+
+/* (non-Javadoc)
+ * @see java.lang.Object#toString()
+ */
+@Override
+public String toString() {
+	return "CarSale [carName=" + carName + ", listPrice=" + listPrice + ", discount=" + discount + ", getCost()="
+			+ getCost() + ", getCarName()=" + getCarName() + ", getListPrice()=" + getListPrice() + ", getDiscount()="
+			+ getDiscount() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
+			+ super.toString() + "]";
+}
 }

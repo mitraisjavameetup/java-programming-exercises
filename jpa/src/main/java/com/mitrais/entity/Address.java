@@ -21,7 +21,7 @@ public class Address {
 	@Column(name = "postal_code")
 	private String postalCode;
 	// TODO add Employee entity when needed
-	// private Employee employee;
+	 private Employee employee;
 
 	public Address() {}
 
