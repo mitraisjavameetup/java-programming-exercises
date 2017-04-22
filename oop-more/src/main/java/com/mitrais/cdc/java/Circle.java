@@ -11,5 +11,55 @@ package com.mitrais.cdc.java;
  */
 
 public class Circle {
+	private double radius;
+	private double area;
+
+	/**
+	 * Constructor for Circle
+	*/
+	public Circle() {
+		
+	}
+
+	/**
+	 * Method for get radius of circle
+	 * @return radius
+	*/
+	public double getRadius() {
+		return radius;
+	}
+	
+	/**
+	 * Method for set radius of circle
+	 * @param radius
+	*/
+
+	public void setRadius(double radius) {
+		this.radius = radius;
+	}
+
+	/**
+	 * Method for get area of circle
+	 * @return area
+	*/
+	public double getArea() {
+		return this.area;
+	}
+	
+	/**
+	 * Method for calculate area of circle
+	*/
+	public void setArea(){
+		this.area = Math.PI * this.radius * this.radius;
+	}
+
+	/**
+	 * Method for get overall value of circle
+	 * @return String of circle value
+	*/
+	@Override
+	public String toString() {
+		return "Circle (radius=" + radius + ", area=" + area + ")";
+	}
 
 }

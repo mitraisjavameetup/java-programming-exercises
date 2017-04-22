@@ -1,5 +1,7 @@
 package com.mitrais.cdc.java;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class ListPerformance {
@@ -16,7 +18,11 @@ public class ListPerformance {
 
 	  public static double timeAccess(String label,
 	                                List<String> list) {
-	    return 0.0;
+	    long awal = System.nanoTime();
+	    list.get(list.size()-1);
+	    long akhir = System.nanoTime();
+	    double hasil = akhir - awal;
+	    return hasil;
 	
 	  }
 }

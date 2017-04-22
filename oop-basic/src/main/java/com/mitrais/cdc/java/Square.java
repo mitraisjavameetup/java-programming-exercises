@@ -3,6 +3,17 @@ package com.mitrais.cdc.java;
 public class Square {
 
 	public double width;
+	public double area;
+
+	public Square(double width) {
+		super();
+		this.width = width;
+		this.area = this.width * this.width;
+		
+	}
+	public double getArea(){
+		return this.area;
+	}
 
 	/*
 	 * todo: make a Square class with various capabilities below:
