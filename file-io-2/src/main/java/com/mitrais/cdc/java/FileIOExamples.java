@@ -4,7 +4,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
-public class FileIOExamples {
+public class FileIOExamples  {
+	
 	
 	public static String filename = "enable1-word-list.txt";
 	public static List<String> testWords = Arrays.asList("foo", "bar", "baz12345678", "boo1234567");
@@ -16,7 +17,7 @@ public class FileIOExamples {
 		 * Print the first 10-letter word found.
 		 *
 		 */
-		return null;
+		return words.filter(s->s.length()==10).findFirst().get();
 	}
 
 	public static String print10LetterWord(String filename) {
@@ -27,7 +28,8 @@ public class FileIOExamples {
 		 * Use the StreamProcessor interface to avoid repetitive code in the file-processing method.
 		 *
 		 */
-		return null;
+		return StreamProcessor.processFile(filename, FileIOExamples::print10LetterWord);
+		
 	}
 	
 	public static String printNLetterWord(Stream<String> words, int wordLength) {
@@ -37,11 +39,11 @@ public class FileIOExamples {
 		 * Print the first n-letter word found
 		 * 
 		 */
-		return null;
+		return words.filter(s->s.length()==wordLength).findFirst().orElse("No "+wordLength+"-letter word found");
 	}
 
 	public static String printNLetterWord(String filename, int wordLength) {
-		
+
 		/*
 		 * TO DO
 		 * Do not hardcode the word length (i.e., 10 in the previous problem) 
@@ -49,7 +51,7 @@ public class FileIOExamples {
 		 * Instead, pass the word length into 
 		 * both the stream-processing and file-processing methods
 		 */
-		return null;
+		return StreamAnalyzer.analyzeFile(filename, n->printNLetterWord(n, wordLength));
 	}
 			
 			
@@ -60,7 +62,7 @@ public class FileIOExamples {
 		 * Make methods that will print out the number of words containing a letter or substring
 		 * 
 		 */
-		return 0;
+		return words.filter(s->s.contains(subString)).count();
 	}
 
 	public static long numWordsContaining(String filename, String subString) {
@@ -71,7 +73,9 @@ public class FileIOExamples {
 		 * use StreamAnalyzer interface to avoid repetitive code in the file-processing method.
 		 * 
 		 */
-		return 0;
-	}	
+		return StreamAnalyzer.analyzeFile(filename, s->numWordsContaining(s, subString));
+	}
+	
+	
 	
 }
