@@ -1,7 +1,10 @@
 package com.mitrais.cdc.java;
 
+import static org.junit.Assert.*;
+
 import org.junit.Test;
 
+/** ShapeTest Class */
 public class ShapeTest{
 
 	@Test

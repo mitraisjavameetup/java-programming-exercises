@@ -22,54 +22,75 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import org.hibernate.annotations.Cascade;
 
 /**
- *   Employee is entity mapped to table
- *	 t_employee with columns:
- *	 <ol>
- *		<li>id integer primary key auto generated</li>
- *		<li>name string</li>
- *		<li>date_of_birth date</li>
- *		<li>gender string</li>
- *		<li>marital_status string</li>
- *		<li>phone string</li>
- *		<li>email string</li>
- *		<li>hire_date date</li>
- *	 </ol>
- *   each column should have setter/getter. The setter/getter
- *   method should not contain any underscore.
- *	 e.g.: getHireDate() and setHireDate(date)
- * 	 all setters method should return object itself, or this.
+ * Employee is entity mapped to table t_employee with columns:
+ * <ol>
+ * <li>id integer primary key auto generated</li>
+ * <li>name string</li>
+ * <li>date_of_birth date</li>
+ * <li>gender string</li>
+ * <li>marital_status string</li>
+ * <li>phone string</li>
+ * <li>email string</li>
+ * <li>hire_date date</li>
+ * </ol>
+ * each column should have setter/getter. The setter/getter method should not
+ * contain any underscore. e.g.: getHireDate() and setHireDate(date) all setters
+ * method should return object itself, or this.
  **/
 // TODO please add annotation for entity class
 
-// TODO please add static query for Employee.filterByLocation and Employee.filterByEmploymentHistory (with JOIN)
-
+// TODO please add static query for Employee.filterByLocation and
+// Employee.filterByEmploymentHistory (with JOIN)
+@NamedQueries({
+		@NamedQuery(name = "Employee.filterByLocation", query = "SELECT e FROM Employee e JOIN e.branchOffice o WHERE e.officeLocation = :officeLocation"),
+		@NamedQuery(name = "Employee.filterByProject", query = "SELECT e FROM Employee e JOIN e.projects p WHERE p.projectName = :projectName")})
 // TODO please add annotation to set Entity Listener
-
+@EntityListeners(EmployeeEntityListener.class)
+@Entity
+@Table(name = "t_employee")
 public class Employee {
 	// TODO implement this entity class
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
 	private String name;
+	@Column(name="DATE_OF_BIRTH")
 	private Date dateOfBirth;
 	private String gender;
+	@Column(name="MARITAL_STATUS")
 	private String maritalStatus;
 	private String phone;
 	private String email;
+	@Column(name="HIRE_DATE")
 	private Date hireDate;
+	@Column(name="OFFICE_LOCATION")
 	private String officeLocation;
 	private Date lastModified;
+	@Embedded
 	private Period period;
 	// TODO @OneToOne association/relationship with Address entity
-	//      association is optional, cascading all operations
+	// association is optional, cascading all operations
+	@OneToOne(cascade = CascadeType.ALL)
 	private Address address;
 	// TODO @OneToMany association with GradeHistory entity
-	//   	cascading all operations, and remove orphan
-	// 		join column must no be null
+	// cascading all operations, and remove orphan
+	// join column must no be null
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	@JoinColumn(name = "employee_id")
 	private List<GradeHistory> grades;
 	// TODO @ManyToOne association with BranchOffice entity
+	@ManyToOne
+	@JoinColumn(name = "office_id")
 	private BranchOffice branchOffice;
 	// TODO @ManyToMany association with InternalProject entity
+	@ManyToMany
+	@JoinTable(name = "t_employee_project", joinColumns = @JoinColumn(name = "employee_id", referencedColumnName = "id"), 
+			inverseJoinColumns = @JoinColumn(name = "internal_project_id", referencedColumnName = "id"))
 	private List<InternalProject> projects;
 
 	public Employee() {
@@ -77,7 +98,7 @@ public class Employee {
 		this.projects = new ArrayList<InternalProject>();
 		this.branchOffice = new BranchOffice();
 	}
-	
+
 	public Long getId() {
 		return this.id;
 	}
@@ -97,10 +118,7 @@ public class Employee {
 	}
 
 	public String toString() {
-		return String.format(
-			"Employee object: [id: %d, name: '%s'",
-			this.id, this.name
-		);
+		return String.format("Employee object: [id: %d, name: '%s'", this.id, this.name);
 	}
 
 	public Date getDateOfBirth() {
@@ -156,7 +174,6 @@ public class Employee {
 		this.hireDate = hireDate;
 		return this;
 	}
-
 
 	public Period getPeriod() {
 		return period;

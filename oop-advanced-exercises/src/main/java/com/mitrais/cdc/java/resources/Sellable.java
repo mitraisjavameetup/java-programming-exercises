@@ -10,9 +10,16 @@ public interface Sellable {
    */
   public static Sellable cheapest(Sellable[] items) {
     Sellable cheapestItem = null;
-    
+    double price = Double.MAX_VALUE;
     //TODO: Create calculation to define which item is the cheapest based on item cost
-    
+    for (Sellable entry:items)
+    {
+    	if (entry.getCost() < price)
+    	{
+    		price = entry.getCost();
+    		cheapestItem = entry;
+    	}
+    }
     
     
     return(cheapestItem);
@@ -28,7 +35,10 @@ public interface Sellable {
     double total = 0;
     
     //TODO: Create calculation to count the total price here
-    
+    for (Sellable entry:items)
+    {
+    	total += entry.getCost();
+    }
     
     
     return(total);

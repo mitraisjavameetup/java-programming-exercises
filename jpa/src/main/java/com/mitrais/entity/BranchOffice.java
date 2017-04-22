@@ -27,12 +27,17 @@ public class BranchOffice {
 	@Column(name = "postal_code")
 	private String postalCode;
 	// TODO add annotation when necessary
+	@OneToMany( targetEntity=Employee.class )
 	private List<Employee> employees;
 
 	public BranchOffice() {}
 
 	public Long getId() {
 		return id;
+	}
+
+	public void setEmployees(List<Employee> employees) {
+		this.employees = employees;
 	}
 
 	public BranchOffice setId(Long id) {

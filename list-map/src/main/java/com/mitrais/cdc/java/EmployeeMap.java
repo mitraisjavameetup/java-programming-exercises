@@ -1,5 +1,7 @@
 package com.mitrais.cdc.java;
 
+import java.util.HashMap;
+import java.util.Map;
 
 public class EmployeeMap {
 	
@@ -16,9 +18,35 @@ public class EmployeeMap {
 	 * ID = a1238, Name = Bill Gates
 	 * The point here is to associate keys with values, then retrieve values later based on keys.
 	 */
+	private Map<String,String> employeeTable;
 	
+	/**
+	 * Initiate employeeTable in constructor
+	 */
+	public EmployeeMap()
+	{
+		employeeTable = new HashMap<>();
+		employeeTable.put("a1234","Steve Jobs");
+		employeeTable.put("a1235","Scott McNealy");
+		employeeTable.put("a1236","Jeff Bezos");
+		employeeTable.put("a1237","Larry Ellison");
+		employeeTable.put("a1238","Bill Gates");
+	}
+	
+	/**
+	 * Return employee name from key a1234
+	 */
 	public String runEmployeeMap() {
-	    return null;
+	    return employeeTable.get("a1234");
+	}
+	
+	/**
+	 * Return employee name from given key value
+	 */
+	public String runEmployeeMap(String keyValue) {
+		String value;
+		value = employeeTable.getOrDefault(keyValue.toLowerCase(), "Invalid Key");
+	    return value;
 	}
 		
 }

@@ -13,10 +13,17 @@ public class ListPerformance {
 	 * • To ensure meaningful results, use very long lists and access the middle element many times.
 	 * • Run several tests, each with larger and larger lists.
 	 */
-
+		/**
+		 * 
+		 * Return time elapsed in seconds.
+		 */
 	  public static double timeAccess(String label,
 	                                List<String> list) {
-	    return 0.0;
+		  double currentTime = System.currentTimeMillis();
+		  System.out.println(list.get(list.size()/2));
+		  double finishedTime = System.currentTimeMillis();
+		  System.out.println(label + " access time = " +(finishedTime - currentTime)/1000);
+		  return (finishedTime - currentTime)/1000;
 	
 	  }
 }

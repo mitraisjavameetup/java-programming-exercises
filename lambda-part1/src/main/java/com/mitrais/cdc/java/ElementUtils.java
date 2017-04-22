@@ -15,8 +15,13 @@ public class ElementUtils {
 	 * It returns element1 if the method in interface returns true, element2 otherwise. 
 	 * This method is normal Java 7 code.
 	 */	
-	
-	return null;
+	if (tester.isBetter(element1, element2))
+	{
+		return element1;
+	}else
+	{
+		return element2;
+	}
   }
   
   private ElementUtils() {}

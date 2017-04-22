@@ -17,7 +17,10 @@ public class FunctionUtils2 {
      */
     
 
-    
+    for (Predicate<T> entry:tests)
+    {
+    	result = result.or(entry);
+    }
     
     
     
@@ -34,7 +37,9 @@ public class FunctionUtils2 {
     
     //TODO: filter based first element that matches ANY of the tests, null otherwise
     
-    
+    result = elements.filter(combinedTest)
+            .findFirst()
+            .orElse(null);
     
     
     

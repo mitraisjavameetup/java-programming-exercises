@@ -7,7 +7,12 @@ public class TicTacToeFrame2 extends JFrame {
     super("Tic-Tac-Toe");
     //complete this method to show tic tac toe board
 
-  
+    JFrame frame = new JFrame("Tic-Tac-Toe2");
+    frame.setSize(320,340);
+    frame.setLocationRelativeTo(null);
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setContentPane(new TicTacToePanel2());
+    frame.setVisible(true);
   
   
   
@@ -15,7 +20,7 @@ public class TicTacToeFrame2 extends JFrame {
   
   public static void main(String[] args) {
 	//call method to show tic tac toe frame
-
+	  new TicTacToeFrame2();
   
   }
 }

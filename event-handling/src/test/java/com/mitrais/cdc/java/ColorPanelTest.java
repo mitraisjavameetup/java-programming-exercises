@@ -5,6 +5,9 @@ import static org.junit.Assert.*;
 import java.awt.Color;
 
 import org.junit.Test;
+import org.junit.*;
+import static org.hamcrest.CoreMatchers.*;
+import static org.junit.Assert.*;
 
 public class ColorPanelTest{
 	@Test
