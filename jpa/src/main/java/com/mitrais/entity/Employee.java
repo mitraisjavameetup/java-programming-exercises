@@ -1,20 +1,16 @@
 package com.mitrais.entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -22,6 +18,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  *   Employee is entity mapped to table
@@ -47,8 +44,17 @@ import javax.persistence.Table;
 
 // TODO please add annotation to set Entity Listener
 
-public class Employee {
+@Entity
+@Table(name="t_employee")
+@EntityListeners(EmployeeEntityListener.class)
+@NamedQueries({
+	@NamedQuery(name ="Employee.filterByLocation", query = "SELECT e FROM Employee e WHERE e.officeLocation = :officeLocation"),
+	//@NamedQuery(name="Employee.filterByEmploymentHistory",query="SELECT e FROM Employee e JOIN EmploymentHistory eh ")
+})
+public class Employee implements Serializable{
 	// TODO implement this entity class
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	private Long id;
 	private String name;
 	private Date dateOfBirth;
@@ -62,16 +68,20 @@ public class Employee {
 	private Period period;
 	// TODO @OneToOne association/relationship with Address entity
 	//      association is optional, cascading all operations
+	@OneToOne(cascade=CascadeType.ALL)
 	private Address address;
 	// TODO @OneToMany association with GradeHistory entity
 	//   	cascading all operations, and remove orphan
 	// 		join column must no be null
+	@OneToMany (cascade=CascadeType.ALL)
 	private List<GradeHistory> grades;
 	// TODO @ManyToOne association with BranchOffice entity
+	@ManyToOne
 	private BranchOffice branchOffice;
 	// TODO @ManyToMany association with InternalProject entity
+	@ManyToMany
 	private List<InternalProject> projects;
-
+	
 	public Employee() {
 		this.grades = new ArrayList<GradeHistory>();
 		this.projects = new ArrayList<InternalProject>();

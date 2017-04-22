@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -12,7 +13,7 @@ import javax.persistence.Table;
 public class Address {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
 	@Column(name = "address")
 	private String address;
@@ -21,7 +22,8 @@ public class Address {
 	@Column(name = "postal_code")
 	private String postalCode;
 	// TODO add Employee entity when needed
-	// private Employee employee;
+	@OneToOne
+	private Employee employee;
 
 	public Address() {}
 
