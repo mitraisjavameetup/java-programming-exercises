@@ -5,6 +5,7 @@ import javax.persistence.EntityManager;
 import com.mitrais.entity.Employee;
 import com.mitrais.entity.InternalProject;
 import com.mitrais.entity.EmploymentHistory;
+import com.mitrais.entity.ProjectId;
 import com.mitrais.util.EntityManagerUtil;
 
 import java.util.List;
@@ -33,7 +34,7 @@ public class EmployeeManager {
 	 **/
 	public void create(Employee employee) {
 		// TODO create employee and save to database
-
+		entityManager.persist(employee);
 	}
 
 	/**
@@ -44,27 +45,37 @@ public class EmployeeManager {
 	 **/
 	public Employee read(long employeeId) {
 		// TODO find employee and return
-		return new Employee();
+		Employee target = entityManager.find(Employee.class, employeeId);
+		if (target == null)
+			return null;
+		else
+			return target;
 	}
 
 	/**
 	 *  update employee if exist
 	 *	@param employee    row that will replace 
-	 *	@param employeeId  the id of row that 
+	 *	param employeeId  the id of row that
 	 *						will be replaced
 	 **/
 	public void update(Employee employee) {
-		// TODO update row in table 
-
+		// TODO update row in table
+		Employee target = entityManager.find(Employee.class, employee.getId());
+		if (target!=null)
+		{
+			entityManager.merge(employee);
+		}
 	}
 
 	/**
 	 *  delete employee if exist
-	 *	@param employeeId table emmployee primary key 
+	 *	param employeeId table employee primary key
 	 **/
 	public void delete(Employee employee) {
 		// TODO delete row in table
-
+		Employee target = entityManager.find(Employee.class, employee.getId());
+		if (target!=null)
+			entityManager.remove(target);
 	}
 
 	public void close() {
@@ -78,12 +89,12 @@ public class EmployeeManager {
 	 **/
 	public void createEmploymentHistory(EmploymentHistory project) {
 		// TODO create project and save to database
-
+		entityManager.persist(project);
 	}
 
 	public List getEmployeeByLocation(String officeLocation) {
 		// TODO please execute static query Employee.filterByLocation
-		return null;
+		return filterByLocation(officeLocation);
 	}
 
 	public List getEmployeeByProject(String projectName) {
@@ -93,12 +104,29 @@ public class EmployeeManager {
 
 	public void removeProjectByEmployeeID(Long empId) {
 		// TODO please create dynamic query to delete employee by ID
+		entityManager.createQuery("DELETE FROM t_employee WHERE id = :empId")
+				.setParameter("empId", empId)
+				.getResultList();
 	}
 
 	public List getAllEmploymentHistory() {
 		return entityManager.createQuery(
 				"SELECT a FROM EmploymentHistory a")
 				.setMaxResults(20)
+				.getResultList();
+	}
+
+	public List filterByLocation(String location)
+	{
+		return entityManager.createNamedQuery("filterByLocation")
+				.setParameter("location", location)
+				.getResultList();
+	}
+
+	public List filterByEmploymentHistory(ProjectId id)
+	{
+		return entityManager.createNamedQuery("filterByEmploymentHistory")
+				.setParameter("projectId", id)
 				.getResultList();
 	}
 
