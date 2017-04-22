@@ -46,30 +46,53 @@ import javax.persistence.Table;
 // TODO please add static query for Employee.filterByLocation and Employee.filterByEmploymentHistory (with JOIN)
 
 // TODO please add annotation to set Entity Listener
+@Entity
+@Table(name = "t_employee")
 
+@EntityListeners(EmployeeEntityListener.class)
 public class Employee {
 	// TODO implement this entity class
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@Column(name = "name")
 	private String name;
+	@Column(name = "date_of_birth")
 	private Date dateOfBirth;
+	@Column(name = "gender")
 	private String gender;
+	@Column(name = "marital_status")
 	private String maritalStatus;
+	@Column(name = "phone")
 	private String phone;
+	@Column(name = "email")
 	private String email;
+	@Column(name = "hire_date")
 	private Date hireDate;
+	@Column(name = "office_location")
 	private String officeLocation;
+	@Column(name = "last_modified")
 	private Date lastModified;
+	@Column(name = "period")
 	private Period period;
 	// TODO @OneToOne association/relationship with Address entity
 	//      association is optional, cascading all operations
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "address")
 	private Address address;
 	// TODO @OneToMany association with GradeHistory entity
 	//   	cascading all operations, and remove orphan
 	// 		join column must no be null
+	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true)
+	@JoinColumn(name = "grades", nullable=false)
 	private List<GradeHistory> grades;
 	// TODO @ManyToOne association with BranchOffice entity
+	@ManyToOne
+	@JoinTable(joinColumns=@JoinColumn(name = "emp_id", referencedColumnName="id"))
 	private BranchOffice branchOffice;
 	// TODO @ManyToMany association with InternalProject entity
+	@ManyToMany
+	@JoinColumn(name = "projects_id")
 	private List<InternalProject> projects;
 
 	public Employee() {

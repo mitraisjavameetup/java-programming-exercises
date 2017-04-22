@@ -33,7 +33,7 @@ public class EmployeeManager {
 	 **/
 	public void create(Employee employee) {
 		// TODO create employee and save to database
-
+		
 	}
 
 	/**
@@ -64,6 +64,7 @@ public class EmployeeManager {
 	 **/
 	public void delete(Employee employee) {
 		// TODO delete row in table
+		entityManager.remove(employee);
 
 	}
 
