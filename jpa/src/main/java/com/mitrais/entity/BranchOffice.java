@@ -27,6 +27,7 @@ public class BranchOffice {
 	@Column(name = "postal_code")
 	private String postalCode;
 	// TODO add annotation when necessary
+	
 	private List<Employee> employees;
 
 	public BranchOffice() {}
