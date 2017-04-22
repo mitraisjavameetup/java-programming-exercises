@@ -36,10 +36,12 @@ public class FileIoExamplesTest {
 		assertEquals(FileIoExamples.longestWordWithout(inputFile, "a", "e"), "psychophysiologists");
 	}
 	
+	
 	@Test
 	public void shortestWordWith() throws Exception{	
 		assertEquals(FileIoExamples.shortestWordWith(inputFile, "q"), "qat");
 	}
+	
 	
 	@Test
 	public void storeTwitterList() throws Exception{
@@ -70,4 +72,5 @@ public class FileIoExamplesTest {
 		List<String> result = Files.lines(Paths.get(outputFile)).collect(Collectors.toList());
 		assertEquals(result.size(), n);
 	}	
+
 }

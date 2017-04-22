@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
@@ -31,6 +32,7 @@ public class InternalProject {
 	@Column(name = "product_name")
 	private String productName;
 	// TODO @ManyToMany association with Employee entity
+	@ManyToMany(targetEntity=Employee.class)
 	private List<Employee> employees;
 
 	public InternalProject() {}

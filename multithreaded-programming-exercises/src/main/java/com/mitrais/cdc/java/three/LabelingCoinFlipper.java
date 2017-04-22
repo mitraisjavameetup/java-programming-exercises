@@ -22,7 +22,16 @@ public class LabelingCoinFlipper implements Runnable {
     //do not forget to add "pause(5);" after change the label text
     //so you could see the entire process
     
-    
+    int count = 0;
+	for (int i = 0; i < 1000; i++) {
+		int r = (int) Math.round(Math.random());
+		if(r == 0) count++;
+		if(count >= 1){
+			label.setText(String.format("Heads: %s", count));
+			//System.out.printf("Heads: %s!!\n", count);
+			pause(5);
+		}
+	} 
     
     
     

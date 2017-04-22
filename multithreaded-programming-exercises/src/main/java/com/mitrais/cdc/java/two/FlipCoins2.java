@@ -19,17 +19,19 @@ public class FlipCoins2 implements Runnable {
     int poolSize = 10;
     
     //TODO: Instantiate ExcecutorService class with poolsize as stated above
-
+    ExecutorService executorService = Executors.newFixedThreadPool(poolSize);
+    
     
     
     //TODO execute this 5 times (or several times) concurrently
-    
-    
-    
-    
+    executorService.execute(this);
+    executorService.execute(this);
+    executorService.execute(this);
+    executorService.execute(this);
+    executorService.execute(this);
     
     //TODO: do not forget to shutdown the executor
-    
+    executorService.shutdown();
     
   }
 
@@ -44,7 +46,12 @@ public class FlipCoins2 implements Runnable {
   @Override
   public void run() {
 	//TODO: Just copy run() method from question number 1 :)
-
+	  int count = 0;
+		for (int i = 0; i < 1000; i++) {
+			int r = (int) Math.round(Math.random());
+			if(r == 0) count++; else count = 0;
+			if(count >= 3) System.out.printf("%s got %s heads in a row!!\n", Thread.currentThread().getName(), count);
+		} 
   
   
   

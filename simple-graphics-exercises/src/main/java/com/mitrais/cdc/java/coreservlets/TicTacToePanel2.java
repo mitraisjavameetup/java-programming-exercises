@@ -10,7 +10,7 @@ public class TicTacToePanel2 extends JPanel {
     
     //add code to show lines, so it look like tic tac toe board
     
-    
+    g.drawLine(0, getParent().getHeight() / 3, getParent().getWidth(), getParent().getHeight() / 3);
     
     
     

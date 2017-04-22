@@ -7,6 +7,7 @@ import java.util.List;
 import org.junit.Test;
 
 import com.mitrais.cdc.java.MathUtils;
+import com.mitrais.cdc.java.TimingUtils;
 
 public class MathUtilsTest {
 
@@ -61,11 +62,11 @@ public class MathUtilsTest {
 	
 	@Test
 	public void test_findPrimesSerial_booleanArrayParameter() {
-		int upperIndex = 1000;
+		int upperIndex = 10_000;
 		boolean[] primeFlags = new boolean[upperIndex];
 		List<Integer> primeList = MathUtils.findPrimesSerial(primeFlags);
-		assertTrue(primeList.size() == 168);
-		assertTrue(primeList.get(primeList.size() - 1) == 997);
+		assertTrue(primeList.size() == 1_229 );
+		assertTrue(primeList.get(primeList.size() - 1) == 9_973);
 	}
 	
 	@Test
