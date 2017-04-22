@@ -13,4 +13,16 @@ public class Circle  {
 	 * 5. Add a toString method
 	 */
 	
+	public Circle(double radius){
+		this.radius =radius;
+	}
+	
+	public Double getArea(){
+		return (Math.PI)*radius*radius;
+	}
+	
+	public String toString(){
+		return "Radius = "+radius+";Area ="+getArea();
+	}
+	
 }

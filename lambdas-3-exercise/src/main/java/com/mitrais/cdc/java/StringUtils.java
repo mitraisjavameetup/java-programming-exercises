@@ -16,8 +16,9 @@ public class StringUtils {
 
     
     
-    
-    
+    for (String candidate:candidates)
+		if(matchFunction.test(candidate)) results.add(candidate);
+	
     
     
     return(results); 
@@ -31,7 +32,8 @@ public class StringUtils {
     //TODO: Question number three: return a new List that contains the results of applying the Function to each element of the original
 
 	
-	
+	for(String original:originals)
+		results.add(transformer.apply(original));
 	
     
     

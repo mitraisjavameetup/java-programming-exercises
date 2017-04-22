@@ -8,15 +8,12 @@ public class CarSale implements Sellable {
 
   public CarSale(String carName, double listPrice, double discount) {
 	//TODO: complete this so it will set the properties when called 
-	  
-	  
-	  
+	  this.carName = carName;
+	  this.listPrice = listPrice;
+	  this.discount = discount;	  
   }
 
   //TODO: make sure each attributes/properties has getter/setter
-
-  
-  
   
   @Override
   /** 
@@ -29,19 +26,37 @@ public class CarSale implements Sellable {
       /** The discount in percent. For example, if discount is 5, then the total cost is
        *  0.95 times the list price.
        */
-	
-	
+	finalCost = getListPrice()-(getListPrice()*getDiscount()/100);
 	
 	return(finalCost);
   }
 
-  @Override
+  /**
+ * @return the carName
+ */
+public String getCarName() {
+	return carName;
+}
+
+/**
+ * @return the listPrice
+ */
+public double getListPrice() {
+	return listPrice;
+}
+
+/**
+ * @return the discount
+ */
+public double getDiscount() {
+	return discount;
+}
+
+@Override
   public String toString() {
-	String toString = new String();
+	String toString = "This car name is "+getCarName()+", its price is "+getListPrice()+", with discount "+getCost();
 	
 	//TODO: modify this method to return sentence e.g. "This car name is blablabla, its price is blabla, with discount blabla"
-	
-	
 	
 	return toString;
   }

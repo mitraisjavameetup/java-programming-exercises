@@ -22,6 +22,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  *   Employee is entity mapped to table
@@ -47,29 +48,48 @@ import javax.persistence.Table;
 
 // TODO please add annotation to set Entity Listener
 
+@Entity
+@Table(name="t_employee")
+@NamedQuery(name="Employee.filterByLocation", 
+			query="SELECT e FROM Employee e  WHERE e.officeLocation = :officeLocation")
+@EntityListeners(EmployeeEntityListener.class)
+
 public class Employee {
 	// TODO implement this entity class
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
+	@Column(name = "name")
 	private Date dateOfBirth;
+	@Column(name = "date_of_birth")
 	private String gender;
+	@Column(name = "gender")
 	private String maritalStatus;
+	@Column(name = "material_status")
 	private String phone;
+	@Column(name = "phone")
 	private String email;
+	@Column(name = "email")
 	private Date hireDate;
+	@Column(name = "hire_date")
 	private String officeLocation;
 	private Date lastModified;
 	private Period period;
 	// TODO @OneToOne association/relationship with Address entity
 	//      association is optional, cascading all operations
+	@OneToOne(cascade = CascadeType.ALL)
 	private Address address;
 	// TODO @OneToMany association with GradeHistory entity
 	//   	cascading all operations, and remove orphan
 	// 		join column must no be null
+	@OneToMany(cascade = CascadeType.ALL)
 	private List<GradeHistory> grades;
 	// TODO @ManyToOne association with BranchOffice entity
+	@ManyToOne
 	private BranchOffice branchOffice;
 	// TODO @ManyToMany association with InternalProject entity
+	@ManyToMany
 	private List<InternalProject> projects;
 
 	public Employee() {

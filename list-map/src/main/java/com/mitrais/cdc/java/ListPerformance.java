@@ -16,7 +16,12 @@ public class ListPerformance {
 
 	  public static double timeAccess(String label,
 	                                List<String> list) {
-	    return 0.0;
+		double start = System.currentTimeMillis();
+		list.get(list.size()/2);
+		double end = System.currentTimeMillis();
+		double time = start-end/1e9;
+		System.out.println(label +" : "+ time);
+	    return time;
 	
 	  }
 }

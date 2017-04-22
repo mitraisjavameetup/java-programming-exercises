@@ -14,4 +14,17 @@ public class Rectangle {
 	 * 
 	 */
 	
+	public Rectangle(double width, double height){
+		this.width = width;
+		this.height = height;
+	}
+	
+	public double getArea(){
+		return width * height;
+	}
+	
+	public String toString(){
+		return "Width="+width+" Height="+height+";Area="+getArea();
+	}
+	
 }

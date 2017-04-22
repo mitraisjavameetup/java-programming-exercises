@@ -12,7 +12,7 @@ public class StringUtils {
 		 * This method is normal Java 7 code.
 		 */	
 		
-		return null;
+		return tester.isBetter(s1, s2)? s1: s2;
 	}
 	
 	public static int eChecker(String s1, String s2) {
