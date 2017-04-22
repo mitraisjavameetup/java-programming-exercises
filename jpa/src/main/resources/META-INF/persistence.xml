@@ -12,7 +12,6 @@
         <class>com.mitrais.entity.GradeHistory</class>
         <class>com.mitrais.entity.BranchOffice</class>
         <class>com.mitrais.entity.Project</class>
-
         <properties>
             <property 
                 name="hibernate.connection.url" 
