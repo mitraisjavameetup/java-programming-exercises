@@ -1,5 +1,7 @@
 package com.mitrais.cdc.java.resources;
 
+import java.util.Iterator;
+
 public interface Sellable {
   double getCost();
   
@@ -13,7 +15,16 @@ public interface Sellable {
     
     //TODO: Create calculation to define which item is the cheapest based on item cost
     
-    
+    if(items==null){
+    	return null;
+    }else{
+    	cheapestItem = items[0];
+    	for (int i = 1; i < items.length; i++) {
+			if(items[i].getCost()<cheapestItem.getCost()){
+				cheapestItem = items[i];
+			}
+		}
+    }
     
     return(cheapestItem);
   }
@@ -29,7 +40,9 @@ public interface Sellable {
     
     //TODO: Create calculation to count the total price here
     
-    
+    for (int i = 0; i < items.length; i++) {
+		total += items[i].getCost();
+	}
     
     return(total);
   }

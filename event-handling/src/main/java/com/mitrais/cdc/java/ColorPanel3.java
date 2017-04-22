@@ -13,6 +13,8 @@ public class ColorPanel3 extends JPanel {
 	//TO DO
 	//setBackground color as Red
 	//call named inner class as mouseListener
+	  setBackground(Color.RED);
+	  addMouseListener(new ColorChanger());
   }
   
   private class ColorChanger extends MouseAdapter {
@@ -20,6 +22,15 @@ public class ColorPanel3 extends JPanel {
     	//TO DO
     	//Method to give logic to change the background color
     	//if the background is Red now change to blue, and vice versa
+    	if(getBackground()==Color.RED){
+			setBackground(Color.BLUE);
+		}else{
+			setBackground(Color.RED);
+		}
+    }
+    @Override
+    public void mousePressed(MouseEvent event) {
+      mousePressed();
     }
   }
 }

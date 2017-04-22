@@ -33,7 +33,7 @@ public class EmployeeManager {
 	 **/
 	public void create(Employee employee) {
 		// TODO create employee and save to database
-
+		entityManager.persist(employee);
 	}
 
 	/**
@@ -44,7 +44,7 @@ public class EmployeeManager {
 	 **/
 	public Employee read(long employeeId) {
 		// TODO find employee and return
-		return new Employee();
+		return entityManager.find(Employee.class, employeeId);
 	}
 
 	/**
@@ -55,7 +55,7 @@ public class EmployeeManager {
 	 **/
 	public void update(Employee employee) {
 		// TODO update row in table 
-
+		entityManager.merge(employee);
 	}
 
 	/**
@@ -64,6 +64,7 @@ public class EmployeeManager {
 	 **/
 	public void delete(Employee employee) {
 		// TODO delete row in table
+		entityManager.remove(employee);
 
 	}
 
@@ -78,21 +79,27 @@ public class EmployeeManager {
 	 **/
 	public void createEmploymentHistory(EmploymentHistory project) {
 		// TODO create project and save to database
+		entityManager.persist(project);
 
 	}
 
 	public List getEmployeeByLocation(String officeLocation) {
 		// TODO please execute static query Employee.filterByLocation
-		return null;
+		return entityManager.createQuery("Select e From Employee e Where e.officeLocation = :officeLocation",Employee.class)
+		.setParameter("officeLocation", officeLocation)
+		.getResultList();
 	}
 
 	public List getEmployeeByProject(String projectName) {
 		// TODO please execute static query Employee.filterByProject
-		return null;
+		return entityManager.createQuery("Select e From Employee e Where e.projects.projectName = :projectName",Employee.class)
+				.setParameter("projectName", projectName)
+				.getResultList();
 	}
 
 	public void removeProjectByEmployeeID(Long empId) {
 		// TODO please create dynamic query to delete employee by ID
+		entityManager.remove(entityManager.find(Employee.class, empId));
 	}
 
 	public List getAllEmploymentHistory() {
