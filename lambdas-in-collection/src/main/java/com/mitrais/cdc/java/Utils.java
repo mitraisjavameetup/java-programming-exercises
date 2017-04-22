@@ -1,6 +1,7 @@
 package com.mitrais.cdc.java;
 
 import java.util.*;
+import java.util.stream.*;
 
 public class Utils {
   
@@ -13,7 +14,7 @@ public class Utils {
 	   * Use Math.random() and normal List methods.
 	   *
 	   */
-	  return null;
+	  return Stream.generate(() -> Math.random()).limit(size).collect(Collectors.toList());
   }
   
   public static double average(List<Double> nums) {
@@ -27,7 +28,7 @@ public class Utils {
 	   * how to turn a List<Double> into a DoubleStream.)
 	   * 
 	   */
-	  return 0;
+	  return nums.stream().collect(Collectors.averagingDouble(Double::new));
   }
   
   public static void removeBelow(List<Double> nums, double cutoff) {
@@ -40,6 +41,7 @@ public class Utils {
 	   * Use one of the methods from this lecture.
 	   * 
 	   */
+	  nums.removeIf(num -> num < cutoff);
   }
   
   public static void doubleAllValues(List<Double> nums) {
@@ -67,6 +69,7 @@ public class Utils {
     }
   }
   
+  private static Map<Integer,Integer> primeMap = new HashMap<>();
   public static int countPrimes(int upperBound) {
 	  
 	  /*
@@ -75,6 +78,15 @@ public class Utils {
 	   * Profile it and compare performance
 	   *
 	   */
-	  return 0;
+	  return primeMap.computeIfAbsent(upperBound, num -> {
+		  if (num <= 2) {
+		      return(1);
+		    }
+		    if (Primes.isPrime(num)) {
+		      return(1 + countPrimes(num - 1));
+		    } else {
+		      return(countPrimes(num - 1));
+		    }
+	  });
   }
 }

@@ -1,6 +1,15 @@
 package com.mitrais.cdc.java.four;
 
+/**
+ * PersonBalanceMain
+ * @author Egi
+ * @version 1.0
+ */
 public class PersonBalanceMain {
+	/**
+	 * Main static method for printing balance information of a person
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		
 		PersonBalance[] personBalanceArray = {new PersonBalance("Juanita", 2_345_678.99),

@@ -3,11 +3,22 @@ package com.mitrais.cdc.java;
 
 import java.util.concurrent.*;
 
+/**
+ * Class for mark prime number with parallel approach
+ * @author Egi
+ * @version 1.0
+ */
 public class ParallelPrimeMarker extends RecursiveTask<Void> {
   private static final int PARALLEL_CUTOFF = 10;
   private boolean[] primeFlags;
   private int lowerIndex, upperIndex;
   
+  /**
+   * ParallelPrimeMarker class constructor
+   * @param primeFlags
+   * @param lowerIndex
+   * @param upperIndex
+   */
   public ParallelPrimeMarker(boolean[] primeFlags, int lowerIndex, int upperIndex) {
     this.primeFlags = primeFlags;
     this.lowerIndex = lowerIndex;

@@ -1,23 +1,71 @@
 package com.mitrais.cdc.java;
 
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
 import javax.swing.*;
 /** TO DO 
  *  Change the background color when the user clicks.
  *  Please using itself (which implements the MouseListener interface) as the mouse listener
  */
 
-public class ColorPanel2 extends JPanel{
+/**
+ * Class to popup (JFrame) whose (JPanel) toggles back and forth between red and blue each time you click in the window
+ * with mousePressed method inside  the jPanel sub-class
+ * @author Egi
+ * @version 1.0
+ */
+public class ColorPanel2 extends JPanel implements MouseListener{
+  /**
+   * ColorPanel2 class constructor
+   */
   public ColorPanel2() {
     //TO DO
 	//setBackground color as Red
     //call mouseListener
+	setBackground(Color.RED);
+	addMouseListener(this);
   }
   
-  public void mousePressed() {
-	//TO DO
-	//Method to give logic to change the background color
-	//if the background is Red now change to blue, and vice versa
+  /**
+   * auto generated method from MouseListener interface
+   */
+  public void mouseClicked(MouseEvent arg0) {
+	// TODO Auto-generated method stub
+  }
+
+  /**
+   * auto generated method from MouseListener interface
+   */
+  public void mouseEntered(MouseEvent arg0) {
+	// TODO Auto-generated method stub
+  }
+
+  /**
+   * auto generated method from MouseListener interface
+   */
+  public void mouseExited(MouseEvent arg0) {
+	// TODO Auto-generated method stub	
+  }
+
+  /**
+   * will change panel background from blue to red vice versa when mouse is pressed
+   */
+  public void mousePressed(MouseEvent event) {
+	// TODO Auto-generated method stub
+	if(getBackground() == Color.RED) {
+		setBackground(Color.BLUE);
+	} else {
+		setBackground(Color.RED);
+	}
+  }
+
+  /**
+   * auto generated method from MouseListener interface
+   */
+  public void mouseReleased(MouseEvent arg0) {
+	// TODO Auto-generated method stub
   }
   
   //TO DO

@@ -9,6 +9,17 @@ package com.mitrais.cdc.java;
  * HINT: use override when you declare toString method on Square.java
  */
 
+/*
+ * SquareTest class
+ */
 public class SquareTest {
+
+	/*
+	 * Main method
+	 */
+	public static void main(String[] args) {
+		Square s = new Square();
+		System.out.println(s);
+	}
 
 }

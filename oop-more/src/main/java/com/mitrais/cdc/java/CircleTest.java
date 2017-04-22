@@ -9,8 +9,17 @@ package com.mitrais.cdc.java;
  * HINT: use override when you declare toString method on Circle.java
  */
 
+/*
+ * CircleTest class
+ */
 public class CircleTest {
-  public static void main(String[] args) {
-	  
-  }
+	
+	/*
+	 * Main method
+	 */
+	public static void main(String[] args) {
+		Circle c = new Circle();
+		System.out.println(c);
+	}
+  
 }

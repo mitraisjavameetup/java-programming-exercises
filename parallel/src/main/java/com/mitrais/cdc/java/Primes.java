@@ -6,6 +6,8 @@ import java.math.BigInteger;
 /** Checks if a number (int, long, or BigInteger) "is" prime,
  *  which really means is probably prime (at most 1 in 2^100 chance
  *  of being wrong).
+ * @author Egi
+ * @version 1.0
  */
 
 public class Primes {

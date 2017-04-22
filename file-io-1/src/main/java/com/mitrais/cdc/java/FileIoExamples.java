@@ -1,5 +1,12 @@
 package com.mitrais.cdc.java;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.nio.charset.Charset;
+import java.nio.file.*;
+import java.util.List;
+import java.util.stream.*;
+
 public class FileIoExamples {
   
   public static String nLetterWord(String inputFile, int wordLength) throws Exception {
@@ -9,7 +16,16 @@ public class FileIoExamples {
 	   * Print the first 10-letter word found in the file.
 	   * 
 	   */
-    return null;
+	try {
+		  return Files.lines(Paths.get(inputFile))
+				  .filter(word -> word.length() == wordLength)
+				  .findFirst()
+				  .orElse(null);
+	} catch (IOException e) {
+		System.err.println(e);
+		return null;
+	}
+	  
   }
   
   public static String abcWord(String inputFile) throws Exception {
@@ -19,7 +35,17 @@ public class FileIoExamples {
 	   * Print the first 8-letter word that contains “a”, “b”, and “c”.
 	   * 
 	   */
-    return null;
+	  try {
+		  return Files.lines(Paths.get(inputFile))
+				  .filter(word -> word.length() == 8)
+				  .filter(word -> word.contains("a") && word.contains("b") && word.contains("c"))
+				  .findFirst()
+				  .orElse(null);
+	} catch (IOException e) {
+		System.err.println(e);
+		return null;
+	}
+	  
   }
   
   public static String abcWordMixedCase(String inputFile) throws Exception {
@@ -30,7 +56,17 @@ public class FileIoExamples {
 	   * Hint: do something shorter than merely modifying your filter tests to include “A”, “B”, and “C”. 
 	   * 
 	   */
-    return null;
+	  try {
+		  return Files.lines(Paths.get(inputFile))
+			   	  .map(String::toLowerCase)
+				  .filter(word -> word.length() == 8)
+				  .filter(word -> word.contains("a") && word.contains("b") && word.contains("c"))
+				  .findFirst().orElse(null);
+	} catch (IOException e) {
+		System.err.println(e);
+		return null;
+	}
+	  
   }
   
   public static String longestWordWithout(String inputFile, String letter1, String letter2) throws Exception {
@@ -40,7 +76,16 @@ public class FileIoExamples {
 	   * Print the longest English word that contains neither “a” nor “e”.
 	   * 
 	   */
-    return null;
+	  try {
+		    return Files.lines(Paths.get(inputFile))
+		    		.filter(word -> !word.contains(letter1) && !word.contains(letter2))
+		    		.sorted((a,b) -> Long.compare(b.length(), a.length()))
+		    		.findFirst()
+		    		.orElse(null);
+	} catch (IOException e) {
+		System.err.println(e);
+		return null;
+	}
   }
   
   public static String shortestWordWith(String inputFile, String letter) throws Exception {
@@ -49,8 +94,16 @@ public class FileIoExamples {
 	   * TO DO
 	   * Print the shortest English word that contains a “q”
 	   * 
-	   */
-    return null;
+	   */try {
+		    return Files.lines(Paths.get(inputFile))
+		    		.filter(word -> word.contains(letter))
+		    		.sorted((a,b) -> Long.compare(a.length(), b.length()))
+		    		.findFirst()
+		    		.orElse(null);
+	} catch (IOException e) {
+		System.err.println(e);
+		return null;
+	}
   }
   
   public static void storeTwitterList(String inputFile, String outputFile) throws Exception {
@@ -64,6 +117,15 @@ public class FileIoExamples {
 	  * at the end. (E.g., “COOLER!”).
 	  * 
 	  */
+	  Charset charset = Charset.defaultCharset();
+	  Path path = Paths.get(outputFile);
+	  
+	  List<String> lines = Files.lines(Paths.get(inputFile))
+			  .filter(word -> word.contains("wow") || word.contains("cool"))
+			  .map(String::toUpperCase)
+			  .map(word -> word + "!")
+			  .collect(Collectors.toList());
+	  Files.write(path, lines, charset);
   }
   
   public static long numPathsInProject() throws Exception {
@@ -73,8 +135,8 @@ public class FileIoExamples {
 	   * Print out the number of files in your Eclipse project.
 	   * Folders count as files. 
 	   * 
-	   */  
-    return 0;
+	   */
+	  return Files.list(Paths.get(".")).count();
   }
   
   public static void storeNums(int n, int range, String outputFile) {
@@ -91,6 +153,16 @@ public class FileIoExamples {
 	   * but it will also automatically close the PrintStream at the end.
 	   * 
 	   */
+	  Charset charset = Charset.defaultCharset();
+	    Path path = Paths.get(outputFile);
+	    try (PrintWriter out =
+	      new PrintWriter(Files.newBufferedWriter(path, charset))) {
+	        for(int i=0; i<n; i++) {
+	          out.printf("Number is %5.2f%n", range * Math.random());
+	        }
+	    } catch (IOException ioe) {
+	      System.err.printf("IOException: %s%n", ioe);
+	    }
   }
   
   private FileIoExamples() {} // Uninstantiatable class

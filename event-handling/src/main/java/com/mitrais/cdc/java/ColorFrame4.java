@@ -4,8 +4,10 @@ import java.awt.Color;
 
 import javax.swing.*;
 
-/*
+/**
  * Class main to run the ColorPanel4
+ * @author Egi
+ * @version 1.0
  */
 public class ColorFrame4 extends JFrame {
   public ColorFrame4() {

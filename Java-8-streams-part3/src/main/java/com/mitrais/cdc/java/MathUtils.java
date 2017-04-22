@@ -14,7 +14,7 @@ public class MathUtils {
     //todo:
     // Make a very large array of random doubles, each of which ranges from 0 to 1. A quick and easy
     //way to do this is with “new Random().doubles(size).toArray()”.
-    return 0;
+    return new Random().doubles(size).toArray();
   }
   
   /** Returns the sum of the square roots of entries in the stream. 
@@ -25,7 +25,7 @@ public class MathUtils {
     //Compute the sum of the square roots of the numbers in the array. Find a shorter and simpler way
     //than making a loop to tally the sum
 
-    return 0;
+    return numStream.map(Math::sqrt).sum();
   }
   
   /** Returns the sum of the square roots of entries in the stream. 
@@ -35,13 +35,14 @@ public class MathUtils {
     // TODO:
     //Repeat the process at sqrtSum method in parallel
 
-    return 0;
+    return numStream.parallel().map(Math::sqrt).sum();
   }
   
+
   // Or, use DoubleStream.generate, which produces DoubleStream
   // instead of Stream<Double>
   public static Stream<Double> randomNums(double maxValue) {
     //todo
-    return 0;
+    return Stream.generate(() -> Math.random() * maxValue);
   }
 }
