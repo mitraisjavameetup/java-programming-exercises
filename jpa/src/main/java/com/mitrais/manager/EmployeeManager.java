@@ -33,7 +33,10 @@ public class EmployeeManager {
 	 **/
 	public void create(Employee employee) {
 		// TODO create employee and save to database
-
+		entityManager.getTransaction().begin();
+		employee= new Employee();
+		entityManager.persist(employee);
+		entityManager.getTransaction().commit();
 	}
 
 	/**
@@ -44,7 +47,8 @@ public class EmployeeManager {
 	 **/
 	public Employee read(long employeeId) {
 		// TODO find employee and return
-		return new Employee();
+		Employee employee= entityManager.find(Employee.class, employeeId);
+		return employee;
 	}
 
 	/**
