@@ -1,5 +1,11 @@
 package com.mitrais.cdc.java;
 
+/**
+ * @author Agus Mistiawan
+ */
+
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class ListPerformance {
@@ -13,10 +19,31 @@ public class ListPerformance {
 	 * • To ensure meaningful results, use very long lists and access the middle element many times.
 	 * • Run several tests, each with larger and larger lists.
 	 */
-
-	  public static double timeAccess(String label,
+	/**
+	 * Will return time execute/access
+	 * @param label name of list
+	 * @param list type of list
+	 * @return time access
+	 */
+	  public  double timeAccess(String label,
 	                                List<String> list) {
-	    return 0.0;
+		  double first = System.nanoTime();
+		  list.remove(5000);
+		  double second = System.nanoTime();
+		  return second-first;
 	
 	  }
+	  
+	  public static void main(String[] args) {
+		List<String> firstList = new ArrayList<>();
+		List<String> secondList = new LinkedList<>();
+		
+		for(int i=0; i<1000000; i++){
+			firstList.add("index " + i);
+			secondList.add("index " + i);
+		}
+		ListPerformance ferporm = new ListPerformance();
+		System.out.println("ArrayList delete time : "+ferporm.timeAccess("Array List", firstList));
+		System.out.println("LinkedList delete time : "+ferporm.timeAccess("Linked List", secondList));
+	}
 }

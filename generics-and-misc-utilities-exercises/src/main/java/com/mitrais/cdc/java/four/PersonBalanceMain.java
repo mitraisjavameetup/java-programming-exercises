@@ -1,4 +1,9 @@
 package com.mitrais.cdc.java.four;
+/**
+ * 
+ * @author Agus Mistiawan
+ *	Test case for Class Person Balance
+ */
 
 public class PersonBalanceMain {
 	public static void main(String[] args) {

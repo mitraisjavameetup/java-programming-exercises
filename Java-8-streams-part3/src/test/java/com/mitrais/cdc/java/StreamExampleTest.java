@@ -14,5 +14,7 @@ public class StreamExampleTest {
 		double[] arrNum = SE.getArray();
 		assertTrue(SE.timeSumParallel(DoubleStream.of(arrNum))>0);
 		assertTrue(SE.timeSumSequential(DoubleStream.of(arrNum))> 0);
+		assertTrue(SE.getLengthRandom1()==10);
+		assertTrue(SE.getLengthRandom2()==20);
 	}
 }

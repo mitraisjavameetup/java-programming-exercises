@@ -1,6 +1,11 @@
 package com.mitrais.cdc.java.resources;
 
-
+/**
+ * 
+ * @author Agus Mistiawan
+ * @version 1.0.0
+ *
+ */
 public class SalesTest {
   public static void main(String[] args) {
     CarSale sale1 = new CarSale("Lamborghini Aventador", 400_000, 5);

@@ -1,6 +1,10 @@
 package com.mitrais.cdc.java.three;
 import javax.swing.*;
-
+/**
+ * Flip coin thread
+ * @author Agus Mistiawan
+ *
+ */
 public class LabelingCoinFlipper implements Runnable {
   private JLabel label;
 
@@ -21,6 +25,15 @@ public class LabelingCoinFlipper implements Runnable {
   	//"Heads: 3"  
     //do not forget to add "pause(5);" after change the label text
     //so you could see the entire process
+	  int counter = 0;
+	  for(int i=0; i<1000; i++){
+		  double random = Math.random();
+		  if(random > 0.5){
+			  counter++;
+			  this.label.setText("Heads " + counter);
+			  pause(100);
+		  }
+	  }
     
     
     

@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -21,7 +23,9 @@ public class Address {
 	@Column(name = "postal_code")
 	private String postalCode;
 	// TODO add Employee entity when needed
-	// private Employee employee;
+	@OneToOne
+	@MapsId
+    private Employee employee_id;
 
 	public Address() {}
 

@@ -1,6 +1,6 @@
 package com.mitrais.cdc.java;
 
-import java.util.*;
+import java.util.List;
 import java.util.stream.*;
 
 /** TO DO 
@@ -23,8 +23,26 @@ public class StreamExamples {
 	//	• Print 5 random doubles
 	//  • Make a List of 10 random doubles
 	//  • Make an array of 20 random doubles
-
-
+//	List<Double> nums = Stream.generate(()->MathUtils.randomArray(10)).limit(5).collect(Collectors.toList());
+	/**
+	 * Get length of random 1
+	 * @return
+	 */
+	public int getLengthRandom1(){
+		List<Double> doubles = MathUtils.randomNums(10).limit(10).collect(Collectors.toList());
+		return doubles.size();
+	}
+	/**
+	 * Get length of random 2
+	 * @return
+	 */
+	public int getLengthRandom2(){
+		Double[] doubless = MathUtils.randomNums(10).limit(20).toArray(Double[]::new);	
+		return doubless.length;
+	}
+	public StreamExamples() {
+		MathUtils.randomNums(10).limit(5).forEach(System.out::println);
+	}
 	public double[] getArray(){
 		double[] numArray = MathUtils.randomArray(arraySize);
 		return numArray;
@@ -38,6 +56,10 @@ public class StreamExamples {
 	   * with operation is sqrtSum
 	   * then stored to variable time
 	   */
+		time = Op.timeOp(()->{
+			double sum = MathUtils.sqrtSum(numStream);
+			System.out.printf(" Sum is %,.8f%n", sum);
+		});
 		return time;
 	}
   
@@ -49,7 +71,14 @@ public class StreamExamples {
 	   * with operation is sqrtSumParallel
 	   * then stored to variable time
 	   */
+//		Op serialSum = () -> MathUtils.sqrtSumParallel(numStream);
+//		time = Op.timeOp(serialSum);
+		time = Op.timeOp(()->{
+			double sum = MathUtils.sqrtSumParallel(numStream);
+			System.out.printf(" Sum is %,.8f%n", sum);
+		});
 		return time;
 	}
+	
   
 }

@@ -4,6 +4,10 @@ import java.util.concurrent.*;
 /** Second variation: main class implements Runnable.
  */
 
+/**
+ * @author Agus Mistiawan
+ *
+ */
 public class FlipCoins2 implements Runnable {
   
   public FlipCoins2() {
@@ -19,19 +23,19 @@ public class FlipCoins2 implements Runnable {
     int poolSize = 10;
     
     //TODO: Instantiate ExcecutorService class with poolsize as stated above
-
+    ExecutorService tasks = Executors.newFixedThreadPool(poolSize);
     
     
     //TODO execute this 5 times (or several times) concurrently
-    
-    
-    
-    
-    
+    tasks.execute(this);
+    tasks.execute(this);
+    tasks.execute(this);
+    tasks.execute(this);
+    tasks.execute(this);
     //TODO: do not forget to shutdown the executor
-    
-    
+    tasks.shutdown();
   }
+   
 
   
   
@@ -43,17 +47,23 @@ public class FlipCoins2 implements Runnable {
  
   @Override
   public void run() {
-	//TODO: Just copy run() method from question number 1 :)
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+	  boolean heads = true;
+	  int counter = 0;
+	  for(int i=0; i<1000; i++){
+		  double random = Math.random();
+		  if(random > 0.5){
+			  if(heads)
+				  counter++;
+			  else
+				  counter++;
+				  heads = true;
+		  }else{
+			  counter=0;
+			  heads = true;
+		  }
+		  if(counter>=3){
+			  System.out.println(Thread.currentThread().getName()+ " got "+counter+" heads in a row");
+		  }
+	  }
   }
 }

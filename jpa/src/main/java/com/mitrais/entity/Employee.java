@@ -1,6 +1,7 @@
 package com.mitrais.entity;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
@@ -46,30 +47,59 @@ import javax.persistence.Table;
 // TODO please add static query for Employee.filterByLocation and Employee.filterByEmploymentHistory (with JOIN)
 
 // TODO please add annotation to set Entity Listener
-
+@Entity
+@NamedQueries(
+		{ @NamedQuery(name = "Employee.filterByLocation", query = "select e from Employee e where e.officeLocation=:officeLocation"),
+			@NamedQuery(name="Employee.filterByEmploymentHistory", query="select e from Employee e, EmploymentHistory h where e.id=h.empId and h.empId=:empId")}
+)
+@EntityListeners(EmployeeEntityListener.class)
+@Table(name="t_employee")
 public class Employee {
 	// TODO implement this entity class
+	@Id
+	@GeneratedValue(strategy =  GenerationType.IDENTITY)
 	private Long id;
+	@Column(name="name")
 	private String name;
+	@Column(name="date_of_birth")
 	private Date dateOfBirth;
+	@Column(name="gender")
 	private String gender;
+	@Column(name="martial_status")
 	private String maritalStatus;
+	@Column(name="phone")
 	private String phone;
+	@Column(name="email")
 	private String email;
+	@Column(name="hire_date")
 	private Date hireDate;
+	@Column(name="office_location")
 	private String officeLocation;
+	@Column(name="last_modified")
 	private Date lastModified;
+	@Column(name="period")
 	private Period period;
+	@Column(name="employment_history")
+	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true)
+	@JoinColumn(nullable=false)
+	private Collection<EmploymentHistory> employmentHistory;
 	// TODO @OneToOne association/relationship with Address entity
 	//      association is optional, cascading all operations
+	@Column(name="address")
+	@OneToOne(optional=false, cascade=CascadeType.ALL, mappedBy="employee_id")
 	private Address address;
 	// TODO @OneToMany association with GradeHistory entity
 	//   	cascading all operations, and remove orphan
 	// 		join column must no be null
+	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true)
+	@JoinColumn(nullable=false)
 	private List<GradeHistory> grades;
 	// TODO @ManyToOne association with BranchOffice entity
+	@ManyToOne
+	@Column(name="branch_office")
 	private BranchOffice branchOffice;
 	// TODO @ManyToMany association with InternalProject entity
+	@ManyToMany(targetEntity=InternalProject.class)
 	private List<InternalProject> projects;
 
 	public Employee() {

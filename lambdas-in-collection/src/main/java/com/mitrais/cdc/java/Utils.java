@@ -1,9 +1,10 @@
 package com.mitrais.cdc.java;
 
 import java.util.*;
+import java.util.stream.*;
 
 public class Utils {
-  
+  private static  Map<Integer,Integer> fibMap = new HashMap<>();
   public static List<Double> randomNumberList(int size) {
 	  
 	  /*
@@ -13,7 +14,8 @@ public class Utils {
 	   * Use Math.random() and normal List methods.
 	   *
 	   */
-	  return null;
+	  
+	  return Stream.generate(Math::random).limit(size).collect(Collectors.toList());
   }
   
   public static double average(List<Double> nums) {
@@ -27,7 +29,8 @@ public class Utils {
 	   * how to turn a List<Double> into a DoubleStream.)
 	   * 
 	   */
-	  return 0;
+	 
+	  return nums.stream().mapToDouble(Double::doubleValue).average().getAsDouble();
   }
   
   public static void removeBelow(List<Double> nums, double cutoff) {
@@ -39,7 +42,9 @@ public class Utils {
 	   * below the cutoff are removed. 
 	   * Use one of the methods from this lecture.
 	   * 
+	   *
 	   */
+	  nums.removeIf(d -> d < cutoff);
   }
   
   public static void doubleAllValues(List<Double> nums) {
@@ -68,13 +73,19 @@ public class Utils {
   }
   
   public static int countPrimes(int upperBound) {
-	  
 	  /*
 	   * TO DO
 	   * Use computeIfAbsent to make a memoized version of countPrimes1 method.
 	   * Profile it and compare performance
 	   *
 	   */
-	  return 0;
+	  return fibMap.computeIfAbsent(upperBound, n -> {
+		  if(n<=1){
+			  return n;
+		  }else{
+			  return countPrimes(n-1)+countPrimes(n-2);
+		  }
+	  });
+	  
   }
 }
