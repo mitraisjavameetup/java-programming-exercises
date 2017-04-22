@@ -3,6 +3,7 @@ package com.mitrais.entity;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,6 +28,7 @@ public class BranchOffice {
 	@Column(name = "postal_code")
 	private String postalCode;
 	// TODO add annotation when necessary
+	@OneToMany
 	private List<Employee> employees;
 
 	public BranchOffice() {}
@@ -75,7 +77,7 @@ public class BranchOffice {
 		this.postalCode = postalCode;
 		return this;
 	}
-
+	
 	public List<Employee> getEmployees() {
 		return employees;
 	}
