@@ -14,7 +14,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "t_branch_office")
 public class BranchOffice {
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;

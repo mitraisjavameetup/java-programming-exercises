@@ -47,8 +47,12 @@ import javax.persistence.Table;
 
 // TODO please add annotation to set Entity Listener
 
+@Entity @EntityListeners(EmployeeEntityListener.class)
+@Table(name="t_employee")
 public class Employee {
 	// TODO implement this entity class
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
 	private Date dateOfBirth;
@@ -62,14 +66,19 @@ public class Employee {
 	private Period period;
 	// TODO @OneToOne association/relationship with Address entity
 	//      association is optional, cascading all operations
+	@OneToOne(targetEntity=Address.class, optional=true, cascade=CascadeType.ALL)
 	private Address address;
 	// TODO @OneToMany association with GradeHistory entity
 	//   	cascading all operations, and remove orphan
 	// 		join column must no be null
+	@OneToMany(targetEntity=GradeHistory.class, cascade=CascadeType.ALL, orphanRemoval=true)
+	@JoinColumn(nullable=false)
 	private List<GradeHistory> grades;
 	// TODO @ManyToOne association with BranchOffice entity
+	@ManyToOne(targetEntity=BranchOffice.class)
 	private BranchOffice branchOffice;
 	// TODO @ManyToMany association with InternalProject entity
+	@ManyToMany(targetEntity=InternalProject.class)
 	private List<InternalProject> projects;
 
 	public Employee() {
@@ -156,7 +165,6 @@ public class Employee {
 		this.hireDate = hireDate;
 		return this;
 	}
-
 
 	public Period getPeriod() {
 		return period;
