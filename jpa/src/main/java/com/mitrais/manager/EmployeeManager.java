@@ -16,8 +16,7 @@ public class EmployeeManager {
 	private EntityManager entityManager;
 
 	private EmployeeManager() {
-		entityManager = EntityManagerUtil 
-			.getEntityManager();
+		entityManager = EntityManagerUtil.getEntityManager();
 	}
 
 	public static EmployeeManager getInstance() {
@@ -28,42 +27,59 @@ public class EmployeeManager {
 	}
 
 	/**
-	 *  write Employee to database/ persistent storage
-	 *  @param employee  the row to be inserted
+	 * write Employee to database/ persistent storage
+	 * 
+	 * @param employee
+	 *            the row to be inserted
 	 **/
 	public void create(Employee employee) {
 		// TODO create employee and save to database
+		entityManager.getTransaction().begin();
+		entityManager.persist(employee);
+		entityManager.getTransaction().commit();
 
 	}
 
 	/**
-	 *  read employee row from database
-	 *	@param employeeId  the id of row that 
-	 *						will be fetched
-	 *	@return Employee entity mapped from table, otherwise null
+	 * read employee row from database
+	 * 
+	 * @param employeeId
+	 *            the id of row that will be fetched
+	 * @return Employee entity mapped from table, otherwise null
 	 **/
 	public Employee read(long employeeId) {
 		// TODO find employee and return
-		return new Employee();
+		return entityManager.find(Employee.class, employeeId);
 	}
 
 	/**
-	 *  update employee if exist
-	 *	@param employee    row that will replace 
-	 *	@param employeeId  the id of row that 
-	 *						will be replaced
+	 * update employee if exist
+	 * 
+	 * @param employee
+	 *            row that will replace
+	 * @param employeeId
+	 *            the id of row that will be replaced
 	 **/
 	public void update(Employee employee) {
-		// TODO update row in table 
-
+		// TODO update row in table
+			  entityManager.getTransaction().begin();
+			  entityManager.persist(employee);
+			  entityManager.getTransaction().commit();
 	}
 
 	/**
-	 *  delete employee if exist
-	 *	@param employeeId table emmployee primary key 
+	 * delete employee if exist
+	 * 
+	 * @param employeeId
+	 *            table emmployee primary key
 	 **/
 	public void delete(Employee employee) {
 		// TODO delete row in table
+		if(read(employee.getId())!=null){
+			  entityManager.getTransaction().begin();
+			  entityManager.remove(employee);
+			  entityManager.getTransaction().commit();
+		}
 
 	}
 
@@ -73,11 +89,16 @@ public class EmployeeManager {
 	}
 
 	/**
-	 *  write Employment History to database/ persistent storage
-	 *  @param project  the row to be inserted
+	 * write Employment History to database/ persistent storage
+	 * 
+	 * @param project
+	 *            the row to be inserted
 	 **/
 	public void createEmploymentHistory(EmploymentHistory project) {
 		// TODO create project and save to database
+		entityManager.getTransaction().begin();
+		entityManager.persist(project);
+		entityManager.getTransaction().commit();
 
 	}
 
@@ -96,15 +117,11 @@ public class EmployeeManager {
 	}
 
 	public List getAllEmploymentHistory() {
-		return entityManager.createQuery(
-				"SELECT a FROM EmploymentHistory a")
-				.setMaxResults(20)
-				.getResultList();
+		return entityManager.createQuery("SELECT a FROM EmploymentHistory a").setMaxResults(20).getResultList();
 	}
 
 	/**
-	 *  if EntityManager's transaction is active,
-	 *  all transaction are rolled back
+	 * if EntityManager's transaction is active, all transaction are rolled back
 	 **/
 	public void rollbackAll() {
 		if (entityManager.getTransaction().isActive()) {

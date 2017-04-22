@@ -11,7 +11,7 @@
         <class>com.mitrais.entity.Address</class>
         <class>com.mitrais.entity.GradeHistory</class>
         <class>com.mitrais.entity.BranchOffice</class>
-        <class>com.mitrais.entity.Project</class>
+        <class>com.mitrais.entity.ProjectId</class>
 
         <properties>
             <property 
