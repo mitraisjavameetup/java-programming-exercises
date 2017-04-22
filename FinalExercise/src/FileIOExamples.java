@@ -1,4 +1,4 @@
-package com.mitrais.cdc.java;
+
 
 import java.net.URI;
 import java.nio.file.Files;
@@ -14,9 +14,6 @@ public class FileIOExamples {
 	public static List<String> testWords = Arrays.asList("foo", "bar", "baz12345678", "boo1234567");
 	public static List<String> testWords2 = Arrays.asList("quit", "squid", "book", "bookkeeper", "keep", "steep");
 	
-	public FileIOExamples(){
-		
-	}
 	public static String print10LetterWord(Stream<String> words) {
 		
 		return words

@@ -1,17 +1,12 @@
-package com.mitrais.cdc.java;
+
 
 import static org.junit.Assert.*;
-
 import java.util.Scanner;
 
 import org.junit.Test;
-import com.mitrais.cdc.java.FileIOExamples;
 
 public class FileIoExamplesTest {
 	
-	public FileIoExamplesTest(){
-		
-	}
 	@Test
 	public static void print10LetterWord() throws Exception {
 		
@@ -23,10 +18,13 @@ public class FileIoExamplesTest {
 	
 	
 	@Test
-	public void printNLetterWord() throws Exception {
+	public static void printNLetterWord() throws Exception {
 		
 		assertEquals(FileIOExamples.printNLetterWord(FileIOExamples.testWords.stream(), 11), "baz12345678");
 		assertEquals(FileIOExamples.printNLetterWord(FileIOExamples.filename, 11), "abandonment");
+		System.out.println(FileIOExamples.printNLetterWord(FileIOExamples.testWords.stream(), 11));
+		System.out.println(FileIOExamples.printNLetterWord(FileIOExamples.filename, 11));
+		
 		
 		for (int wordLength = 2; wordLength < 6; wordLength++) {
 			String result1 = FileIOExamples.printNLetterWord(
@@ -58,19 +56,28 @@ public class FileIoExamplesTest {
 	}
 	
 	@Test
-	public void numWordsContaining(){
+	public static void numWordsContaining(){
 		
 		assertEquals(FileIOExamples.numWordsContaining(FileIOExamples.testWords2.stream(), "q"), 2);
 		assertEquals(FileIOExamples.numWordsContaining(FileIOExamples.testWords2.stream(), "j"), 0);
+		System.out.println(FileIOExamples.numWordsContaining(FileIOExamples.testWords2.stream(), "q"));
+		System.out.println(FileIOExamples.numWordsContaining(FileIOExamples.testWords2.stream(), "j"));
 		
 		assertEquals(FileIOExamples.numWordsContaining(FileIOExamples.filename, "q"), 2527L);
 		assertEquals(FileIOExamples.numWordsContaining(FileIOExamples.filename, "j"), 2463L);
+		System.out.println(FileIOExamples.numWordsContaining(FileIOExamples.filename, "q"));
+		System.out.println(FileIOExamples.numWordsContaining(FileIOExamples.filename, "j"));
 		
 		assertEquals(FileIOExamples.numWordsContaining(FileIOExamples.testWords2.stream(), "oo"), 2);
 		assertEquals(FileIOExamples.numWordsContaining(FileIOExamples.testWords2.stream(), "ee"), 3);
+		System.out.println(FileIOExamples.numWordsContaining(FileIOExamples.testWords2.stream(), "oo"));
+		System.out.println(FileIOExamples.numWordsContaining(FileIOExamples.testWords2.stream(), "ee"));
 		
 		assertEquals(FileIOExamples.numWordsContaining(FileIOExamples.filename, "oo"), 3776L);
 		assertEquals(FileIOExamples.numWordsContaining(FileIOExamples.filename, "ee"), 3829L);
+		System.out.println(FileIOExamples.numWordsContaining(FileIOExamples.filename, "oo"));
+		System.out.println(FileIOExamples.numWordsContaining(FileIOExamples.filename, "ee"));
+		
 		
 	}
 	
