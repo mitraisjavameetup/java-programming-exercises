@@ -19,16 +19,32 @@ import javax.swing.*;
  */
 
 public class ColorPanel5 extends JPanel {
-  public ColorPanel5() {
-	//Set background color to Red
-    //call KeyListener
-  }
-  
-  private class ColorChanger extends KeyAdapter {
-    public void keyTyped() {
-      /*TO DO
-       * give logic to set background color when user press "r", "y", "g", and "b" from keyboard
-       */
-    }
-  }
+	
+	public ColorPanel5() {
+		// Set background color to Red
+		// call KeyListener
+		setFocusable(true);
+		requestFocusInWindow();
+		setBackground(Color.red);
+		addKeyListener(new ColorChanger());
+	}
+
+	private class ColorChanger extends KeyAdapter {
+		@Override
+		public void keyTyped(KeyEvent e) {
+			/*
+			 * TO DO give logic to set background color when user press "r",
+			 * "y", "g", and "b" from keyboard
+			 */
+			if (e.getKeyChar() == 'r') {
+				setBackground(Color.red);
+			} else if (e.getKeyChar() == 'y') {
+				setBackground(Color.yellow);
+			} else if (e.getKeyChar() == 'g') {
+				setBackground(Color.green);
+			} else if (e.getKeyChar() == 'b') {
+				setBackground(Color.blue);
+			}
+		}
+	}
 }

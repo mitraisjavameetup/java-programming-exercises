@@ -56,7 +56,7 @@ public class StreamExamplesTest {
 	public void firstFunnyString() {
 		
 		assertEquals(StreamExamples.firstFunnyString("E"), "BYE");
-		assertEquals(StreamExamples.firstFunnyString("Q"), "No match");
+		assertEquals(StreamExamples.firstFunnyString("Q"), "No Match");
 	}
 	
 	@Test

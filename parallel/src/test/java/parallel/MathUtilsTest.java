@@ -84,7 +84,7 @@ public class MathUtilsTest {
 		assertTrue(primeList.size() == 168);
 		assertTrue(primeList.get(primeList.size() - 1) == 997);
 	}
-	
+
 	@Test
 	public void test_findPrimesParallel_sizeParameter() {
 		int upperIndex = 1000;
