@@ -1,6 +1,7 @@
 package com.mitrais.manager;
 
 import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 
 import com.mitrais.entity.Employee;
 import com.mitrais.entity.InternalProject;
@@ -33,7 +34,7 @@ public class EmployeeManager {
 	 **/
 	public void create(Employee employee) {
 		// TODO create employee and save to database
-
+		entityManager.persist(employee);
 	}
 
 	/**
@@ -44,7 +45,8 @@ public class EmployeeManager {
 	 **/
 	public Employee read(long employeeId) {
 		// TODO find employee and return
-		return new Employee();
+		Employee emp = entityManager.find(Employee.class, employeeId);
+		return emp;
 	}
 
 	/**
@@ -55,7 +57,10 @@ public class EmployeeManager {
 	 **/
 	public void update(Employee employee) {
 		// TODO update row in table 
-
+		entityManager.getTransaction().begin();
+		entityManager.merge(employee);
+		entityManager.flush();
+		entityManager.getTransaction().commit();
 	}
 
 	/**
@@ -64,7 +69,10 @@ public class EmployeeManager {
 	 **/
 	public void delete(Employee employee) {
 		// TODO delete row in table
-
+		entityManager.getTransaction().begin();
+		entityManager.remove(employee);
+		entityManager.flush();
+		entityManager.getTransaction().commit();
 	}
 
 	public void close() {

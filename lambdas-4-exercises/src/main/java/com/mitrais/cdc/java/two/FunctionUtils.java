@@ -13,16 +13,16 @@ public class FunctionUtils {
   @SafeVarargs
   public static <T> Predicate<T> allPassPredicate(Predicate<T>... tests) {
     Predicate<T> result = e -> true;
-    
+  
     /** TODO: create a 'for' loop.
      *  Returns a Predicate that is the result of ANDing all the argument Predicates.
      *  If no Predicates are supplied, it returns a Predicate that always returns
      *  true.
      */
+    for(Predicate<T> test: tests) {
+        result = result.and(test);
+    }
 
-    
-    
-    
     
     return(result);
   }
@@ -31,13 +31,12 @@ public class FunctionUtils {
   
   @SafeVarargs
   public static <T> T firstAllMatch(Stream<T> elements, Predicate<T>... tests) {
-    Predicate<T> combinedTest = allPassPredicate(tests);
-    
+	  
     T result = null; 
     
     //TODO: filter based first element that matches ALL of the tests, null otherwise    
-
-    
+    Predicate<T> combinedTest = allPassPredicate(tests);
+    result = elements.filter(combinedTest).findFirst().orElse(null);
     
     
     return result;

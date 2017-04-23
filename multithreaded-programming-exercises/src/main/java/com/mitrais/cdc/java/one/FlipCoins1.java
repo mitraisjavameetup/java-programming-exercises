@@ -10,9 +10,14 @@ public class FlipCoins1 {
     
     
     //TODO execute the CoinFlipper 5 times (or several times) concurrently 
-
-    
-    
+    ExecutorService taskList = Executors.newFixedThreadPool(poolSize);
+    taskList.execute(new CoinFlipper());
+    taskList.execute(new CoinFlipper());
+    taskList.execute(new CoinFlipper());
+    taskList.execute(new CoinFlipper());
+    taskList.execute(new CoinFlipper());
+    taskList.shutdown();
+     
     
     //TODO: do not forget to shutdown the executor
     

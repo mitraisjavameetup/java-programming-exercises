@@ -2,6 +2,8 @@ package com.mitrais.cdc.java;
 
 import java.util.List;
 
+import javax.swing.text.Utilities;
+
 /**
  * There are 2 method below
  * Please create the test case using junit on src/test/java/AppTest.java
@@ -15,7 +17,8 @@ public class App {
 	   */
 	  public static String calmString(String speech) {
 		//todo: apply logic as described above
-
+		speech = speech.replaceAll("!", "");
+		//System.out.println(speech);
 	    return(speech);
 	  }
 	  
@@ -28,6 +31,14 @@ public class App {
 	   */
 	  public static void calmAttendees(List<String> attendingParties) {
 			//todo: apply logic as described above
+		  while (attendingParties.contains("Republican")&&attendingParties.contains("Democrat")){
+				  double coin = Math.round(Math.random());
+				  if(coin==1)
+					  attendingParties.remove("Republican");
+				  else
+					  attendingParties.remove("Democrat");
+		  }
+		  //System.out.println(attendingParties.size());
 	  }
 	  
 	  private App() {} // Class cannot be instantiated: only static methods

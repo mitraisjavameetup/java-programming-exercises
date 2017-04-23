@@ -1,6 +1,8 @@
 package com.mitrais.cdc.java.two;
 import java.util.concurrent.*;
 
+import com.mitrais.cdc.java.one.CoinFlipper;
+
 /** Second variation: main class implements Runnable.
  */
 
@@ -19,17 +21,23 @@ public class FlipCoins2 implements Runnable {
     int poolSize = 10;
     
     //TODO: Instantiate ExcecutorService class with poolsize as stated above
+    ExecutorService taskList = Executors.newFixedThreadPool(poolSize);
+
 
     
     
     //TODO execute this 5 times (or several times) concurrently
-    
+    taskList.execute(this);
+    taskList.execute(this);
+    taskList.execute(this);
+    taskList.execute(this);
+    taskList.execute(this);
     
     
     
     
     //TODO: do not forget to shutdown the executor
-    
+    taskList.shutdown();
     
   }
 
@@ -44,16 +52,25 @@ public class FlipCoins2 implements Runnable {
   @Override
   public void run() {
 	//TODO: Just copy run() method from question number 1 :)
+	  double recent=-1;
+	  double result=-1;
+	  int counter = 0;
+	  for(int i=0;i<1000;i++){
+		  result=Math.round(Math.random());
+		  if(result==recent){
+			  counter++;
+			  if(counter>=3){
+				  String threadName = Thread.currentThread().getName();
+				  if(result==1)
+					  System.out.println(threadName + " got " + counter + " heads in a row!!");
+				  else
+					  System.out.println(threadName + " got " + counter + " tails in a row!!");
+			  }
+		  } else{
+			  recent = result;
+			  counter = 0;
+		  }
+	  }
 
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   }
 }
