@@ -1,6 +1,7 @@
 package com.mitrais.cdc.java;
 
 import java.util.*;
+import java.util.stream.IntStream;
 
 /** TO DO
  *  please complete the methods for below capabilities (you should using lambda expression).
@@ -19,59 +20,83 @@ import java.util.*;
  *  
  *  5. Find the number of words that contain an “h”
  */
-
+/**
+ * class StreamExamples
+ * @author trainee
+ *
+ */
 public class StreamExamples {
 	
 	List<String> words;
 	StreamExamples(){
 		words = Arrays.asList("hi", "hello", "hola", "bye", "goodbye", "adios");
 	}
-	
+	/**
+	 * 
+	 * @return List<string>
+	 */
 	public List<String> getStringList(){
 		return words;
 	}
-	
+	/**
+	 * 
+	 * @return String
+	 */
 	public String uppercaseWithoutMap(){
 		String uppercaseString = null;
 		/* TO DO
 		 * complete this method to answer number 1
 		 * using lambda expression
 		 */
-		
+		uppercaseString=words.stream().reduce("",String::concat).toUpperCase();
 		return uppercaseString;
 	}
-	
+	/**
+	 * 
+	 * @return String
+	 */
 	public String uppercaseWithMap(){
 		String uppercaseString = null;
 		/* TO DO
 		 * complete this method to answer number 2
 		 * using lambda expression
 		 */
-		
+		uppercaseString = words.stream().map(String::toUpperCase).reduce("",String::concat);
 		return uppercaseString;
 	}
-	
+	/**
+	 * 
+	 * @return String
+	 */
 	public String wordsWithComma(){
 		String convertWords = null;
 		/* TO DO
 		 * complete this method to answer number 3
 		 * using lambda expression
 		 */
-		
+		convertWords=words.stream().reduce("",(a,b)->a.isEmpty()?b:a+","+b);
 		return convertWords;
 	}
-	
+	/**
+	 * 
+	 * @return int
+	 */
 	public int numberOfCharacters(){
 		int numOfChar = 0;
 		/*TO DO
 		 *complete this method to answer number 4
 		 *using lambda expression
 		 */
+		numOfChar=words.stream().mapToInt(s->s.length()).sum();
 		return numOfChar;
 	}
-	
+	/**
+	 * 
+	 * @return int
+	 */
 	public int numberOfWordsWithH(){
 		int numOfH = 0;
+		numOfH=(int) words.stream().filter(s->s.contains("h")).count();
 		/*TO DO
 		 *complete this method to answer number 5
 		 *using lambda expression

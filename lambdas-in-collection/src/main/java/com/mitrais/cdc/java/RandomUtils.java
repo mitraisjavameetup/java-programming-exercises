@@ -5,7 +5,7 @@ import java.util.Random;
  */
 public class RandomUtils {
   private static Random r = new Random();
-
+  
   /** Return a random int from 0 to range-1. So, randomInt(4)
    *  returns any of 0, 1, 2, or 3.
    */

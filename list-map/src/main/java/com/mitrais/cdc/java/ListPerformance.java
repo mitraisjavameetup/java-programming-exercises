@@ -13,9 +13,16 @@ public class ListPerformance {
 	 * • To ensure meaningful results, use very long lists and access the middle element many times.
 	 * • Run several tests, each with larger and larger lists.
 	 */
-
+		/**
+		 * 
+		 * @param label
+		 * @param list
+		 * to test the speed between arraylist and linkedlist
+		 */
 	  public static double timeAccess(String label,
 	                                List<String> list) {
+		  
+		System.out.println(System.nanoTime());  
 	    return 0.0;
 	
 	  }

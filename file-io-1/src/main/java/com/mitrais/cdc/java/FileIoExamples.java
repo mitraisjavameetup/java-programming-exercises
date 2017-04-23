@@ -1,7 +1,30 @@
 package com.mitrais.cdc.java;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+/**
+ * 
+ * @author trainee
+ * FileToExamples Class
+ */
 public class FileIoExamples {
-  
+  /**
+   * 
+   * @param inputFile
+   * @param wordLength
+   * @return String
+   * @throws Exception
+   */
   public static String nLetterWord(String inputFile, int wordLength) throws Exception {
 	  
 	  /* 
@@ -9,9 +32,16 @@ public class FileIoExamples {
 	   * Print the first 10-letter word found in the file.
 	   * 
 	   */
-    return null;
+	  Path path=Paths.get(inputFile);
+	  String result=Files.lines(path).filter(s->s.length()==wordLength).findFirst().orElse(null);
+    return result;
   }
-  
+  /**
+   * 
+   * @param inputFile
+   * @return String
+   * @throws Exception
+   */
   public static String abcWord(String inputFile) throws Exception {
 	  
 	  /*
@@ -19,9 +49,17 @@ public class FileIoExamples {
 	   * Print the first 8-letter word that contains “a”, “b”, and “c”.
 	   * 
 	   */
-    return null;
+	  
+	  Path path=Paths.get(inputFile);
+	  String result=Files.lines(path).filter(s->s.length()==8).filter(s->s.contains("a")).filter(s->s.contains("b")).filter(s->s.contains("c")).findFirst().orElse(null);
+	  return result;
   }
-  
+  /**
+   * 
+   * @param inputFile
+   * @return String
+   * @throws Exception
+   */
   public static String abcWordMixedCase(String inputFile) throws Exception {
 	  
 	  /*
@@ -30,9 +68,18 @@ public class FileIoExamples {
 	   * Hint: do something shorter than merely modifying your filter tests to include “A”, “B”, and “C”. 
 	   * 
 	   */
-    return null;
+	  Path path=Paths.get(inputFile);
+	  String result=Files.lines(path).map(String::toLowerCase).filter(s->s.length()==8).filter(s->s.contains("a")).filter(s->s.contains("b")).filter(s->s.contains("c")).findFirst().orElse(null);
+	  return result;
   }
-  
+  /**
+   * 
+   * @param inputFile
+   * @param letter1
+   * @param letter2
+   * @return String
+   * @throws Exception
+   */
   public static String longestWordWithout(String inputFile, String letter1, String letter2) throws Exception {
 	  
 	  /*
@@ -40,9 +87,17 @@ public class FileIoExamples {
 	   * Print the longest English word that contains neither “a” nor “e”.
 	   * 
 	   */
-    return null;
+	  Path path=Paths.get(inputFile);
+	  String result=Files.lines(path).filter(s->!s.contains(letter1)).filter(s->!s.contains(letter2)).max((x,y)->Integer.compare(x.length(), y.length())).get();
+	  return result;
   }
-  
+  /**
+   * 
+   * @param inputFile
+   * @param letter
+   * @return String
+   * @throws Exception
+   */
   public static String shortestWordWith(String inputFile, String letter) throws Exception {
 	  
 	  /*
@@ -50,9 +105,16 @@ public class FileIoExamples {
 	   * Print the shortest English word that contains a “q”
 	   * 
 	   */
-    return null;
+	  Path path=Paths.get(inputFile);
+	  String result=Files.lines(path).filter(s->s.contains(letter)).min((x,y)->Integer.compare(x.length(), y.length())).get();
+	  return result;
   }
-  
+  /**
+   * 
+   * @param inputFile
+   * @param outputFile
+   * @throws Exception
+   */
   public static void storeTwitterList(String inputFile, String outputFile) throws Exception {
 	  
 	 /* 
@@ -64,8 +126,24 @@ public class FileIoExamples {
 	  * at the end. (E.g., “COOLER!”).
 	  * 
 	  */
+	  Path path=Paths.get(inputFile);
+	  Path output=Paths.get(outputFile);
+	  List<String> lines=Files.lines(path).filter(s->s.contains("wow")||s.contains("cool")).map(String::toUpperCase).sorted().collect(Collectors.toList());
+	  try(BufferedWriter writer=Files.newBufferedWriter(output, Charset.defaultCharset())){
+		  for(String l:lines){
+			  writer.write(l+"!");
+			  writer.newLine();
+		  }
+	  }
+	  catch (IOException ioe) {
+		  System.err.printf("IOException: %s%n", ioe);
+	}
   }
-  
+  /**
+   * 
+   * @return long
+   * @throws Exception
+   */
   public static long numPathsInProject() throws Exception {
 	  
 	  /*
@@ -73,10 +151,21 @@ public class FileIoExamples {
 	   * Print out the number of files in your Eclipse project.
 	   * Folders count as files. 
 	   * 
-	   */  
-    return 0;
+	   */ 
+	  long result=0;
+	  try(Stream<Path> paths = Files.list(Paths.get("./"))) {
+	        result=paths.count();
+	      } catch(IOException ioe) {
+	        System.err.println("IOException: " + ioe);
+	      }
+    return result;
   }
-  
+  /**
+   * 
+   * @param n
+   * @param range
+   * @param outputFile
+   */
   public static void storeNums(int n, int range, String outputFile) {
 	  
 	  /*
@@ -91,6 +180,14 @@ public class FileIoExamples {
 	   * but it will also automatically close the PrintStream at the end.
 	   * 
 	   */
+	  Path output=Paths.get(outputFile);
+	  try(PrintWriter out=new PrintWriter(Files.newBufferedWriter(output, Charset.defaultCharset()))){
+		  for(int i=0;i<n;i++){
+			  out.printf("%.3f%n", 100*Math.random());
+		  }
+	  }catch(IOException ioe){
+		  System.err.printf("IOException: %s%n", ioe);
+	  }
   }
   
   private FileIoExamples() {} // Uninstantiatable class

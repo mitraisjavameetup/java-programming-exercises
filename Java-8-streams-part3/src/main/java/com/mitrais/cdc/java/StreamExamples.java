@@ -13,23 +13,29 @@ import java.util.stream.*;
  *  - Test whether the parallel approach is faster than the sequential approach
  *  using timeOp method on Op.java
  */
-
+/**
+ * 
+ * @author trainee
+ * class StreamExamples
+ */
 public class StreamExamples {
 	
 	int arraySize = 1_000_000;
-  
-	//TODO
-	//Make an “infinite” stream that generates random doubles between 0 and 10. Use it to
-	//	• Print 5 random doubles
-	//  • Make a List of 10 random doubles
-	//  • Make an array of 20 random doubles
+	
 
-
+	/**
+	 * 
+	 * @return double[]
+	 */
 	public double[] getArray(){
 		double[] numArray = MathUtils.randomArray(arraySize);
 		return numArray;
 	}
-	
+	/**
+	 * 
+	 * @param numStream
+	 * @return double
+	 */
 	public double timeSumSequential(DoubleStream numStream) {
 		double time = 0;
 	  /* TO DO
@@ -38,9 +44,18 @@ public class StreamExamples {
 	   * with operation is sqrtSum
 	   * then stored to variable time
 	   */
+		Op serialSum= () ->{
+		double sum=MathUtils.sqrtSum(numStream);
+		System.out.printf("serial sum: %f.%n",sum);
+		};
+		time=Op.timeOp(serialSum);
 		return time;
 	}
-  
+	/**
+	 * 
+	 * @param numStream
+	 * @return double
+	 */
 	public double timeSumParallel(DoubleStream numStream) {
 		double time = 0;
 	  /* TO DO
@@ -49,7 +64,12 @@ public class StreamExamples {
 	   * with operation is sqrtSumParallel
 	   * then stored to variable time
 	   */
+		Op serialSum= () ->{
+			double sum=MathUtils.sqrtSum(numStream);
+			System.out.printf("parallel sum: %f.%n",sum);
+			};
+		time=Op.timeOp(serialSum);
 		return time;
 	}
-  
+	
 }

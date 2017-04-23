@@ -17,5 +17,6 @@ public class ColorFrame1 extends JFrame {
   
   public static void main(String[] args) {
     new ColorFrame1();
+    
   }
 }

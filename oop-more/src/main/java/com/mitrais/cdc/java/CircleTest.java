@@ -8,9 +8,10 @@ package com.mitrais.cdc.java;
  * but you don't explicitly call toString method in your code
  * HINT: use override when you declare toString method on Circle.java
  */
-
+/**test the circle class */
 public class CircleTest {
   public static void main(String[] args) {
-	  
+	 Circle circle=new Circle();
+	 System.out.println(circle);
   }
 }

@@ -1,7 +1,11 @@
 package com.mitrais.cdc.java.one;
 
 import java.util.*;
-
+/**
+ * 
+ * @author trainee
+ * class StreamPreview
+ */
 public class StreamPreview {
   public static void main(String[] args) {
     List<String> words = Arrays.asList("hi", "hello", "bye", "goodbye");

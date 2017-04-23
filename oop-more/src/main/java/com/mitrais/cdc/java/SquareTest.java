@@ -8,7 +8,10 @@ package com.mitrais.cdc.java;
  * but you don't explicitly call toString method in your code
  * HINT: use override when you declare toString method on Square.java
  */
-
+/**class to test square */
 public class SquareTest {
-
+	public static void main(String[] args) {
+		Square square=new Square();
+		System.out.println(square);
+	}
 }

@@ -1,5 +1,7 @@
 package com.mitrais.cdc.java;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -7,16 +9,29 @@ import java.util.List;
  * Please create the test case using junit on src/test/java/AppTest.java
  * to unit testing each method
  */
+/**
+ * App class
+ * @author trainee
+ *
+ */
 public class App {
 
 	  /** Method calmString:
 	   *  Takes a String and returns a new String with all the exclamation points
 	   *  removed. For example, Utils.calmString("!foo!!") should return "foo".
 	   */
+	/**
+	 * remove exclamation from string
+	 * @param speech
+	 * @return String
+	 */
 	  public static String calmString(String speech) {
+		  String calmSpeech = "";
 		//todo: apply logic as described above
-
-	    return(speech);
+		  for(int i=0;i<speech.length();i++){
+			  if(speech.charAt(i)!='!')calmSpeech=new StringBuilder().append(calmSpeech).append(speech.charAt(i)).toString();
+		  }
+	    return calmSpeech;
 	  }
 	  
 	  /** Method calmAttendees: 
@@ -26,9 +41,45 @@ public class App {
 	   *  and half time it remove "Democrat"
 	   *  If it contains neither,or is null, it does nothing.
 	   */
+	  /**
+	   * to check if the string contains Republican or Democrat
+	   * @param attendingParties
+	   * @return boolean
+	   */
+	  private static boolean checker(List<String> attendingParties){
+		  for(String at:attendingParties){
+			  if(attendingParties.contains("Republican")||attendingParties.contains("Democrat"))return true;
+		  }
+		  return false;
+	  }
+	  /**
+	   * remove Republican or Democrat from list
+	   * @param attendingParties
+	   */
 	  public static void calmAttendees(List<String> attendingParties) {
 			//todo: apply logic as described above
-	  }
+		  if(!attendingParties.isEmpty()){
+			  boolean decide=checker(attendingParties);
+			  if(decide){
+				  double decider=Math.random();
+				  if(decider<=0.5){
+					  for(int i=0;i<attendingParties.size();i++){
+						  if(attendingParties.get(i).contains("Republican"))
+						  attendingParties.remove(i);
+					  }
+				  }
+				  else{
+						  for(int i=0;i<attendingParties.size();i++){
+							  if(attendingParties.get(i).contains("Democrat"))
+							  attendingParties.remove(i);
+						  }
+					  }
+				  }
+			  }
+			  
+		  }
+		  
+	  
 	  
 	  private App() {} // Class cannot be instantiated: only static methods
 	}

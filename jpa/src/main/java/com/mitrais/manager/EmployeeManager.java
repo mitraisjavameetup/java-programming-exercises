@@ -1,6 +1,8 @@
 package com.mitrais.manager;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 import com.mitrais.entity.Employee;
 import com.mitrais.entity.InternalProject;
@@ -33,7 +35,10 @@ public class EmployeeManager {
 	 **/
 	public void create(Employee employee) {
 		// TODO create employee and save to database
-
+		entityManager.getTransaction().begin();
+		entityManager.persist(employee);
+		entityManager.getTransaction().commit();
+		close();
 	}
 
 	/**
@@ -44,7 +49,8 @@ public class EmployeeManager {
 	 **/
 	public Employee read(long employeeId) {
 		// TODO find employee and return
-		return new Employee();
+		Employee result=entityManager.find(Employee.class, employeeId);
+		return result;
 	}
 
 	/**
@@ -55,7 +61,10 @@ public class EmployeeManager {
 	 **/
 	public void update(Employee employee) {
 		// TODO update row in table 
-
+		entityManager.getTransaction().begin();
+		entityManager.merge(employee);
+		entityManager.getTransaction().commit();
+		close();
 	}
 
 	/**
@@ -64,6 +73,10 @@ public class EmployeeManager {
 	 **/
 	public void delete(Employee employee) {
 		// TODO delete row in table
+		entityManager.getTransaction().begin();
+		entityManager.remove(employee);
+		entityManager.getTransaction().commit();
+		close();
 
 	}
 
@@ -78,21 +91,32 @@ public class EmployeeManager {
 	 **/
 	public void createEmploymentHistory(EmploymentHistory project) {
 		// TODO create project and save to database
-
+		entityManager.getTransaction().begin();
+		entityManager.persist(project);
+		entityManager.getTransaction().commit();
+		close();
+		
 	}
 
 	public List getEmployeeByLocation(String officeLocation) {
 		// TODO please execute static query Employee.filterByLocation
-		return null;
+		
+		return entityManager.createNamedQuery("Employee.filterByLocation")
+				.setParameter("officeLocation", officeLocation)
+				.getResultList();
 	}
 
 	public List getEmployeeByProject(String projectName) {
 		// TODO please execute static query Employee.filterByProject
-		return null;
+		return entityManager.createNamedQuery("Employee.filterByEmploymentHistory")
+				.setParameter("empId", projectName)
+				.getResultList();
 	}
 
 	public void removeProjectByEmployeeID(Long empId) {
 		// TODO please create dynamic query to delete employee by ID
+			entityManager.createQuery("delete e from employee e where e.id=:id")
+			.setParameter("id", empId);
 	}
 
 	public List getAllEmploymentHistory() {
