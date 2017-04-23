@@ -7,6 +7,8 @@ import java.util.List;
 import org.junit.Test;
 
 import com.mitrais.cdc.java.MathUtils;
+import com.mitrais.cdc.java.Op;
+import com.mitrais.cdc.java.TimingUtils;
 
 public class MathUtilsTest {
 
@@ -15,7 +17,7 @@ public class MathUtilsTest {
 		int lowerIndex = 2;
 		int upperIndex = 10;
 		int size = upperIndex + 1;
-		boolean[] primeFlags = new boolean[size];
+		boolean[] primeFlags = new boolean[size];		
 		MathUtils.markPrimesSerial(primeFlags,lowerIndex,upperIndex);
 		assertFalse(primeFlags[0]);
 		assertFalse(primeFlags[1]);

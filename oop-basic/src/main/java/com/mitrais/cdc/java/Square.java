@@ -14,4 +14,21 @@ public class Square {
 	 * 
 	 */
 	
+	public Square(double width) {
+		super();
+		this.width = width;
+	}
+
+	public double getArea() {
+		// TODO Auto-generated method stub
+		return Math.pow(this.width, 2);
+
+	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "Width: " + this.width + "; Area: " + getArea();
+	}
+	
 }

@@ -1,5 +1,8 @@
 package com.mitrais.cdc.java;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class EmployeeMap {
 	
@@ -17,8 +20,15 @@ public class EmployeeMap {
 	 * The point here is to associate keys with values, then retrieve values later based on keys.
 	 */
 	
-	public String runEmployeeMap() {
-	    return null;
+	public String runEmployeeMap(String key) {
+		Map<String, String> employeeMap = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+		employeeMap.put("a1234", "Steve Jobs");
+		employeeMap.put("a1235", "Scott McNealy");
+		employeeMap.put("a1236", "Jeff Bezos");
+		employeeMap.put("a1237", "Larry Ellison");
+		employeeMap.put("a1238", "Bill Gates");
+		
+		return employeeMap.get(key);
 	}
 		
 }

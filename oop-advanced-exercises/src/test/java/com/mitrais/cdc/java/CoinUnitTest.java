@@ -9,9 +9,11 @@ import com.mitrais.cdc.java.enums.*;
 public class CoinUnitTest {
 	@Test
 	public void test() {
+		
 		assertNotNull(Coin.HEADS);
 		assertNotNull(Coin.TAILS);
-		
-		//TODO: Also need check whether trainee created flip method that returns Coin.HEADS and Coin.TAILS with equal probability
+
+		// TODO: Also need check whether trainee created flip method that
+		// returns Coin.HEADS and Coin.TAILS with equal probability
 	}
 }
