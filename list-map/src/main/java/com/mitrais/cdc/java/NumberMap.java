@@ -1,5 +1,6 @@
 package com.mitrais.cdc.java;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class NumberMap {
@@ -17,14 +18,24 @@ public class NumberMap {
 
 	  public NumberMap(String[] words) {
 		// To-Do set numberTable map by words arrays 
+		Integer count=0;
+		numberTable=new HashMap();
+		for (String kata:words)
+		{
+			numberTable.put(count, kata);
+			count++;
+		}
+	  
 	  }
 
 	  public String wordForNumber(int num) {
 		// To-Do return words by numbers assigned, set default as [unknown]
-	    return null;
+		String tampung=numberTable.getOrDefault(num, "unknown");
+	    return tampung;
 	  }
 
 	  public int getSize() {
 	    return(numberTable.size());
 	  }
+	  
 }

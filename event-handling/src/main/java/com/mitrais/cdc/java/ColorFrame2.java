@@ -6,7 +6,10 @@ import java.awt.Color;
 /*
  * Class main to run the ColorPanel2
  */
-public class ColorFrame2 extends JFrame {
+
+/**ColorFrame2 Class**/
+public class ColorFrame2 extends JFrame 
+/**ColorFrame2 Constructor**/{
   public ColorFrame2() {
     super("Main JPanel implements MouseListener");
     setContentPane(new ColorPanel2());
@@ -15,6 +18,7 @@ public class ColorFrame2 extends JFrame {
     setVisible(true);
   }
   
+  /**ColorFrame2 Main Method**/
   public static void main(String[] args) {
     new ColorFrame2();
   }

@@ -4,6 +4,21 @@ public class Rectangle {
 
 	public double width, height;
 
+	Rectangle(double width, double height)
+	{
+		this.width=width;
+		this.height=height;
+	}
+	
+	public double getArea() {
+		
+		return width*height;
+	}
+
+	public String toString()
+	{
+		return "Radius : " + width + "Height : " + height;
+	}
 	/*
 	 * todo: make a Square class with various capabilities below:
 	 * 1. Give the Square class a width and height field of type double
@@ -13,5 +28,7 @@ public class Rectangle {
 	 * 5. Add a toString method
 	 * 
 	 */
+	
+	
 	
 }

@@ -3,7 +3,11 @@ package com.mitrais.cdc.java;
 import static org.junit.Assert.*;
 
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
+import static org.hamcrest.CoreMatchers.*;
 import org.junit.Test;
 
 public class ColorPanelTest{

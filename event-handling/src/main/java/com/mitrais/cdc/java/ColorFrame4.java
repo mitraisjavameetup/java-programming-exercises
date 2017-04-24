@@ -7,7 +7,9 @@ import javax.swing.*;
 /*
  * Class main to run the ColorPanel4
  */
+/**ColorFrame4 Class**/
 public class ColorFrame4 extends JFrame {
+	/**ColorFrame4 Constructor**/
   public ColorFrame4() {
     super("Anonymous Inner Class");
     setContentPane(new ColorPanel4());
@@ -16,6 +18,7 @@ public class ColorFrame4 extends JFrame {
     setVisible(true);
   }
   
+	/**ColorFrame4 Main**/
   public static void main(String[] args) {
     new ColorFrame4();
   }

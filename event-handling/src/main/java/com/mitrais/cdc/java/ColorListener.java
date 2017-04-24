@@ -5,6 +5,7 @@ import java.awt.event.*;
  *  
  */
 
+/**ColorListener Class**/
 public class ColorListener extends MouseAdapter {
   private ColorPanel1 window;
   

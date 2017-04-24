@@ -13,10 +13,14 @@ public class ListPerformance {
 	 * • To ensure meaningful results, use very long lists and access the middle element many times.
 	 * • Run several tests, each with larger and larger lists.
 	 */
-
-	  public static double timeAccess(String label,
-	                                List<String> list) {
-	    return 0.0;
+	
+	
+	  public static double timeAccess(String label,  List<String> list) {
+	   
+		  double startTime=System.nanoTime();
+		  list.get(list.size()/2);
+		  double NeededTime=System.nanoTime()-startTime;
+		  return NeededTime;
 	
 	  }
 }

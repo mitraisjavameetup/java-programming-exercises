@@ -9,8 +9,36 @@ public class CoinFlipper implements Runnable {
 	//"Pool-1-thread-1 got 3 heads in a row!!"
 	//or like this"
 	//"Pool-1-thread-2 got 5 heads in a row!!"  
-
-
+	  int counter=0;
+	  int flag=0;
+	  
+	  for (int i=0;i<1000;i++)
+	  {
+		  
+		  if (Math.random()<0.5)
+		  {
+			  flag=0;
+		  }
+		  else 
+		  {
+			  flag=1;
+		  }
+		  
+		  if (flag==0)
+		  {
+			  counter++;
+			  if (counter>=3)
+			  {
+				  System.out.println(Thread.currentThread().getName()+" "+counter+ "heads in a row");
+			  }
+		  }
+		  else
+		  {
+			  counter=0;
+		  }
+		 
+		  
+	  }
 	  
 	  
 	  

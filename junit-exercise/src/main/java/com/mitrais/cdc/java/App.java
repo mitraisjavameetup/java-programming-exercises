@@ -1,5 +1,6 @@
 package com.mitrais.cdc.java;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,7 +16,8 @@ public class App {
 	   */
 	  public static String calmString(String speech) {
 		//todo: apply logic as described above
-
+		speech=speech.replaceAll("!", "");
+		
 	    return(speech);
 	  }
 	  
@@ -26,8 +28,30 @@ public class App {
 	   *  and half time it remove "Democrat"
 	   *  If it contains neither,or is null, it does nothing.
 	   */
-	  public static void calmAttendees(List<String> attendingParties) {
+	  public static List<String> calmAttendees(List<String> attendingParties) {
 			//todo: apply logic as described above
+		
+		 List<String> tampung= new ArrayList<String>();
+		 
+		 for (String temp:attendingParties)
+		 {
+			if (temp.contains("Democrat") && temp.contains("Republican"))
+			{
+				if(Math.random()<0.5)
+				{
+					temp=temp.replaceAll("Democrat ", "");
+				}
+				else
+				{
+					temp=temp.replaceAll("Republican ", "");
+				}
+			}
+			tampung.add(temp);
+		 }
+		
+		 return tampung;
+		 
+		 
 	  }
 	  
 	  private App() {} // Class cannot be instantiated: only static methods

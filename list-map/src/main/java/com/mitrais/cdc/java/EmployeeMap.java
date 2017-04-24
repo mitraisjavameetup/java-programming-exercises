@@ -1,5 +1,7 @@
 package com.mitrais.cdc.java;
 
+import java.util.HashMap;
+import java.util.Map;
 
 public class EmployeeMap {
 	
@@ -18,7 +20,16 @@ public class EmployeeMap {
 	 */
 	
 	public String runEmployeeMap() {
-	    return null;
+		Map<String,String> EmployeeMap=new HashMap();
+		EmployeeMap.put("a1234","Steve Jobs");
+		EmployeeMap.put("a1235","Scott McNealy");
+		EmployeeMap.put("a1236","JeffBezos");
+		EmployeeMap.put("a1237","Larry Ellison");
+		EmployeeMap.put("a1238","Bill Gates");
+		
+		String tampung= EmployeeMap.get("a1234");
+		
+	    return tampung;
 	}
 		
 }

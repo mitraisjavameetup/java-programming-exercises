@@ -33,7 +33,9 @@ public class EmployeeManager {
 	 **/
 	public void create(Employee employee) {
 		// TODO create employee and save to database
-
+		entityManager.getTransaction().begin();
+		entityManager.persist(employee);
+		entityManager.getTransaction().commit();
 	}
 
 	/**
@@ -44,7 +46,7 @@ public class EmployeeManager {
 	 **/
 	public Employee read(long employeeId) {
 		// TODO find employee and return
-		return new Employee();
+		return entityManager.find(Employee.class, employeeId);
 	}
 
 	/**
@@ -55,7 +57,12 @@ public class EmployeeManager {
 	 **/
 	public void update(Employee employee) {
 		// TODO update row in table 
-
+		Employee tempEmployee= new Employee();
+		tempEmployee=entityManager.find(Employee.class, employee.getId());
+		entityManager.getTransaction().begin();
+		entityManager.merge(employee);
+		entityManager.getTransaction().commit();
+		
 	}
 
 	/**
@@ -64,7 +71,10 @@ public class EmployeeManager {
 	 **/
 	public void delete(Employee employee) {
 		// TODO delete row in table
-
+		employee=entityManager.find(Employee.class, employee.getId());
+		entityManager.getTransaction().begin();
+		entityManager.remove(employee);
+		entityManager.getTransaction().commit();
 	}
 
 	public void close() {
@@ -78,12 +88,14 @@ public class EmployeeManager {
 	 **/
 	public void createEmploymentHistory(EmploymentHistory project) {
 		// TODO create project and save to database
-
+		entityManager.getTransaction().begin();
+		entityManager.persist(project);
+		entityManager.getTransaction().commit();
 	}
 
 	public List getEmployeeByLocation(String officeLocation) {
 		// TODO please execute static query Employee.filterByLocation
-		return null;
+		return entityManager.createNamedQuery("Employee.filterByLocation",Employee.class).setParameter("officeLocation", officeLocation).getResultList();
 	}
 
 	public List getEmployeeByProject(String projectName) {
@@ -93,6 +105,9 @@ public class EmployeeManager {
 
 	public void removeProjectByEmployeeID(Long empId) {
 		// TODO please create dynamic query to delete employee by ID
+		entityManager.createQuery("DELETE FROM t_employee WHERE id = :empId")
+				.setParameter("empId", empId)
+				.getResultList();
 	}
 
 	public List getAllEmploymentHistory() {
