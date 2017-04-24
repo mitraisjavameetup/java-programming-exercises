@@ -11,6 +11,8 @@ import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -18,7 +20,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 /**
  *   Employee is entity mapped to table
@@ -49,7 +50,7 @@ import javax.persistence.Transient;
 @EntityListeners(EmployeeEntityListener.class)
 @NamedQueries({
 	@NamedQuery(name ="Employee.filterByLocation", query = "SELECT e FROM Employee e WHERE e.officeLocation = :officeLocation"),
-	//@NamedQuery(name="Employee.filterByEmploymentHistory",query="SELECT e FROM Employee e JOIN EmploymentHistory eh ")
+	//@NamedQuery(name="Employee.filterByEmploymentHistory",query="SELECT e FROM Employee e JOIN e.projects p WHERE p.id=:projectId ")
 })
 public class Employee implements Serializable{
 	// TODO implement this entity class
@@ -73,13 +74,15 @@ public class Employee implements Serializable{
 	// TODO @OneToMany association with GradeHistory entity
 	//   	cascading all operations, and remove orphan
 	// 		join column must no be null
-	@OneToMany (cascade=CascadeType.ALL)
+	@OneToMany (cascade=CascadeType.ALL,orphanRemoval = true, targetEntity = GradeHistory.class, mappedBy = "employeeId")
 	private List<GradeHistory> grades;
 	// TODO @ManyToOne association with BranchOffice entity
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private BranchOffice branchOffice;
 	// TODO @ManyToMany association with InternalProject entity
-	@ManyToMany
+	@ManyToMany(targetEntity = InternalProject.class)
+	@JoinTable(name = "t_employee_project", joinColumns = @JoinColumn(name = "employee_id", referencedColumnName = "id")
+			, inverseJoinColumns = @JoinColumn(name = "internal_project_id", referencedColumnName = "id"))
 	private List<InternalProject> projects;
 	
 	public Employee() {

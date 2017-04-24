@@ -60,7 +60,7 @@ public class EmployeeManager {
 		Employee tempEmployee= new Employee();
 		tempEmployee=entityManager.find(Employee.class, employee.getId());
 		entityManager.getTransaction().begin();
-		tempEmployee=employee;
+		entityManager.merge(employee);
 		entityManager.getTransaction().commit();
 		
 	}
@@ -105,6 +105,9 @@ public class EmployeeManager {
 
 	public void removeProjectByEmployeeID(Long empId) {
 		// TODO please create dynamic query to delete employee by ID
+		entityManager.createQuery("DELETE FROM t_employee WHERE id = :empId")
+				.setParameter("empId", empId)
+				.getResultList();
 	}
 
 	public List getAllEmploymentHistory() {

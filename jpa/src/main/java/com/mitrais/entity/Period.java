@@ -10,19 +10,22 @@ import java.io.Serializable;
 import java.util.Date;
 
 // TODO please add annotation for entity class
-@Entity
-@Table(name = "t_period")
+@Embeddable
 public class Period implements Serializable {
     // TODO implement this entity class
     private Date startDate;
 
-	@Id
-    private Date endDate;
+	private Date endDate;
 
     
 
 	public Period() {
     
+    }
+	
+	public Period(Date startDate, Date endDate) {
+        this.startDate = startDate;
+        this.endDate = endDate;
     }
 
     public void setStartDate(Date startDate) {

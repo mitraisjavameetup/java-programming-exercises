@@ -16,7 +16,7 @@ import javax.persistence.Transient;
 public class GradeHistory {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	private Long id;
 	@Column(name = "start_date")
 	private Date startDate;

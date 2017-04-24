@@ -9,8 +9,6 @@ import javax.persistence.Table;
 import java.io.Serializable;
 
 // TODO please add annotation for entity class
-@Entity
-@Table(name = "t_project_id")
 public class ProjectId implements Serializable {
     // TODO implement this entity class
 	@Id
@@ -22,6 +20,7 @@ public class ProjectId implements Serializable {
 
     }
     
+	
     
     public ProjectId(String projectName, String role) {
     	this.projectName=projectName;

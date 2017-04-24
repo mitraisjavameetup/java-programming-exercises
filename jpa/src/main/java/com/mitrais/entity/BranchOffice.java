@@ -16,7 +16,7 @@ import javax.persistence.Table;
 public class BranchOffice {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@Column(name = "city")
 	private String city;
@@ -27,7 +27,7 @@ public class BranchOffice {
 	@Column(name = "postal_code")
 	private String postalCode;
 	// TODO add annotation when necessary
-	@OneToMany
+	@OneToMany(targetEntity=Employee.class)
 	private List<Employee> employees;
 
 	public BranchOffice() {}

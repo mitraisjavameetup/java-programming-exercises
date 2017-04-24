@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Table(name = "t_employment_history")
 public class EmploymentHistory {
     // TODO add proper annotation to this entity class
-	@Id
+	@EmbeddedId
     private ProjectId id;
 	private Period period;
     @Column(name="job_description")
@@ -17,6 +17,12 @@ public class EmploymentHistory {
 
     public EmploymentHistory() {
 
+    }
+	 
+	public EmploymentHistory(Period period, String jobDescription, Long empId) {
+        this.period = period;
+        this.jobDescription = jobDescription;
+        this.empId = empId;
     }
     
     public ProjectId getId() {
